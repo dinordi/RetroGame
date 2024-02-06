@@ -1,0 +1,17 @@
+Loading Zephyr default modules (Zephyr base (cached)).
+CMake Warning at /Users/dinordi/zephyrproject/zephyr/CMakeLists.txt:1971 (message):
+  
+
+        The CMake build type was set to 'Debug', but the optimization flag was set to '-Os'.
+        This may be intentional and the warning can be turned off by setting the CMake variable 'NO_BUILD_TYPE_WARNING'
+
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CCACHE_ENABLE
+    ESP_PLATFORM
+    PYTHON
+    PYTHON_DEPS_CHECKED
+
+

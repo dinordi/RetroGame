@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/libmetal",
+		"source" : "/Users/dinordi/zephyrproject/modules/hal/libmetal"
+	}
+}

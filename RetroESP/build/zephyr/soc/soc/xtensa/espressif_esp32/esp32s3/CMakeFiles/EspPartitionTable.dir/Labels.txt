@@ -1,0 +1,13 @@
+# Target labels
+ EspPartitionTable
+# Source files and their labels
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/CMakeFiles/EspPartitionTable
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/CMakeFiles/EspPartitionTable.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/CMakeFiles/EspPartitionTable-complete.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-build.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-configure.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-download.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-install.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-mkdir.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-patch.rule
+/Users/dinordi/zephyrproject/zephyr/samples/btcontrollerDinordi/build/zephyr/soc/soc/xtensa/espressif_esp32/esp32s3/EspPartitionTable-prefix/src/EspPartitionTable-stamp/EspPartitionTable-update.rule

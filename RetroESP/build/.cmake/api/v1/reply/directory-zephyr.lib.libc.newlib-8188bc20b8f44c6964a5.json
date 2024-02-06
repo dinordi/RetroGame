@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/lib/libc/newlib",
+		"source" : "/Users/dinordi/zephyrproject/zephyr/lib/libc/newlib"
+	}
+}

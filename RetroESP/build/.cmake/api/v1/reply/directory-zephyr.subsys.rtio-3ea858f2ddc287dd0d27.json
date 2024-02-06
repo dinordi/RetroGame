@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "zephyr/subsys/rtio",
+		"source" : "/Users/dinordi/zephyrproject/zephyr/subsys/rtio"
+	}
+}

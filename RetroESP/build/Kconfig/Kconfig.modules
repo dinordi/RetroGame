@@ -1,0 +1,231 @@
+menu "acpica (/Users/dinordi/zephyrproject/modules/lib/acpica)"
+osource "$(ZEPHYR_ACPICA_KCONFIG)"
+config ZEPHYR_ACPICA_MODULE
+	bool
+	default y
+endmenu
+menu "cmsis (/Users/dinordi/zephyrproject/modules/hal/cmsis)"
+osource "$(ZEPHYR_CMSIS_KCONFIG)"
+config ZEPHYR_CMSIS_MODULE
+	bool
+	default y
+endmenu
+menu "cmsis-dsp (/Users/dinordi/zephyrproject/modules/lib/cmsis-dsp)"
+osource "$(ZEPHYR_CMSIS_DSP_KCONFIG)"
+config ZEPHYR_CMSIS_DSP_MODULE
+	bool
+	default y
+endmenu
+menu "cmsis-nn (/Users/dinordi/zephyrproject/modules/lib/cmsis-nn)"
+osource "$(ZEPHYR_CMSIS_NN_KCONFIG)"
+config ZEPHYR_CMSIS_NN_MODULE
+	bool
+	default y
+endmenu
+menu "fatfs (/Users/dinordi/zephyrproject/modules/fs/fatfs)"
+osource "$(ZEPHYR_FATFS_KCONFIG)"
+config ZEPHYR_FATFS_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_ALTERA_MODULE
+   bool
+   default y
+menu "hal_ambiq (/Users/dinordi/zephyrproject/modules/hal/ambiq)"
+osource "$(ZEPHYR_HAL_AMBIQ_KCONFIG)"
+config ZEPHYR_HAL_AMBIQ_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_ATMEL_MODULE
+   bool
+   default y
+menu "hal_espressif (/Users/dinordi/zephyrproject/modules/hal/espressif)"
+osource "/Users/dinordi/zephyrproject/modules/hal/espressif/zephyr/Kconfig"
+config ZEPHYR_HAL_ESPRESSIF_MODULE
+	bool
+	default y
+endmenu
+menu "hal_ethos_u (/Users/dinordi/zephyrproject/modules/hal/ethos_u)"
+osource "$(ZEPHYR_HAL_ETHOS_U_KCONFIG)"
+config ZEPHYR_HAL_ETHOS_U_MODULE
+	bool
+	default y
+endmenu
+menu "hal_gigadevice (/Users/dinordi/zephyrproject/modules/hal/gigadevice)"
+osource "$(ZEPHYR_HAL_GIGADEVICE_KCONFIG)"
+config ZEPHYR_HAL_GIGADEVICE_MODULE
+	bool
+	default y
+endmenu
+menu "hal_infineon (/Users/dinordi/zephyrproject/modules/hal/infineon)"
+osource "$(ZEPHYR_HAL_INFINEON_KCONFIG)"
+config ZEPHYR_HAL_INFINEON_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_HAL_INTEL_MODULE
+   bool
+   default y
+config ZEPHYR_MICROCHIP_MODULE
+   bool
+   default y
+menu "hal_nordic (/Users/dinordi/zephyrproject/modules/hal/nordic)"
+osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
+config ZEPHYR_HAL_NORDIC_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_NUVOTON_MODULE
+   bool
+   default y
+menu "hal_nxp (/Users/dinordi/zephyrproject/modules/hal/nxp)"
+osource "$(ZEPHYR_HAL_NXP_KCONFIG)"
+config ZEPHYR_HAL_NXP_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_OPENISA_MODULE
+   bool
+   default y
+config ZEPHYR_QUICKLOGIC_MODULE
+   bool
+   default y
+config ZEPHYR_HAL_RENESAS_MODULE
+   bool
+   default y
+menu "hal_rpi_pico (/Users/dinordi/zephyrproject/modules/hal/rpi_pico)"
+osource "$(ZEPHYR_HAL_RPI_PICO_KCONFIG)"
+config ZEPHYR_HAL_RPI_PICO_MODULE
+	bool
+	default y
+endmenu
+menu "silabs (/Users/dinordi/zephyrproject/modules/hal/silabs)"
+osource "/Users/dinordi/zephyrproject/modules/hal/silabs/zephyr/Kconfig"
+config ZEPHYR_SILABS_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_ST_MODULE
+   bool
+   default y
+config ZEPHYR_STM32_MODULE
+   bool
+   default y
+menu "hal_telink (/Users/dinordi/zephyrproject/modules/hal/telink)"
+osource "/Users/dinordi/zephyrproject/modules/hal/telink/Kconfig"
+config ZEPHYR_HAL_TELINK_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_TI_MODULE
+   bool
+   default y
+config ZEPHYR_HAL_WURTHELEKTRONIK_MODULE
+   bool
+   default y
+config ZEPHYR_XTENSA_MODULE
+   bool
+   default y
+menu "hostap (/Users/dinordi/zephyrproject/modules/lib/hostap)"
+osource "$(ZEPHYR_HOSTAP_KCONFIG)"
+config ZEPHYR_HOSTAP_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_LIBMETAL_MODULE
+   bool
+   default y
+menu "liblc3 (/Users/dinordi/zephyrproject/modules/lib/liblc3)"
+osource "$(ZEPHYR_LIBLC3_KCONFIG)"
+config ZEPHYR_LIBLC3_MODULE
+	bool
+	default y
+endmenu
+menu "littlefs (/Users/dinordi/zephyrproject/modules/fs/littlefs)"
+osource "$(ZEPHYR_LITTLEFS_KCONFIG)"
+config ZEPHYR_LITTLEFS_MODULE
+	bool
+	default y
+endmenu
+menu "loramac-node (/Users/dinordi/zephyrproject/modules/lib/loramac-node)"
+osource "$(ZEPHYR_LORAMAC_NODE_KCONFIG)"
+config ZEPHYR_LORAMAC_NODE_MODULE
+	bool
+	default y
+endmenu
+menu "lvgl (/Users/dinordi/zephyrproject/modules/lib/gui/lvgl)"
+osource "/Users/dinordi/zephyrproject/modules/lib/gui/lvgl/Kconfig"
+config ZEPHYR_LVGL_MODULE
+	bool
+	default y
+endmenu
+menu "mbedtls (/Users/dinordi/zephyrproject/modules/crypto/mbedtls)"
+osource "$(ZEPHYR_MBEDTLS_KCONFIG)"
+config ZEPHYR_MBEDTLS_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_MCUBOOT_MODULE
+   bool
+   default y
+config ZEPHYR_MIPI_SYS_T_MODULE
+   bool
+   default y
+config ZEPHYR_NRF_HW_MODELS_MODULE
+   bool
+   default y
+config ZEPHYR_OPEN_AMP_MODULE
+   bool
+   default y
+menu "openthread (/Users/dinordi/zephyrproject/modules/lib/openthread)"
+osource "$(ZEPHYR_OPENTHREAD_KCONFIG)"
+config ZEPHYR_OPENTHREAD_MODULE
+	bool
+	default y
+endmenu
+menu "percepio (/Users/dinordi/zephyrproject/modules/debug/percepio)"
+osource "/Users/dinordi/zephyrproject/modules/debug/percepio/zephyr/Kconfig"
+config ZEPHYR_PERCEPIO_MODULE
+	bool
+	default y
+endmenu
+menu "picolibc (/Users/dinordi/zephyrproject/modules/lib/picolibc)"
+osource "/Users/dinordi/zephyrproject/modules/lib/picolibc/zephyr/Kconfig"
+config ZEPHYR_PICOLIBC_MODULE
+	bool
+	default y
+endmenu
+menu "segger (/Users/dinordi/zephyrproject/modules/debug/segger)"
+osource "$(ZEPHYR_SEGGER_KCONFIG)"
+config ZEPHYR_SEGGER_MODULE
+	bool
+	default y
+endmenu
+config ZEPHYR_TINYCRYPT_MODULE
+   bool
+   default y
+menu "trusted-firmware-m (/Users/dinordi/zephyrproject/modules/tee/tf-m/trusted-firmware-m)"
+osource "$(ZEPHYR_TRUSTED_FIRMWARE_M_KCONFIG)"
+config ZEPHYR_TRUSTED_FIRMWARE_M_MODULE
+	bool
+	default y
+endmenu
+menu "trusted-firmware-a (/Users/dinordi/zephyrproject/modules/tee/tf-a/trusted-firmware-a)"
+osource "$(ZEPHYR_TRUSTED_FIRMWARE_A_KCONFIG)"
+config ZEPHYR_TRUSTED_FIRMWARE_A_MODULE
+	bool
+	default y
+endmenu
+menu "uoscore-uedhoc (/Users/dinordi/zephyrproject/modules/lib/uoscore-uedhoc)"
+osource "$(ZEPHYR_UOSCORE_UEDHOC_KCONFIG)"
+config ZEPHYR_UOSCORE_UEDHOC_MODULE
+	bool
+	default y
+endmenu
+menu "zcbor (/Users/dinordi/zephyrproject/modules/lib/zcbor)"
+osource "$(ZEPHYR_ZCBOR_KCONFIG)"
+config ZEPHYR_ZCBOR_MODULE
+	bool
+	default y
+endmenu

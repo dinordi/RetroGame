@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "modules/cmsis-dsp",
+		"source" : "/Users/dinordi/zephyrproject/zephyr/modules/cmsis-dsp"
+	}
+}
