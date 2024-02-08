@@ -60,9 +60,9 @@ int32_t ADC::read()
     for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
         int32_t val_mv;
         
-        printk("- %s, channel %d: ",
-                adc_channels[i].dev->name,
-                adc_channels[i].channel_id);
+        // printk("- %s, channel %d: ",
+        //         adc_channels[i].dev->name,
+        //         adc_channels[i].channel_id);
 
         (void)adc_sequence_init_dt(&adc_channels[i], &sequence);
 
@@ -82,7 +82,7 @@ int32_t ADC::read()
         } else {
             val_mv = (int32_t)buf;
         }
-        printk("%"PRId32, val_mv);
+        // printk("%"PRId32, val_mv);
         err = adc_raw_to_millivolts_dt(&adc_channels[i],
                             &val_mv);
         /* conversion to mV may not be supported, skip if not */
@@ -90,7 +90,7 @@ int32_t ADC::read()
             printk(" (value in mV not available)\n");
             return err;
         } else {
-            printk("ADC Value = %"PRId32" mV\n", val_mv);
+            // printk("ADC Value = %"PRId32" mV\n", val_mv);
             return val_mv;
         }
     }
@@ -102,31 +102,48 @@ void ADC::print()
     printk("ADC value: %d\n", this->value);
 }
 
+#define waittime 150
+
+//This function is used to detect a shot by using LDR value, it returns true if it's a hit
 bool ADC::shot()
 {
-    int32_t startTime = k_cycle_get_32();
     int32_t passedTime;
-    int32_t valBlack = 2000;
+    int32_t valBlack = 6000;
     int32_t valWhite = 0;
+    int32_t startTime = k_uptime_get_32();
     do
     {
         int32_t val = this->read();
         if (val < valBlack)             //If LDR value is lower, it's reacting to black screen and it takes time
         {
             valBlack = val;
+            printk("Black: %d\n", valBlack);
         }
-        passedTime = k_cycle_get_32();
+        passedTime = k_uptime_get_32();
 
-    }while((startTime-passedTime < 40)); //For 40ms read LDR value 
+    }while((passedTime-startTime < waittime)); //For 40ms read LDR value 
 
+    startTime = k_uptime_get_32();
     do
     {
         int32_t val = this->read(); 
         if (val > valWhite)             //If LDR value is higher, it's reacting to white screen and it takes time
         {
             valWhite = val;
-        }
-        passedTime = k_cycle_get_32();
+            printk("White: %d\n", valWhite);
 
-    }while((startTime-passedTime < 40)); //For 40ms read LDR value
+        }
+        passedTime = k_uptime_get_32();
+
+    }while((passedTime-startTime < waittime)); //For 40ms read LDR value
+
+    if (valWhite > valBlack*1.5) //If white value is higher than 1.5 times of black screen, it's a shot
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
 }

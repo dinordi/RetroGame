@@ -22,7 +22,7 @@
 #include <string>
 #include "adc.h"
 #include "button.h"
-
+#include "fpga.h"
 
 // /* Data of ADC io-channels specified in devicetree. */
 // static const struct adc_dt_spec adc_channels[] = {
@@ -37,12 +37,13 @@ int main(void)
 
 	ADC adc;
 	buttonHandler button(&adc);
+	FPGA fpga;
 
 	while (1) {
 		// printk("ADC reading[%u]:\n", count++);
 		// adc.read();
 		// adc.print();
-		
+
 
 		k_sleep(K_MSEC(1000));
 	}

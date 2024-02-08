@@ -7,7 +7,7 @@
 #include <zephyr/kernel.h>
 
 #include "adc.h"
-
+#include "fpga.h"
 
 #define SW0_NODE	DT_ALIAS(pin)
 #if !DT_NODE_HAS_STATUS(SW0_NODE, okay)
@@ -19,6 +19,7 @@ static struct gpio_callback button_cb_data;
 struct button_data {
     struct gpio_callback cb;
     ADC *adc;
+    FPGA *fpga;
 };
 
 
