@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2022 Wolter HV <wolterhv@gmx.de>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+ / {
+	zephyr,user {
+		io-channels =
+			<&adc0 0>;
+			// <&adc1 0>;
+	};
+	aliases {
+		adc0 = &adc0;
+		// adc1 = &adc1;
+		pin = &button1;
+	};
+	buttons {
+		button1: button_1 {
+			gpios = <&gpio1 14 0x11>;
+			label = "Button 1";
+			zephyr,code = <0xb>;
+		};
+	};
+
+	soc {
+		// gpio: gpio{
+		// 	gpio4: gpio@60004000 {
+		// 		status = "okay";
+		// 	};
+		// };
+		adc0: adc@60040000 {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			channel@0 {
+				reg = <0>;
+				zephyr,gain = "ADC_GAIN_1_4";
+				zephyr,reference = "ADC_REF_INTERNAL";
+				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+				zephyr,resolution = <12>;
+			};
+		};
+	};
+
+
+};
