@@ -1,13 +1,13 @@
-.. _hello_world:
+.. _retro_game:
 
-Hello World
+Retro Game
 ###########
 
 Overview
 ********
 
-A simple sample that can be used with any :ref:`supported board <boards>` and
-prints "Hello World" to the console.
+A retro game using Zephyr as kernel with uart communication to a Basys 3 FPGA board.
+
 
 Building and Running
 ********************
@@ -15,19 +15,18 @@ Building and Running
 This application can be built and executed on QEMU as follows:
 
 .. zephyr-app-commands::
-   :zephyr-app: samples/hello_world
+   :zephyr-app: samples/RetroGame/RetroESP/
    :host-os: unix
-   :board: qemu_x86
+   :board: esp32s3-devkitm
    :goals: run
    :compact:
 
-To build for another board, change "qemu_x86" above to that board's name.
 
 Sample Output
 =============
 
 .. code-block:: console
 
-    Hello World! x86
-
-Exit QEMU by pressing :kbd:`CTRL+A` :kbd:`x`.
+    LOGIC-HIT
+    LOGIC-MIS
+    IMG-SHOT
