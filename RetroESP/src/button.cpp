@@ -1,5 +1,6 @@
 #include "button.h"
-
+static int32_t lastButtonPress = -100;
+static bool clicked = false;
 
 void button_pressed(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
@@ -8,6 +9,12 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 	struct button_data *data = CONTAINER_OF(cb, struct button_data, cb);
     ADC *adc = data->adc;
 	FPGA *fpga = data->fpga;
+	if(k_uptime_get_32() - lastButtonPress < 200)
+	{
+		return;
+	}
+	lastButtonPress = k_uptime_get_32();
+	// printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 	//Start shooting function on FPGA with enemy locations
 	fpga->sendShot();
 	//Handle LDR value
@@ -22,6 +29,7 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 		//If it's not a hit, send miss signal to FPGA
 		printk("LOGIC-MIS\n");
 	}
+
 }
 
 buttonHandler::buttonHandler(ADC *adc) : button(GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,{0}))

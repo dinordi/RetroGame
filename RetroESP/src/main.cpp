@@ -12,8 +12,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
 
-
-
 #include <zephyr/drivers/adc.h>
 #include "inttypes.h"
 #include <stddef.h>
@@ -33,7 +31,6 @@
 int main(void)
 {
 	uint32_t count = 0;
-	
 
 	ADC adc;
 	buttonHandler button(&adc);
@@ -41,11 +38,10 @@ int main(void)
 
 	while (1) {
 		// printk("ADC reading[%u]:\n", count++);
-		// adc.read();
+		printk("%d\r\n", adc.read());
 		// adc.print();
 
-
-		k_sleep(K_MSEC(1000));
+		k_sleep(K_MSEC(500));
 	}
 	return 0;
 }

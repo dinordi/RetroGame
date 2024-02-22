@@ -102,7 +102,7 @@ void ADC::print()
     printk("ADC value: %d\n", this->value);
 }
 
-#define waittime 150
+#define waittime 170
 
 //This function is used to detect a shot by using LDR value, it returns true if it's a hit
 bool ADC::shot()
@@ -117,8 +117,8 @@ bool ADC::shot()
         if (val < valBlack)             //If LDR value is lower, it's reacting to black screen and it takes time
         {
             valBlack = val;
-            printk("Black: %d\n", valBlack);
         }
+        printk("Black: %d\n", val);
         passedTime = k_uptime_get_32();
 
     }while((passedTime-startTime < waittime)); //For 40ms read LDR value 
@@ -130,14 +130,14 @@ bool ADC::shot()
         if (val > valWhite)             //If LDR value is higher, it's reacting to white screen and it takes time
         {
             valWhite = val;
-            printk("White: %d\n", valWhite);
 
         }
+        printk("White: %d\n", val);
         passedTime = k_uptime_get_32();
 
     }while((passedTime-startTime < waittime)); //For 40ms read LDR value
 
-    if (valWhite > valBlack*1.5) //If white value is higher than 1.5 times of black screen, it's a shot
+    if (valWhite > valBlack*3) //If white value is higher than 1.5 times of black screen, it's a shot
     {
         return true;
     }
