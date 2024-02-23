@@ -7,35 +7,23 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 {
     // printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 	struct button_data *data = CONTAINER_OF(cb, struct button_data, cb);
-    ADC *adc = data->adc;
 	FPGA *fpga = data->fpga;
-	if(k_uptime_get_32() - lastButtonPress < 200)
+	if(k_uptime_get_32() - lastButtonPress < 100)
 	{
 		return;
 	}
 	lastButtonPress = k_uptime_get_32();
 	// printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 	//Start shooting function on FPGA with enemy locations
-	fpga->sendShot();
+	// fpga->sendShot();
 	//Handle LDR value
-	bool hit = adc->shot();
-	if (hit)
-	{
-		//If it's a hit, send hit signal to FPGA
-		printk("LOGIC-HIT\n");
-	}
-	else
-	{
-		//If it's not a hit, send miss signal to FPGA
-		printk("LOGIC-MIS\n");
-	}
+	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
 
 }
 
-buttonHandler::buttonHandler(ADC *adc) : button(GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,{0}))
+buttonHandler::buttonHandler() : button(GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,{0}))
 {
 
-	this->adc = adc;
 
     int ret;
 	

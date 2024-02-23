@@ -12,33 +12,23 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
 
-#include <zephyr/drivers/adc.h>
-#include "inttypes.h"
-#include <stddef.h>
-#include <stdint.h>
 
 #include <string>
-#include "adc.h"
+// #include "adc.h"
 #include "button.h"
-#include "fpga.h"
+#include "fpga.h" //Serial communication with FPGA
 
-// /* Data of ADC io-channels specified in devicetree. */
-// static const struct adc_dt_spec adc_channels[] = {
-// 	DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user), io_channels,
-// 			     DT_SPEC_AND_COMMA)
-// };
+
 
 int main(void)
 {
 	uint32_t count = 0;
 
-	ADC adc;
-	buttonHandler button(&adc);
+	buttonHandler button;
 	FPGA fpga;
 
 	while (1) {
 		// printk("ADC reading[%u]:\n", count++);
-		printk("%d\r\n", adc.read());
 		// adc.print();
 
 		k_sleep(K_MSEC(500));

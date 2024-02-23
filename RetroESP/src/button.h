@@ -6,7 +6,6 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/kernel.h>
 
-#include "adc.h"
 #include "fpga.h"
 
 #define SW0_NODE	DT_ALIAS(pin)
@@ -18,7 +17,6 @@ static struct gpio_callback button_cb_data;
 
 struct button_data {
     struct gpio_callback cb;
-    ADC *adc;
     FPGA *fpga;
 };
 
@@ -27,7 +25,7 @@ class buttonHandler
 {
 public:
     // button();
-    buttonHandler(ADC *adc);
+    buttonHandler();
     ~buttonHandler();
 
     const struct gpio_dt_spec *getButton();
@@ -36,5 +34,4 @@ public:
 
 private:
     const struct gpio_dt_spec button;
-    ADC *adc;
 };

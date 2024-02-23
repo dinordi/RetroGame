@@ -9,7 +9,7 @@ project(RetroGame)
 
 set(app_sources 
     src/main.cpp 
-    src/adc.cpp
+    # src/adc.cpp
     src/button.cpp
     src/fpga.cpp
 )
