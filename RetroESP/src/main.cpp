@@ -31,7 +31,20 @@ int main(void)
 		// printk("ADC reading[%u]:\n", count++);
 		// adc.print();
 
+
 		k_sleep(K_MSEC(500));
 	}
 	return 0;
+}
+
+void updateGame()
+{
+	//Check for input
+	//Update game logic
+}
+
+void sendToDisplay()
+{
+	//Send game state to display
+	// (ID, x, y)
 }
