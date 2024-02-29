@@ -32,11 +32,10 @@ public:
     void jump();
 
 private:
-    int ID; //Sprite ID
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
     int speed;
-    defaultValues def;
-    direction dir;
+    defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
+    direction dir;  //Facing direction
 };
