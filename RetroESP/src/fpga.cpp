@@ -27,7 +27,7 @@ void FPGA::sendSprite(uint16_t* buf1, int spriteDataCount)
 	// uint16_t buf[1] = {1};
 
 	struct spi_config config;
-	config.frequency = 10000000;
+	config.frequency = 4000000;
 	config.operation = SPI_OP_MODE_MASTER | SPI_WORD_SET(16);
 	config.slave = 0;
 	config.cs = cs_ctrl;

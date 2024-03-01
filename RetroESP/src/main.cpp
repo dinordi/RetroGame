@@ -36,9 +36,9 @@ int main(void)
 	
 
 
-	for(int i = 1; i <= 1; i++)
+	for(int i = 1; i <= 150; i++)
 	{
-		game.addEntity(500);
+		game.addEntity(i%11);
 	
 	}
 
