@@ -11,7 +11,7 @@
 #include <thread>
 #include <chrono>
 
-#define SPIBB_NODE	DT_NODELABEL(spibb0)
+#define SPIBB_NODE	DT_NODELABEL(spi2)
 #define arrSize 900
 
 //SPI and FPGA handler
@@ -24,6 +24,7 @@ public:
 
 private:
     struct spi_cs_control cs_ctrl;
+    // const struct device *const dev;
     // uint16_t *buffID;
     // uint16_t *buffX;
     // uint16_t *buffY;

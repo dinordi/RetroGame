@@ -35,9 +35,10 @@ void game::sendToDisplay()
         int x = entity->getX();
         int y = entity->getY();
         int ID = entity->getID();
-        spriteData[spriteDataCount++] = ID;
-        spriteData[spriteDataCount++] = x;
-        spriteData[spriteDataCount++] = y;
+
+        spriteData[spriteDataCount++] = htobe16(ID);
+        spriteData[spriteDataCount++] = htobe16(x);
+        spriteData[spriteDataCount++] = htobe16(y);
     }
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;

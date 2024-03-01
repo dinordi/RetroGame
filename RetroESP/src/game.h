@@ -4,7 +4,7 @@
 #include "entity.h"
 #include <zephyr/sys/printk.h>
 #include "fpga.h"
-
+#include "endian.h"
 
 class game
 {
