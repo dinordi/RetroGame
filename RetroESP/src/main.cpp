@@ -17,6 +17,9 @@
 // #include "adc.h"
 #include "button.h"
 #include "fpga.h" //Serial communication with FPGA
+#include "entity.h"
+#include "game.h"
+
 
 void updateGame();
 
@@ -29,38 +32,21 @@ int main(void)
 
 	buttonHandler button;
 	FPGA fpga;
+	game game(&fpga);
+	
 
+
+	for(int i = 1; i <= 100; i++)
+	{
+		game.addEntity(i);
+	
+	}
 
 	while (1) {
-		// printk("ADC reading[%u]:\n", count++);
-		// adc.print();
-		uint16_t id = 1;
-		uint16_t x = 2;
-		uint16_t y = 3;
-		fpga.addLocation(id, x, y);
-		fpga.addLocation(id, x, y);
-		fpga.addLocation(id, x, y);
-		fpga.addLocation(id, x, y);
-		fpga.addLocation(id, x, y);
 
-		fpga.sendSprite();
-		fpga.clearBuffer();
-		updateGame();
+		game.update();
+		game.sendToDisplay();
 	}
 	return 0;
 }
 
-void updateGame()
-{
-	//Check for input
-	//Update game logic
-	printk("Updating game\n");
-	k_sleep(K_MSEC(1000));
-	// std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-}
-
-void sendToDisplay()
-{
-	//Send game state to display
-	// (ID, x, y)
-}

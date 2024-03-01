@@ -20,14 +20,11 @@ class FPGA
 public:
     FPGA();
     ~FPGA();
-    void addLocation(uint16_t id, uint16_t x, uint16_t y);
-    void clearBuffer();
-    void sendSprite();
+    void sendSprite(uint16_t* buf1, int spriteDataCount);
 
 private:
     struct spi_cs_control cs_ctrl;
-    uint16_t *buffID;
-    uint16_t *buffX;
-    uint16_t *buffY;
-    size_t buffcount;
+    // uint16_t *buffID;
+    // uint16_t *buffX;
+    // uint16_t *buffY;
 };
