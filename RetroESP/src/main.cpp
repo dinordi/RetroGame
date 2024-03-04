@@ -15,7 +15,7 @@
 
 #include <string>
 // #include "adc.h"
-// #include "button.h"
+#include "button.h"
 #include "fpga.h" //Serial communication with FPGA
 #include "entity.h"
 #include "game.h"
@@ -30,22 +30,22 @@ int main(void)
 	
 	
 
-	// buttonHandler button;
+	buttonHandler button;
 	FPGA fpga;
 	game game(&fpga);
 	
 
 
-	for(int i = 1; i <= 150; i++)
-	{
-		game.addEntity(i%11);
+	// for(int i = 1; i <= 150; i++)
+	// {
+	// 	game.addEntity(i%11);
 	
-	}
+	// }
 
 	while (1) {
 
-		game.update();
-		game.sendToDisplay();
+		// game.update();
+		// game.sendToDisplay();
 	}
 	return 0;
 }

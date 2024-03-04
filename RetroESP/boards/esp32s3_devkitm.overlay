@@ -7,20 +7,39 @@
 };
 
 / {
-	zephyr,user {
-		io-channels =
-			<&adc0 0>;
+	// zephyr,user {
+		// io-channels =
+			// <&adc0 0>;
 			// <&adc1 0>;
-	};
+	// };
 	aliases {
-		adc0 = &adc0;
+		// adc0 = &adc0;
 		// adc1 = &adc1;
 		pin = &button1;
+		pin2 = &button2;
+		pin3 = &button3;
+		pin4 = &button4;
+
 	};
 	buttons {
 		button1: button_1 {
 			gpios = <&gpio1 14 0x11>;
 			label = "Button 1";
+			zephyr,code = <0xb>;
+		};
+		button2: button_2 {
+			gpios = <&gpio1 13 0x11>;
+			label = "Button 2";
+			zephyr,code = <0xb>;
+		};
+		button3: button_3 {
+			gpios = <&gpio1 15 0x11>;
+			label = "Button 3";
+			zephyr,code = <0xb>;
+		};
+		button4: button_4 {
+			gpios = <&gpio1 16 0x11>;
+			label = "Button 4";
 			zephyr,code = <0xb>;
 		};
 	};
