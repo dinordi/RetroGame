@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Progh/Videokaart2/Videokaart2.runs/Sprite15x15_1_synth_1'
+HD_PWD='C:/github/RetroGame/VHDL/Videokaart2.runs/Sprite15x15_1_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

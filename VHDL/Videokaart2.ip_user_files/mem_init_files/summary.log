@@ -5,16 +5,16 @@ Algorithm                  :     Minimum_Area
 Memory Type                :     Single_Port_ROM
 Port A Read Width          :     [12]
 Port A Write Width         :     [12]
-Memory Depth               :     [28830]
+Memory Depth               :     [22500]
 
 ----------------------------------------------------------------------------------
 
-Block RAM resource(s) (18K BRAMs)    : [1]
-Block RAM resource(s) (36K BRAMs)    : [10]
+Block RAM resource(s) (18K BRAMs)    : [4]
+Block RAM resource(s) (36K BRAMs)    : [6]
 ----------------------------------------------------------------------------------
 Clock A Frequency          :         [100]
 Port A Enable Rate         :         [100]
 Port A Write Rate          :         [0]
 ----------------------------------------------------------------------------------
-Estimated Power for IP     :     8.991185 mW
+Estimated Power for IP     :     6.472867 mW
 ----------------------------------------------------------------------------------

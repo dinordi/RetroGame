@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Progh/Videokaart2/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc rfile:../../../Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:C:/github/RetroGame/VHDL/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc rfile:../../../Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN G19 [get_ports {R[0]}]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
