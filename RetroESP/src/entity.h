@@ -26,6 +26,7 @@ typedef struct {
 
 class Entity : public Actor{
 public:
+    Entity(int ID);
     void set(types type, int value);
     int get(types type);
     void attack();

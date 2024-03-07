@@ -1,9 +1,24 @@
 #include "actor.h"
 
 
-Actor::Actor(int ID)
+Actor::Actor(int ID) : ID(ID)
 {
-    this->ID = ID;
-    x = 0;
-    y = 0;
+    x = 2;
+    y = 3;
 }
+
+int Actor::getX()
+{
+    return x;
+}
+
+int Actor::getY()
+{
+    return y;
+}
+
+int Actor::getID()
+{
+    return ID;
+}
+

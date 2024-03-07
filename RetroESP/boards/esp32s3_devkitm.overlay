@@ -1,60 +1,50 @@
-// /*
-//  * Copyright (c) 2022 Wolter HV <wolterhv@gmx.de>
-//  *
-//  * SPDX-License-Identifier: Apache-2.0
-//  */
 
- / {
-	spibb0: spibb0 {
-		compatible = "zephyr,spi-bitbang";
-		status="okay";
-		#address-cells = <1>;
-		#size-cells = <0>;
-		clk-gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
-		mosi-gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
-		miso-gpios = <&gpio0 13 0>;
-		cs-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
-	};
-	
-	zephyr,user {
-		io-channels =
-			<&adc0 0>;
+&spi2 {
+        status = "okay";
+        clock-frequency = <100000000>;
+        cs-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+
+};
+
+/ {
+	// zephyr,user {
+		// io-channels =
+			// <&adc0 0>;
 			// <&adc1 0>;
-	};
+	// };
 	aliases {
-		adc0 = &adc0;
+		// adc0 = &adc0;
 		// adc1 = &adc1;
 		pin = &button1;
+		pin2 = &button2;
+		pin3 = &button3;
+		pin4 = &button4;
+
 	};
 	buttons {
 		button1: button_1 {
-			gpios = <&gpio1 14 0x11>;
+			gpios = <&gpio0 14 0x11>;
 			label = "Button 1";
 			zephyr,code = <0xb>;
 		};
+		button2: button_2 {
+			gpios = <&gpio0 13 0x11>;
+			label = "Button 2";
+			zephyr,code = <0xb>;
+		};
+		button3: button_3 {
+			gpios = <&gpio0 12 0x11>;
+			label = "Button 3";
+			zephyr,code = <0xb>;
+		};
+		button4: button_4 {
+			gpios = <&gpio0 11 0x11>;
+			label = "Button 4";
+			zephyr,code = <0xb>;
+		};
 	};
-	
+
+
 };
-// 	soc {
-// 		// gpio: gpio{
-// 		// 	gpio4: gpio@60004000 {
-// 		// 		status = "okay";
-// 		// 	};
-// 		// };
-// 		adc0: adc@60040000 {
-// 			status = "okay";
-// 			#address-cells = <1>;
-// 			#size-cells = <0>;
+	
 
-// 			channel@0 {
-// 				reg = <0>;
-// 				zephyr,gain = "ADC_GAIN_1_4";
-// 				zephyr,reference = "ADC_REF_INTERNAL";
-// 				zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-// 				zephyr,resolution = <12>;
-// 			};
-// 		};
-// 	};
-
-
-// };

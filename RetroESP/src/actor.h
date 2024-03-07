@@ -7,6 +7,7 @@ public:
     void move(int x, int y);
     int getX();
     int getY();
+    int getID();
 private:
     int x;
     int y;

@@ -9,16 +9,19 @@
 #include "fpga.h"
 
 #define SW0_NODE	DT_ALIAS(pin)
-#if !DT_NODE_HAS_STATUS(SW0_NODE, okay)
-#error "Unsupported board: sw0 devicetree alias is not defined"
-#endif
-
-static struct gpio_callback button_cb_data;
+#define SW1_NODE	DT_ALIAS(pin2)
+#define SW2_NODE	DT_ALIAS(pin3)
+#define SW3_NODE	DT_ALIAS(pin4)
 
 struct button_data {
     struct gpio_callback cb;
-    FPGA *fpga;
+    int ID;
 };
+
+static struct button_data button_cb_data1;
+static struct button_data button_cb_data2;
+static struct button_data button_cb_data3;
+static struct button_data button_cb_data4;
 
 
 class buttonHandler
@@ -28,10 +31,11 @@ public:
     buttonHandler();
     ~buttonHandler();
 
-    const struct gpio_dt_spec *getButton();
-    // void button_pressed();
-    // void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins);
+    void setupButton(const struct gpio_dt_spec dev, struct button_data *button_cb_data, int id);
 
 private:
     const struct gpio_dt_spec button;
+    const struct gpio_dt_spec button2;
+    const struct gpio_dt_spec button3;
+    const struct gpio_dt_spec button4;
 };
