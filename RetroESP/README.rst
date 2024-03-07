@@ -12,6 +12,21 @@ A retro game using Zephyr as kernel with SPI communication to a Basys 3 FPGA boa
 Building and Running
 ********************
 
+
+Pinouts
+======
+
+:SPI-clk: ESP:GPIO-12, FPGA:L2
+
+:SPI-mosi: ESP:GPIO-11, FPGA:J1
+
+:frameDone: ESP:GPIO-, FPGA:J2
+
+   
+   
+
+
+
 This application can be built and executed on QEMU as follows:
 
 .. zephyr-app-commands::
