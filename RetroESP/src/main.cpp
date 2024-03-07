@@ -46,16 +46,16 @@ int main(void)
 	
 
 
-    game.addEntity(45);
-	game.addEntity(45);
+    game.addEntity(1);
+	// game.addEntity(45);
 	while (1) {
        /* Read the state of the GPIO pin */
         int pin_value = gpio_pin_get(input, GPIO_PIN);
 		if(pin_value)
 		{
         
-        game.sendToDisplay();
-
+        	game.sendToDisplay();
+			game.update();
 		}
 		// game.update();
 		
