@@ -20,7 +20,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity VGA is
     Port ( 	clk25 : in STD_LOGIC;
             red_in, green_in, blue_in : in  STD_LOGIC_vector(3 downto 0);
-            reset : in std_logic;
+--            reset : in std_logic;
 			red, green, blue : out  STD_LOGIC_vector(3 downto 0);
 			addrHout : out STD_LOGIC_vector(9 downto 0);
 			addrVout : out STD_LOGIC_vector(9 downto 0);
@@ -35,12 +35,12 @@ addrvout <= vcount;
 addrhout <= hcount;
 process (clk25) 
 begin
-    if reset = '1' then -- reset
-        hcount <= (others => '0');
-        vcount <= (others => '0');
-        hsync <= '0';
-        vsync <= '0';
-    elsif rising_edge(clk25) then -- elke opgaande flank een pixel schrijven, binnen het beeld
+--    if reset = '1' then -- reset
+--        hcount <= (others => '0');
+--        vcount <= (others => '0');
+--        hsync <= '0';
+--        vsync <= '0';
+    if rising_edge(clk25) then -- elke opgaande flank een pixel schrijven, binnen het beeld
 	   if (hcount >= 144) and (hcount < 784) and (vcount >= 31) and (vcount < 511) then
         red <= red_in;
         green <= green_in;

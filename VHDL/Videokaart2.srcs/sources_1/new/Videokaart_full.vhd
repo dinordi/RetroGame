@@ -64,7 +64,7 @@ end component;
 component VGA is
     Port ( 	clk25 : in STD_LOGIC;
             red_in, green_in, blue_in : in  STD_LOGIC_vector(3 downto 0);
-            reset : in std_logic;
+--            reset : in std_logic;
 			red, green, blue : out  STD_LOGIC_vector(3 downto 0);
 			addrHout : out STD_LOGIC_vector(9 downto 0);
 			addrVout : out STD_LOGIC_vector(9 downto 0);
@@ -81,7 +81,7 @@ component spriteController is
            vpos :  in std_logic_vector (9 downto 0);
            Dataready : in std_logic;
            addrout : out STD_LOGIC_VECTOR (16 downto 0);
-           ena : out STD_LOGIC_VECTOR (4 downto 0));
+           ena : out STD_LOGIC_VECTOR (3 downto 0));
 end component;
 
 component clk_wiz_0
@@ -137,16 +137,16 @@ END component;
 signal ID,ypos: std_logic_vector(8 downto 0);
 signal hcount,vcount,xpos : std_logic_vector(9 downto 0);
 signal addrout : std_logic_vector(16 downto 0);
-signal ena : std_logic_vector(4 downto 0);
+signal ena : std_logic_vector(3 downto 0);
 signal douta1,douta2,douta3,douta4,douta5 : std_logic_vector(11 downto 0);
 signal color : std_logic_vector(11 downto 0);
 signal clk100sig,clk25sig,dataready : std_logic;
 signal syncClk : std_logic;
 signal syncData : std_logic;
 begin
-color <= douta1 or douta2 or douta3 or douta4 or douta5;
-ff0 : ThreeFlipFlop port map (clk100 => clk100sig, D => clkspi, Q => syncClk);
-ff1 : ThreeFlipFlop port map (clk100 => clk100sig, D => mosi, Q => syncData);
+color <= douta1 or douta3 or douta4 or douta5;
+ff0 : ThreeFlipFlop port map (clk100 => clk100, D => clkspi, Q => syncClk);
+ff1 : ThreeFlipFlop port map (clk100 => clk100, D => mosi, Q => syncData);
 z0 : clk_wiz_0 port map(clk_in1 => clk100, clk_out1 => clk25sig);
 z1 : InterfaceController port map(mosi => syncData, clk100 => clk100, clkspi => syncClk, framedone => framedone,
                                   dataready => dataready, xpos => xpos, ypos => ypos, id => id, vpos => vcount);
@@ -157,7 +157,7 @@ z3: Sprite15x15_1 port map(clka => clk100, rsta => ena(0), addra => addrout(14 d
 z5: Sprite31x31_2 port map(clka => clk100, rsta => ena(1), addra => addrout(14 downto 0), douta => douta3);
 z6: Sprite63x63 port map(clka => clk100, rsta => ena(2), addra => addrout(16 downto 0), douta => douta4);
 z7: background port map(clka => clk100, rsta => ena(3), addra => addrout(8 downto 0), douta => douta5);
-z8 : vga port map(clk25 => clk25sig, red_in => color(11 downto 8), green_in => color(7 downto 4), blue_in => color(3 downto 0), reset => '0', 
+z8 : vga port map(clk25 => clk25sig, red_in => color(11 downto 8), green_in => color(7 downto 4), blue_in => color(3 downto 0), 
                   red => r, blue => b, green => g, addrhout => hcount, addrvout => vcount, hsync => hsync, vsync => vsync);
 
 

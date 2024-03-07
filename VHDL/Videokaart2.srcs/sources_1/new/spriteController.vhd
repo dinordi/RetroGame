@@ -38,7 +38,7 @@ entity spriteController is
            vpos :  in std_logic_vector (9 downto 0);
            Dataready : in std_logic;
            addrout : out STD_LOGIC_VECTOR (16 downto 0);
-           ena : out STD_LOGIC_VECTOR (4 downto 0));
+           ena : out STD_LOGIC_VECTOR (3 downto 0));
 end spriteController;
 architecture Behavioral of spriteController is
 type spriteLocation is record
@@ -59,7 +59,7 @@ variable offset : integer := 2;
 variable varHPos : unsigned(9 downto 0);
 variable varVPos : unsigned(9 downto 0);
 variable sprRange : unsigned(5 downto 0); 
-variable varEna : STD_LOGIC_VECTOR (4 downto 0) := (others => '0') ;
+variable varEna : STD_LOGIC_VECTOR (3 downto 0) := (others => '0') ;
 begin
     varHPos := unsigned(hPos) + offset;
     varVPos := unsigned(vPos); 
@@ -81,7 +81,7 @@ begin
             end loop;
             if  PrintIndex = 151 then
                 addrout <= std_logic_vector(resize(varVPos - 31,17));
-                ena <=  not "10000";
+                ena <=  not "1000";
               else
                 sprRange := TO_UNSIGNED(sizes(TO_INTEGER(DataArray(PrintIndex).ID) / 100)/2,6);
                 addrout <= std_logic_vector(resize(varHPos - (DataArray(PrintIndex).x_pos + 144 - sprRange) + ((varVPos - (DataArray(PrintIndex).Y_pos + 31 - sprRange)) * sprRange * 2) + ((DataArray(PrintIndex).ID MOD 100) * (sprRange * 2) * (sprRange * 2)),17));
