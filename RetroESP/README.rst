@@ -20,7 +20,7 @@ Pinouts
 
 :SPI-mosi: ESP:GPIO-11, FPGA:J1
 
-:frameDone: ESP:GPIO-, FPGA:J2
+:frameDone: ESP:GPIO-15, FPGA:J2
 
    
    
