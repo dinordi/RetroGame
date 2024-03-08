@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Mar  6 22:17:10 2024
+# Process ID: 26344
+# Current directory: C:/github/RetroGame/VHDL
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12036 C:\github\RetroGame\VHDL\Videokaart2.xpr
+# Log file: C:/github/RetroGame/VHDL/vivado.log
+# Journal file: C:/github/RetroGame/VHDL\vivado.jou
+# Running On: Desktop-Joey, OS: Windows, CPU Frequency: 3400 MHz, CPU Physical cores: 16, Host memory: 34281 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/github/RetroGame/VHDL/Videokaart2.xpr
+update_compile_order -fileset sources_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/github/RetroGame/VHDL/Videokaart2.runs/impl_1/Videokaart_full.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/github/RetroGame/VHDL/Videokaart2.runs/impl_1/Videokaart_full.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]

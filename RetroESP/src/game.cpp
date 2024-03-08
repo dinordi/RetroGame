@@ -33,6 +33,7 @@ void game::update()
     {
         entity->move(entity->getX() - 1, 240);
     }
+
 }
 
 void game::sendToDisplay()
@@ -78,4 +79,5 @@ void game::readInput()
     printk("Button4 status: %d\n", buttonStatus.right);
     printk("Button5 status: %d\n", buttonStatus.melee);
     printk("Button6 status: %d\n", buttonStatus.atk);
+
 }

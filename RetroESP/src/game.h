@@ -17,7 +17,6 @@ typedef struct {
 } buttonStatuses;
 
 
-
 class game
 {
 public:

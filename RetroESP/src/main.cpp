@@ -39,7 +39,6 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
-
 	ButtonHandler button;
 	FPGA fpga;
 	game game(&fpga, &button);
@@ -59,7 +58,6 @@ int main(void)
 		}
 		lastState = pin_value;
 		// game.update();
-		
 	}
 	return 0;
 }

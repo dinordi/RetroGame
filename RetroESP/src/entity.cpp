@@ -23,4 +23,3 @@ direction Entity::getDir()
     return myDirection;
 }
 
-
