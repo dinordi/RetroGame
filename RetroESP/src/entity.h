@@ -31,6 +31,8 @@ public:
     int get(types type);
     void attack();
     void jump();
+    void setDir(direction d);
+    direction getDir();
 
 private:
     int hp; //Health
@@ -38,5 +40,5 @@ private:
     int defense;    //Protection
     int speed;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
-    direction dir;  //Facing direction
+    direction myDirection;  //Facing direction
 };

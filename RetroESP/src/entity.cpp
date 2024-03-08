@@ -10,6 +10,16 @@ Entity::Entity(int ID) : Actor(ID)
     def.maxAttack = 10;
     def.maxDefense = 5;
     def.maxSpeed = 5;
-    dir = north;
+    myDirection = east;
+}
+
+void Entity::setDir(direction d)
+{
+    myDirection = d;
+}
+
+direction Entity::getDir()
+{
+    return myDirection;
 }
 

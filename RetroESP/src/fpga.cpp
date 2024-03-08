@@ -46,9 +46,9 @@ void FPGA::sendSprite(uint16_t* buf1, int spriteDataCount)
 	
 	int ret = spi_write(dev, &config, &tx_bufs);
 
-	
 	printk("Wrote Sprite; ret: %d\n", ret);
 	printk(" wrote ID:%04x, X:%04x, Y:%04x, Length:%d \n",
 		buf1[0], buf1[1], buf1[2], spriteDataCount);
 
 }
+

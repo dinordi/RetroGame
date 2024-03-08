@@ -3,8 +3,8 @@
 
 Actor::Actor(int ID) : ID(ID)
 {
-    x = 2;
-    y = 3;
+    x = 320;
+    y = 240;
 }
 
 int Actor::getX()
@@ -22,3 +22,8 @@ int Actor::getID()
     return ID;
 }
 
+void Actor::move(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}

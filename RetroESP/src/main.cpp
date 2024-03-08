@@ -11,7 +11,7 @@
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
-
+#include <zephyr/drivers/gpio.h>
 
 #include <string>
 // #include "adc.h"
@@ -20,6 +20,10 @@
 #include "entity.h"
 #include "game.h"
 
+#define CHECK  DT_NODELABEL(gpio0)
+/* GPIO pin configuration */
+#define GPIO_PIN 15
+	const struct device *const input = DEVICE_DT_GET(CHECK);
 
 void updateGame();
 
@@ -27,25 +31,33 @@ int main(void)
 {
 	uint32_t count = 0;
 
-	
-	
 
-	buttonHandler button;
+
+	 /* Configure GPIO pin as input */
+    
+	if (gpio_pin_configure(input, GPIO_PIN, GPIO_INPUT)) {
+        printk("Error: Unable to find GPIO device.\n");
+        return 0;
+    }
+	ButtonHandler button;
 	FPGA fpga;
-	game game(&fpga);
+	game game(&fpga, &button);
 	
+	int lastState = 1;
 
-
-	// for(int i = 1; i <= 150; i++)
-	// {
-	// 	game.addEntity(i%11);
-	
-	// }
-
+    game.addEntity(0);
+	// game.addEntity(45);
 	while (1) {
-
+       /* Read the state of the GPIO pin */
+        int pin_value = gpio_pin_get(input, GPIO_PIN);
+		if(pin_value == 1 && lastState == 0)
+		{
+        
+        	game.sendToDisplay();
+			game.update();
+		}
+		lastState = pin_value;
 		// game.update();
-		// game.sendToDisplay();
 	}
 	return 0;
 }
