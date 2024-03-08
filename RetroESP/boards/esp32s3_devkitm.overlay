@@ -19,27 +19,39 @@
 		pin2 = &button2;
 		pin3 = &button3;
 		pin4 = &button4;
+		pin5 = &button5;
+		pin6 = &button6;
 
 	};
 	buttons {
 		button1: button_1 {
-			gpios = <&gpio0 14 0x11>;
+			gpios = <&gpio0 21 0x11>; //  gpio0, so GPIO21
 			label = "Button 1";
 			zephyr,code = <0xb>;
 		};
 		button2: button_2 {
-			gpios = <&gpio0 13 0x11>;
+			gpios = <&gpio1 13 0x11>;	//gpio1, so 13 + 32 = GPIO45
 			label = "Button 2";
 			zephyr,code = <0xb>;
 		};
 		button3: button_3 {
-			gpios = <&gpio0 12 0x11>;
+			gpios = <&gpio1 15 0x11>;	//47
 			label = "Button 3";
 			zephyr,code = <0xb>;
 		};
 		button4: button_4 {
-			gpios = <&gpio0 11 0x11>;
+			gpios = <&gpio1 16 0x11>;	//48
 			label = "Button 4";
+			zephyr,code = <0xb>;
+		};
+		button5: button_5 {
+			gpios = <&gpio1 3 0x11>;	//35
+			label = "Button 5";
+			zephyr,code = <0xb>;
+		};
+		button6: button_6 {
+			gpios = <&gpio1 4 0x11>;	//36
+			label = "Button 6";
 			zephyr,code = <0xb>;
 		};
 	};

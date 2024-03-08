@@ -40,23 +40,24 @@ int main(void)
         return 0;
     }
 
-	buttonHandler button;
+	ButtonHandler button;
 	FPGA fpga;
-	game game(&fpga);
+	game game(&fpga, &button);
 	
+	int lastState = 1;
 
-
-    game.addEntity(1);
+    game.addEntity(0);
 	// game.addEntity(45);
 	while (1) {
        /* Read the state of the GPIO pin */
         int pin_value = gpio_pin_get(input, GPIO_PIN);
-		if(pin_value)
+		if(pin_value == 1 && lastState == 0)
 		{
         
         	game.sendToDisplay();
 			game.update();
 		}
+		lastState = pin_value;
 		// game.update();
 		
 	}

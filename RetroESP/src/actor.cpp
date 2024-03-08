@@ -3,8 +3,8 @@
 
 Actor::Actor(int ID) : ID(ID)
 {
-    x = 2;
-    y = 3;
+    x = 320;
+    y = 240;
 }
 
 int Actor::getX()
