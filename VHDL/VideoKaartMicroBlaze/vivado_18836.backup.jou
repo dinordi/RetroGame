@@ -1,0 +1,83 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Sun Mar 10 19:05:44 2024
+# Process ID: 18836
+# Current directory: C:/Users/djdor/AppData/Roaming/Xilinx/Vivado
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14328
+# Log file: C:/Users/djdor/AppData/Roaming/Xilinx/Vivado/vivado.log
+# Journal file: C:/Users/djdor/AppData/Roaming/Xilinx/Vivado\vivado.jou
+# Running On: Blue, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 8, Host memory: 16800 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/djdor/Downloads/Week_2/week_2_keyboard/week_2_keyboard.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+open_wave_config C:/Users/djdor/Downloads/Week_2/week_2_keyboard/Display_tb_behav.wcfg
+source keyboard_tb.tcl
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/keyboard_tb}} 
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/keyboard_tb/dut/D_flip_three}} 
+relaunch_sim
+save_wave_config {C:/Users/djdor/Downloads/Week_2/week_2_keyboard/Display_tb_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/djdor/Downloads/Week_2/week_2_keyboard/Display_tb_behav.wcfg
+source keyboard_tb.tcl
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/keyboard_tb/dut/display}} 
+relaunch_sim
+relaunch_sim
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top decoder_tb [get_filesets sim_1]
+sarchive_project C:/Users/djdor/Downloads/eindopdracht/VideoKaartMicroBlaze.xpr/VideoKaartMicroBlaze_second_edition.xpr.zip -temp_dir C:/Users/djdor/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-3532-Blue -force -include_local_ip_cache
+onfig C:/Users/djdor/Downloads/Week_2/week_2_keyboard/Display_tb_behav.wcfg
+source decoder_tb.tcl
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/decoder_tb/dut}} 
+relaunch_sim
+relaunch_sim
+close_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top keyboard_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+open_wave_config C:/Users/djdor/Downloads/Week_2/week_2_keyboard/Display_tb_behav.wcfg
+source keyboard_tb.tcl
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/keyboard_tb/dut/display}} 
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/keyboard_tb/dut/decoder_one}} 
+relaunch_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top decoder_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+close_sim
+launch_simulation
+open_wave_config C:/Users/djdor/Downloads/Week_2/week_2_keyboard/Display_tb_behav.wcfg
+source decoder_tb.tcl
+current_wave_config {Display_tb_behav.wcfg}
+add_wave {{/decoder_tb/dut}} 
+relaunch_sim
+relaunch_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top keyboard_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
