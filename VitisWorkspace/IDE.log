@@ -1,0 +1,63 @@
+23:50:26 DEBUG : Logs will be stored at 'C:/github/RetroGame/VitisWorkspace/IDE.log'.
+23:50:31 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\github\RetroGame\VitisWorkspace\temp_xsdb_launch_script.tcl
+23:50:31 INFO  : Registering command handlers for Vitis TCF services
+23:50:31 INFO  : Platform repository initialization has completed.
+23:50:33 INFO  : XSCT server has started successfully.
+23:50:33 INFO  : Successfully done setting XSCT server connection channel  
+23:50:33 INFO  : plnx-install-location is set to ''
+23:50:33 INFO  : Successfully done setting workspace for the tool. 
+23:50:33 INFO  : Successfully done query RDI_DATADIR 
+23:51:00 INFO  : Result from executing command 'getProjects': Videokaart_full
+23:51:00 INFO  : Result from executing command 'getPlatforms': 
+23:51:00 WARN  : An unexpected exception occurred in the module 'platform project logging'
+23:51:00 INFO  : Platform 'Videokaart_full' is added to custom repositories.
+23:51:01 INFO  : Platform 'Videokaart_full' is added to custom repositories.
+23:51:21 INFO  : Result from executing command 'getProjects': Videokaart_full
+23:51:21 INFO  : Result from executing command 'getPlatforms': Videokaart_full|C:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/Videokaart_full.xpfm
+23:51:22 INFO  : Checking for BSP changes to sync application flags for project 'SpriteControllerRetroGame'...
+23:51:29 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:51:30 INFO  : Jtag cable 'Digilent Basys3 210183A3874EA' is selected.
+23:51:30 INFO  : 'jtag frequency' command is executed.
+23:51:35 ERROR : no targets found with "jtag_cable_name =~ "Digilent Basys3 210183A3874EA" && level==0 && jtag_device_ctx=="jsn-Basys3-210183A3874EA-0362d093-0"". available targets: none
+23:51:35 ERROR : Exception occured while running Program Device.
+java.lang.RuntimeException: no targets found with "jtag_cable_name =~ "Digilent Basys3 210183A3874EA" && level==0 && jtag_device_ctx=="jsn-Basys3-210183A3874EA-0362d093-0"". available targets: none
+23:51:35 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+23:51:35 ERROR : no targets found with "jtag_cable_name =~ "Digilent Basys3 210183A3874EA" && level==0 && jtag_device_ctx=="jsn-Basys3-210183A3874EA-0362d093-0"". available targets: none
+23:51:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:51:48 INFO  : Jtag cable 'Digilent Basys3 210183A3874EA' is selected.
+23:51:48 INFO  : 'jtag frequency' command is executed.
+23:51:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Basys3 210183A3874EA" && level==0 && jtag_device_ctx=="jsn-Basys3-210183A3874EA-0362d093-0"}' command is executed.
+23:51:52 INFO  : Device configured successfully with "C:/github/RetroGame/VitisWorkspace/SpriteControllerRetroGame/_ide/bitstream/Videokaart_full.bit"
+23:51:53 INFO  : Context for processor 'microblaze_0' is selected.
+23:51:53 INFO  : Hardware design and registers information is loaded from 'C:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/hw/Videokaart_full.xsa'.
+23:51:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+23:51:54 INFO  : Context for processor 'microblaze_0' is selected.
+23:51:54 INFO  : System reset is completed.
+23:51:57 INFO  : 'after 3000' command is executed.
+23:51:57 INFO  : Context for processor 'microblaze_0' is selected.
+23:51:58 INFO  : The application 'C:/github/RetroGame/VitisWorkspace/SpriteControllerRetroGame/Debug/SpriteControllerRetroGame.elf' is downloaded to processor 'microblaze_0'.
+23:51:58 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "Digilent Basys3 210183A3874EA" && level==0 && jtag_device_ctx=="jsn-Basys3-210183A3874EA-0362d093-0"}
+fpga -file C:/github/RetroGame/VitisWorkspace/SpriteControllerRetroGame/_ide/bitstream/Videokaart_full.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw C:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/hw/Videokaart_full.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow C:/github/RetroGame/VitisWorkspace/SpriteControllerRetroGame/Debug/SpriteControllerRetroGame.elf
+----------------End of Script----------------
+
+23:51:58 INFO  : Context for processor 'microblaze_0' is selected.
+23:51:58 INFO  : 'con' command is executed.
+23:51:58 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+23:51:58 INFO  : Launch script is exported to file 'C:\github\RetroGame\VitisWorkspace\SpriteControllerRetroGame_system\_ide\scripts\debugger_spritecontrollerretrogame-default.tcl'
