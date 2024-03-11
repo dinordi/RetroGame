@@ -1,0 +1,2 @@
+sprite63x63.v,verilog,xil_defaultlib,../../../../Videokaart2.gen/sources_1/ip/sprite63x63/sim/sprite63x63.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
