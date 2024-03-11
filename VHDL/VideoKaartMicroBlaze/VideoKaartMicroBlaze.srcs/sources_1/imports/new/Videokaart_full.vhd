@@ -168,6 +168,6 @@ z7: background port map(clka => clk100, rsta => ena(3), addra => addrout(8 downt
 z8 : vga port map(clk25 => clk25sig, red_in => color(11 downto 8), green_in => color(7 downto 4), blue_in => color(3 downto 0), 
                   red => r, blue => b, green => g, addrhout => hcount, addrvout => vcount, hsync => hsync, vsync => vsync);
 
-datareadyout <= '1';
+datareadyout <= dataready;
 
 end Behavioral;

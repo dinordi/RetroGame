@@ -1,0 +1,21 @@
+09:43:24 **** Incremental Build of configuration Debug for project RetroGameGPU ****
+make all 
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -IC:/github/RetroGame/VitisWorkspace/Videokaart_full_MB/export/Videokaart_full_MB/sw/Videokaart_full_MB/standalone_microblaze_0/bspinclude/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building target: RetroGameGPU.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -LC:/github/RetroGame/VitisWorkspace/Videokaart_full_MB/export/Videokaart_full_MB/sw/Videokaart_full_MB/standalone_microblaze_0/bsplib/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "RetroGameGPU.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: RetroGameGPU.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size RetroGameGPU.elf  |tee "RetroGameGPU.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   6684	    304	   3116	  10104	   2778	RetroGameGPU.elf
+'Finished building: RetroGameGPU.elf.size'
+' '
+
+09:43:25 Build Finished (took 565ms)
+

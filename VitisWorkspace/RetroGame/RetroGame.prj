@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="RetroGame" location="C:/github/RetroGame/VitisWorkspace/RetroGame" platform="C:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/Videokaart_full.xpfm" platformUID="xilinx:basys3::0.0(custom)" systemProject="RetroGame_system" sysConfig="Videokaart_full" runtime="cpp" cpu="standalone_microblaze_0" cpuInstance="microblaze_0" os="standalone" mssSignature="21be87539a0bca23d2cf439f1a44e360">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1029459256">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.2009174933" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

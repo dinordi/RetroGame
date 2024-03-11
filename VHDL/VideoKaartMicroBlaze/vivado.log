@@ -3,10 +3,10 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Mar 10 23:48:34 2024
-# Process ID: 28360
+# Start of session at: Mon Mar 11 10:47:55 2024
+# Process ID: 2708
 # Current directory: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3060 C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6920 C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.xpr
 # Log file: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/vivado.log
 # Journal file: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze\vivado.jou
 # Running On: Desktop-Joey, OS: Windows, CPU Frequency: 3400 MHz, CPU Physical cores: 16, Host memory: 34281 MB
@@ -93,19 +93,421 @@ WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 availab
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx2/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx2/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
 WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx2/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
-INFO: [Project 1-313] Project file moved from 'C:/Users/Joey/Downloads/VideoKaartMicroBlaze_third_special_editon/VideoKaartMicroBlaze' since last save.
 Scanning sources...
 Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx2/Vivado/2023.2/data/ip'.
-open_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:13 . Memory (MB): peak = 1635.738 ; gain = 454.277
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:10 . Memory (MB): peak = 1631.199 ; gain = 408.609
+open_hw_manager
 update_compile_order -fileset sources_1
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO is off.
+ECHO is off.
+
+****** Xilinx hw_server v2023.2
+  **** Build date : Oct 13 2023 at 21:31:40
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO is off.
+ECHO is off.
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-06:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 1671.613 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A3874EA
+set_property PROGRAM.FILE {C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/Videokaart_full.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/Videokaart_full.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+close_hw_manager
+write_hw_platform -fixed -include_bit -force -file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/Videokaart_full_2.xsa
+INFO: [Project 1-1918] Creating Hardware Platform: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/Videokaart_full_2.xsa ...
+WARNING: [Project 1-645] Board images not set in Hardware Platform.
+INFO: [Project 1-1943] The Hardware Platform can be used for Hardware
+INFO: [Project 1-1941] Successfully created Hardware Platform: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/Videokaart_full_2.xsa
+INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx2/Vivado/2023.2/data/embeddedsw) loading 0 seconds
+create_ip_run [get_files -of_objects [get_fileset sources_1] C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/bd/PmodIPs/PmodIPs.bd]
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+Command: synth_design -rtl -rtl_skip_mlo -name rtl_1
+Starting synth_design
+Using part: xc7a35tcpg236-1
+Top: Videokaart_full
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 4840
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2544.738 ; gain = 438.953
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Videokaart_full' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:44]
+INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff0' of component 'threeFlipFlop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:156]
+INFO: [Synth 8-638] synthesizing module 'threeFlipFlop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:40]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF0' of component 'Dflipflop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Dflipflop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/Dflipflop.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'Dflipflop' (0#1) [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/Dflipflop.vhd:11]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF1' of component 'Dflipflop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:51]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF2' of component 'Dflipflop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'threeFlipFlop' (0#1) [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:40]
+INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff1' of component 'threeFlipFlop' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:157]
+INFO: [Synth 8-3491] module 'InterfaceController' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/new/InterfaceController.vhd:34' bound to instance 'z1' of component 'InterfaceController' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:159]
+INFO: [Synth 8-638] synthesizing module 'InterfaceController' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/new/InterfaceController.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'InterfaceController' (0#1) [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/new/InterfaceController.vhd:48]
+INFO: [Synth 8-3491] module 'PmodIPs_wrapper' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/hdl/PmodIPs_wrapper.vhd:15' bound to instance 'z2' of component 'PmodIPs_wrapper' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:161]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_wrapper' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/hdl/PmodIPs_wrapper.vhd:33]
+INFO: [Synth 8-3491] module 'PmodIPs' declared at 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2158' bound to instance 'PmodIPs_i' of component 'PmodIPs' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/hdl/PmodIPs_wrapper.vhd:52]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2180]
+INFO: [Synth 8-3491] module 'PmodIPs_axi_gpio_0_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_axi_gpio_0_0_stub.vhdl:6' bound to instance 'IO' of component 'PmodIPs_axi_gpio_0_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2565]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_axi_gpio_0_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_axi_gpio_0_0_stub.vhdl:33]
+INFO: [Synth 8-3491] module 'PmodIPs_IO_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_IO_0_stub.vhdl:6' bound to instance 'IO1' of component 'PmodIPs_IO_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2589]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_IO_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_IO_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'PmodIPs_xlslice_0_3' declared at 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlslice_0_3/synth/PmodIPs_xlslice_0_3.v:53' bound to instance 'addr_out_RnM' of component 'PmodIPs_xlslice_0_3' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2612]
+INFO: [Synth 8-6157] synthesizing module 'PmodIPs_xlslice_0_3' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlslice_0_3/synth/PmodIPs_xlslice_0_3.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_3_xlslice' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'PmodIPs_xlslice_0_3' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlslice_0_3/synth/PmodIPs_xlslice_0_3.v:53]
+INFO: [Synth 8-3491] module 'PmodIPs_axi_uartlite_0_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_axi_uartlite_0_0_stub.vhdl:6' bound to instance 'axi_uartlite_0' of component 'PmodIPs_axi_uartlite_0_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2617]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_axi_uartlite_0_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_axi_uartlite_0_0_stub.vhdl:34]
+INFO: [Synth 8-3491] module 'PmodIPs_clk_wiz_0_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_clk_wiz_0_0_stub.vhdl:6' bound to instance 'clk_wiz_0' of component 'PmodIPs_clk_wiz_0_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2642]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_clk_wiz_0_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_clk_wiz_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'PmodIPs_xlslice_0_2' declared at 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlslice_0_2/synth/PmodIPs_xlslice_0_2.v:53' bound to instance 'ena_RnM' of component 'PmodIPs_xlslice_0_2' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2650]
+INFO: [Synth 8-6157] synthesizing module 'PmodIPs_xlslice_0_2' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlslice_0_2/synth/PmodIPs_xlslice_0_2.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_3_xlslice__parameterized0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_3_xlslice__parameterized0' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/217a/hdl/xlslice_v1_0_vl_rfs.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'PmodIPs_xlslice_0_2' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlslice_0_2/synth/PmodIPs_xlslice_0_2.v:53]
+INFO: [Synth 8-3491] module 'PmodIPs_mdm_1_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_mdm_1_0_stub.vhdl:6' bound to instance 'mdm_1' of component 'PmodIPs_mdm_1_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2655]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_mdm_1_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_mdm_1_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'PmodIPs_microblaze_0_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_microblaze_0_0_stub.vhdl:6' bound to instance 'microblaze_0' of component 'PmodIPs_microblaze_0_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2668]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_microblaze_0_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_microblaze_0_0_stub.vhdl:64]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_microblaze_0_axi_periph_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:1336]
+INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_1TR3C8Y' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_1TR3C8Y' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:58]
+INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_TSIA9T' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:159]
+INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_TSIA9T' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:159]
+INFO: [Synth 8-638] synthesizing module 'm02_couplers_imp_FR2L8L' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:264]
+INFO: [Synth 8-256] done synthesizing module 'm02_couplers_imp_FR2L8L' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:264]
+INFO: [Synth 8-638] synthesizing module 'm03_couplers_imp_1H3QERQ' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:371]
+INFO: [Synth 8-256] done synthesizing module 'm03_couplers_imp_1H3QERQ' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:371]
+INFO: [Synth 8-638] synthesizing module 'm04_couplers_imp_18DN5E5' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:476]
+INFO: [Synth 8-256] done synthesizing module 'm04_couplers_imp_18DN5E5' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:476]
+INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_TWJTY6' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:1145]
+INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_TWJTY6' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:1145]
+INFO: [Synth 8-3491] module 'PmodIPs_xbar_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_xbar_0_stub.vhdl:6' bound to instance 'xbar' of component 'PmodIPs_xbar_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:1970]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_xbar_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_xbar_0_stub.vhdl:52]
+INFO: [Synth 8-256] done synthesizing module 'PmodIPs_microblaze_0_axi_periph_0' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:1336]
+INFO: [Synth 8-638] synthesizing module 'microblaze_0_local_memory_imp_M6WY8Y' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:566]
+INFO: [Synth 8-3491] module 'PmodIPs_dlmb_bram_if_cntlr_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_dlmb_bram_if_cntlr_0_stub.vhdl:6' bound to instance 'dlmb_bram_if_cntlr' of component 'PmodIPs_dlmb_bram_if_cntlr_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:780]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_dlmb_bram_if_cntlr_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_dlmb_bram_if_cntlr_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'PmodIPs_dlmb_v10_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_dlmb_v10_0_stub.vhdl:6' bound to instance 'dlmb_v10' of component 'PmodIPs_dlmb_v10_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:834]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_dlmb_v10_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_dlmb_v10_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'PmodIPs_ilmb_bram_if_cntlr_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_ilmb_bram_if_cntlr_0_stub.vhdl:6' bound to instance 'ilmb_bram_if_cntlr' of component 'PmodIPs_ilmb_bram_if_cntlr_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:862]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_ilmb_bram_if_cntlr_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_ilmb_bram_if_cntlr_0_stub.vhdl:32]
+INFO: [Synth 8-3491] module 'PmodIPs_ilmb_v10_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_ilmb_v10_0_stub.vhdl:6' bound to instance 'ilmb_v10' of component 'PmodIPs_ilmb_v10_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:916]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_ilmb_v10_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_ilmb_v10_0_stub.vhdl:37]
+INFO: [Synth 8-3491] module 'PmodIPs_lmb_bram_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_lmb_bram_0_stub.vhdl:6' bound to instance 'lmb_bram' of component 'PmodIPs_lmb_bram_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:944]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_lmb_bram_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_lmb_bram_0_stub.vhdl:28]
+INFO: [Synth 8-256] done synthesizing module 'microblaze_0_local_memory_imp_M6WY8Y' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:566]
+INFO: [Synth 8-3491] module 'PmodIPs_rst_clk_wiz_0_100M_0' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_rst_clk_wiz_0_100M_0_stub.vhdl:6' bound to instance 'rst_clk_wiz_0_100M' of component 'PmodIPs_rst_clk_wiz_0_100M_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2872]
+INFO: [Synth 8-638] synthesizing module 'PmodIPs_rst_clk_wiz_0_100M_0' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/PmodIPs_rst_clk_wiz_0_100M_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'PmodIPs_xlconcat_0_0' declared at 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlconcat_0_0/synth/PmodIPs_xlconcat_0_0.v:53' bound to instance 'xlconcat_0' of component 'PmodIPs_xlconcat_0_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2885]
+INFO: [Synth 8-6157] synthesizing module 'PmodIPs_xlconcat_0_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlconcat_0_0/synth/PmodIPs_xlconcat_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_5_xlconcat' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_5_xlconcat' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'PmodIPs_xlconcat_0_0' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlconcat_0_0/synth/PmodIPs_xlconcat_0_0.v:53]
+INFO: [Synth 8-3491] module 'PmodIPs_xlconcat_1_0' declared at 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlconcat_1_0/synth/PmodIPs_xlconcat_1_0.v:53' bound to instance 'xlconcat_1' of component 'PmodIPs_xlconcat_1_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2893]
+INFO: [Synth 8-6157] synthesizing module 'PmodIPs_xlconcat_1_0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlconcat_1_0/synth/PmodIPs_xlconcat_1_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_5_xlconcat__parameterized0' [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_5_xlconcat__parameterized0' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ipshared/147b/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'PmodIPs_xlconcat_1_0' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xlconcat_1_0/synth/PmodIPs_xlconcat_1_0.v:53]
+INFO: [Synth 8-256] done synthesizing module 'PmodIPs' (0#1) [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/synth/PmodIPs.vhd:2180]
+INFO: [Synth 8-256] done synthesizing module 'PmodIPs_wrapper' (0#1) [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/hdl/PmodIPs_wrapper.vhd:33]
+INFO: [Synth 8-3491] module 'Sprite15x15_1' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/Sprite15x15_1_stub.vhdl:6' bound to instance 'z3' of component 'sprite15x15_1' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:163]
+INFO: [Synth 8-638] synthesizing module 'Sprite15x15_1' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/Sprite15x15_1_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'sprite31x31_2' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/sprite31x31_2_stub.vhdl:6' bound to instance 'z5' of component 'sprite31x31_2' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:165]
+INFO: [Synth 8-638] synthesizing module 'sprite31x31_2' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/sprite31x31_2_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'sprite63x63' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/sprite63x63_stub.vhdl:6' bound to instance 'z6' of component 'sprite63x63' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:166]
+INFO: [Synth 8-638] synthesizing module 'sprite63x63' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/sprite63x63_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'background' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/background_stub.vhdl:6' bound to instance 'z7' of component 'background' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:167]
+INFO: [Synth 8-638] synthesizing module 'background' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/.Xil/Vivado-2708-Desktop-Joey/realtime/background_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'VGA' declared at 'C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/Progh/vga.vhd:20' bound to instance 'z8' of component 'VGA' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:168]
+INFO: [Synth 8-638] synthesizing module 'VGA' [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/Progh/vga.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/sources_1/imports/Progh/vga.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'Videokaart_full' (0#1) [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/sources_1/imports/new/Videokaart_full.vhd:44]
+WARNING: [Synth 8-7129] Port In2[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In3[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In4[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In5[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In6[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In7[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In8[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In9[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In10[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In11[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In12[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In13[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In14[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In15[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In16[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In17[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In18[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In19[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In20[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In21[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In22[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In23[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In24[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In25[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In26[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In27[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In28[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In29[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In30[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In31[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In32[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In33[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In34[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In35[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In36[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In37[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In38[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In39[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In40[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In41[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In42[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In43[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In44[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In45[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In46[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In47[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In48[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In49[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In50[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In51[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In52[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In53[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In54[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In55[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In56[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In57[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In58[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In59[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In60[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In61[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In62[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In63[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In64[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In65[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In66[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In67[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In68[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In69[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In70[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In71[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In72[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In73[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In74[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In75[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In76[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In77[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In78[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In79[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In80[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In81[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In82[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In83[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In84[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In85[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In86[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In87[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In88[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In89[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In90[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In91[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In92[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In93[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In94[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In95[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In96[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In97[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In98[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In99[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In100[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In101[0] in module xlconcat_v2_1_5_xlconcat__parameterized0 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2667.621 ; gain = 561.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2689.504 ; gain = 583.719
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2689.504 ; gain = 583.719
+---------------------------------------------------------------------------------
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1.dcp' for cell 'z3'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/ip/sprite31x31_2/sprite31x31_2.dcp' for cell 'z5'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/ip/sprite63x63/sprite63x63.dcp' for cell 'z6'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/ip/background/background.dcp' for cell 'z7'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_gpio_0_0/PmodIPs_axi_gpio_0_0.dcp' for cell 'z2/PmodIPs_i/IO'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_IO_0/PmodIPs_IO_0.dcp' for cell 'z2/PmodIPs_i/IO1'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_uartlite_0_0/PmodIPs_axi_uartlite_0_0.dcp' for cell 'z2/PmodIPs_i/axi_uartlite_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_clk_wiz_0_0/PmodIPs_clk_wiz_0_0.dcp' for cell 'z2/PmodIPs_i/clk_wiz_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_mdm_1_0/PmodIPs_mdm_1_0.dcp' for cell 'z2/PmodIPs_i/mdm_1'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_microblaze_0_0/PmodIPs_microblaze_0_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_rst_clk_wiz_0_100M_0/PmodIPs_rst_clk_wiz_0_100M_0.dcp' for cell 'z2/PmodIPs_i/rst_clk_wiz_0_100M'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_xbar_0/PmodIPs_xbar_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0_axi_periph/xbar'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_dlmb_bram_if_cntlr_0/PmodIPs_dlmb_bram_if_cntlr_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0_local_memory/dlmb_bram_if_cntlr'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_dlmb_v10_0/PmodIPs_dlmb_v10_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0_local_memory/dlmb_v10'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_ilmb_bram_if_cntlr_0/PmodIPs_ilmb_bram_if_cntlr_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0_local_memory/ilmb_bram_if_cntlr'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_ilmb_v10_0/PmodIPs_ilmb_v10_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0_local_memory/ilmb_v10'
+INFO: [Project 1-454] Reading design checkpoint 'c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_lmb_bram_0/PmodIPs_lmb_bram_0.dcp' for cell 'z2/PmodIPs_i/microblaze_0_local_memory/lmb_bram'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.177 . Memory (MB): peak = 2723.070 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 302 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_clk_wiz_0_0/PmodIPs_clk_wiz_0_0_board.xdc] for cell 'z2/PmodIPs_i/clk_wiz_0/inst'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_clk_wiz_0_0/PmodIPs_clk_wiz_0_0_board.xdc] for cell 'z2/PmodIPs_i/clk_wiz_0/inst'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_clk_wiz_0_0/PmodIPs_clk_wiz_0_0.xdc] for cell 'z2/PmodIPs_i/clk_wiz_0/inst'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_clk_wiz_0_0/PmodIPs_clk_wiz_0_0.xdc] for cell 'z2/PmodIPs_i/clk_wiz_0/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_clk_wiz_0_0/PmodIPs_clk_wiz_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Videokaart_full_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_microblaze_0_0/PmodIPs_microblaze_0_0.xdc] for cell 'z2/PmodIPs_i/microblaze_0/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_microblaze_0_0/PmodIPs_microblaze_0_0.xdc] for cell 'z2/PmodIPs_i/microblaze_0/U0'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_microblaze_0_0/PmodIPs_microblaze_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Videokaart_full_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_rst_clk_wiz_0_100M_0/PmodIPs_rst_clk_wiz_0_100M_0_board.xdc] for cell 'z2/PmodIPs_i/rst_clk_wiz_0_100M/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_rst_clk_wiz_0_100M_0/PmodIPs_rst_clk_wiz_0_100M_0_board.xdc] for cell 'z2/PmodIPs_i/rst_clk_wiz_0_100M/U0'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_rst_clk_wiz_0_100M_0/PmodIPs_rst_clk_wiz_0_100M_0.xdc] for cell 'z2/PmodIPs_i/rst_clk_wiz_0_100M/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_rst_clk_wiz_0_100M_0/PmodIPs_rst_clk_wiz_0_100M_0.xdc] for cell 'z2/PmodIPs_i/rst_clk_wiz_0_100M/U0'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_rst_clk_wiz_0_100M_0/PmodIPs_rst_clk_wiz_0_100M_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Videokaart_full_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_uartlite_0_0/PmodIPs_axi_uartlite_0_0_board.xdc] for cell 'z2/PmodIPs_i/axi_uartlite_0/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_uartlite_0_0/PmodIPs_axi_uartlite_0_0_board.xdc] for cell 'z2/PmodIPs_i/axi_uartlite_0/U0'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_uartlite_0_0/PmodIPs_axi_uartlite_0_0.xdc] for cell 'z2/PmodIPs_i/axi_uartlite_0/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_uartlite_0_0/PmodIPs_axi_uartlite_0_0.xdc] for cell 'z2/PmodIPs_i/axi_uartlite_0/U0'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_gpio_0_0/PmodIPs_axi_gpio_0_0_board.xdc] for cell 'z2/PmodIPs_i/IO/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_gpio_0_0/PmodIPs_axi_gpio_0_0_board.xdc] for cell 'z2/PmodIPs_i/IO/U0'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_gpio_0_0/PmodIPs_axi_gpio_0_0.xdc] for cell 'z2/PmodIPs_i/IO/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_axi_gpio_0_0/PmodIPs_axi_gpio_0_0.xdc] for cell 'z2/PmodIPs_i/IO/U0'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_IO_0/PmodIPs_IO_0_board.xdc] for cell 'z2/PmodIPs_i/IO1/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_IO_0/PmodIPs_IO_0_board.xdc] for cell 'z2/PmodIPs_i/IO1/U0'
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_IO_0/PmodIPs_IO_0.xdc] for cell 'z2/PmodIPs_i/IO1/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_IO_0/PmodIPs_IO_0.xdc] for cell 'z2/PmodIPs_i/IO1/U0'
+INFO: [Timing 38-2] Deriving generated clocks
+Parsing XDC File [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/constrs_1/new/Constr_videokaart.xdc]
+Finished Parsing XDC File [C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/constrs_1/new/Constr_videokaart.xdc]
+Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_mdm_1_0/PmodIPs_mdm_1_0.xdc] for cell 'z2/PmodIPs_i/mdm_1/U0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_mdm_1_0/PmodIPs_mdm_1_0.xdc] for cell 'z2/PmodIPs_i/mdm_1/U0'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/ip/PmodIPs_mdm_1_0/PmodIPs_mdm_1_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Videokaart_full_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 2805.781 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 96 instances were transformed.
+  LUT6_2 => LUT6_2 (LUT5, LUT6): 80 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 16 instances
+
+RTL Elaboration Complete:  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2860.238 ; gain = 754.453
+125 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2860.238 ; gain = 966.395
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/utils_1/imports/synth_1/Videokaart_full.dcp with file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/synth_1/Videokaart_full.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Mar 11 10:53:50 2024] Launched synth_1...
+Run output will be captured here: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/synth_1/runme.log
+[Mon Mar 11 10:53:50 2024] Launched impl_1...
+Run output will be captured here: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\sources_1\new\InterfaceController.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\new\Videokaart_full.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+reset_run impl_1
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/utils_1/imports/synth_1/Videokaart_full.dcp with file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/synth_1/Videokaart_full.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Mar 11 10:55:55 2024] Launched synth_1...
+Run output will be captured here: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/synth_1/runme.log
+[Mon Mar 11 10:55:55 2024] Launched impl_1...
+Run output will be captured here: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\sources_1\new\InterfaceController.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\new\Videokaart_full.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO is off.
+ECHO is off.
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-06:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A3874EA
+set_property PROGRAM.FILE {C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/Videokaart_full.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/Videokaart_full.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+close_hw_manager
+close_design
 write_hw_platform -fixed -include_bit -force -file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/Videokaart_full.xsa
 INFO: [Project 1-1918] Creating Hardware Platform: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/Videokaart_full.xsa ...
 WARNING: [Project 1-645] Board images not set in Hardware Platform.
 INFO: [Project 1-1943] The Hardware Platform can be used for Hardware
 INFO: [Project 1-1941] Successfully created Hardware Platform: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/Videokaart_full.xsa
-INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx2/Vivado/2023.2/data/embeddedsw) loading 0 seconds
-exit
-INFO: [Common 17-206] Exiting Vivado at Sun Mar 10 23:49:39 2024...
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\sources_1\new\InterfaceController.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\new\Videokaart_full.vhd:]
+ERROR: [Common 17-180] Spawn failed: No error
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.srcs/utils_1/imports/synth_1/Videokaart_full.dcp with file C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/synth_1/Videokaart_full.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Mar 11 11:02:09 2024] Launched synth_1...
+Run output will be captured here: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/synth_1/runme.log
+[Mon Mar 11 11:02:09 2024] Launched impl_1...
+Run output will be captured here: C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.runs/impl_1/runme.log
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\sources_1\new\InterfaceController.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\github\RetroGame\VHDL\VideoKaartMicroBlaze\VideoKaartMicroBlaze.srcs\sources_1\imports\new\Videokaart_full.vhd:]

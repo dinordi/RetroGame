@@ -24,7 +24,7 @@ void game::update()
 
 
     //Update game logic
-    Entity* entity = entities[0];;
+    Entity* entity = entities[0];
     if(entity->getX() < 351 && buttonStatus.right == true)
     {
         entity->move(entity->getX() + 1, 240);

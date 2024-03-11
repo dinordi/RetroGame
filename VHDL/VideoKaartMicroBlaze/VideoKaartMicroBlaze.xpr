@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="65" Path="C:/Users/Joey/Downloads/VideoKaartMicroBlaze_third_special_editon/VideoKaartMicroBlaze/VideoKaartMicroBlaze.xpr">
+<Project Product="Vivado" Version="7" Minor="65" Path="C:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="f8d1fc4395b7463e8a3a5722ade5fb47"/>

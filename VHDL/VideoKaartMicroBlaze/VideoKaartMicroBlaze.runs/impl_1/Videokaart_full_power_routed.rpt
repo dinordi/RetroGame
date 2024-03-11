@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Sun Mar 10 23:42:25 2024
+| Date             : Mon Mar 11 11:45:17 2024
 | Host             : Desktop-Joey running 64-bit major release  (build 9200)
 | Command          : report_power -file Videokaart_full_power_routed.rpt -pb Videokaart_full_power_summary_routed.pb -rpx Videokaart_full_power_routed.rpx
 | Design           : Videokaart_full
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.227        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.152        |
+| Dynamic (W)              | 0.153        |
 | Device Static (W)        | 0.074        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 83.9         |
@@ -52,16 +52,16 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.012 |        8 |       --- |             --- |
-| Slice Logic              |     0.003 |     4951 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     1621 |     20800 |            7.79 |
+| Clocks                   |     0.013 |        8 |       --- |             --- |
+| Slice Logic              |     0.003 |     4950 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     1618 |     20800 |            7.78 |
 |   LUT as Distributed RAM |    <0.001 |       64 |      9600 |            0.67 |
 |   CARRY4                 |    <0.001 |       38 |      8150 |            0.47 |
 |   Register               |    <0.001 |     1977 |     41600 |            4.75 |
 |   F7/F8 Muxes            |    <0.001 |      118 |     32600 |            0.36 |
 |   LUT as Shift Register  |    <0.001 |       79 |      9600 |            0.82 |
-|   Others                 |    <0.001 |      580 |       --- |             --- |
-| Signals                  |     0.005 |     3682 |       --- |             --- |
+|   Others                 |    <0.001 |      579 |       --- |             --- |
+| Signals                  |     0.005 |     3666 |       --- |             --- |
 | Block RAM                |     0.023 |       46 |        50 |           92.00 |
 | MMCM                     |     0.106 |        1 |         5 |           20.00 |
 | I/O                      |     0.002 |       21 |       106 |           19.81 |
@@ -150,7 +150,7 @@ Table of Contents
 +---------------------------------+-----------+
 | Name                            | Power (W) |
 +---------------------------------+-----------+
-| Videokaart_full                 |     0.152 |
+| Videokaart_full                 |     0.153 |
 |   z2                            |     0.127 |
 |     PmodIPs_i                   |     0.127 |
 |       IO                        |     0.002 |

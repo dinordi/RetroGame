@@ -1,12 +1,12 @@
-TRACE::2024-03-10.23:50:58::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:58::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:58::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:58::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:50:58::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:58::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:50:58::SCWPlatform::Do not have an existing db opened. 
-TRACE::2024-03-10.23:50:59::SCWPlatform::Opened new HwDB with name Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:09::SCWPlatform::Do not have an existing db opened. 
+TRACE::2024-03-11.11:06:09::SCWPlatform::Opened new HwDB with name Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -22,7 +22,7 @@ TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
 	"platPreBuiltFlag":	false,
 	"platformSamplesDir":	""
 }
-TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:09::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -45,9 +45,9 @@ TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
 			"systemDispName":	"Videokaart_full"
 		}]
 }
-TRACE::2024-03-10.23:50:59::SCWPlatform::Boot application domains not present, creating them
-TRACE::2024-03-10.23:50:59::SCWPlatform::Pure FPGA device, no boot application will be created.
-TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:09::SCWPlatform::Boot application domains not present, creating them
+TRACE::2024-03-11.11:06:09::SCWPlatform::Pure FPGA device, no boot application will be created.
+TRACE::2024-03-11.11:06:09::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -70,7 +70,7 @@ TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
 			"systemDispName":	"Videokaart_full"
 		}]
 }
-TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:09::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -93,109 +93,109 @@ TRACE::2024-03-10.23:50:59::SCWWriter::formatted JSON is {
 			"systemDispName":	"Videokaart_full"
 		}]
 }
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:50:59::SCWDomain::checking for install qemu data   : 
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:50:59::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:50:59::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:50:59::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::DEBUG:  swdes dump  
-TRACE::2024-03-10.23:50:59::SCWMssOS::No sw design opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::mss does not exists at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::Creating sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::Adding the swdes entry, created swdb C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss with des name C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::updating the scw layer changes to swdes at   C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::Writing mss at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:50:59::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
-TRACE::2024-03-10.23:50:59::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
-TRACE::2024-03-10.23:50:59::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
-TRACE::2024-03-10.23:50:59::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
-TRACE::2024-03-10.23:50:59::SCWMssOS::Forcing BSP Sources regeneration.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Adding the swdes entry, mss present, able to open swdb C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss with des name system
-TRACE::2024-03-10.23:51:00::SCWMssOS::Writing the mss file completed C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Commit changes completed.
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:09::SCWDomain::checking for install qemu data   : 
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:09::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:09::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:09::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:09::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2024-03-11.11:06:09::SCWMssOS::No sw design opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::mss does not exists at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::Creating sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::Adding the swdes entry, created swdb C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss with des name C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::updating the scw layer changes to swdes at   C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::Writing mss at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:09::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
+TRACE::2024-03-11.11:06:09::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
+TRACE::2024-03-11.11:06:09::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
+TRACE::2024-03-11.11:06:09::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
+TRACE::2024-03-11.11:06:09::SCWMssOS::Forcing BSP Sources regeneration.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Adding the swdes entry, mss present, able to open swdb C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss with des name system
+TRACE::2024-03-11.11:06:10::SCWMssOS::Writing the mss file completed C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Commit changes completed.
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -251,91 +251,91 @@ TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
 				}]
 		}]
 }
-LOG::2024-03-10.23:51:00::SCWPlatform::Started generating the artifacts platform Videokaart_full
-TRACE::2024-03-10.23:51:00::SCWPlatform::Sanity checking of platform is completed
-LOG::2024-03-10.23:51:00::SCWPlatform::Started generating the artifacts for system configuration Videokaart_full
-LOG::2024-03-10.23:51:00::SCWSystem::Checking the domain standalone_microblaze_0
-LOG::2024-03-10.23:51:00::SCWSystem::Not a boot domain 
-LOG::2024-03-10.23:51:00::SCWSystem::Started Processing the domain standalone_microblaze_0
-TRACE::2024-03-10.23:51:00::SCWDomain::Generating domain artifcats
-TRACE::2024-03-10.23:51:00::SCWMssOS::Generating standalone artifcats
-TRACE::2024-03-10.23:51:00::SCWMssOS:: Copying the user libraries. 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+LOG::2024-03-11.11:06:10::SCWPlatform::Started generating the artifacts platform Videokaart_full
+TRACE::2024-03-11.11:06:10::SCWPlatform::Sanity checking of platform is completed
+LOG::2024-03-11.11:06:10::SCWPlatform::Started generating the artifacts for system configuration Videokaart_full
+LOG::2024-03-11.11:06:10::SCWSystem::Checking the domain standalone_microblaze_0
+LOG::2024-03-11.11:06:10::SCWSystem::Not a boot domain 
+LOG::2024-03-11.11:06:10::SCWSystem::Started Processing the domain standalone_microblaze_0
+TRACE::2024-03-11.11:06:10::SCWDomain::Generating domain artifcats
+TRACE::2024-03-11.11:06:10::SCWMssOS::Generating standalone artifcats
+TRACE::2024-03-11.11:06:10::SCWMssOS:: Copying the user libraries. 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
-TRACE::2024-03-10.23:51:00::SCWMssOS::Mss edits present, copying mssfile into export location C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
-TRACE::2024-03-10.23:51:00::SCWMssOS::BSP is already built. skipping the bsp build ... 
-TRACE::2024-03-10.23:51:00::SCWDomain::Skipping the build for domain :  standalone_microblaze_0
-TRACE::2024-03-10.23:51:00::SCWMssOS::skipping the bsp build ... 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Copying to export directory.
-TRACE::2024-03-10.23:51:00::SCWMssOS:: Checking if to create the Supporting Applications
-TRACE::2024-03-10.23:51:00::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
-LOG::2024-03-10.23:51:00::SCWSystem::Completed Processing the domain standalone_microblaze_0
-LOG::2024-03-10.23:51:00::SCWSystem::Completed Processing the sysconfig Videokaart_full
-LOG::2024-03-10.23:51:00::SCWPlatform::Completed generating the artifacts for system configuration Videokaart_full
-TRACE::2024-03-10.23:51:00::SCWPlatform::Started preparing the platform 
-TRACE::2024-03-10.23:51:00::SCWSystem::Writing the bif file for system config Videokaart_full
-TRACE::2024-03-10.23:51:00::SCWSystem::dir created 
-TRACE::2024-03-10.23:51:00::SCWSystem::Writing the bif 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Started writing the spfm file 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Started writing the xpfm file 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Completed generating the platform
-TRACE::2024-03-10.23:51:00::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Found a swdesign opened with the mssfile.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Completed writemss as part of save.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Commit changes completed.
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
+TRACE::2024-03-11.11:06:10::SCWMssOS::Mss edits present, copying mssfile into export location C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2024-03-11.11:06:10::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2024-03-11.11:06:10::SCWDomain::Skipping the build for domain :  standalone_microblaze_0
+TRACE::2024-03-11.11:06:10::SCWMssOS::skipping the bsp build ... 
+TRACE::2024-03-11.11:06:10::SCWMssOS::Copying to export directory.
+TRACE::2024-03-11.11:06:10::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2024-03-11.11:06:10::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2024-03-11.11:06:10::SCWSystem::Completed Processing the domain standalone_microblaze_0
+LOG::2024-03-11.11:06:10::SCWSystem::Completed Processing the sysconfig Videokaart_full
+LOG::2024-03-11.11:06:10::SCWPlatform::Completed generating the artifacts for system configuration Videokaart_full
+TRACE::2024-03-11.11:06:10::SCWPlatform::Started preparing the platform 
+TRACE::2024-03-11.11:06:10::SCWSystem::Writing the bif file for system config Videokaart_full
+TRACE::2024-03-11.11:06:10::SCWSystem::dir created 
+TRACE::2024-03-11.11:06:10::SCWSystem::Writing the bif 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Started writing the spfm file 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Started writing the xpfm file 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Completed generating the platform
+TRACE::2024-03-11.11:06:10::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Commit changes completed.
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -391,64 +391,64 @@ TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
 				}]
 		}]
 }
-KEYINFO::2024-03-10.23:51:00::SCWPlatform::updated the xpfm file.
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+KEYINFO::2024-03-11.11:06:10::SCWPlatform::updated the xpfm file.
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Found a swdesign opened with the mssfile.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Completed writemss as part of save.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Commit changes completed.
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Commit changes completed.
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -504,76 +504,76 @@ TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
 				}]
 		}]
 }
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Found a swdesign opened with the mssfile.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Completed writemss as part of save.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Commit changes completed.
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Commit changes completed.
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -629,89 +629,89 @@ TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
 				}]
 		}]
 }
-LOG::2024-03-10.23:51:00::SCWPlatform::Started generating the artifacts platform Videokaart_full
-TRACE::2024-03-10.23:51:00::SCWPlatform::Sanity checking of platform is completed
-LOG::2024-03-10.23:51:00::SCWPlatform::Started generating the artifacts for system configuration Videokaart_full
-LOG::2024-03-10.23:51:00::SCWSystem::Started Processing the domain standalone_microblaze_0
-TRACE::2024-03-10.23:51:00::SCWDomain::Generating domain artifcats
-TRACE::2024-03-10.23:51:00::SCWMssOS::Generating standalone artifcats
-TRACE::2024-03-10.23:51:00::SCWMssOS:: Copying the user libraries. 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+LOG::2024-03-11.11:06:10::SCWPlatform::Started generating the artifacts platform Videokaart_full
+TRACE::2024-03-11.11:06:10::SCWPlatform::Sanity checking of platform is completed
+LOG::2024-03-11.11:06:10::SCWPlatform::Started generating the artifacts for system configuration Videokaart_full
+LOG::2024-03-11.11:06:10::SCWSystem::Started Processing the domain standalone_microblaze_0
+TRACE::2024-03-11.11:06:10::SCWDomain::Generating domain artifcats
+TRACE::2024-03-11.11:06:10::SCWMssOS::Generating standalone artifcats
+TRACE::2024-03-11.11:06:10::SCWMssOS:: Copying the user libraries. 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
-TRACE::2024-03-10.23:51:00::SCWMssOS::Mss edits present, copying mssfile into export location C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
-TRACE::2024-03-10.23:51:00::SCWMssOS::BSP is already built. skipping the bsp build ... 
-TRACE::2024-03-10.23:51:00::SCWDomain::Building the domain as part of full build :  standalone_microblaze_0
-TRACE::2024-03-10.23:51:00::SCWMssOS::skipping the bsp build ... 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Copying to export directory.
-TRACE::2024-03-10.23:51:00::SCWMssOS:: Checking if to create the Supporting Applications
-TRACE::2024-03-10.23:51:00::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
-LOG::2024-03-10.23:51:00::SCWSystem::Completed Processing the domain standalone_microblaze_0
-LOG::2024-03-10.23:51:00::SCWSystem::Completed Processing the sysconfig Videokaart_full
-LOG::2024-03-10.23:51:00::SCWPlatform::Completed generating the artifacts for system configuration Videokaart_full
-TRACE::2024-03-10.23:51:00::SCWPlatform::Started preparing the platform 
-TRACE::2024-03-10.23:51:00::SCWSystem::Writing the bif file for system config Videokaart_full
-TRACE::2024-03-10.23:51:00::SCWSystem::dir created 
-TRACE::2024-03-10.23:51:00::SCWSystem::Writing the bif 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Started writing the spfm file 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Started writing the xpfm file 
-TRACE::2024-03-10.23:51:00::SCWPlatform::Completed generating the platform
-TRACE::2024-03-10.23:51:00::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::Found a swdesign opened with the mssfile.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Completed writemss as part of save.
-TRACE::2024-03-10.23:51:00::SCWMssOS::Commit changes completed.
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
+TRACE::2024-03-11.11:06:10::SCWMssOS::Mss edits present, copying mssfile into export location C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2024-03-11.11:06:10::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2024-03-11.11:06:10::SCWDomain::Building the domain as part of full build :  standalone_microblaze_0
+TRACE::2024-03-11.11:06:10::SCWMssOS::skipping the bsp build ... 
+TRACE::2024-03-11.11:06:10::SCWMssOS::Copying to export directory.
+TRACE::2024-03-11.11:06:10::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2024-03-11.11:06:10::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2024-03-11.11:06:10::SCWSystem::Completed Processing the domain standalone_microblaze_0
+LOG::2024-03-11.11:06:10::SCWSystem::Completed Processing the sysconfig Videokaart_full
+LOG::2024-03-11.11:06:10::SCWPlatform::Completed generating the artifacts for system configuration Videokaart_full
+TRACE::2024-03-11.11:06:10::SCWPlatform::Started preparing the platform 
+TRACE::2024-03-11.11:06:10::SCWSystem::Writing the bif file for system config Videokaart_full
+TRACE::2024-03-11.11:06:10::SCWSystem::dir created 
+TRACE::2024-03-11.11:06:10::SCWSystem::Writing the bif 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Started writing the spfm file 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Started writing the xpfm file 
+TRACE::2024-03-11.11:06:10::SCWPlatform::Completed generating the platform
+TRACE::2024-03-11.11:06:10::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Completed writemss as part of save.
+TRACE::2024-03-11.11:06:10::SCWMssOS::Commit changes completed.
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:00::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:00::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:00::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:10::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:10::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:10::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:10::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:00::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:10::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:10::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -767,189 +767,189 @@ TRACE::2024-03-10.23:51:00::SCWWriter::formatted JSON is {
 				}]
 		}]
 }
-KEYINFO::2024-03-10.23:51:00::SCWPlatform::updated the xpfm file.
-LOG::2024-03-10.23:51:20::SCWPlatform::Started generating the artifacts platform Videokaart_full
-TRACE::2024-03-10.23:51:20::SCWPlatform::Sanity checking of platform is completed
-LOG::2024-03-10.23:51:20::SCWPlatform::Started generating the artifacts for system configuration Videokaart_full
-LOG::2024-03-10.23:51:20::SCWSystem::Checking the domain standalone_microblaze_0
-LOG::2024-03-10.23:51:20::SCWSystem::Not a boot domain 
-LOG::2024-03-10.23:51:20::SCWSystem::Started Processing the domain standalone_microblaze_0
-TRACE::2024-03-10.23:51:20::SCWDomain::Generating domain artifcats
-TRACE::2024-03-10.23:51:20::SCWMssOS::Generating standalone artifcats
-TRACE::2024-03-10.23:51:20::SCWMssOS:: Copying the user libraries. 
-TRACE::2024-03-10.23:51:20::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:20::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:20::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:20::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:20::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:20::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:20::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:20::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:20::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:20::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:20::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+KEYINFO::2024-03-11.11:06:10::SCWPlatform::updated the xpfm file.
+LOG::2024-03-11.11:06:25::SCWPlatform::Started generating the artifacts platform Videokaart_full
+TRACE::2024-03-11.11:06:25::SCWPlatform::Sanity checking of platform is completed
+LOG::2024-03-11.11:06:25::SCWPlatform::Started generating the artifacts for system configuration Videokaart_full
+LOG::2024-03-11.11:06:25::SCWSystem::Checking the domain standalone_microblaze_0
+LOG::2024-03-11.11:06:25::SCWSystem::Not a boot domain 
+LOG::2024-03-11.11:06:25::SCWSystem::Started Processing the domain standalone_microblaze_0
+TRACE::2024-03-11.11:06:25::SCWDomain::Generating domain artifcats
+TRACE::2024-03-11.11:06:25::SCWMssOS::Generating standalone artifcats
+TRACE::2024-03-11.11:06:25::SCWMssOS:: Copying the user libraries. 
+TRACE::2024-03-11.11:06:25::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:25::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:25::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:25::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:25::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:25::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:25::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:25::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:25::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:25::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:25::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:20::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
-TRACE::2024-03-10.23:51:20::SCWMssOS::Mss edits present, copying mssfile into export location C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:20::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
-TRACE::2024-03-10.23:51:20::SCWMssOS::BSP is already built. skipping the bsp build ... 
-TRACE::2024-03-10.23:51:20::SCWDomain::Building the domain as part of full build :  standalone_microblaze_0
-TRACE::2024-03-10.23:51:20::SCWMssOS::doing bsp build ... 
-TRACE::2024-03-10.23:51:20::SCWMssOS::System Command Ran  C: & cd  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp & make 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make --no-print-directory seq_libs
+TRACE::2024-03-11.11:06:25::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:25::SCWMssOS::Completed writing the mss file at C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp
+TRACE::2024-03-11.11:06:25::SCWMssOS::Mss edits present, copying mssfile into export location C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:25::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2024-03-11.11:06:25::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2024-03-11.11:06:25::SCWDomain::Building the domain as part of full build :  standalone_microblaze_0
+TRACE::2024-03-11.11:06:25::SCWMssOS::doing bsp build ... 
+TRACE::2024-03-11.11:06:25::SCWMssOS::System Command Ran  C: & cd  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp & make 
+TRACE::2024-03-11.11:06:25::SCWMssOS::make --no-print-directory seq_libs
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::'Finished building libraries sequentially.'
+TRACE::2024-03-11.11:06:25::SCWMssOS::'Finished building libraries sequentially.'
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -j 14 --no-print-directory par_libs
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -j 14 --no-print-directory par_libs
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make include in microblaze_0/libsrc/bram_v4_9/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make include in microblaze_0/libsrc/bram_v4_9/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_9/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILE
-TRACE::2024-03-10.23:51:20::SCWMssOS::R_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall 
-TRACE::2024-03-10.23:51:20::SCWMssOS::-Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make include in microblaze_0/libsrc/cpu_v2_18/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make include in microblaze_0/libsrc/cpu_v2_18/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_9/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILE
+TRACE::2024-03-11.11:06:25::SCWMssOS::R_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall 
+TRACE::2024-03-11.11:06:25::SCWMssOS::-Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_18/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILE
-TRACE::2024-03-10.23:51:20::SCWMssOS::R_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall 
-TRACE::2024-03-10.23:51:20::SCWMssOS::-Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_18/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILE
+TRACE::2024-03-11.11:06:25::SCWMssOS::R_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall 
+TRACE::2024-03-11.11:06:25::SCWMssOS::-Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make include in microblaze_0/libsrc/gpio_v4_10/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make include in microblaze_0/libsrc/gpio_v4_10/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_10/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
-TRACE::2024-03-10.23:51:20::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall
-TRACE::2024-03-10.23:51:20::SCWMssOS:: -Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_10/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2024-03-11.11:06:25::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall
+TRACE::2024-03-11.11:06:25::SCWMssOS:: -Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make include in microblaze_0/libsrc/standalone_v9_0/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make include in microblaze_0/libsrc/standalone_v9_0/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/standalone_v9_0/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "C
-TRACE::2024-03-10.23:51:20::SCWMssOS::OMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections 
-TRACE::2024-03-10.23:51:20::SCWMssOS::-Wall -Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/standalone_v9_0/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "C
+TRACE::2024-03-11.11:06:25::SCWMssOS::OMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections 
+TRACE::2024-03-11.11:06:25::SCWMssOS::-Wall -Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make include in microblaze_0/libsrc/uartlite_v3_9/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make include in microblaze_0/libsrc/uartlite_v3_9/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_9/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
-TRACE::2024-03-10.23:51:20::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -W
-TRACE::2024-03-10.23:51:20::SCWMssOS::all -Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_9/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2024-03-11.11:06:25::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -W
+TRACE::2024-03-11.11:06:25::SCWMssOS::all -Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make libs in microblaze_0/libsrc/bram_v4_9/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make libs in microblaze_0/libsrc/bram_v4_9/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_9/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILER_F
-TRACE::2024-03-10.23:51:20::SCWMssOS::LAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -We
-TRACE::2024-03-10.23:51:20::SCWMssOS::xtra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_9/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILER_F
+TRACE::2024-03-11.11:06:25::SCWMssOS::LAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -We
+TRACE::2024-03-11.11:06:25::SCWMssOS::xtra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make libs in microblaze_0/libsrc/cpu_v2_18/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make libs in microblaze_0/libsrc/cpu_v2_18/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_18/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILER_F
-TRACE::2024-03-10.23:51:20::SCWMssOS::LAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -We
-TRACE::2024-03-10.23:51:20::SCWMssOS::xtra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_18/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILER_F
+TRACE::2024-03-11.11:06:25::SCWMssOS::LAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -We
+TRACE::2024-03-11.11:06:25::SCWMssOS::xtra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make libs in microblaze_0/libsrc/gpio_v4_10/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make libs in microblaze_0/libsrc/gpio_v4_10/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_10/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILER_
-TRACE::2024-03-10.23:51:20::SCWMssOS::FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -W
-TRACE::2024-03-10.23:51:20::SCWMssOS::extra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_10/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILER_
+TRACE::2024-03-11.11:06:25::SCWMssOS::FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -W
+TRACE::2024-03-11.11:06:25::SCWMssOS::extra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make libs in microblaze_0/libsrc/standalone_v9_0/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make libs in microblaze_0/libsrc/standalone_v9_0/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/standalone_v9_0/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
-TRACE::2024-03-10.23:51:20::SCWMssOS::ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wa
-TRACE::2024-03-10.23:51:20::SCWMssOS::ll -Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/standalone_v9_0/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
+TRACE::2024-03-11.11:06:25::SCWMssOS::ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wa
+TRACE::2024-03-11.11:06:25::SCWMssOS::ll -Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::"Running Make libs in microblaze_0/libsrc/uartlite_v3_9/src"
+TRACE::2024-03-11.11:06:25::SCWMssOS::"Running Make libs in microblaze_0/libsrc/uartlite_v3_9/src"
 
-TRACE::2024-03-10.23:51:20::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_9/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
-TRACE::2024-03-10.23:51:20::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall
-TRACE::2024-03-10.23:51:20::SCWMssOS:: -Wextra -fno-tree-loop-distribute-patterns"
+TRACE::2024-03-11.11:06:25::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_9/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2024-03-11.11:06:25::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall
+TRACE::2024-03-11.11:06:25::SCWMssOS:: -Wextra -fno-tree-loop-distribute-patterns"
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::"DEBUG NON_LTO_OBJECTS is ../../../lib/microblaze_interrupt_handler.o"
+TRACE::2024-03-11.11:06:26::SCWMssOS::"DEBUG NON_LTO_OBJECTS is ../../../lib/microblaze_interrupt_handler.o"
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::'Finished building libraries parallelly.'
+TRACE::2024-03-11.11:06:26::SCWMssOS::'Finished building libraries parallelly.'
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::make --no-print-directory archive
+TRACE::2024-03-11.11:06:26::SCWMssOS::make --no-print-directory archive
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::mb-ar -r  microblaze_0/lib/libxil.a microblaze_0/lib/_exit.o microblaze_0/lib/errno.o microblaze_0/lib/fcntl.o microblaze_0/lib
-TRACE::2024-03-10.23:51:21::SCWMssOS::/hw_exception_handler.o microblaze_0/lib/inbyte.o microblaze_0/lib/microblaze_disable_dcache.o microblaze_0/lib/microblaze_disa
-TRACE::2024-03-10.23:51:21::SCWMssOS::ble_exceptions.o microblaze_0/lib/microblaze_disable_icache.o microblaze_0/lib/microblaze_disable_interrupts.o microblaze_0/lib
-TRACE::2024-03-10.23:51:21::SCWMssOS::/microblaze_enable_dcache.o microblaze_0/lib/microblaze_enable_exceptions.o microblaze_0/lib/microblaze_enable_icache.o microbl
-TRACE::2024-03-10.23:51:21::SCWMssOS::aze_0/lib/microblaze_enable_interrupts.o microblaze_0/lib/microblaze_exception_handler.o microblaze_0/lib/microblaze_flush_cach
-TRACE::2024-03-10.23:51:21::SCWMssOS::e_ext.o microblaze_0/lib/microblaze_flush_cache_ext_range.o microblaze_0/lib/microblaze_flush_dcache.o microblaze_0/lib/microbl
-TRACE::2024-03-10.23:51:21::SCWMssOS::aze_flush_dcache_range.o microblaze_0/lib/microblaze_init_dcache_range.o microblaze_0/lib/microblaze_init_icache_range.o microb
-TRACE::2024-03-10.23:51:21::SCWMssOS::laze_0/lib/microblaze_interrupt_handler.o microblaze_0/lib/microblaze_interrupts_g.o microblaze_0/lib/microblaze_invalidate_cac
-TRACE::2024-03-10.23:51:21::SCWMssOS::he_ext.o microblaze_0/lib/microblaze_invalidate_cache_ext_range.o microblaze_0/lib/microblaze_invalidate_dcache.o microblaze_0/
-TRACE::2024-03-10.23:51:21::SCWMssOS::lib/microblaze_invalidate_dcache_range.o microblaze_0/lib/microblaze_invalidate_icache.o microblaze_0/lib/microblaze_invalidate
-TRACE::2024-03-10.23:51:21::SCWMssOS::_icache_range.o microblaze_0/lib/microblaze_scrub.o microblaze_0/lib/microblaze_selftest.o microblaze_0/lib/microblaze_sleep.o 
-TRACE::2024-03-10.23:51:21::SCWMssOS::microblaze_0/lib/microblaze_update_dcache.o microblaze_0/lib/microblaze_update_icache.o microblaze_0/lib/outbyte.o microblaze_0
-TRACE::2024-03-10.23:51:21::SCWMssOS::/lib/print.o microblaze_0/lib/pvr.o microblaze_0/lib/xbram.o microblaze_0/lib/xbram_g.o microblaze_0/lib/xbram_intr.o microblaz
-TRACE::2024-03-10.23:51:21::SCWMssOS::e_0/lib/xbram_selftest.o microblaze_0/lib/xbram_sinit.o microblaze_0/lib/xgpio.o microblaze_0/lib/xgpio_extra.o microblaze_0/li
-TRACE::2024-03-10.23:51:21::SCWMssOS::b/xgpio_g.o microblaze_0/lib/xgpio_intr.o microblaze_0/lib/xgpio_selftest.o microblaze_0/lib/xgpio_sinit.o microblaze_0/lib/xil
-TRACE::2024-03-10.23:51:21::SCWMssOS::_assert.o microblaze_0/lib/xil_cache.o microblaze_0/lib/xil_clocking.o microblaze_0/lib/xil_exception.o microblaze_0/lib/xil_me
-TRACE::2024-03-10.23:51:21::SCWMssOS::m.o microblaze_0/lib/xil_misc_psreset_api.o microblaze_0/lib/xil_printf.o microblaze_0/lib/xil_sleepcommon.o microblaze_0/lib/x
-TRACE::2024-03-10.23:51:21::SCWMssOS::il_testcache.o microblaze_0/lib/xil_testio.o microblaze_0/lib/xil_testmem.o microblaze_0/lib/xil_util.o microblaze_0/lib/xinter
-TRACE::2024-03-10.23:51:21::SCWMssOS::rupt_wrap.o microblaze_0/lib/xio.o microblaze_0/lib/xplatform_info.o microblaze_0/lib/xpm_init.o microblaze_0/lib/xuartlite.o m
-TRACE::2024-03-10.23:51:21::SCWMssOS::icroblaze_0/lib/xuartlite_g.o microblaze_0/lib/xuartlite_intr.o microblaze_0/lib/xuartlite_l.o microblaze_0/lib/xuartlite_selft
-TRACE::2024-03-10.23:51:21::SCWMssOS::est.o microblaze_0/lib/xuartlite_sinit.o microblaze_0/lib/xuartlite_stats.o
+TRACE::2024-03-11.11:06:26::SCWMssOS::mb-ar -r  microblaze_0/lib/libxil.a microblaze_0/lib/_exit.o microblaze_0/lib/errno.o microblaze_0/lib/fcntl.o microblaze_0/lib
+TRACE::2024-03-11.11:06:26::SCWMssOS::/hw_exception_handler.o microblaze_0/lib/inbyte.o microblaze_0/lib/microblaze_disable_dcache.o microblaze_0/lib/microblaze_disa
+TRACE::2024-03-11.11:06:26::SCWMssOS::ble_exceptions.o microblaze_0/lib/microblaze_disable_icache.o microblaze_0/lib/microblaze_disable_interrupts.o microblaze_0/lib
+TRACE::2024-03-11.11:06:26::SCWMssOS::/microblaze_enable_dcache.o microblaze_0/lib/microblaze_enable_exceptions.o microblaze_0/lib/microblaze_enable_icache.o microbl
+TRACE::2024-03-11.11:06:26::SCWMssOS::aze_0/lib/microblaze_enable_interrupts.o microblaze_0/lib/microblaze_exception_handler.o microblaze_0/lib/microblaze_flush_cach
+TRACE::2024-03-11.11:06:26::SCWMssOS::e_ext.o microblaze_0/lib/microblaze_flush_cache_ext_range.o microblaze_0/lib/microblaze_flush_dcache.o microblaze_0/lib/microbl
+TRACE::2024-03-11.11:06:26::SCWMssOS::aze_flush_dcache_range.o microblaze_0/lib/microblaze_init_dcache_range.o microblaze_0/lib/microblaze_init_icache_range.o microb
+TRACE::2024-03-11.11:06:26::SCWMssOS::laze_0/lib/microblaze_interrupt_handler.o microblaze_0/lib/microblaze_interrupts_g.o microblaze_0/lib/microblaze_invalidate_cac
+TRACE::2024-03-11.11:06:26::SCWMssOS::he_ext.o microblaze_0/lib/microblaze_invalidate_cache_ext_range.o microblaze_0/lib/microblaze_invalidate_dcache.o microblaze_0/
+TRACE::2024-03-11.11:06:26::SCWMssOS::lib/microblaze_invalidate_dcache_range.o microblaze_0/lib/microblaze_invalidate_icache.o microblaze_0/lib/microblaze_invalidate
+TRACE::2024-03-11.11:06:26::SCWMssOS::_icache_range.o microblaze_0/lib/microblaze_scrub.o microblaze_0/lib/microblaze_selftest.o microblaze_0/lib/microblaze_sleep.o 
+TRACE::2024-03-11.11:06:26::SCWMssOS::microblaze_0/lib/microblaze_update_dcache.o microblaze_0/lib/microblaze_update_icache.o microblaze_0/lib/outbyte.o microblaze_0
+TRACE::2024-03-11.11:06:26::SCWMssOS::/lib/print.o microblaze_0/lib/pvr.o microblaze_0/lib/xbram.o microblaze_0/lib/xbram_g.o microblaze_0/lib/xbram_intr.o microblaz
+TRACE::2024-03-11.11:06:26::SCWMssOS::e_0/lib/xbram_selftest.o microblaze_0/lib/xbram_sinit.o microblaze_0/lib/xgpio.o microblaze_0/lib/xgpio_extra.o microblaze_0/li
+TRACE::2024-03-11.11:06:26::SCWMssOS::b/xgpio_g.o microblaze_0/lib/xgpio_intr.o microblaze_0/lib/xgpio_selftest.o microblaze_0/lib/xgpio_sinit.o microblaze_0/lib/xil
+TRACE::2024-03-11.11:06:26::SCWMssOS::_assert.o microblaze_0/lib/xil_cache.o microblaze_0/lib/xil_clocking.o microblaze_0/lib/xil_exception.o microblaze_0/lib/xil_me
+TRACE::2024-03-11.11:06:26::SCWMssOS::m.o microblaze_0/lib/xil_misc_psreset_api.o microblaze_0/lib/xil_printf.o microblaze_0/lib/xil_sleepcommon.o microblaze_0/lib/x
+TRACE::2024-03-11.11:06:26::SCWMssOS::il_testcache.o microblaze_0/lib/xil_testio.o microblaze_0/lib/xil_testmem.o microblaze_0/lib/xil_util.o microblaze_0/lib/xinter
+TRACE::2024-03-11.11:06:26::SCWMssOS::rupt_wrap.o microblaze_0/lib/xio.o microblaze_0/lib/xplatform_info.o microblaze_0/lib/xpm_init.o microblaze_0/lib/xuartlite.o m
+TRACE::2024-03-11.11:06:26::SCWMssOS::icroblaze_0/lib/xuartlite_g.o microblaze_0/lib/xuartlite_intr.o microblaze_0/lib/xuartlite_l.o microblaze_0/lib/xuartlite_selft
+TRACE::2024-03-11.11:06:26::SCWMssOS::est.o microblaze_0/lib/xuartlite_sinit.o microblaze_0/lib/xuartlite_stats.o
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::'Finished building libraries'
+TRACE::2024-03-11.11:06:26::SCWMssOS::'Finished building libraries'
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::Copying to export directory.
-TRACE::2024-03-10.23:51:21::SCWMssOS:: Checking if to create the Supporting Applications
-TRACE::2024-03-10.23:51:21::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
-LOG::2024-03-10.23:51:21::SCWSystem::Completed Processing the domain standalone_microblaze_0
-LOG::2024-03-10.23:51:21::SCWSystem::Completed Processing the sysconfig Videokaart_full
-LOG::2024-03-10.23:51:21::SCWPlatform::Completed generating the artifacts for system configuration Videokaart_full
-TRACE::2024-03-10.23:51:21::SCWPlatform::Started preparing the platform 
-TRACE::2024-03-10.23:51:21::SCWSystem::Writing the bif file for system config Videokaart_full
-TRACE::2024-03-10.23:51:21::SCWSystem::dir created 
-TRACE::2024-03-10.23:51:21::SCWSystem::Writing the bif 
-TRACE::2024-03-10.23:51:21::SCWPlatform::Started writing the spfm file 
-TRACE::2024-03-10.23:51:21::SCWPlatform::Started writing the xpfm file 
-TRACE::2024-03-10.23:51:21::SCWPlatform::Completed generating the platform
-TRACE::2024-03-10.23:51:21::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWMssOS::Found a swdesign opened with the mssfile.
-TRACE::2024-03-10.23:51:21::SCWMssOS::Completed writemss as part of save.
-TRACE::2024-03-10.23:51:21::SCWMssOS::Commit changes completed.
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:21::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:26::SCWMssOS::Copying to export directory.
+TRACE::2024-03-11.11:06:26::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2024-03-11.11:06:26::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2024-03-11.11:06:26::SCWSystem::Completed Processing the domain standalone_microblaze_0
+LOG::2024-03-11.11:06:26::SCWSystem::Completed Processing the sysconfig Videokaart_full
+LOG::2024-03-11.11:06:26::SCWPlatform::Completed generating the artifacts for system configuration Videokaart_full
+TRACE::2024-03-11.11:06:26::SCWPlatform::Started preparing the platform 
+TRACE::2024-03-11.11:06:26::SCWSystem::Writing the bif file for system config Videokaart_full
+TRACE::2024-03-11.11:06:26::SCWSystem::dir created 
+TRACE::2024-03-11.11:06:26::SCWSystem::Writing the bif 
+TRACE::2024-03-11.11:06:26::SCWPlatform::Started writing the spfm file 
+TRACE::2024-03-11.11:06:26::SCWPlatform::Started writing the xpfm file 
+TRACE::2024-03-11.11:06:26::SCWPlatform::Completed generating the platform
+TRACE::2024-03-11.11:06:26::SCWMssOS::Saving the mss changes C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2024-03-11.11:06:26::SCWMssOS::Completed writemss as part of save.
+TRACE::2024-03-11.11:06:26::SCWMssOS::Commit changes completed.
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:26::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:21::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:26::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:26::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:21::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+TRACE::2024-03-11.11:06:26::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:26::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWWriter::formatted JSON is {
+TRACE::2024-03-11.11:06:26::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWWriter::formatted JSON is {
 	"platformName":	"Videokaart_full",
 	"sprVersion":	"2.0",
 	"mode":	"gui",
@@ -1005,17 +1005,17 @@ TRACE::2024-03-10.23:51:21::SCWWriter::formatted JSON is {
 				}]
 		}]
 }
-KEYINFO::2024-03-10.23:51:21::SCWPlatform::updated the xpfm file.
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
-TRACE::2024-03-10.23:51:21::SCWPlatform:: Unique name xilinx:basys3::0.0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Opened existing hwdb Videokaart_full_0
-TRACE::2024-03-10.23:51:21::SCWPlatform::Found the Hw Db part of the input DSA
-TRACE::2024-03-10.23:51:21::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
-TRACE::2024-03-10.23:51:21::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
+KEYINFO::2024-03-11.11:06:26::SCWPlatform::updated the xpfm file.
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to open the hw design at C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA given C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA absoulate path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform::DSA directory C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Platform Path C:/github/RetroGame/VitisWorkspace/Videokaart_full/hw/Videokaart_full.xsa
+TRACE::2024-03-11.11:06:26::SCWPlatform:: Unique name xilinx:basys3::0.0
+TRACE::2024-03-11.11:06:26::SCWPlatform::Trying to set the existing hwdb with name Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Opened existing hwdb Videokaart_full_6
+TRACE::2024-03-11.11:06:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2024-03-11.11:06:26::SCWMssOS::Checking the sw design at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWMssOS::DEBUG:  swdes dump  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss|system||
 
-TRACE::2024-03-10.23:51:21::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss
+TRACE::2024-03-11.11:06:26::SCWMssOS::Sw design exists and opened at  C:/github/RetroGame/VitisWorkspace/Videokaart_full/microblaze_0/standalone_microblaze_0/bsp/system.mss

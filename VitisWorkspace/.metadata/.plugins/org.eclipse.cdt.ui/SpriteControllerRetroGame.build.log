@@ -1,28 +1,6 @@
-23:51:22 **** Build of configuration Debug for project SpriteControllerRetroGame ****
+09:20:30 **** Incremental Build of configuration Debug for project SpriteControllerRetroGame ****
 make all 
-'Building file: ../src/main.c'
-'Invoking: MicroBlaze gcc compiler'
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -IC:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/sw/Videokaart_full/standalone_microblaze_0/bspinclude/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:27:18: warning: variable 'data1' set but not used [-Wunused-but-set-variable]
-   27 |         u32 data,data1;
-      |                  ^~~~~
-../src/main.c:26:29: warning: unused variable 'btn_device' [-Wunused-variable]
-   26 |         XGpio input_device, btn_device;
-      |                             ^~~~~~~~~~
-'Finished building: ../src/main.c'
-' '
-'Building target: SpriteControllerRetroGame.elf'
-'Invoking: MicroBlaze gcc linker'
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -LC:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/sw/Videokaart_full/standalone_microblaze_0/bsplib/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "SpriteControllerRetroGame.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-'Finished building target: SpriteControllerRetroGame.elf'
-' '
-'Invoking: MicroBlaze Print Size'
-mb-size SpriteControllerRetroGame.elf  |tee "SpriteControllerRetroGame.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-   6472	    304	   3112	   9888	   26a0	SpriteControllerRetroGame.elf
-'Finished building: SpriteControllerRetroGame.elf.size'
-' '
+make: Nothing to be done for 'all'.
 
-23:51:22 Build Finished (took 553ms)
+09:20:30 Build Finished (took 133ms)
 

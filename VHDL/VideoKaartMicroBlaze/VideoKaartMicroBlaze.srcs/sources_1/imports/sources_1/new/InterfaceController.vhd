@@ -80,6 +80,8 @@ if rising_edge(clk100) then
         lastClk <= clkspi;					               --register the current clkspi value for falling edge detection
     else
         framedone <= '0';
+        data <= (others => '1');
+        dataready <= '1';
     end if;
 end if;
 

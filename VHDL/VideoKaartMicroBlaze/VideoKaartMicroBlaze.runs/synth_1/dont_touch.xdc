@@ -60,4 +60,4 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==PmodIPs_IO_
 # IP: bd/PmodIPs/ip/PmodIPs_xlconcat_1_0/PmodIPs_xlconcat_1_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==PmodIPs_xlconcat_1_0 || ORIG_REF_NAME==PmodIPs_xlconcat_1_0} -quiet] -quiet
 
-# XDC: c:/Users/Joey/Downloads/VideoKaartMicroBlaze_third_special_editon/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/PmodIPs_ooc.xdc
+# XDC: c:/github/RetroGame/VHDL/VideoKaartMicroBlaze/VideoKaartMicroBlaze.gen/sources_1/bd/PmodIPs/PmodIPs_ooc.xdc

@@ -5,3 +5,98 @@ timestamp=[2024-03-10 23:51:01], mode=APP_CREATION, duration=0:00:02.994, durati
 timestamp=[2024-03-10 23:51:22], mode=PLATFORM_GENERATION, duration=0:00:03.543, duration_ms=3543, data={name=Videokaart_full}
 timestamp=[2024-03-10 23:51:22], mode=BUILD, duration=0:00:00.587, duration_ms=587, data={name=SpriteControllerRetroGame, configuration=Debug, clean_build=false}
 timestamp=[2024-03-10 23:51:23], mode=BUILD, duration=0:00:00.133, duration_ms=133, data={name=SpriteControllerRetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-10 23:53:38], mode=BUILD, duration=0:00:00.573, duration_ms=573, data={name=SpriteControllerRetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-10 23:53:38], mode=BUILD, duration=0:00:00.129, duration_ms=129, data={name=SpriteControllerRetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:15:23], mode=WORKBENCH_START, duration=0:00:08.089, duration_ms=8089, data={}
+timestamp=[2024-03-11 09:15:24], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.073, duration_ms=73, data={}
+timestamp=[2024-03-11 09:15:24], mode=WORKBENCH_UI_INIT, duration=0:00:00.927, duration_ms=927, data={editors_count=3, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,SpriteControllerRetroGame,SpriteControllerRetroGame_system,Videokaart_full}
+timestamp=[2024-03-11 09:19:05], mode=BUILD, duration=0:00:01.304, duration_ms=1304, data={name=SpriteControllerRetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:19:06], mode=BUILD, duration=0:00:00.135, duration_ms=135, data={name=SpriteControllerRetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:20:30], mode=BUILD, duration=0:00:00.141, duration_ms=141, data={name=SpriteControllerRetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:20:30], mode=BUILD, duration=0:00:00.123, duration_ms=123, data={name=SpriteControllerRetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:32:43], mode=APP_CREATION, duration=0:00:03.896, duration_ms=3896, data={name=RetroGameGPU, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=Videokaart_full_MB, application_type=application}
+timestamp=[2024-03-11 09:33:10], mode=PLATFORM_GENERATION, duration=0:00:05.358, duration_ms=5358, data={name=Videokaart_full_MB}
+timestamp=[2024-03-11 09:33:11], mode=BUILD, duration=0:00:00.813, duration_ms=813, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:33:11], mode=BUILD, duration=0:00:00.143, duration_ms=143, data={name=RetroGameGPU_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:36:15], mode=BUILD, duration=0:00:00.498, duration_ms=498, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:36:28], mode=BUILD, duration=0:00:00.124, duration_ms=124, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:36:28], mode=BUILD, duration=0:00:00.124, duration_ms=124, data={name=RetroGameGPU_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:37:40], mode=BUILD, duration=0:00:00.131, duration_ms=131, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:38:26], mode=BUILD, duration=0:00:00.504, duration_ms=504, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:39:23], mode=BUILD, duration=0:00:00.500, duration_ms=500, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:43:25], mode=BUILD, duration=0:00:00.571, duration_ms=571, data={name=RetroGameGPU, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:52:50], mode=APP_CREATION, duration=0:00:02.436, duration_ms=2436, data={name=RetroGameGPU2, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=GPURetro, application_type=application}
+timestamp=[2024-03-11 09:53:14], mode=PLATFORM_GENERATION, duration=0:00:03.841, duration_ms=3841, data={name=GPURetro}
+timestamp=[2024-03-11 09:53:14], mode=BUILD, duration=0:00:00.576, duration_ms=576, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:53:15], mode=BUILD, duration=0:00:00.213, duration_ms=213, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:59:21], mode=BUILD, duration=0:00:00.125, duration_ms=125, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 09:59:21], mode=BUILD, duration=0:00:00.125, duration_ms=125, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:00:23], mode=BUILD, duration=0:00:00.123, duration_ms=123, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:00:24], mode=BUILD, duration=0:00:00.113, duration_ms=113, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:01:16], mode=BUILD, duration=0:00:00.493, duration_ms=493, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:03:21], mode=BUILD, duration=0:00:00.498, duration_ms=498, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:04:35], mode=BUILD, duration=0:00:00.507, duration_ms=507, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:05:33], mode=BUILD, duration=0:00:00.500, duration_ms=500, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:20:56], mode=BUILD, duration=0:00:00.525, duration_ms=525, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:21:37], mode=BUILD, duration=0:00:00.504, duration_ms=504, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:21:38], mode=BUILD, duration=0:00:00.134, duration_ms=134, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:23:34], mode=BUILD, duration=0:00:00.506, duration_ms=506, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:23:34], mode=BUILD, duration=0:00:00.125, duration_ms=125, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:25:03], mode=BUILD, duration=0:00:00.509, duration_ms=509, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:25:04], mode=BUILD, duration=0:00:00.120, duration_ms=120, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:25:26], mode=BUILD, duration=0:00:00.511, duration_ms=511, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:25:26], mode=BUILD, duration=0:00:00.124, duration_ms=124, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:27:58], mode=BUILD, duration=0:00:00.508, duration_ms=508, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:27:58], mode=BUILD, duration=0:00:00.124, duration_ms=124, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:28:42], mode=BUILD, duration=0:00:00.496, duration_ms=496, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:28:43], mode=BUILD, duration=0:00:00.139, duration_ms=139, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:28:56], mode=BUILD, duration=0:00:00.509, duration_ms=509, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:28:57], mode=BUILD, duration=0:00:00.126, duration_ms=126, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:31:58], mode=BUILD, duration=0:00:00.506, duration_ms=506, data={name=RetroGameGPU2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:31:59], mode=BUILD, duration=0:00:00.139, duration_ms=139, data={name=RetroGameGPU2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:49:45], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.043, duration_ms=43, data={}
+timestamp=[2024-03-11 10:49:45], mode=WORKBENCH_START, duration=0:00:07.298, duration_ms=7298, data={}
+timestamp=[2024-03-11 10:49:46], mode=WORKBENCH_UI_INIT, duration=0:00:00.421, duration_ms=421, data={editors_count=7, platform_editors_count=1, projects_count=7, platform_projects_count=2, active_platform_editor=false, projects=GPURetro,RemoteSystemsTempFiles,RetroGameGPU,RetroGameGPU2,RetroGameGPU2_system,RetroGameGPU_system,Videokaart_full_MB}
+timestamp=[2024-03-11 10:51:31], mode=APP_CREATION, duration=0:00:02.608, duration_ms=2608, data={name=RetroGame, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=Videokaart_full_2, application_type=application}
+timestamp=[2024-03-11 10:52:02], mode=PLATFORM_GENERATION, duration=0:00:03.709, duration_ms=3709, data={name=Videokaart_full_2}
+timestamp=[2024-03-11 10:52:03], mode=BUILD, duration=0:00:00.582, duration_ms=582, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:52:03], mode=BUILD, duration=0:00:00.130, duration_ms=130, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 10:59:46], mode=APP_CREATION, duration=0:00:02.256, duration_ms=2256, data={name=RetroGame, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=Videokaart_full, application_type=application}
+timestamp=[2024-03-11 11:00:09], mode=PLATFORM_GENERATION, duration=0:00:03.748, duration_ms=3748, data={name=Videokaart_full}
+timestamp=[2024-03-11 11:00:10], mode=BUILD, duration=0:00:00.638, duration_ms=638, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:00:10], mode=BUILD, duration=0:00:00.117, duration_ms=117, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:06:11], mode=APP_CREATION, duration=0:00:02.377, duration_ms=2377, data={name=RetroGame, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=Videokaart_full, application_type=application}
+timestamp=[2024-03-11 11:06:26], mode=PLATFORM_GENERATION, duration=0:00:03.591, duration_ms=3591, data={name=Videokaart_full}
+timestamp=[2024-03-11 11:06:27], mode=BUILD, duration=0:00:00.691, duration_ms=691, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:06:27], mode=BUILD, duration=0:00:00.134, duration_ms=134, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:07:38], mode=BUILD, duration=0:00:00.498, duration_ms=498, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:07:38], mode=BUILD, duration=0:00:00.123, duration_ms=123, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:08:51], mode=BUILD, duration=0:00:00.499, duration_ms=499, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:08:51], mode=BUILD, duration=0:00:00.123, duration_ms=123, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:11:41], mode=BUILD, duration=0:00:00.498, duration_ms=498, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:11:41], mode=BUILD, duration=0:00:00.132, duration_ms=132, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:15:38], mode=BUILD, duration=0:00:00.503, duration_ms=503, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:15:39], mode=BUILD, duration=0:00:00.125, duration_ms=125, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:19:12], mode=BUILD, duration=0:00:00.514, duration_ms=514, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:19:13], mode=BUILD, duration=0:00:00.125, duration_ms=125, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:21:09], mode=BUILD, duration=0:00:00.505, duration_ms=505, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:21:09], mode=BUILD, duration=0:00:00.140, duration_ms=140, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:28:13], mode=BUILD, duration=0:00:00.501, duration_ms=501, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:28:14], mode=BUILD, duration=0:00:00.126, duration_ms=126, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:29:07], mode=BUILD, duration=0:00:00.508, duration_ms=508, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:29:07], mode=BUILD, duration=0:00:00.139, duration_ms=139, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:30:32], mode=BUILD, duration=0:00:00.509, duration_ms=509, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:30:33], mode=BUILD, duration=0:00:00.124, duration_ms=124, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:41:43], mode=BUILD, duration=0:00:00.500, duration_ms=500, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:41:44], mode=BUILD, duration=0:00:00.123, duration_ms=123, data={name=RetroGame_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:46:44], mode=APP_CREATION, duration=0:00:02.547, duration_ms=2547, data={name=RetroGame2, project_type=sdk, os=standalone, processor=microblaze, runtime=cpp, platform=Videokaart_full2, application_type=application}
+timestamp=[2024-03-11 11:47:29], mode=PLATFORM_GENERATION, duration=0:00:04.110, duration_ms=4110, data={name=Videokaart_full2}
+timestamp=[2024-03-11 11:47:30], mode=BUILD, duration=0:00:00.630, duration_ms=630, data={name=RetroGame2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:47:30], mode=BUILD, duration=0:00:00.136, duration_ms=136, data={name=RetroGame2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:50:57], mode=BUILD, duration=0:00:00.128, duration_ms=128, data={name=RetroGame2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:50:58], mode=BUILD, duration=0:00:00.129, duration_ms=129, data={name=RetroGame2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:51:51], mode=BUILD, duration=0:00:00.501, duration_ms=501, data={name=RetroGame, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:58:22], mode=BUILD, duration=0:00:00.129, duration_ms=129, data={name=RetroGame2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:58:22], mode=BUILD, duration=0:00:00.120, duration_ms=120, data={name=RetroGame2_system, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:58:26], mode=BUILD, duration=0:00:00.125, duration_ms=125, data={name=RetroGame2, configuration=Debug, clean_build=false}
+timestamp=[2024-03-11 11:58:32], mode=BUILD, duration=0:00:00.505, duration_ms=505, data={name=RetroGame, configuration=Debug, clean_build=false}

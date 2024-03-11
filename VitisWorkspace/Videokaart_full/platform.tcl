@@ -15,6 +15,7 @@ platform create -name {Videokaart_full}\
 platform write
 domain create -name {standalone_microblaze_0} -display-name {standalone_microblaze_0} -os {standalone} -proc {microblaze_0} -runtime {cpp} -arch {32-bit} -support-app {empty_application}
 platform generate -domains 
-platform active {Videokaart_full}
+platform write
 platform generate -quick
 platform generate
+platform write
