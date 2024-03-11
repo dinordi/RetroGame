@@ -1,0 +1,45 @@
+11:58:31 **** Incremental Build of configuration Debug for project RetroGame ****
+make all 
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -IC:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/sw/Videokaart_full/standalone_microblaze_0/bspinclude/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:94:39: warning: passing argument 1 of 'printIntArray' from incompatible pointer type [-Wincompatible-pointer-types]
+   94 |                         printIntArray(&arr, 100);
+      |                                       ^~~~
+      |                                       |
+      |                                       int (*)[100]
+../src/main.c:34:25: note: expected 'int *' but argument is of type 'int (*)[100]'
+   34 | void printIntArray(int* array, int length) {
+      |                    ~~~~~^~~~~
+../src/main.c:84:25: warning: unused variable 'vpos' [-Wunused-variable]
+   84 |                     u32 vpos = (data1 >> 10 & xMask);
+      |                         ^~~~
+../src/main.c:83:25: warning: unused variable 'hpos' [-Wunused-variable]
+   83 |                     u32 hpos = (data1 & xMask);
+      |                         ^~~~
+../src/main.c:79:25: warning: unused variable 'yValue' [-Wunused-variable]
+   79 |                     u32 yValue = (data >> 19 & yMask); // Verschuif naar rechts om de waarde op de juiste positie te krijgen
+      |                         ^~~~~~
+../src/main.c:78:25: warning: unused variable 'xValue' [-Wunused-variable]
+   78 |                     u32 xValue = (data >> 9 & xMask); // Verschuif naar rechts om de waarde op de juiste positie te krijgen
+      |                         ^~~~~~
+../src/main.c:66:20: warning: unused variable 'dataArray' [-Wunused-variable]
+   66 |         dataStruct dataArray[100];
+      |                    ^~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: RetroGame.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -LC:/github/RetroGame/VitisWorkspace/Videokaart_full/export/Videokaart_full/sw/Videokaart_full/standalone_microblaze_0/bsplib/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "RetroGame.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: RetroGame.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size RetroGame.elf  |tee "RetroGame.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   7136	    304	   3112	  10552	   2938	RetroGame.elf
+'Finished building: RetroGame.elf.size'
+' '
+
+11:58:32 Build Finished (took 498ms)
+

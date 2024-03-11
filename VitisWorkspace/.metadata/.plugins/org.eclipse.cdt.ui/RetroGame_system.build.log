@@ -1,0 +1,6 @@
+11:41:44 **** Incremental Build of configuration Debug for project RetroGame_system ****
+make all 
+Skipping SD card image generation. Reason: "The system project only has applications for microblaze processors."
+
+11:41:44 Build Finished (took 119ms)
+

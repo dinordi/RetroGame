@@ -1,0 +1,37 @@
+10:31:58 **** Incremental Build of configuration Debug for project RetroGameGPU2 ****
+make all 
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -IC:/github/RetroGame/VitisWorkspace/GPURetro/export/GPURetro/sw/GPURetro/standalone_microblaze_0/bspinclude/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:63:25: warning: unused variable 'vpos' [-Wunused-variable]
+   63 |                     u32 vpos = (data1 >> 10 & xMask);
+      |                         ^~~~
+../src/main.c:62:25: warning: unused variable 'hpos' [-Wunused-variable]
+   62 |                     u32 hpos = (data1 & xMask);
+      |                         ^~~~
+../src/main.c:59:25: warning: unused variable 'idValue' [-Wunused-variable]
+   59 |                     u32 idValue = (data & idMask); // Geen verschuiving nodig omdat dit de minst significante bits zijn
+      |                         ^~~~~~~
+../src/main.c:58:25: warning: unused variable 'yValue' [-Wunused-variable]
+   58 |                     u32 yValue = (data >> 19 & yMask); // Verschuif naar rechts om de waarde op de juiste positie te krijgen
+      |                         ^~~~~~
+../src/main.c:57:25: warning: unused variable 'xValue' [-Wunused-variable]
+   57 |                     u32 xValue = (data >> 9 & xMask); // Verschuif naar rechts om de waarde op de juiste positie te krijgen
+      |                         ^~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: RetroGameGPU2.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -LC:/github/RetroGame/VitisWorkspace/GPURetro/export/GPURetro/sw/GPURetro/standalone_microblaze_0/bsplib/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "RetroGameGPU2.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: RetroGameGPU2.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size RetroGameGPU2.elf  |tee "RetroGameGPU2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   6816	    304	   3112	  10232	   27f8	RetroGameGPU2.elf
+'Finished building: RetroGameGPU2.elf.size'
+' '
+
+10:31:58 Build Finished (took 499ms)
+
