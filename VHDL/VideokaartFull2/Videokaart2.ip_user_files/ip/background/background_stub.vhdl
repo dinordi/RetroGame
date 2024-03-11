@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Tue Mar  5 16:25:02 2024
--- Host        : Laptop-Ben-T running 64-bit major release  (build 9200)
+-- Date        : Mon Mar 11 14:12:34 2024
+-- Host        : Desktop-Joey running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/Progh/Videokaart2/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl
+--               c:/github/RetroGame/VHDL/VideokaartFull2/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl
 -- Design      : background
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1

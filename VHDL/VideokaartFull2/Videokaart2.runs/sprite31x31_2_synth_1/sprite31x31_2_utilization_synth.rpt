@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Mar  5 23:32:53 2024
-| Host         : Laptop-Ben-T running 64-bit major release  (build 9200)
+| Date         : Mon Mar 11 16:20:13 2024
+| Host         : Desktop-Joey running 64-bit major release  (build 9200)
 | Command      : report_utilization -file sprite31x31_2_utilization_synth.rpt -pb sprite31x31_2_utilization_synth.pb
 | Design       : sprite31x31_2
 | Device       : xc7a35tcpg236-1
