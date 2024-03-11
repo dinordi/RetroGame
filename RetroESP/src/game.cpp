@@ -72,12 +72,4 @@ void game::readInput()
     buttonStatus.right = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
-
-    printk("Button1 status: %d\n", buttonStatus.up);
-    printk("Button2 status: %d\n", buttonStatus.down);
-    printk("Button3 status: %d\n", buttonStatus.left);
-    printk("Button4 status: %d\n", buttonStatus.right);
-    printk("Button5 status: %d\n", buttonStatus.melee);
-    printk("Button6 status: %d\n", buttonStatus.atk);
-
 }
