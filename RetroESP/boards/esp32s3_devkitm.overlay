@@ -1,7 +1,7 @@
 
 &spi2 {
         status = "okay";
-        clock-frequency = <5000000>;
+        clock-frequency = <10000000>;
         cs-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
 
 };

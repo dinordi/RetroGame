@@ -17,6 +17,8 @@ typedef enum {
     west
 } direction;
 
+
+
 typedef struct {
     int maxHealth;
     int maxAttack;
@@ -26,13 +28,14 @@ typedef struct {
 
 class Entity : public Actor{
 public:
-    Entity(int ID);
+    Entity(int* entitySprites);
     void set(types type, int value);
     int get(types type);
     void attack();
     void jump();
     void setDir(direction d);
     direction getDir();
+    void move (int x, int y);
 
 private:
     int hp; //Health

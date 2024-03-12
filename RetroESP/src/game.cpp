@@ -40,26 +40,27 @@ void game::sendToDisplay()
 {
     //Send game state to display
     // (ID, x, y)
+    for(int i = 1; i < entities.size();i++)
+    {
+        entities[i]->move((i*15), (i*15));
+    }
 
     for (auto entity : entities)
     {
         int x = entity->getX();
         int y = entity->getY();
         int ID = entity->getID();
-        printk("Sending to display: ID:%d, X:%d, Y:%d\n", ID, x, y);
         spriteData[spriteDataCount++] = htobe16(ID);
         spriteData[spriteDataCount++] = htobe16(x);
         spriteData[spriteDataCount++] = htobe16(y);
     }
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
-    printk("Wait for display to update\n");
-
 }
 
-void game::addEntity(int ID)
+void game::addEntity(int* playerSprites)
 {
-    Entity* entity = new Entity(ID);
+    Entity* entity = new Entity(playerSprites);
     printk("id: %d\n", entity->getID());
     entities.push_back(entity);
 }

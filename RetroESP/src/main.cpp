@@ -19,6 +19,7 @@
 #include "fpga.h" //Serial communication with FPGA
 #include "entity.h"
 #include "game.h"
+#include "sprites.h"
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
@@ -45,19 +46,22 @@ int main(void)
 	
 	int lastState = 1;
 
-    game.addEntity(0);
+    game.addEntity(playerSprites);
 	// game.addEntity(45);
+	for(int i = 0; i < 29; i++)
+	{
+		game.addEntity(playerSprites);
+	}
+
 	while (1) {
        /* Read the state of the GPIO pin */
         int pin_value = gpio_pin_get(input, GPIO_PIN);
-		if(pin_value == 1 && lastState == 0)
+		if(pin_value == 0 && lastState == 1)
 		{
-        
         	game.sendToDisplay();
-			game.update();
+			// game.update();
 		}
 		lastState = pin_value;
-		// game.update();
 	}
 	return 0;
 }

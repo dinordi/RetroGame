@@ -25,7 +25,7 @@ public:
 
     void update();
     void sendToDisplay();
-    void addEntity(int ID);
+    void addEntity(int* entitySprites);
     void readInput();
 
 private:
