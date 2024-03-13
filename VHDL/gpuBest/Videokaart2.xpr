@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="65" Path="C:/progh/gpuBest/Videokaart2.xpr">
+<Project Product="Vivado" Version="7" Minor="65" Path="C:/github/RetroGame/VHDL/gpuBest/Videokaart2.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="fb83e15d76584909bfde4dbdf1bb6048"/>
