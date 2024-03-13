@@ -45,11 +45,11 @@ int main(void)
 	
 	int lastState = 1;
 
-	// game.addEntity(45);
-	// for(int i = 0; i < 29; i++)
-	// {
-	// 	game.addEntity(playerSprites);
-	// }
+
+	for(int i = 0; i < 29; i++)
+	{
+		game.addEntity(enemy1Sprites);
+	}
 
 	while (1) {
        /* Read the state of the GPIO pin */

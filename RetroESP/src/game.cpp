@@ -42,9 +42,10 @@ void game::sendToDisplay()
     for (auto entity : entities)
     {
         int x;
-        if(entities[0] == entity)
+        if(player == entity)
         {
             x = 320;
+            printk("ID: %d\n", entity->getID());
         }
         else
         {
@@ -56,12 +57,12 @@ void game::sendToDisplay()
         spriteData[spriteDataCount++] = htobe16(x);
         spriteData[spriteDataCount++] = htobe16(y);
     }
-    drawLevel();
+    // drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
 
-void game::addEntity(int* playerSprites)
+void game::addEntity(const int* playerSprites)
 {
     Entity* entity = new Entity(playerSprites);
     printk("id: %d\n", entity->getID());
@@ -89,7 +90,7 @@ void game::drawLevel()
     int rightTileIndex = rightBorder / tileSize;
     int y = 0;
     int count = 0;
-    printk("Checking tiles from %d to %d\n", leftTileIndex, rightTileIndex);
+    // printk("Checking tiles from %d to %d\n", leftTileIndex, rightTileIndex);
     for(int i = leftTileIndex; i < rightTileIndex; i++)
     {
         for(int j = 0; j < 16; j++)
@@ -100,20 +101,21 @@ void game::drawLevel()
                 {
                     int tileX = i * tileSize;
                     int tileY = j * tileSize-16;
-                    int tileID = level[j][i] + 99;
+                    // int tileID = level[j][i] + 99;
+                    int tileID = 100;
                     spriteData[spriteDataCount++] = htobe16(tileID);
                     spriteData[spriteDataCount++] = htobe16(tileX);
                     spriteData[spriteDataCount++] = htobe16(tileY);
                     // printk("Added values: ID:%d, X:%d, Y:%d\n,", tileID, tileX, tileY);
-                    if(tileY == 449)
-                    {
-                        // printk("TileX: %d\n", i);
-                    }
+                    // if(tileY == 449)
+                    // {
+                        /// printk("TileX: %d\n", i);
+                    // }
                     count++;
                 }
             }
         }
     }
-    printk("Count: %d\n", count);
+    // printk("Count: %d\n", count);
 
 }

@@ -20,7 +20,7 @@ public:
 
     void update();
     void sendToDisplay();
-    void addEntity(int* entitySprites);
+    void addEntity(const int* entitySprites);
     void readInput();
     void drawLevel();
 

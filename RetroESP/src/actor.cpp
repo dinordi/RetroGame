@@ -4,7 +4,7 @@
 Actor::Actor(const int* entitySprites) : entitySprites(entitySprites)
 {
     ID = entitySprites[0];
-    x = 920;
+    x = 976;
     y = 240;
     myState = idle;
     spriteCounter = 0;
@@ -36,8 +36,9 @@ int Actor::getID()
 void Actor::manageAnimation()
 {
     spriteCounter++;
-    if(spriteCounter % 20)
+    if(spriteCounter % 20 == 0)
     {
+        spriteCounter = 0;
         switch(myState)
         {
             case idle:
