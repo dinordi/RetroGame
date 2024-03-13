@@ -11,12 +11,12 @@ typedef enum {
     dir
 } types;
 
-typedef enum {
-    north,
-    south,
-    east,
-    west
-} direction;
+// typedef enum {
+//     north,
+//     south,
+//     east,
+//     west
+// } direction;
 
 
 
@@ -35,8 +35,6 @@ public:
     int get(types type);
     void attack();
     void jump();
-    void setDir(direction d);
-    direction getDir();
     void move (int x, int y);
     void tick();
     void manageAnimation();
@@ -50,7 +48,7 @@ protected:
     int ySpeed;
     int xSpeed;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
-    direction myDirection;  //Facing direction
+    bool isFacingRight;
     bool isGrounded;
     const int* entitySprites; //Sprite ID
     state myState;

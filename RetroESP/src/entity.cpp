@@ -1,4 +1,7 @@
 #include "entity.h"
+
+#include <zephyr/sys/printk.h>
+
 const float dt = 1.0f / 60;
 const float gravity = 9.8f;
 
@@ -11,21 +14,12 @@ Entity::Entity(const int* entitySprites) : Actor(entitySprites[0])
     def.maxAttack = 10;
     def.maxDefense = 5;
     def.maxSpeed = 5;
-    myDirection = east;
     isGrounded = true;
     myState = idle;
     spriteCounter = 0;
+    this->entitySprites = entitySprites;
 }
 
-void Entity::setDir(direction d)
-{
-    myDirection = d;
-}
-
-direction Entity::getDir()
-{
-    return myDirection;
-}
 
 void Entity::move(int x, int y)
 {
@@ -79,6 +73,8 @@ void Entity::manageAnimation()
                 }
                 break;
             case walking:
+            if(isFacingRight)
+            {
                 if(ID == entitySprites[3])
                 {
                     ID = entitySprites[2];
@@ -87,6 +83,19 @@ void Entity::manageAnimation()
                 {
                     ID = entitySprites[3];
                 }
+            }
+            else
+            {
+                if(ID == entitySprites[4])
+                {
+                    ID = entitySprites[4];
+                }
+                else
+                {
+                    ID = entitySprites[4];
+                }
+            }
+                
                 break;
         }
     }

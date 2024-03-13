@@ -17,11 +17,17 @@ void Player::handleInput(buttonStatuses buttonStatus) {
     }
     if (buttonStatus.left) {
         xSpeed = 2;
+        myState = walking;
+        isFacingRight = false;
     }
     if (buttonStatus.right) {
         xSpeed = -2;
+        myState = walking;
+        isFacingRight = true;
     }
     if(!buttonStatus.left && !buttonStatus.right) {
         xSpeed = 0;
+        myState = idle;
+        
     }
 }

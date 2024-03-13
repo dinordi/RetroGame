@@ -64,7 +64,7 @@ void game::sendToDisplay()
         spriteData[spriteDataCount++] = htobe16(y);
         // printk("Added player\n");
     }
-    // drawLevel();
+    drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
@@ -100,11 +100,12 @@ void game::drawLevel()
     for(auto platform : platforms)
     {
         int x = platform->getX();
+        int delta = x - middleX;
         if(x > leftBorder && x < rightBorder)
         {
-            spriteData[count++] = htobe16(platform->getID());
-            spriteData[count++] = htobe16(x);
-            spriteData[count++] = htobe16(platform->getY());
+            spriteData[spriteDataCount++] = htobe16(platform->getID());
+            spriteData[spriteDataCount++] = htobe16(320 + delta);
+            spriteData[spriteDataCount++] = htobe16(platform->getY());
         }
     }
 
