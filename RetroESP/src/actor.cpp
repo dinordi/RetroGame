@@ -4,7 +4,7 @@
 Actor::Actor(int* entitySprites) : entitySprites(entitySprites)
 {
     ID = entitySprites[0];
-    x = 320;
+    x = 920;
     y = 240;
     myState = idle;
     spriteCounter = 0;

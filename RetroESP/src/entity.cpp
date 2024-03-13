@@ -1,4 +1,6 @@
 #include "entity.h"
+const float dt = 1.0f / 60;
+const float gravity = 9.8f;
 
 Entity::Entity(int* entitySprites) : Actor(entitySprites)
 {
@@ -11,6 +13,7 @@ Entity::Entity(int* entitySprites) : Actor(entitySprites)
     def.maxDefense = 5;
     def.maxSpeed = 5;
     myDirection = east;
+    isGrounded = true;
 }
 
 void Entity::setDir(direction d)
@@ -28,4 +31,10 @@ void Entity::move(int x, int y)
     m(x, y);
 }
 
-
+void Entity::tick()
+{
+    ySpeed += gravity * dt;
+    int y += ySpeed * dt;
+    int x += xSpeed * dt;
+    move(x, y);
+}

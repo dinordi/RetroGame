@@ -2,6 +2,7 @@
 
 #include "actor.h"
 
+
 typedef enum {
     health,
     attack,
@@ -36,12 +37,16 @@ public:
     void setDir(direction d);
     direction getDir();
     void move (int x, int y);
+    void tick();
 
-private:
+
+protected:
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
-    int speed;
+    int ySpeed;
+    int xSpeed;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
     direction myDirection;  //Facing direction
+    bool isGrounded;
 };

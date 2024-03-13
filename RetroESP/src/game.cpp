@@ -1,10 +1,13 @@
 #include "game.h"
+#include "level.h"
+
 
 
 game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
+    player = new Player(playerSprites);
     readInput();
 }
 
@@ -21,18 +24,7 @@ void game::update()
 {
     //Check for input
     readInput();
-
-
-    //Update game logic
-    Entity* entity = entities[0];
-    if(entity->getX() < 351 && buttonStatus.right == true)
-    {
-        entity->move(entity->getX() + 1, 240);
-    }
-    else if(entity->getX() > 0 && buttonStatus.left == true)
-    {
-        entity->move(entity->getX() - 1, 240);
-    }
+    player.handleInput(buttonStatus);
 
 }
 
@@ -47,13 +39,22 @@ void game::sendToDisplay()
 
     for (auto entity : entities)
     {
-        int x = entity->getX();
+        int x;
+        if(entities[0] == entity)
+        {
+            x = 320;
+        }
+        else
+        {
+            x = entity->getX();
+        }
         int y = entity->getY();
         int ID = entity->getID();
         spriteData[spriteDataCount++] = htobe16(ID);
         spriteData[spriteDataCount++] = htobe16(x);
         spriteData[spriteDataCount++] = htobe16(y);
     }
+    drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
@@ -73,4 +74,37 @@ void game::readInput()
     buttonStatus.right = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
+}
+
+void game::drawLevel()
+{
+    int middleX = entities[0]->getX();
+    int leftBorder = middleX - 320;
+    int rightBorder = middleX + 319;
+    int tileSize = 31;
+    int leftTileIndex = leftBorder / tileSize;
+    int rightTileIndex = rightBorder / tileSize;
+    int y = 0;
+    int count = 0;
+    printk("Checking tiles from %d to %d\n", leftTileIndex, rightTileIndex);
+    for(int i = leftTileIndex; i < rightTileIndex; i++)
+    {
+        for(int j = 0; j < 16; j++)
+        {
+            if(level[j][i] != 0)
+            {
+                if(count < 28)
+                {
+                    int tileX = i * tileSize;
+                    int tileY = j * tileSize;
+                    int tileID = level[j][i] + 99;
+                    spriteData[spriteDataCount++] = htobe16(tileID);
+                    spriteData[spriteDataCount++] = htobe16(tileX);
+                    spriteData[spriteDataCount++] = htobe16(tileY);
+                    printk("Added values: ID:%d, X:%d, Y:%d\n,", tileID, tileX, tileY);
+                    count++;
+                }
+            }
+        }
+    }
 }
