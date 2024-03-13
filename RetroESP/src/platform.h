@@ -5,6 +5,7 @@
 class Platform : public Actor
 {
 public:
-    Platform(int ID) override;
-    getID() override;
-}
+    Platform(int ID, int x, int y);
+    virtual ~Platform() = default;
+    int getID() override;
+};

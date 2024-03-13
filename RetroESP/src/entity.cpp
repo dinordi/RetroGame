@@ -2,7 +2,7 @@
 const float dt = 1.0f / 60;
 const float gravity = 9.8f;
 
-Entity::Entity(const int* entitySprites) : Actor(entitySprites)
+Entity::Entity(const int* entitySprites) : Actor(entitySprites[0])
 {
     hp = 100;
     atk = 10;
@@ -13,6 +13,8 @@ Entity::Entity(const int* entitySprites) : Actor(entitySprites)
     def.maxSpeed = 5;
     myDirection = east;
     isGrounded = true;
+    myState = idle;
+    spriteCounter = 0;
 }
 
 void Entity::setDir(direction d)
@@ -50,4 +52,42 @@ void Entity::tick()
         x = 1600;
     }
     // move(x, y);
+}
+
+int Entity::getID()
+{
+    manageAnimation();
+    return ID;
+}
+
+void Entity::manageAnimation()
+{
+    spriteCounter++;
+    if(spriteCounter % 20 == 0)
+    {
+        spriteCounter = 0;
+        switch(myState)
+        {
+            case idle:
+                if(ID == entitySprites[0])
+                {
+                    ID = entitySprites[1];
+                }
+                else
+                {
+                    ID = entitySprites[0];
+                }
+                break;
+            case walking:
+                if(ID == entitySprites[3])
+                {
+                    ID = entitySprites[2];
+                }
+                else
+                {
+                    ID = entitySprites[3];
+                }
+                break;
+        }
+    }
 }

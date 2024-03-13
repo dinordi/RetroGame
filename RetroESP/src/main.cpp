@@ -46,11 +46,12 @@ int main(void)
 	int lastState = 1;
 
 
-	for(int i = 0; i < 29; i++)
-	{
-		game.addEntity(enemy1Sprites);
-	}
 
+	// for(int i = 0; i < 99; i++)
+	// {
+	// 	game.addEntity(enemy1Sprites);
+	// }
+	printk("Starting game loop\n");
 	while (1) {
        /* Read the state of the GPIO pin */
         int pin_value = gpio_pin_get(input, GPIO_PIN);

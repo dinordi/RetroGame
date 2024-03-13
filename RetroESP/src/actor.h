@@ -9,18 +9,16 @@ typedef enum {
 
 class Actor {
 public:
-    virtual Actor(const int* entitySprites);
+    Actor(int ID);
     void m(int x, int y);
     int getX();
     int getY();
     virtual int getID();
-    void manageAnimation();
+    
 
 protected:
     int x;
     int y;
     int ID;
-    const int* entitySprites; //Sprite ID
-    state myState;
-    int spriteCounter;
+
 };

@@ -17,14 +17,14 @@ class game
 {
 public:
     game(FPGA* fpga, ButtonHandler* button);
-    ~game();
+    virtual ~game();
 
     void update();
     void sendToDisplay();
     void addEntity(const int* entitySprites);
     void readInput();
     void drawLevel();
-    void loadPlatforms(int* level);
+    void loadPlatforms(const int level[16][63]);
 
 private:
     std::vector<Entity*> entities;

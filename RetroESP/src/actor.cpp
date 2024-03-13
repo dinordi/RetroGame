@@ -1,13 +1,11 @@
 #include "actor.h"
 
 
-Actor::Actor(const int* entitySprites) : entitySprites(entitySprites)
+Actor::Actor(int ID) : ID(ID)
 {
-    ID = entitySprites[0];
     x = 976;
     y = 240;
-    myState = idle;
-    spriteCounter = 0;
+
 }
 
 int Actor::getX()
@@ -29,38 +27,6 @@ void Actor::m(int x, int y)
 
 int Actor::getID()
 {
-    manageAnimation();
     return ID;
 }
 
-void Actor::manageAnimation()
-{
-    spriteCounter++;
-    if(spriteCounter % 20 == 0)
-    {
-        spriteCounter = 0;
-        switch(myState)
-        {
-            case idle:
-                if(ID == entitySprites[0])
-                {
-                    ID = entitySprites[1];
-                }
-                else
-                {
-                    ID = entitySprites[0];
-                }
-                break;
-            case walking:
-                if(ID == entitySprites[3])
-                {
-                    ID = entitySprites[2];
-                }
-                else
-                {
-                    ID = entitySprites[3];
-                }
-                break;
-        }
-    }
-}

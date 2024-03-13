@@ -9,7 +9,7 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     spriteDataCount = 0;
     player = new Player(player1Sprites);
     entities.push_back(player);
-    loadPlatforms(int* level);
+    loadPlatforms(level);
     readInput();
 }
 
@@ -20,6 +20,11 @@ game::~game()
         delete entity;
     }
     entities.clear();
+    for (auto platform : platforms)
+    {
+        delete platform;
+    }
+    platforms.clear();
 }
 
 void game::update()
@@ -35,10 +40,10 @@ void game::sendToDisplay()
 {
     //Send game state to display
     // (ID, x, y)
-    for(int i = 1; i < entities.size();i++)
-    {
-        entities[i]->move((i*15), (i*15));
-    }
+    // for(int i = 1; i < entities.size();i++)
+    // {
+    //     entities[i]->move((i*15), (i*15));
+    // }
 
     for (auto entity : entities)
     {
@@ -46,7 +51,7 @@ void game::sendToDisplay()
         if(player == entity)
         {
             x = 320;
-            printk("ID: %d\n", entity->getID());
+            // printk("ID: %d\n", entity->getID());
         }
         else
         {
@@ -57,6 +62,7 @@ void game::sendToDisplay()
         spriteData[spriteDataCount++] = htobe16(ID);
         spriteData[spriteDataCount++] = htobe16(x);
         spriteData[spriteDataCount++] = htobe16(y);
+        // printk("Added player\n");
     }
     // drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
@@ -104,7 +110,7 @@ void game::drawLevel()
 
 }
 
-void game::loadPlatforms(int* level)
+void game::loadPlatforms(const int level[16][63])
 {
     for(int i = 0; i < 16; i++)
     {
