@@ -2,6 +2,7 @@
 
 #include "actor.h"
 
+
 typedef enum {
     health,
     attack,
@@ -10,12 +11,14 @@ typedef enum {
     dir
 } types;
 
-typedef enum {
-    north,
-    south,
-    east,
-    west
-} direction;
+// typedef enum {
+//     north,
+//     south,
+//     east,
+//     west
+// } direction;
+
+
 
 typedef struct {
     int maxHealth;
@@ -26,19 +29,28 @@ typedef struct {
 
 class Entity : public Actor{
 public:
-    Entity(int ID);
+    Entity(const int* entitySprites);
+    virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
     void attack();
     void jump();
-    void setDir(direction d);
-    direction getDir();
+    void move (int x, int y);
+    void tick();
+    void manageAnimation();
+    int getID() override;
 
-private:
+
+protected:
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
-    int speed;
+    int ySpeed;
+    int xSpeed;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
-    direction myDirection;  //Facing direction
+    bool isFacingRight;
+    bool isGrounded;
+    const int* entitySprites; //Sprite ID
+    state myState;
+    int spriteCounter;
 };

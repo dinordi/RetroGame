@@ -6,33 +6,33 @@
 #include "fpga.h"
 #include "button.h"
 #include "endian.h"
+#include "player.h"
 
-typedef struct {
-    bool up;
-    bool down;
-    bool left;
-    bool right;
-    bool melee;
-    bool atk;
-} buttonStatuses;
+#include "sprites.h"
+#include "platform.h"
+
 
 
 class game
 {
 public:
     game(FPGA* fpga, ButtonHandler* button);
-    ~game();
+    virtual ~game();
 
     void update();
     void sendToDisplay();
-    void addEntity(int ID);
+    void addEntity(const int* entitySprites);
     void readInput();
+    void drawLevel();
+    void loadPlatforms(const int level[16][63]);
 
 private:
     std::vector<Entity*> entities;
+    std::vector<Platform*> platforms;
     uint16_t* spriteData;
     int spriteDataCount;
     FPGA* fpga;
     ButtonHandler* button;
     buttonStatuses buttonStatus;
+    Player* player;
 };

@@ -1,15 +1,24 @@
 #pragma once
 
+typedef enum {
+    idle,
+    walking,
+    jumping,
+    attacking
+} state;
 
 class Actor {
 public:
     Actor(int ID);
-    void move(int x, int y);
+    void m(int x, int y);
     int getX();
     int getY();
-    int getID();
-private:
+    virtual int getID();
+    
+
+protected:
     int x;
     int y;
-    int ID; //Sprite ID
+    int ID;
+
 };

@@ -1,10 +1,15 @@
 #include "game.h"
+#include "level.h"
+
 
 
 game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
+    player = new Player(player1Sprites);
+    entities.push_back(player);
+    loadPlatforms(level);
     readInput();
 }
 
@@ -15,51 +20,58 @@ game::~game()
         delete entity;
     }
     entities.clear();
+    for (auto platform : platforms)
+    {
+        delete platform;
+    }
+    platforms.clear();
 }
 
 void game::update()
 {
     //Check for input
     readInput();
+    player->handleInput(buttonStatus);
 
-
-    //Update game logic
-    Entity* entity = entities[0];
-    if(entity->getX() < 351 && buttonStatus.right == true)
-    {
-        entity->move(entity->getX() + 1, 240);
-    }
-    else if(entity->getX() > 0 && buttonStatus.left == true)
-    {
-        entity->move(entity->getX() - 1, 240);
-    }
-
+    player->tick();
 }
 
 void game::sendToDisplay()
 {
     //Send game state to display
     // (ID, x, y)
+    // for(int i = 1; i < entities.size();i++)
+    // {
+    //     entities[i]->move((i*15), (i*15));
+    // }
 
     for (auto entity : entities)
     {
-        int x = entity->getX();
+        int x;
+        if(player == entity)
+        {
+            x = 320;
+            // printk("ID: %d\n", entity->getID());
+        }
+        else
+        {
+            x = entity->getX();
+        }
         int y = entity->getY();
         int ID = entity->getID();
-        printk("Sending to display: ID:%d, X:%d, Y:%d\n", ID, x, y);
         spriteData[spriteDataCount++] = htobe16(ID);
         spriteData[spriteDataCount++] = htobe16(x);
         spriteData[spriteDataCount++] = htobe16(y);
+        // printk("Added player\n");
     }
+    drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
-    printk("Wait for display to update\n");
-
 }
 
-void game::addEntity(int ID)
+void game::addEntity(const int* playerSprites)
 {
-    Entity* entity = new Entity(ID);
+    Entity* entity = new Entity(playerSprites);
     printk("id: %d\n", entity->getID());
     entities.push_back(entity);
 }
@@ -72,12 +84,47 @@ void game::readInput()
     buttonStatus.right = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
+    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
+}
 
-    printk("Button1 status: %d\n", buttonStatus.up);
-    printk("Button2 status: %d\n", buttonStatus.down);
-    printk("Button3 status: %d\n", buttonStatus.left);
-    printk("Button4 status: %d\n", buttonStatus.right);
-    printk("Button5 status: %d\n", buttonStatus.melee);
-    printk("Button6 status: %d\n", buttonStatus.atk);
+void game::drawLevel()
+{
+    int middleX = player->getX();
+    int leftBorder = middleX - 320;
+    int rightBorder = middleX + 320;
+    int tileSize = 31;
+    int leftTileIndex = leftBorder / tileSize;
+    int rightTileIndex = rightBorder / tileSize;
+    int y = 0;
+    int count = 0;
+    for(auto platform : platforms)
+    {
+        int x = platform->getX();
+        int delta = x - middleX;
+        if(x > leftBorder && x < rightBorder)
+        {
+            spriteData[spriteDataCount++] = htobe16(platform->getID());
+            spriteData[spriteDataCount++] = htobe16(320 + delta);
+            spriteData[spriteDataCount++] = htobe16(platform->getY());
+        }
+    }
 
+}
+
+void game::loadPlatforms(const int level[16][63])
+{
+    for(int i = 0; i < 16; i++)
+    {
+        for(int j = 0; j < 63; j++)
+        {
+            if(level[i][j] != 0)
+            {
+                int tileX = j * 31;
+                int tileY = i * 31;
+                int tileID = level[i][j] + 99;
+                Platform* platform = new Platform(tileID, tileX, tileY);
+                platforms.push_back(platform);
+            }
+        }
+    }
 }

@@ -45,19 +45,24 @@ int main(void)
 	
 	int lastState = 1;
 
-    game.addEntity(0);
-	// game.addEntity(45);
+
+
+	// for(int i = 0; i < 99; i++)
+	// {
+	// 	game.addEntity(enemy1Sprites);
+	// }
+	printk("Starting game loop\n");
 	while (1) {
        /* Read the state of the GPIO pin */
         int pin_value = gpio_pin_get(input, GPIO_PIN);
-		if(pin_value == 1 && lastState == 0)
+		// printk("Pin value: %d\n", pin_value);
+		if(pin_value == 0 && lastState == 1)
 		{
-        
         	game.sendToDisplay();
 			game.update();
 		}
+
 		lastState = pin_value;
-		// game.update();
 	}
 	return 0;
 }
