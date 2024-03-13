@@ -8,6 +8,7 @@
 #include "endian.h"
 #include "player.h"
 
+#include "sprites.h"
 
 
 

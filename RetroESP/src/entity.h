@@ -29,7 +29,7 @@ typedef struct {
 
 class Entity : public Actor{
 public:
-    Entity(int* entitySprites);
+    Entity(const int* entitySprites);
     void set(types type, int value);
     int get(types type);
     void attack();

@@ -1,7 +1,7 @@
 #include "actor.h"
 
 
-Actor::Actor(int* entitySprites) : entitySprites(entitySprites)
+Actor::Actor(const int* entitySprites) : entitySprites(entitySprites)
 {
     ID = entitySprites[0];
     x = 920;

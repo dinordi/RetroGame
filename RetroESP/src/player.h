@@ -14,7 +14,7 @@ typedef struct {
 class Player : public Entity
 {
 public:
-    Player(int* playerSprites);
+    Player(const int* playerSprites);
     void handleInput(buttonStatuses buttonStatus);
 private:
     int printX;

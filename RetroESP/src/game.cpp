@@ -7,7 +7,8 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
-    player = new Player(playerSprites);
+    player = new Player(player1Sprites);
+    entities.push_back(player);
     readInput();
 }
 
@@ -24,8 +25,9 @@ void game::update()
 {
     //Check for input
     readInput();
-    player.handleInput(buttonStatus);
+    player->handleInput(buttonStatus);
 
+    player->tick();
 }
 
 void game::sendToDisplay()
@@ -74,6 +76,7 @@ void game::readInput()
     buttonStatus.right = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
+    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
 void game::drawLevel()
@@ -93,18 +96,24 @@ void game::drawLevel()
         {
             if(level[j][i] != 0)
             {
-                if(count < 28)
+                if(count < 99)
                 {
                     int tileX = i * tileSize;
-                    int tileY = j * tileSize;
+                    int tileY = j * tileSize-16;
                     int tileID = level[j][i] + 99;
                     spriteData[spriteDataCount++] = htobe16(tileID);
                     spriteData[spriteDataCount++] = htobe16(tileX);
                     spriteData[spriteDataCount++] = htobe16(tileY);
-                    printk("Added values: ID:%d, X:%d, Y:%d\n,", tileID, tileX, tileY);
+                    // printk("Added values: ID:%d, X:%d, Y:%d\n,", tileID, tileX, tileY);
+                    if(tileY == 449)
+                    {
+                        // printk("TileX: %d\n", i);
+                    }
                     count++;
                 }
             }
         }
     }
+    printk("Count: %d\n", count);
+
 }

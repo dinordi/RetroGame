@@ -1,12 +1,13 @@
 #include "player.h"
 
-Player::Player(int* playerSprites) : Entity(playerSprites)
+Player::Player(const int* playerSprites) : Entity(playerSprites)
 {
-    printX = 920;
+    printX = 320;
 }
 
-void handleInput(int buttonStatus) {
+void Player::handleInput(buttonStatuses buttonStatus) {
     if (buttonStatus.up && isGrounded) {
+        return;
         // Handle up
         ySpeed = -1;
         isGrounded = false;
@@ -15,10 +16,10 @@ void handleInput(int buttonStatus) {
 
     }
     if (buttonStatus.left) {
-        xSpeed = -1;
+        xSpeed = 2;
     }
     if (buttonStatus.right) {
-        xSpeed = 1;
+        xSpeed = -2;
     }
     if(!buttonStatus.left && !buttonStatus.right) {
         xSpeed = 0;
