@@ -1,0 +1,125 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Wed Mar 13 22:17:33 2024
+| Host         : Desktop-Joey running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Videokaart_full_control_sets_placed.rpt
+| Design       : Videokaart_full
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    47 |
+|    Minimum number of control sets                        |    47 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   203 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    47 |
+| >= 0 to < 4        |     5 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    34 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              75 |           38 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              24 |           12 |
+| Yes          | No                    | No                     |              35 |           23 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             903 |          488 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------+---------------------------------+---------------------------------+------------------+----------------+--------------+
+|    Clock Signal   |          Enable Signal          |         Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------+---------------------------------+---------------------------------+------------------+----------------+--------------+
+|  clk100_IBUF_BUFG |                                 | z8/frameDone0                   |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG | z2/addrout0__0_i_1_n_0          |                                 |                1 |              1 |         1.00 |
+|  z0/inst/clk_out1 |                                 | z8/ltOp                         |                1 |              1 |         1.00 |
+|  z0/inst/clk_out1 |                                 | z8/vsync_i_1_n_0                |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG | z2/PrintIndex[4]_i_1_n_0        |                                 |                2 |              2 |         1.00 |
+|  clk100_IBUF_BUFG | z8/DataCount1179_out            |                                 |                3 |              4 |         1.33 |
+|  clk100_IBUF_BUFG | z2/PrintIndex[4]_i_1_n_0        | z2/PrintIndex[2]_i_1_n_0        |                2 |              5 |         2.50 |
+|  clk100_IBUF_BUFG | z1/ID[8]_i_1_n_0                |                                 |                6 |              9 |         1.50 |
+|  clk100_IBUF_BUFG | z1/ypos[8]_i_1_n_0              |                                 |                5 |              9 |         1.80 |
+|  z0/inst/clk_out1 |                                 | z8/backaddr[8]_i_1_n_0          |                2 |              9 |         4.50 |
+|  clk100_IBUF_BUFG | z1/xpos[9]_i_1_n_0              |                                 |                6 |             10 |         1.67 |
+|  z0/inst/clk_out1 | z8/eqOp                         | z8/vcount[9]_i_1_n_0            |                3 |             10 |         3.33 |
+|  z0/inst/clk_out1 |                                 | z8/eqOp                         |                7 |             12 |         1.71 |
+|  z0/inst/clk_out1 |                                 |                                 |               10 |             16 |         1.60 |
+|  clk100_IBUF_BUFG | z1/data[15]_i_2_n_0             | z8/SS[0]                        |                4 |             16 |         4.00 |
+|  clk100_IBUF_BUFG | z2/DataArray[24][ID]            | z2/DataArray[24][ID][8]_i_1_n_0 |               18 |             28 |         1.56 |
+|  clk100_IBUF_BUFG | z2/DataArray[25][ID]            | z2/DataArray[25][ID][8]_i_1_n_0 |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[26][ID]            | z2/DataArray[26][ID][8]_i_1_n_0 |               16 |             28 |         1.75 |
+|  clk100_IBUF_BUFG | z2/DataArray[23][ID][8]_i_2_n_0 | z2/DataArray[23][ID][8]_i_1_n_0 |               16 |             28 |         1.75 |
+|  clk100_IBUF_BUFG | z2/DataArray[27][ID]            | z2/DataArray[27][ID][8]_i_1_n_0 |                9 |             28 |         3.11 |
+|  clk100_IBUF_BUFG | z2/DataArray[21][ID]            | z2/DataArray[21][ID][8]_i_1_n_0 |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[20][ID]            | z2/DataArray[20][ID][8]_i_1_n_0 |               20 |             28 |         1.40 |
+|  clk100_IBUF_BUFG | z2/DataArray[17][ID]            | z2/DataArray[17][ID][8]_i_1_n_0 |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[0][ID][8]_i_2_n_0  | z2/DataArray[0][ID][8]_i_1_n_0  |               14 |             28 |         2.00 |
+|  clk100_IBUF_BUFG | z2/DataArray[10][ID]            | z2/DataArray[10][ID][8]_i_1_n_0 |               17 |             28 |         1.65 |
+|  clk100_IBUF_BUFG | z2/DataArray[16][ID]            | z2/DataArray[16][ID][8]_i_1_n_0 |               17 |             28 |         1.65 |
+|  clk100_IBUF_BUFG | z2/DataArray[14][ID]            | z2/DataArray[14][ID][8]_i_1_n_0 |               18 |             28 |         1.56 |
+|  clk100_IBUF_BUFG | z2/DataArray[12][ID]            | z2/DataArray[12][ID][8]_i_1_n_0 |               18 |             28 |         1.56 |
+|  clk100_IBUF_BUFG | z2/DataArray[19][ID]            | z2/DataArray[19][ID][8]_i_1_n_0 |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[18][ID]            | z2/DataArray[18][ID][8]_i_1_n_0 |               16 |             28 |         1.75 |
+|  clk100_IBUF_BUFG | z2/DataArray[7][ID]             | z2/DataArray[7][ID][8]_i_1_n_0  |               14 |             28 |         2.00 |
+|  clk100_IBUF_BUFG | z2/DataArray[4][ID]             | z2/DataArray[4][ID][8]_i_1_n_0  |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[9][ID]             | z2/DataArray[9][ID][8]_i_1_n_0  |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[8][ID]             | z2/DataArray[8][ID][8]_i_1_n_0  |               17 |             28 |         1.65 |
+|  clk100_IBUF_BUFG | z2/DataArray[5][ID]             | z2/DataArray[5][ID][8]_i_1_n_0  |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[3][ID]             | z2/DataArray[3][ID][8]_i_1_n_0  |               18 |             28 |         1.56 |
+|  clk100_IBUF_BUFG | z2/DataArray[2][ID]             | z2/DataArray[2][ID][8]_i_1_n_0  |               16 |             28 |         1.75 |
+|  clk100_IBUF_BUFG | z2/DataArray[6][ID]             | z2/DataArray[6][ID][8]_i_1_n_0  |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[29][ID]            | z2/DataArray[29][ID][8]_i_1_n_0 |               17 |             28 |         1.65 |
+|  clk100_IBUF_BUFG | z2/DataArray[15][ID]            | z2/DataArray[15][ID][8]_i_1_n_0 |               14 |             28 |         2.00 |
+|  clk100_IBUF_BUFG | z2/DataArray[11][ID]            | z2/DataArray[11][ID][8]_i_1_n_0 |               19 |             28 |         1.47 |
+|  clk100_IBUF_BUFG | z2/DataArray[22][ID][8]_i_2_n_0 | z2/DataArray[22][ID][8]_i_1_n_0 |               13 |             28 |         2.15 |
+|  clk100_IBUF_BUFG | z2/DataArray[13][ID]            | z2/DataArray[13][ID][8]_i_1_n_0 |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataArray[1][ID]             | z2/DataArray[1][ID][8]_i_1_n_0  |               14 |             28 |         2.00 |
+|  clk100_IBUF_BUFG | z2/DataArray[28][ID]            | z2/DataArray[28][ID][8]_i_1_n_0 |               15 |             28 |         1.87 |
+|  clk100_IBUF_BUFG | z2/DataCount                    | z8/hcount_reg[7]_0              |                8 |             32 |         4.00 |
+|  clk100_IBUF_BUFG |                                 |                                 |               28 |             63 |         2.25 |
++-------------------+---------------------------------+---------------------------------+------------------+----------------+--------------+
+
+

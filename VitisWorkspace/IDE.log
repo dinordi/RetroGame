@@ -1978,3 +1978,5 @@ con
 12:10:28 WARN  : channel "tcfchan#2" closed
 12:10:28 WARN  : channel "tcfchan#2" closed
 12:10:28 INFO  : Disconnected from the channel tcfchan#20.
+14:50:32 DEBUG : Logs will be stored at 'C:/github/RetroGame/VitisWorkspace/IDE.log'.
+14:52:23 DEBUG : Logs will be stored at 'C:/github/RetroGame/VitisWorkspace/IDE.log'.
