@@ -9,6 +9,7 @@
 #include "player.h"
 
 #include "sprites.h"
+#include "platform.h"
 
 
 
@@ -23,9 +24,11 @@ public:
     void addEntity(const int* entitySprites);
     void readInput();
     void drawLevel();
+    void loadPlatforms(int* level);
 
 private:
     std::vector<Entity*> entities;
+    std::vector<Platform*> platforms;
     uint16_t* spriteData;
     int spriteDataCount;
     FPGA* fpga;

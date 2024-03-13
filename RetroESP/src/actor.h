@@ -9,11 +9,11 @@ typedef enum {
 
 class Actor {
 public:
-    Actor(const int* entitySprites);
+    virtual Actor(const int* entitySprites);
     void m(int x, int y);
     int getX();
     int getY();
-    int getID();
+    virtual int getID();
     void manageAnimation();
 
 protected:

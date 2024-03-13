@@ -9,6 +9,7 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     spriteDataCount = 0;
     player = new Player(player1Sprites);
     entities.push_back(player);
+    loadPlatforms(int* level);
     readInput();
 }
 
@@ -82,40 +83,41 @@ void game::readInput()
 
 void game::drawLevel()
 {
-    int middleX = entities[0]->getX();
+    int middleX = player->getX();
     int leftBorder = middleX - 320;
-    int rightBorder = middleX + 319;
+    int rightBorder = middleX + 320;
     int tileSize = 31;
     int leftTileIndex = leftBorder / tileSize;
     int rightTileIndex = rightBorder / tileSize;
     int y = 0;
     int count = 0;
-    // printk("Checking tiles from %d to %d\n", leftTileIndex, rightTileIndex);
-    for(int i = leftTileIndex; i < rightTileIndex; i++)
+    for(auto platform : platforms)
     {
-        for(int j = 0; j < 16; j++)
+        int x = platform->getX();
+        if(x > leftBorder && x < rightBorder)
         {
-            if(level[j][i] != 0)
+            spriteData[count++] = htobe16(platform->getID());
+            spriteData[count++] = htobe16(x);
+            spriteData[count++] = htobe16(platform->getY());
+        }
+    }
+
+}
+
+void game::loadPlatforms(int* level)
+{
+    for(int i = 0; i < 16; i++)
+    {
+        for(int j = 0; j < 63; j++)
+        {
+            if(level[i][j] != 0)
             {
-                if(count < 99)
-                {
-                    int tileX = i * tileSize;
-                    int tileY = j * tileSize-16;
-                    // int tileID = level[j][i] + 99;
-                    int tileID = 100;
-                    spriteData[spriteDataCount++] = htobe16(tileID);
-                    spriteData[spriteDataCount++] = htobe16(tileX);
-                    spriteData[spriteDataCount++] = htobe16(tileY);
-                    // printk("Added values: ID:%d, X:%d, Y:%d\n,", tileID, tileX, tileY);
-                    // if(tileY == 449)
-                    // {
-                        /// printk("TileX: %d\n", i);
-                    // }
-                    count++;
-                }
+                int tileX = j * 31;
+                int tileY = i * 31;
+                int tileID = level[i][j] + 99;
+                Platform* platform = new Platform(tileID, tileX, tileY);
+                platforms.push_back(platform);
             }
         }
     }
-    // printk("Count: %d\n", count);
-
 }
