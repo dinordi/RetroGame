@@ -7,7 +7,7 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
-    player = new Player(player1Sprites);
+    player = new Player(player1Sprites, this);
     entities.push_back(player);
     loadPlatforms(level);
     readInput();
@@ -51,6 +51,10 @@ void game::sendToDisplay()
         if(player == entity)
         {
             x = 320;
+            if(entity->getY() < 0)
+            {
+                continue;
+            }
             // printk("ID: %d\n", entity->getID());
         }
         else
@@ -71,17 +75,17 @@ void game::sendToDisplay()
 
 void game::addEntity(const int* playerSprites)
 {
-    Entity* entity = new Entity(playerSprites);
+    Entity* entity = new Entity(playerSprites, this);
     printk("id: %d\n", entity->getID());
     entities.push_back(entity);
 }
 
 void game::readInput()
 {
-    buttonStatus.up = button->pinGet(1);
-    buttonStatus.down = button->pinGet(2);
-    buttonStatus.left = button->pinGet(3);
-    buttonStatus.right = button->pinGet(4);
+    buttonStatus.left = button->pinGet(1);
+    buttonStatus.right = button->pinGet(2);
+    buttonStatus.up = button->pinGet(3);
+    buttonStatus.down = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
     // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
@@ -101,10 +105,15 @@ void game::drawLevel()
     {
         int x = platform->getX();
         int delta = x - middleX;
-        if(x > leftBorder && x < rightBorder)
+        int platformX = 320 + delta;
+        if(x > leftBorder-15 && x < rightBorder+15)
         {
+            if(platformX < 0)
+            {
+                platformX = 0;
+            }
             spriteData[spriteDataCount++] = htobe16(platform->getID());
-            spriteData[spriteDataCount++] = htobe16(320 + delta);
+            spriteData[spriteDataCount++] = htobe16(platformX);
             spriteData[spriteDataCount++] = htobe16(platform->getY());
         }
     }
@@ -127,4 +136,9 @@ void game::loadPlatforms(const int level[16][63])
             }
         }
     }
+}
+
+std::vector<Platform*>* game::getPlatforms()
+{
+    return &platforms;
 }

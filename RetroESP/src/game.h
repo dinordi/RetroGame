@@ -25,6 +25,7 @@ public:
     void readInput();
     void drawLevel();
     void loadPlatforms(const int level[16][63]);
+    std::vector<Platform*>* getPlatforms();
 
 private:
     std::vector<Entity*> entities;

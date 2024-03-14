@@ -1,12 +1,13 @@
 #include "entity.h"
-
+#include "game.h"
 #include <zephyr/sys/printk.h>
 
 const float dt = 1.0f / 60;
-const float gravity = 9.8f;
+const float gravity = 0.52f;
 
-Entity::Entity(const int* entitySprites) : Actor(entitySprites[0])
+Entity::Entity(const int* entitySprites, game* game) : Actor(entitySprites[0])
 {
+    this->mygame = game;
     hp = 100;
     atk = 10;
     defense = 5;
@@ -18,6 +19,7 @@ Entity::Entity(const int* entitySprites) : Actor(entitySprites[0])
     myState = idle;
     spriteCounter = 0;
     this->entitySprites = entitySprites;
+    ySpeed = 0;
 }
 
 
@@ -28,13 +30,34 @@ void Entity::move(int x, int y)
 
 void Entity::tick()
 {
-    ySpeed += gravity * dt;
-    int y1 = y;
-    y1 += ySpeed * dt;
-    if(y1 > 240)
+
+    int groundLevel = 458;  // Default ground level
+
+    auto platforms = *(mygame->getPlatforms());
+    for (Platform* platform : platforms) {
+        int platformx = platform->getX();
+        int platformy = platform->getY();
+        if (y <= platformy-22)
+        {
+            if (x >= platformx - 15 && x <= platformx  + 15) {  // Check if entity is above the platform
+                if (platformy-22  < groundLevel) {
+                    groundLevel = platformy-22;
+                    // printk("Ground level: %d\n", groundLevel);
+                }
+            }
+        }
+    }
+    printk("y: %d, ySpeed: %d, ground level: %d\n", static_cast<int>(y), static_cast<int>(ySpeed), groundLevel);
+
+    ySpeed += gravity;
+    y += ySpeed;
+    
+    // y = y1;
+    if(y > groundLevel)
     {
-        y1 = 240;
+        y = groundLevel;
         isGrounded = true;
+        ySpeed = 0;
     }
     x += xSpeed;
     if(x <= 320)

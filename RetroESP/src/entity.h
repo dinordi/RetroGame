@@ -1,7 +1,7 @@
 #pragma once
 
 #include "actor.h"
-
+#include "platform.h"
 
 typedef enum {
     health,
@@ -27,9 +27,11 @@ typedef struct {
     int maxSpeed;
 }defaultValues;
 
+class game;
+
 class Entity : public Actor{
 public:
-    Entity(const int* entitySprites);
+    Entity(const int* entitySprites, game* game);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
@@ -40,12 +42,13 @@ public:
     void manageAnimation();
     int getID() override;
 
-
+private:
+    game* mygame;
 protected:
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
-    int ySpeed;
+    float ySpeed;
     int xSpeed;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
     bool isFacingRight;
