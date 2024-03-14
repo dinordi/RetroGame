@@ -11,10 +11,12 @@ typedef struct {
     bool atk;
 } buttonStatuses;
 
+class game;
+
 class Player : public Entity
 {
 public:
-    Player(const int* playerSprites);
+    Player(const int* playerSprites, game* game);
     void handleInput(buttonStatuses buttonStatus);
 private:
     int printX;

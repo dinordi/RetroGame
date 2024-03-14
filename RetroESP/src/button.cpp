@@ -19,21 +19,21 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb,
 
 
 ButtonHandler::ButtonHandler() : 
-button(GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,{0})), 
-button2(GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,{0})), 
-button3(GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,{0})), 
-button4(GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,{0})), 
-button5(GPIO_DT_SPEC_GET_OR(SW4_NODE, gpios,{0})), 
-button6(GPIO_DT_SPEC_GET_OR(SW5_NODE, gpios,{0}))
+up(GPIO_DT_SPEC_GET_OR(L_NODE, gpios,{0})), 
+down(GPIO_DT_SPEC_GET_OR(R_NODE, gpios,{0})), 
+left(GPIO_DT_SPEC_GET_OR(U_NODE, gpios,{0})), 
+right(GPIO_DT_SPEC_GET_OR(D_NODE, gpios,{0})), 
+button1(GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,{0})), 
+button2(GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,{0}))
 {
 
     printk("Setting up buttons\n");
-    setupButton(button, &button_cb_data1, 1);
-    setupButton(button2, &button_cb_data2, 2);
-    setupButton(button3, &button_cb_data3, 3);
-    setupButton(button4, &button_cb_data4, 4);
-    setupButton(button5, &button_cb_data5, 5);
-    setupButton(button6, &button_cb_data6, 6);
+    setupButton(left, &button_cb_data1, 1);
+    setupButton(right, &button_cb_data2, 2);
+    setupButton(up, &button_cb_data3, 3);
+    setupButton(down, &button_cb_data4, 4);
+    setupButton(button1, &button_cb_data5, 5);
+    setupButton(button2, &button_cb_data6, 6);
 
 }
 
@@ -78,22 +78,22 @@ bool ButtonHandler::pinGet(int ID)
 	switch (ID)
 	{
 	case 1:
-		return !gpio_pin_get(button.port, button.pin);
+		return !gpio_pin_get(up.port, up.pin);
 		break;
 	case 2:
-		return !gpio_pin_get(button2.port, button2.pin);
+		return !gpio_pin_get(down.port, down.pin);
 		break;
 	case 3:
-		return !gpio_pin_get(button3.port, button3.pin);
+		return !gpio_pin_get(left.port, left.pin);
 		break;
 	case 4:
-		return !gpio_pin_get(button4.port, button4.pin);
+		return !gpio_pin_get(right.port, right.pin);
 		break;
 	case 5:
-		return !gpio_pin_get(button5.port, button5.pin);
+		return !gpio_pin_get(button1.port, button1.pin);
 		break;
 	case 6:
-		return !gpio_pin_get(button6.port, button6.pin);
+		return !gpio_pin_get(button2.port, button2.pin);
 		break;
 	default:
 		break;

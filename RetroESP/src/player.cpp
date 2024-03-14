@@ -1,15 +1,16 @@
 #include "player.h"
 
-Player::Player(const int* playerSprites) : Entity(playerSprites)
+#include <zephyr/sys/printk.h>
+
+Player::Player(const int* playerSprites, game* game) : Entity(playerSprites, game)
 {
     printX = 320;
 }
 
 void Player::handleInput(buttonStatuses buttonStatus) {
     if (buttonStatus.up && isGrounded) {
-        return;
         // Handle up
-        ySpeed = -1;
+        ySpeed = -12;
         isGrounded = false;
     }
     if (buttonStatus.down) {

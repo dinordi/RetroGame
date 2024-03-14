@@ -15,42 +15,42 @@
 	aliases {
 		// adc0 = &adc0;
 		// adc1 = &adc1;
-		pin = &button1;
-		pin2 = &button2;
-		pin3 = &button3;
-		pin4 = &button4;
-		pin5 = &button5;
-		pin6 = &button6;
+		joyleft = &button1;
+		joyright = &button2;
+		joyup = &button3;
+		joydown = &button4;
+		button1 = &button5;
+		button2 = &button6;
 
 	};
 	buttons {
-		button1: button_1 {
-			gpios = <&gpio0 21 0x11>; //  gpio0, so GPIO21
+		button1: button_1 { 
+			gpios = <&gpio0 19 0x11>; //  gpio0, so GPIO19
 			label = "Button 1";
 			zephyr,code = <0xb>;
 		};
 		button2: button_2 {
-			gpios = <&gpio1 13 0x11>;	//gpio1, so 13 + 32 = GPIO45
+			gpios = <&gpio0 20 0x11>;	
 			label = "Button 2";
 			zephyr,code = <0xb>;
 		};
 		button3: button_3 {
-			gpios = <&gpio1 15 0x11>;	//47
+			gpios = <&gpio0 21 0x11>;	
 			label = "Button 3";
 			zephyr,code = <0xb>;
 		};
 		button4: button_4 {
-			gpios = <&gpio1 16 0x11>;	//48
+			gpios = <&gpio1 15 0x11>;	//gpio1, so 15 + 32 = GPIO47
 			label = "Button 4";
 			zephyr,code = <0xb>;
 		};
 		button5: button_5 {
-			gpios = <&gpio1 3 0x11>;	//35
+			gpios = <&gpio0 0 0x11>;	//0
 			label = "Button 5";
 			zephyr,code = <0xb>;
 		};
 		button6: button_6 {
-			gpios = <&gpio1 4 0x11>;	//36
+			gpios = <&gpio1 3 0x11>;	//35
 			label = "Button 6";
 			zephyr,code = <0xb>;
 		};

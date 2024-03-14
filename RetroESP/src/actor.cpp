@@ -15,7 +15,7 @@ int Actor::getX()
 
 int Actor::getY()
 {
-    return y;
+    return static_cast<int>(y);
 }
 
 

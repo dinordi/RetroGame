@@ -18,7 +18,7 @@ public:
 
 protected:
     int x;
-    int y;
+    float y;
     int ID;
 
 };
