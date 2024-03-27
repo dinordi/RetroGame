@@ -24,33 +24,34 @@
 
 	};
 	buttons {
+		compatible = "gpio-keys";
 		button1: button_1 { 
-			gpios = <&gpio0 19 0x11>; //  gpio0, so GPIO19
+			gpios = <&gpio0 19 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; //  gpio0, so GPIO19
 			label = "Button 1";
 			zephyr,code = <0xb>;
 		};
 		button2: button_2 {
-			gpios = <&gpio0 20 0x11>;	
+			gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	
 			label = "Button 2";
 			zephyr,code = <0xb>;
 		};
 		button3: button_3 {
-			gpios = <&gpio0 21 0x11>;	
+			gpios = <&gpio0 21 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	
 			label = "Button 3";
 			zephyr,code = <0xb>;
 		};
 		button4: button_4 {
-			gpios = <&gpio1 15 0x11>;	//gpio1, so 15 + 32 = GPIO47
+		gpios = <&gpio1 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//gpio1, so 15 + 32 = GPIO47
 			label = "Button 4";
 			zephyr,code = <0xb>;
 		};
 		button5: button_5 {
-			gpios = <&gpio0 0 0x11>;	//0
+			gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//0
 			label = "Button 5";
 			zephyr,code = <0xb>;
 		};
 		button6: button_6 {
-			gpios = <&gpio1 3 0x11>;	//35
+			gpios = <&gpio1 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//35
 			label = "Button 6";
 			zephyr,code = <0xb>;
 		};

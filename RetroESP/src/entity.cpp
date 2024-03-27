@@ -47,7 +47,6 @@ void Entity::tick()
             }
         }
     }
-    printk("y: %d, ySpeed: %d, ground level: %d\n", static_cast<int>(y), static_cast<int>(ySpeed), groundLevel);
 
     ySpeed += gravity;
     y += ySpeed;
