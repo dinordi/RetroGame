@@ -34,6 +34,7 @@ public:
     void sendToDisplay();
     void addEntity(const int* entitySprites);
     void readInput();
+    void tick();
     void drawLevel();
     void loadPlatforms(const int level[16][63]);
     void drawMainMenu();

@@ -13,16 +13,20 @@ void Player::handleInput(buttonStatuses buttonStatus) {
         ySpeed = -12;
         isGrounded = false;
     }
+    if(buttonStatus.atk)
+    {
+
+    }
     if (buttonStatus.down) {
 
     }
     if (buttonStatus.left) {
-        xSpeed = -2;
+        xSpeed = -3;
         myState = walking;
         isFacingRight = false;
     }
     if (buttonStatus.right) {
-        xSpeed = 2;
+        xSpeed = 3;
         myState = walking;
         isFacingRight = true;
     }

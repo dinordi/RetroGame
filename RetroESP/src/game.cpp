@@ -1,8 +1,13 @@
 #include "game.h"
 #include "level.h"
 
+const float dt = 1.0f / 60;
+const float gravity = 0.52f;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4f38633 (moved tick function to game)
 Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
@@ -121,14 +126,8 @@ void Game::updateGame()
     //Check for input
     readInput();
     player->handleInput(buttonStatus);
-
-    player->tick();
-    
-    for( auto entity: entities)
-    {
-        entity->tick();
-    }
-    
+    tick();
+    frames++;
 }
 
 void Game::sendToDisplay()
@@ -327,4 +326,51 @@ void Game::loadPlatforms(const int level[16][63])
 std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
+}
+
+void Game::tick()
+{
+
+    int groundLevel = 458;  // Default ground level
+    int xSpeed = 0, x = 0;
+    float y  = 0;
+
+    for(Entity* entity : entities)
+    {
+        for (Platform* platform : platforms) {
+                int platformx = platform->getX();
+                int platformy = platform->getY();
+                if (entity->getY() <= platformy-22)
+                {
+                    int entityX = entity->getX();
+                    if (entityX >= platformx - 15 && entityX <= platformx  + 15) {  // Check if entity is above the platform
+                        if (platformy-22  < groundLevel) {
+                            groundLevel = platformy-22;
+                            // printk("Ground level: %d\n", groundLevel);
+                        }
+                    }
+                }
+            } 
+    entity->updateySpeed(gravity);
+    y = entity->y + entity->ySpeed;       //add moving speed and gravity to current y
+    // y = y1;
+    if(y > groundLevel) //if player is on platform
+    {
+        y = groundLevel;
+        entity->isGrounded = true;
+        entity->ySpeed = 0;
+    }
+     x = entity->xSpeed + entity->x; //add the moving speed to current x
+    if(x <= 320) // stop at border left
+    {
+        x = 320;
+    }
+    else if(x >= 1600) //stop at border right
+    {
+        x = 1600;
+    }
+    entity->move(x, y);
+    }
+
+    
 }

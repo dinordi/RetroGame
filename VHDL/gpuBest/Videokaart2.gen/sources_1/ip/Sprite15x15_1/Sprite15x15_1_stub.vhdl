@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Tue Mar 12 23:03:13 2024
--- Host        : Desktop-Joey running 64-bit major release  (build 9200)
+-- Date        : Fri Mar 29 11:38:08 2024
+-- Host        : Laptop-Ben-T running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_stub.vhdl
+--               c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_stub.vhdl
 -- Design      : Sprite15x15_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1
