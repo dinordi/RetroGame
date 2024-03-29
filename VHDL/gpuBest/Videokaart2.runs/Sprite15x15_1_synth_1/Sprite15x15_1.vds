@@ -3,16 +3,16 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Tue Mar 12 23:02:06 2024
-# Process ID: 43088
-# Current directory: C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1
+# Start of session at: Fri Mar 29 11:34:06 2024
+# Process ID: 26676
+# Current directory: C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1
 # Command line: vivado.exe -log Sprite15x15_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Sprite15x15_1.tcl
-# Log file: C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/Sprite15x15_1.vds
-# Journal file: C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1\vivado.jou
-# Running On: Desktop-Joey, OS: Windows, CPU Frequency: 3400 MHz, CPU Physical cores: 16, Host memory: 34281 MB
+# Log file: C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/Sprite15x15_1.vds
+# Journal file: C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1\vivado.jou
+# Running On: Laptop-Ben-T, OS: Windows, CPU Frequency: 1797 MHz, CPU Physical cores: 16, Host memory: 14887 MB
 #-----------------------------------------------------------
 source Sprite15x15_1.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 463.781 ; gain = 184.859
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 464.078 ; gain = 184.008
 INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: Sprite15x15_1
 Command: synth_design -top Sprite15x15_1 -part xc7a35tcpg236-1 -incremental_mode off -mode out_of_context
 Starting synth_design
@@ -21,11 +21,11 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 43576
+INFO: [Synth 8-7075] Helper process launched with PID 1704
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1308.715 ; gain = 440.160
+Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:23 . Memory (MB): peak = 1307.062 ; gain = 438.352
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'Sprite15x15_1' [c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/synth/Sprite15x15_1.vhd:69]
+INFO: [Synth 8-638] synthesizing module 'Sprite15x15_1' [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/synth/Sprite15x15_1.vhd:69]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
@@ -101,8 +101,8 @@ INFO: [Synth 8-638] synthesizing module 'Sprite15x15_1' [c:/progh/gpuBest/Videok
 	Parameter C_COUNT_36K_BRAM bound to: 6 - type: string 
 	Parameter C_COUNT_18K_BRAM bound to: 4 - type: string 
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     6.472867 mW - type: string 
-INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_7' declared at 'c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195208' bound to instance 'U0' of component 'blk_mem_gen_v8_4_7' [c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/synth/Sprite15x15_1.vhd:233]
-INFO: [Synth 8-256] done synthesizing module 'Sprite15x15_1' (0#1) [c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/synth/Sprite15x15_1.vhd:69]
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_7' declared at 'c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195208' bound to instance 'U0' of component 'blk_mem_gen_v8_4_7' [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/synth/Sprite15x15_1.vhd:233]
+INFO: [Synth 8-256] done synthesizing module 'Sprite15x15_1' (0#1) [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/synth/Sprite15x15_1.vhd:69]
 WARNING: [Synth 8-7129] Port CLKB in module blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTB_I[11] in module blk_mem_output_block is either unconnected or has no load
 WARNING: [Synth 8-7129] Port DOUTB_I[10] in module blk_mem_output_block is either unconnected or has no load
@@ -205,55 +205,55 @@ WARNING: [Synth 8-7129] Port SLEEP in module blk_mem_gen_prim_wrapper_init__para
 WARNING: [Synth 8-7129] Port INJECTSBITERR in module blk_mem_gen_prim_wrapper_init__parameterized7 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:17 ; elapsed = 00:00:38 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished RTL Elaboration : Time (s): cpu = 00:00:39 ; elapsed = 00:02:06 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:38 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:02:06 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:38 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:39 ; elapsed = 00:02:06 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1691.922 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.064 . Memory (MB): peak = 1691.203 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_ooc.xdc] for cell 'U0'
-Finished Parsing XDC File [c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_ooc.xdc] for cell 'U0'
-Parsing XDC File [C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/dont_touch.xdc]
+Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_ooc.xdc] for cell 'U0'
+Parsing XDC File [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1691.922 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1691.203 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1691.922 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.097 . Memory (MB): peak = 1691.203 ; gain = 0.000
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:44 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Constraint Validation : Time (s): cpu = 00:00:50 ; elapsed = 00:02:30 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:44 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:50 ; elapsed = 00:02:30 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/dont_touch.xdc, line 9).
+Applied set_property KEEP_HIERARCHY = SOFT for U0. (constraint file  C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:44 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:50 ; elapsed = 00:02:30 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:45 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:50 ; elapsed = 00:02:32 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -285,25 +285,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:46 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:53 ; elapsed = 00:02:38 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:50 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:01 ; elapsed = 00:02:53 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:50 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Timing Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:02:53 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:50 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Technology Mapping : Time (s): cpu = 00:01:01 ; elapsed = 00:02:53 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -321,37 +321,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished IO Insertion : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -393,18 +393,18 @@ Report Cell Usage:
 |15    |FDRE     |    14|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:07 ; elapsed = 00:03:07 . Memory (MB): peak = 1691.203 ; gain = 822.492
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 174 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:52 . Memory (MB): peak = 1691.922 ; gain = 823.367
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:54 . Memory (MB): peak = 1691.922 ; gain = 823.367
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:25 ; elapsed = 00:03:02 . Memory (MB): peak = 1691.203 ; gain = 822.492
+Synthesis Optimization Complete : Time (s): cpu = 00:01:07 ; elapsed = 00:03:09 . Memory (MB): peak = 1691.203 ; gain = 822.492
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1691.922 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1691.203 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 19 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1691.922 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1691.203 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -412,11 +412,11 @@ Synth Design complete | Checksum: caa7142b
 INFO: [Common 17-83] Releasing license: Synthesis
 22 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:58 . Memory (MB): peak = 1691.922 ; gain = 1214.539
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1691.922 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/Sprite15x15_1.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:14 ; elapsed = 00:03:37 . Memory (MB): peak = 1691.203 ; gain = 1213.375
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1691.203 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/Sprite15x15_1.dcp' has been generated.
 INFO: [Coretcl 2-1174] Renamed 25 cell refs.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1691.922 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/progh/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/Sprite15x15_1.dcp' has been generated.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1691.203 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/Sprite15x15_1_synth_1/Sprite15x15_1.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Sprite15x15_1_utilization_synth.rpt -pb Sprite15x15_1_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Mar 12 23:03:13 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 29 11:38:09 2024...

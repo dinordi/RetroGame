@@ -27,29 +27,34 @@ typedef struct {
     int maxSpeed;
 }defaultValues;
 
-class game;
+class Game;
 
 class Entity : public Actor{
 public:
-    Entity(const int* entitySprites, game* game);
+    Entity(const int* entitySprites, Game* game);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
+    int getxSpeed();
+    int getySpeed();
+    void updateySpeed(float speed);
+    void setySpeed(float speed);
+    bool getIsGrounded();
+    void setIsGrounded(bool ground);
     void attack();
     void jump();
-    void move (int x, int y);
-    void tick();
     void manageAnimation();
     int getID() override;
+    friend class Game;
 
 private:
-    game* mygame;
+    Game* mygame;
 protected:
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
     float ySpeed;
-    int xSpeed;
+    float xSpeed;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
     bool isFacingRight;
     bool isGrounded;

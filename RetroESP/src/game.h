@@ -13,16 +13,17 @@
 
 
 
-class game
+class Game
 {
 public:
-    game(FPGA* fpga, ButtonHandler* button);
-    virtual ~game();
+    Game(FPGA* fpga, ButtonHandler* button);
+    virtual ~Game();
 
     void update();
     void sendToDisplay();
     void addEntity(const int* entitySprites);
     void readInput();
+    void tick();
     void drawLevel();
     void loadPlatforms(const int level[16][63]);
     std::vector<Platform*>* getPlatforms();

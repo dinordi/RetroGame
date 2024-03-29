@@ -2,7 +2,7 @@
 
 #include <zephyr/sys/printk.h>
 
-Player::Player(const int* playerSprites, game* game) : Entity(playerSprites, game)
+Player::Player(const int* playerSprites, Game* game) : Entity(playerSprites, game)
 {
     printX = 320;
 }
@@ -13,16 +13,20 @@ void Player::handleInput(buttonStatuses buttonStatus) {
         ySpeed = -12;
         isGrounded = false;
     }
+    if(buttonStatus.atk)
+    {
+
+    }
     if (buttonStatus.down) {
 
     }
     if (buttonStatus.left) {
-        xSpeed = -2;
+        xSpeed = -3;
         myState = walking;
         isFacingRight = false;
     }
     if (buttonStatus.right) {
-        xSpeed = 2;
+        xSpeed = 3;
         myState = walking;
         isFacingRight = true;
     }

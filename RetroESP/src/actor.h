@@ -10,14 +10,15 @@ typedef enum {
 class Actor {
 public:
     Actor(int ID);
-    void m(int x, int y);
     int getX();
     int getY();
+    void move(float x, float y);
+    //void tick();
     virtual int getID();
     
 
 protected:
-    int x;
+    float x;
     float y;
     int ID;
 

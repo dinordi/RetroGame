@@ -14,9 +14,9 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source Videokaart_full.tcl -notrace
-create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 462.375 ; gain = 182.816
-Command: read_checkpoint -auto_incremental -incremental C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:16 . Memory (MB): peak = 463.527 ; gain = 184.590
+Command: read_checkpoint -auto_incremental -incremental C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top Videokaart_full -part xc7a35tcpg236-1
 Starting synth_design
@@ -27,100 +27,100 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 28756
+INFO: [Synth 8-7075] Helper process launched with PID 24628
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1312.094 ; gain = 439.539
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1311.934 ; gain = 440.055
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'Videokaart_full' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:42]
-INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff0' of component 'threeFlipFlop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:149]
-INFO: [Synth 8-638] synthesizing module 'threeFlipFlop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:40]
-INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF0' of component 'Dflipflop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:50]
-INFO: [Synth 8-638] synthesizing module 'Dflipflop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:11]
-INFO: [Synth 8-256] done synthesizing module 'Dflipflop' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:11]
-INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF1' of component 'Dflipflop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:51]
-INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF2' of component 'Dflipflop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:52]
-INFO: [Synth 8-256] done synthesizing module 'threeFlipFlop' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:40]
-INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff1' of component 'threeFlipFlop' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:150]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/clk_wiz_0_stub.v:6' bound to instance 'z0' of component 'clk_wiz_0' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:151]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-3491] module 'InterfaceController' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:34' bound to instance 'z1' of component 'InterfaceController' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:152]
-INFO: [Synth 8-638] synthesizing module 'InterfaceController' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:46]
-INFO: [Synth 8-256] done synthesizing module 'InterfaceController' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:46]
-INFO: [Synth 8-3491] module 'spriteController' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:29' bound to instance 'z2' of component 'spriteController' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:154]
-INFO: [Synth 8-638] synthesizing module 'spriteController' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:41]
-INFO: [Synth 8-226] default block is never used [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:80]
-WARNING: [Synth 8-614] signal 'hpos' is read in the process but is not in the sensitivity list [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:59]
-WARNING: [Synth 8-614] signal 'vpos' is read in the process but is not in the sensitivity list [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:59]
-INFO: [Synth 8-256] done synthesizing module 'spriteController' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:41]
-INFO: [Synth 8-3491] module 'Sprite15x15_1' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/Sprite15x15_1_stub.v:6' bound to instance 'z3' of component 'sprite15x15_1' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:156]
-INFO: [Synth 8-6157] synthesizing module 'Sprite15x15_1' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/Sprite15x15_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'Sprite15x15_1' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/Sprite15x15_1_stub.v:6]
-INFO: [Synth 8-3491] module 'sprite31x31_2' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/sprite31x31_2_stub.v:6' bound to instance 'z5' of component 'sprite31x31_2' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:157]
-INFO: [Synth 8-6157] synthesizing module 'sprite31x31_2' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/sprite31x31_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'sprite31x31_2' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/sprite31x31_2_stub.v:6]
-INFO: [Synth 8-3491] module 'sprite63x63' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/sprite63x63_stub.v:6' bound to instance 'z6' of component 'sprite63x63' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:158]
-INFO: [Synth 8-6157] synthesizing module 'sprite63x63' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/sprite63x63_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'sprite63x63' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/sprite63x63_stub.v:6]
-INFO: [Synth 8-3491] module 'VGA' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:20' bound to instance 'z8' of component 'VGA' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:160]
-INFO: [Synth 8-638] synthesizing module 'VGA' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:30]
-INFO: [Synth 8-3491] module 'background' declared at 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/background_stub.v:6' bound to instance 'z0' of component 'background' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:91]
-INFO: [Synth 8-6157] synthesizing module 'background' [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/background_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'background' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-28760-Desktop-Joey/realtime/background_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:30]
-INFO: [Synth 8-256] done synthesizing module 'Videokaart_full' (0#1) [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:42]
+INFO: [Synth 8-638] synthesizing module 'Videokaart_full' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:42]
+INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff0' of component 'threeFlipFlop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:149]
+INFO: [Synth 8-638] synthesizing module 'threeFlipFlop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:40]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF0' of component 'Dflipflop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Dflipflop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'Dflipflop' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:11]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF1' of component 'Dflipflop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:51]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF2' of component 'Dflipflop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'threeFlipFlop' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:40]
+INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff1' of component 'threeFlipFlop' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:150]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/clk_wiz_0_stub.v:6' bound to instance 'z0' of component 'clk_wiz_0' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:151]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-3491] module 'InterfaceController' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:34' bound to instance 'z1' of component 'InterfaceController' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:152]
+INFO: [Synth 8-638] synthesizing module 'InterfaceController' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'InterfaceController' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:46]
+INFO: [Synth 8-3491] module 'spriteController' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:29' bound to instance 'z2' of component 'spriteController' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:154]
+INFO: [Synth 8-638] synthesizing module 'spriteController' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:41]
+INFO: [Synth 8-226] default block is never used [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:80]
+WARNING: [Synth 8-614] signal 'hpos' is read in the process but is not in the sensitivity list [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:59]
+WARNING: [Synth 8-614] signal 'vpos' is read in the process but is not in the sensitivity list [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:59]
+INFO: [Synth 8-256] done synthesizing module 'spriteController' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/spriteController.vhd:41]
+INFO: [Synth 8-3491] module 'Sprite15x15_1' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/Sprite15x15_1_stub.v:6' bound to instance 'z3' of component 'sprite15x15_1' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:156]
+INFO: [Synth 8-6157] synthesizing module 'Sprite15x15_1' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/Sprite15x15_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'Sprite15x15_1' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/Sprite15x15_1_stub.v:6]
+INFO: [Synth 8-3491] module 'sprite31x31_2' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/sprite31x31_2_stub.v:6' bound to instance 'z5' of component 'sprite31x31_2' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:157]
+INFO: [Synth 8-6157] synthesizing module 'sprite31x31_2' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/sprite31x31_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sprite31x31_2' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/sprite31x31_2_stub.v:6]
+INFO: [Synth 8-3491] module 'sprite63x63' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/sprite63x63_stub.v:6' bound to instance 'z6' of component 'sprite63x63' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:158]
+INFO: [Synth 8-6157] synthesizing module 'sprite63x63' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/sprite63x63_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sprite63x63' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/sprite63x63_stub.v:6]
+INFO: [Synth 8-3491] module 'VGA' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:20' bound to instance 'z8' of component 'VGA' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:160]
+INFO: [Synth 8-638] synthesizing module 'VGA' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:30]
+INFO: [Synth 8-3491] module 'background' declared at 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/background_stub.v:6' bound to instance 'z0' of component 'background' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:91]
+INFO: [Synth 8-6157] synthesizing module 'background' [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/background_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'background' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/.Xil/Vivado-31304-Laptop-Ben-T/realtime/background_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'Videokaart_full' (0#1) [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:42]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1566.445 ; gain = 693.891
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1565.227 ; gain = 693.348
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1566.445 ; gain = 693.891
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 1565.227 ; gain = 693.348
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1566.445 ; gain = 693.891
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:27 . Memory (MB): peak = 1565.227 ; gain = 693.348
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.106 . Memory (MB): peak = 1566.445 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.373 . Memory (MB): peak = 1565.227 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'z0'
-Finished Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'z0'
-Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1/Sprite15x15_1_in_context.xdc] for cell 'z3'
-Finished Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1/Sprite15x15_1_in_context.xdc] for cell 'z3'
-Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63/sprite63x63_in_context.xdc] for cell 'z6'
-Finished Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63/sprite63x63_in_context.xdc] for cell 'z6'
-Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2/sprite31x31_2_in_context.xdc] for cell 'z5'
-Finished Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2/sprite31x31_2_in_context.xdc] for cell 'z5'
-Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background/background_in_context.xdc] for cell 'z8/z0'
-Finished Parsing XDC File [c:/github/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background/background_in_context.xdc] for cell 'z8/z0'
-Parsing XDC File [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
-Finished Parsing XDC File [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
+Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'z0'
+Finished Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'z0'
+Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1/Sprite15x15_1_in_context.xdc] for cell 'z3'
+Finished Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1/Sprite15x15_1_in_context.xdc] for cell 'z3'
+Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63/sprite63x63_in_context.xdc] for cell 'z6'
+Finished Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63/sprite63x63_in_context.xdc] for cell 'z6'
+Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2/sprite31x31_2_in_context.xdc] for cell 'z5'
+Finished Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2/sprite31x31_2_in_context.xdc] for cell 'z5'
+Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background/background_in_context.xdc] for cell 'z8/z0'
+Finished Parsing XDC File [c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background/background_in_context.xdc] for cell 'z8/z0'
+Parsing XDC File [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
+Finished Parsing XDC File [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Videokaart_full_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/dont_touch.xdc]
+Parsing XDC File [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1668.273 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1665.879 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 The system cannot find the path specified.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1668.273 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.087 . Memory (MB): peak = 1665.879 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Constraint Validation : Time (s): cpu = 00:00:26 ; elapsed = 00:00:52 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:26 ; elapsed = 00:00:52 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -131,7 +131,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for z6. (constraint file  auto genera
 Applied set_property KEEP_HIERARCHY = SOFT for z5. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for z8/z0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:52 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'counter_reg' in module 'InterfaceController'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'spriteController'
@@ -154,7 +154,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'counter_reg' using encodin
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'spriteController'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:30 ; elapsed = 00:01:02 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -209,7 +209,7 @@ DSP Report: operator addrout1 is absorbed into DSP addrout0.
 DSP Report: Generating DSP addrout0, operation Mode is: PCIN+(A:0x0):B+C.
 DSP Report: operator addrout0 is absorbed into DSP addrout0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:39 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:16 ; elapsed = 00:02:25 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
  Sort Area is spriteController__GB5 addrout0_2 : 0 0 : 1765 1865 : Used 1 time 0
  Sort Area is spriteController__GB5 addrout0_2 : 0 1 : 100 1865 : Used 1 time 0
@@ -235,19 +235,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:46 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:29 ; elapsed = 00:02:51 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:47 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Timing Optimization : Time (s): cpu = 00:01:31 ; elapsed = 00:02:56 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:00:50 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Technology Mapping : Time (s): cpu = 00:01:37 ; elapsed = 00:03:09 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -265,37 +265,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished IO Insertion : Time (s): cpu = 00:01:45 ; elapsed = 00:03:26 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:45 ; elapsed = 00:03:26 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:47 ; elapsed = 00:03:28 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:47 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:47 ; elapsed = 00:03:29 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:47 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:47 ; elapsed = 00:03:29 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:47 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:47 ; elapsed = 00:03:29 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -348,19 +348,19 @@ Report Cell Usage:
 |22    |OBUF        |    15|
 +------+------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:55 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:47 ; elapsed = 00:03:29 . Memory (MB): peak = 1665.879 ; gain = 794.000
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:39 ; elapsed = 00:00:53 . Memory (MB): peak = 1668.273 ; gain = 693.891
-Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:56 . Memory (MB): peak = 1668.273 ; gain = 795.719
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:30 ; elapsed = 00:03:21 . Memory (MB): peak = 1665.879 ; gain = 693.348
+Synthesis Optimization Complete : Time (s): cpu = 00:01:47 ; elapsed = 00:03:30 . Memory (MB): peak = 1665.879 ; gain = 794.000
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.173 . Memory (MB): peak = 1668.273 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.607 . Memory (MB): peak = 1665.879 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 2889 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'Videokaart_full' is not ideal for floorplanning, since the cellview 'spriteController' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1668.273 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1665.879 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -369,8 +369,8 @@ Synth Design complete | Checksum: cc520a66
 INFO: [Common 17-83] Releasing license: Synthesis
 61 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:01:02 . Memory (MB): peak = 1668.273 ; gain = 1190.676
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1668.273 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/Videokaart_full.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:56 ; elapsed = 00:03:52 . Memory (MB): peak = 1665.879 ; gain = 1187.727
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.143 . Memory (MB): peak = 1665.879 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/Videokaart_full.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Videokaart_full_utilization_synth.rpt -pb Videokaart_full_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Mar 14 00:14:02 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 29 11:42:35 2024...
