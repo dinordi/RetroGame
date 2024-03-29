@@ -36,4 +36,5 @@ private:
     ButtonHandler* button;
     buttonStatuses buttonStatus;
     Player* player;
+    uint64_t frames;
 };

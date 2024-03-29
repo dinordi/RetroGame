@@ -78,22 +78,22 @@ bool ButtonHandler::pinGet(int ID)
 	switch (ID)
 	{
 	case 1:
-		return !gpio_pin_get(up.port, up.pin);
+		return gpio_pin_get(up.port, up.pin);
 		break;
 	case 2:
-		return !gpio_pin_get(down.port, down.pin);
+		return gpio_pin_get(down.port, down.pin);
 		break;
 	case 3:
-		return !gpio_pin_get(left.port, left.pin);
+		return gpio_pin_get(left.port, left.pin);
 		break;
 	case 4:
-		return !gpio_pin_get(right.port, right.pin);
+		return gpio_pin_get(right.port, right.pin);
 		break;
 	case 5:
-		return !gpio_pin_get(button1.port, button1.pin);
+		return gpio_pin_get(button1.port, button1.pin);
 		break;
 	case 6:
-		return !gpio_pin_get(button2.port, button2.pin);
+		return gpio_pin_get(button2.port, button2.pin);
 		break;
 	default:
 		break;

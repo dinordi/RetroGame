@@ -9,6 +9,7 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     spriteDataCount = 0;
     player = new Player(player1Sprites, this);
     entities.push_back(player);
+    frames = 0;
     loadPlatforms(level);
     readInput();
 }
@@ -34,6 +35,7 @@ void game::update()
     player->handleInput(buttonStatus);
 
     player->tick();
+    frames++;
 }
 
 void game::sendToDisplay()
