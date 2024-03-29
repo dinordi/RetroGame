@@ -60,3 +60,36 @@
 
 };
 
+
+
+		&uart1 {
+
+			status = "okay";
+		    current-speed = < 9600 >;
+			pinctrl-0 = < &uart1_default >;
+			pinctrl-names = "default";
+			
+		};
+
+		&uart2 {
+
+			status = "okay";
+		    current-speed = < 9600 >;
+			pinctrl-0 = < &uart2_default >;
+			pinctrl-names = "default";
+		};
+		
+/ {
+	
+    check_state {
+   state_0: state0 {
+			gpios = <&gpio0 4 0x11>;	
+			label = "state 0";
+		};
+	state_1: state1 {
+			gpios = <&gpio0 5 0x11>;	
+			label = "state 1";
+		};
+  
+    };
+};
