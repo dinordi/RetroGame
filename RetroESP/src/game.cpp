@@ -4,10 +4,6 @@
 const float dt = 1.0f / 60;
 const float gravity = 0.52f;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4f38633 (moved tick function to game)
 Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];

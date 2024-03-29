@@ -29,6 +29,7 @@ public:
     Game(FPGA* fpga, ButtonHandler* button);
     virtual ~Game();
 
+    void tick();
     void update();
     void updateGame();
     void sendToDisplay();
