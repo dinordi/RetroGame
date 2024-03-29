@@ -12,9 +12,9 @@ echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executi
 exit
 
 if [ -z "$PATH" ]; then
-  PATH=C:/Xilinx2/Vitis/2023.2/bin;C:/Xilinx2/Vivado/2023.2/ids_lite/ISE/bin/nt64;C:/Xilinx2/Vivado/2023.2/ids_lite/ISE/lib/nt64:C:/Xilinx2/Vivado/2023.2/bin
+  PATH=C:/Xilinx/Vitis/2023.2/bin;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2023.2/bin
 else
-  PATH=C:/Xilinx2/Vitis/2023.2/bin;C:/Xilinx2/Vivado/2023.2/ids_lite/ISE/bin/nt64;C:/Xilinx2/Vivado/2023.2/ids_lite/ISE/lib/nt64:C:/Xilinx2/Vivado/2023.2/bin:$PATH
+  PATH=C:/Xilinx/Vitis/2023.2/bin;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2023.2/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2023.2/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/progh/gpuBest/Videokaart2.runs/sprite31x31_2_synth_1'
+HD_PWD='C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/sprite31x31_2_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

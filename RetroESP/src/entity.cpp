@@ -2,10 +2,8 @@
 #include "game.h"
 #include <zephyr/sys/printk.h>
 
-const float dt = 1.0f / 60;
-const float gravity = 0.52f;
 
-Entity::Entity(const int* entitySprites, game* game) : Actor(entitySprites[0])
+Entity::Entity(const int* entitySprites, Game* game) : Actor(entitySprites[0])
 {
     this->mygame = game;
     hp = 100;
@@ -23,52 +21,49 @@ Entity::Entity(const int* entitySprites, game* game) : Actor(entitySprites[0])
 }
 
 
-void Entity::move(int x, int y)
-{
-    m(x, y);
-}
 
-void Entity::tick()
-{
 
-    int groundLevel = 458;  // Default ground level
+// void Entity::tick()
+// {
 
-    auto platforms = *(mygame->getPlatforms());
-    for (Platform* platform : platforms) {
-        int platformx = platform->getX();
-        int platformy = platform->getY();
-        if (y <= platformy-22)
-        {
-            if (x >= platformx - 15 && x <= platformx  + 15) {  // Check if entity is above the platform
-                if (platformy-22  < groundLevel) {
-                    groundLevel = platformy-22;
-                    // printk("Ground level: %d\n", groundLevel);
-                }
-            }
-        }
-    }
+//     int groundLevel = 458;  // Default ground level
 
-    ySpeed += gravity;
-    y += ySpeed;
+//     auto platforms = *(mygame->getPlatforms());
+//     for (Platform* platform : platforms) {
+//         int platformx = platform->getX();
+//         int platformy = platform->getY();
+//         if (y <= platformy-22)
+//         {
+//             if (x >= platformx - 15 && x <= platformx  + 15) {  // Check if entity is above the platform
+//                 if (platformy-22  < groundLevel) {
+//                     groundLevel = platformy-22;
+//                     // printk("Ground level: %d\n", groundLevel);
+//                 }
+//             }
+//         }
+//     }
+
+//     ySpeed += gravity;
+//     y += ySpeed;
     
-    // y = y1;
-    if(y > groundLevel)
-    {
-        y = groundLevel;
-        isGrounded = true;
-        ySpeed = 0;
-    }
-    x += xSpeed;
-    if(x <= 320)
-    {
-        x = 320;
-    }
-    else if(x >= 1600)
-    {
-        x = 1600;
-    }
-    // move(x, y);
-}
+//     // y = y1;
+//     if(y > groundLevel)
+//     {
+//         y = groundLevel;
+//         isGrounded = true;
+//         ySpeed = 0;
+//     }
+//     x += xSpeed;
+//     if(x <= 320)
+//     {
+//         x = 320;
+//     }
+//     else if(x >= 1600)
+//     {
+//         x = 1600;
+//     }
+//     // move(x, y);
+// }
 
 int Entity::getID()
 {
@@ -121,4 +116,29 @@ void Entity::manageAnimation()
                 break;
         }
     }
+}
+
+int Entity::getxSpeed()
+{
+    return static_cast<int>(xSpeed);
+}
+int Entity::getySpeed()
+{
+    return static_cast<int>(ySpeed);
+}
+
+bool Entity::getIsGrounded(){
+    return isGrounded;
+}
+
+void Entity::setIsGrounded(bool ground){
+    isGrounded = ground;
+}
+
+void Entity::updateySpeed(float speed){
+    ySpeed = ySpeed + speed;
+}
+
+void Entity::setySpeed(float speed){
+    ySpeed = speed;
 }

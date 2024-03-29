@@ -1,9 +1,10 @@
 #include "game.h"
 #include "level.h"
 
+const float dt = 1.0f / 60;
+const float gravity = 0.52f;
 
-
-game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
+Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
@@ -14,7 +15,7 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     readInput();
 }
 
-game::~game()
+Game::~Game()
 {
     for (auto entity : entities)
     {
@@ -28,17 +29,16 @@ game::~game()
     platforms.clear();
 }
 
-void game::update()
+void Game::update()
 {
     //Check for input
     readInput();
     player->handleInput(buttonStatus);
-
-    player->tick();
+    tick();
     frames++;
 }
 
-void game::sendToDisplay()
+void Game::sendToDisplay()
 {
     //Send game state to display
     // (ID, x, y)
@@ -75,14 +75,14 @@ void game::sendToDisplay()
     spriteDataCount = 0;
 }
 
-void game::addEntity(const int* playerSprites)
+void Game::addEntity(const int* playerSprites)
 {
     Entity* entity = new Entity(playerSprites, this);
     printk("id: %d\n", entity->getID());
     entities.push_back(entity);
 }
 
-void game::readInput()
+void Game::readInput()
 {
     buttonStatus.left = button->pinGet(1);
     buttonStatus.right = button->pinGet(2);
@@ -93,7 +93,7 @@ void game::readInput()
     // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
-void game::drawLevel()
+void Game::drawLevel()
 {
     int middleX = player->getX();
     int leftBorder = middleX - 320;
@@ -122,7 +122,7 @@ void game::drawLevel()
 
 }
 
-void game::loadPlatforms(const int level[16][63])
+void Game::loadPlatforms(const int level[16][63])
 {
     for(int i = 0; i < 16; i++)
     {
@@ -140,7 +140,54 @@ void game::loadPlatforms(const int level[16][63])
     }
 }
 
-std::vector<Platform*>* game::getPlatforms()
+std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
+}
+
+void Game::tick()
+{
+
+    int groundLevel = 458;  // Default ground level
+    int xSpeed = 0, x = 0;
+    float y  = 0;
+
+    for(Entity* entity : entities)
+    {
+        for (Platform* platform : platforms) {
+                int platformx = platform->getX();
+                int platformy = platform->getY();
+                if (entity->getY() <= platformy-22)
+                {
+                    int entityX = entity->getX();
+                    if (entityX >= platformx - 15 && entityX <= platformx  + 15) {  // Check if entity is above the platform
+                        if (platformy-22  < groundLevel) {
+                            groundLevel = platformy-22;
+                            // printk("Ground level: %d\n", groundLevel);
+                        }
+                    }
+                }
+            } 
+    entity->updateySpeed(gravity);
+    y = entity->y + entity->ySpeed;       //add moving speed and gravity to current y
+    // y = y1;
+    if(y > groundLevel) //if player is on platform
+    {
+        y = groundLevel;
+        entity->isGrounded = true;
+        entity->ySpeed = 0;
+    }
+     x = entity->xSpeed + entity->x; //add the moving speed to current x
+    if(x <= 320) // stop at border left
+    {
+        x = 320;
+    }
+    else if(x >= 1600) //stop at border right
+    {
+        x = 1600;
+    }
+    entity->move(x, y);
+    }
+
+    
 }
