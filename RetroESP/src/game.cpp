@@ -10,6 +10,7 @@ game::game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     player = new Player(player1Sprites, this);
     entities.push_back(player);
     frames = 0;
+    gameState = Menu;
     loadPlatforms(level);
     readInput();
 }
@@ -28,6 +29,30 @@ game::~game()
     platforms.clear();
 }
 
+
+void game::tick()
+{
+    switch(gameState)
+    {
+        case Menu:
+            drawMainMenu();
+            if(buttonStatus.melee)
+            {
+                gameState = Playing;
+            }
+            break;
+        case Playing:
+            sendToDisplay();
+            update();
+            break;
+        case Paused:
+            break;
+        case GameOver:
+            break;
+    }
+    frames++;
+}
+
 void game::update()
 {
     //Check for input
@@ -36,7 +61,7 @@ void game::update()
 
     player->tick();
     
-    frames++;
+    
 }
 
 void game::sendToDisplay()
@@ -67,7 +92,7 @@ void game::sendToDisplay()
         int y = entity->getY();
         int ID = entity->getID();
         spriteData[spriteDataCount++] = htobe16(ID);
-        spriteData[spriteDataCount++] = htobe16(x);
+        spriteData[spriteDataCount++] = htobe16(x+144);
         spriteData[spriteDataCount++] = htobe16(y);
         // printk("Added player\n");
     }
@@ -94,6 +119,89 @@ void game::readInput()
     // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
+void game::drawMainMenu()
+{
+    std::string title = "beste game";
+    std::string start = "press start to play";
+    std::string option1 = "play";
+    std::string option2 = "dr bob mode";
+    static int yval = 300;
+    static bool draw = true;
+
+    for(int i = 0; i < title.length(); i++)
+    {
+        if(title[i] == ' ')
+        {
+            continue;
+        }
+        spriteData[spriteDataCount++] = htobe16(characters[title[i]]);
+        spriteData[spriteDataCount++] = htobe16(250 + i*15+144);
+        spriteData[spriteDataCount++] = htobe16(100);
+        // printk("adding ID: %d\n", characters[title[i]]);
+    }
+    if(frames % 30 == 0)
+    {
+        draw = !draw;
+    }
+    if(draw)
+    {
+        for(int i = 0; i < start.length(); i++)
+        {
+            if(start[i] == ' ')
+            {
+                continue;
+            }
+            spriteData[spriteDataCount++] = htobe16(characters[start[i]]);
+            spriteData[spriteDataCount++] = htobe16(200 + i*15+144);
+            spriteData[spriteDataCount++] = htobe16(200);
+            // printk("adding ID: %d\n", characters[title[i]]);
+        }
+    }
+
+    for(int i = 0; i < option1.length(); i++)
+    {
+        if(option1[i] == ' ')
+        {
+            continue;
+        }
+        spriteData[spriteDataCount++] = htobe16(characters[option1[i]]);
+        spriteData[spriteDataCount++] = htobe16(250 + i*15+144);
+        spriteData[spriteDataCount++] = htobe16(300);
+        // printk("adding ID: %d\n", characters[title[i]]);
+    }
+    for(int i = 0; i < option2.length(); i++)
+    {
+        if(option2[i] == ' ')
+        {
+            continue;
+        }
+        spriteData[spriteDataCount++] = htobe16(characters[option2[i]]);
+        spriteData[spriteDataCount++] = htobe16(250 + i*15+144);
+        spriteData[spriteDataCount++] = htobe16(350);
+        // printk("adding ID: %d\n", characters[title[i]]);
+    }
+
+    readInput();
+    if((buttonStatus.up || buttonStatus.down) && frames % 10 == 0)
+    {
+        if(yval == 300)
+        {
+            yval = 350;
+        }
+        else
+        {
+            yval = 300;
+        }
+    }
+
+    spriteData[spriteDataCount++] = htobe16(0);
+    spriteData[spriteDataCount++] = htobe16(250+124);
+    spriteData[spriteDataCount++] = htobe16(yval);
+
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+}
+
 void game::drawLevel()
 {
     int middleX = player->getX();
@@ -111,12 +219,12 @@ void game::drawLevel()
         int platformX = 320 + delta;
         if(x > leftBorder-15 && x < rightBorder+15)
         {
-            if(platformX < 0)
-            {
-                platformX = 0;
-            }
+            // if(platformX < 0)
+            // {
+            //     platformX = 0;
+            // }
             spriteData[spriteDataCount++] = htobe16(platform->getID());
-            spriteData[spriteDataCount++] = htobe16(platformX);
+            spriteData[spriteDataCount++] = htobe16(platformX+144);
             spriteData[spriteDataCount++] = htobe16(platform->getY());
         }
     }
