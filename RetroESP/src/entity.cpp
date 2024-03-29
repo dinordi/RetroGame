@@ -110,7 +110,7 @@ void Entity::manageAnimation()
             {
                 if(ID == entitySprites[4])
                 {
-                    ID = entitySprites[4];
+                    ID = entitySprites[5];
                 }
                 else
                 {

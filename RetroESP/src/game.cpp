@@ -35,6 +35,7 @@ void game::update()
     player->handleInput(buttonStatus);
 
     player->tick();
+    
     frames++;
 }
 
