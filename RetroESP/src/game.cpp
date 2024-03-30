@@ -11,6 +11,8 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     player = new Player(player1Sprites,7);
     entities.push_back(player);
     frames = 0;
+    gameState = Menu;
+    stateSelect = Playing;
     loadPlatforms(level);
     readInput();
 }
@@ -30,6 +32,91 @@ Game::~Game()
 }
 
 void Game::update()
+{
+    
+    switch(gameState)
+    {
+        case Menu:
+            updateSelection();
+            drawMainMenu();
+            break;
+        case Playing:
+            sendToDisplay();
+            updateGame();
+            break;
+        case Drbob:
+            break;
+        case Paused:
+            break;
+        case GameOver:
+            break;
+        case Credits:
+            drawCredits();
+            break;
+    }
+    frames++;
+}
+
+void Game::updateSelection()
+{
+    static int counter = 0;
+    counter++;
+    readInput();
+    if(buttonStatus.melee && counter > 60)
+    {
+        switch(stateSelect)
+        {
+            case Playing:
+                gameState = Playing;
+                break;
+            case Drbob:
+                gameState = Drbob;
+                break;
+            case Credits:
+                gameState = Credits;
+                counter = 0;
+                break;
+            default:
+                break;
+        }
+        
+    }
+    if(frames % 10 == 0)
+    {
+        if(buttonStatus.up)
+        {
+            switch(stateSelect)
+            {
+                case Playing:
+                    stateSelect = Credits;
+                    break;
+                case Drbob:
+                    stateSelect = Playing;
+                    break;
+                case Credits:
+                    stateSelect = Drbob;
+                    break;
+            }
+        }
+        if(buttonStatus.down)
+        {
+            switch(stateSelect)
+            {
+                case Playing:
+                    stateSelect = Drbob;
+                    break;
+                case Drbob:
+                    stateSelect = Credits;
+                    break;
+                case Credits:
+                    stateSelect = Playing;
+                    break;
+            }
+        }
+    }
+}
+
+void Game::updateGame()
 {
     //Check for input
     readInput();
@@ -66,7 +153,7 @@ void Game::sendToDisplay()
         int y = entity->getY();
         int ID = entity->getID();
         spriteData[spriteDataCount++] = htobe16(ID);
-        spriteData[spriteDataCount++] = htobe16(x);
+        spriteData[spriteDataCount++] = htobe16(x+144);
         spriteData[spriteDataCount++] = htobe16(y);
         // printk("Added player\n");
     }
@@ -93,6 +180,96 @@ void Game::readInput()
     // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
+void Game::drawString(std::string str, int startX, int y)
+{
+    for(int i = 0; i < str.length(); i++)
+    {
+        if(str[i] == ' ')
+        {
+            continue;
+        }
+        spriteData[spriteDataCount++] = htobe16(characters[str[i]]);
+        spriteData[spriteDataCount++] = htobe16(startX + i*15+144);
+        spriteData[spriteDataCount++] = htobe16(y);
+        // printk("adding ID: %d\n", characters[title[i]]);
+    }
+}
+
+void Game::drawMainMenu()
+{
+    std::string title = "beste game";
+    std::string start = "press start to play";
+    std::string option1 = "play";
+    std::string option2 = "dr bob mode";
+    std::string option3 = "credits";
+    static int yval = 300;
+    static bool draw = true;
+
+    drawString(title, 250, 100);
+    if(frames % 30 == 0)                                        //Blink every 0.5 seconds
+    {
+        draw = !draw;
+    }
+    if(draw)
+    {
+        drawString(start, 200, 200);
+    }
+
+    drawString(option1, 250, 300);
+    drawString(option2, 250, 350);
+    drawString(option3, 250, 400);
+
+    readInput();
+    switch(stateSelect)  // Toggle selection
+    {
+        case Playing:
+            yval = 300;
+            break;
+        case Drbob:
+            yval = 350;
+            break;
+        case Credits:
+            yval = 400;
+            break;
+    }
+
+    spriteData[spriteDataCount++] = htobe16(0);                     // Playersprite Cursor
+    spriteData[spriteDataCount++] = htobe16(250+124);
+    spriteData[spriteDataCount++] = htobe16(yval);
+
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+}
+
+void Game::drawCredits()
+{
+    static int counter = 0;
+    counter++;
+    std::string title = "credits";
+    std::string name1 = "joey";
+    std::string name2 = "ben";
+    std::string name3 = "david";
+    std::string name4 = "richard";
+
+    drawString(title, 250, 100);
+
+    drawString(name1, 250, 200);
+    drawString(name2, 250, 250);
+    drawString(name3, 250, 300);
+    drawString(name4, 250, 350);
+
+
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+
+    readInput();
+    if(buttonStatus.melee && counter > 60)
+    {
+        gameState = Menu;
+        counter = 0;
+    }
+}
+
 void Game::drawLevel()
 {
     int middleX = player->getX();
@@ -110,12 +287,12 @@ void Game::drawLevel()
         int platformX = 320 + delta;
         if(x > leftBorder-15 && x < rightBorder+15)
         {
-            if(platformX < 0)
-            {
-                platformX = 0;
-            }
+            // if(platformX < 0)
+            // {
+            //     platformX = 0;
+            // }
             spriteData[spriteDataCount++] = htobe16(platform->getID());
-            spriteData[spriteDataCount++] = htobe16(platformX);
+            spriteData[spriteDataCount++] = htobe16(platformX+144);
             spriteData[spriteDataCount++] = htobe16(platform->getY());
         }
     }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "entity.h"
 #include <zephyr/sys/printk.h>
 #include "fpga.h"
@@ -11,7 +12,16 @@
 #include "sprites.h"
 #include "platform.h"
 
+typedef enum
+{
+    Menu,
+    Playing,
+    Paused,
+    GameOver,
+    Drbob,
+    Credits
 
+}gameStates;
 
 class Game
 {
@@ -20,12 +30,17 @@ public:
     virtual ~Game();
 
     void update();
+    void updateGame();
     void sendToDisplay();
     void addEntity(const int* entitySprites,int range);
     void readInput();
     void tick();
     void drawLevel();
     void loadPlatforms(const int level[16][63]);
+    void drawMainMenu();
+    void drawCredits();
+    void updateSelection();
+    void drawString(std::string str, int startX, int y);
     std::vector<Platform*>* getPlatforms();
 
 private:
@@ -38,4 +53,6 @@ private:
     buttonStatuses buttonStatus;
     Player* player;
     uint64_t frames;
+    gameStates gameState;
+    gameStates stateSelect;
 };
