@@ -2,31 +2,30 @@
 
 static const struct device *const uart_dev_1 = DEVICE_DT_GET(UART_DEVICE_NODE);
 static const struct device *const uart_dev_2 = DEVICE_DT_GET(UART_DEVICE_NODE_1);
+static const struct device *const uart_busy =  DEVICE_DT_GET(BUSY);
 
 
 Audio::Audio()
 {
-	if (!device_is_ready(uart_dev_1)) {
+	if (!device_is_ready(uart_dev_1)) 
+    {
 		printk("%s: device not ready.\n", uart_dev_1->name);
 		return;
 	}
-    else
-    {
-    printk("device ready \n");
+	if (gpio_pin_configure(uart_busy, GPIO_PIN_1, GPIO_INPUT)) {
+        printk("Error: Unable to find GPIO device.\n");
+        return;
+    }
+    if (gpio_pin_configure(uart_busy, GPIO_PIN_2, GPIO_INPUT)) {
+        printk("Error: Unable to find GPIO device.\n");
+        return;
     }
 }
 
 
 Audio::~Audio()
 {
-	if (!device_is_ready(uart_dev_1)) {
-		printk("%s: device not ready.\n", uart_dev_1->name);
-		return;
-	}
-    else
-    {
-    printk("device ready \n");
-    }
+
 }
 
 // send uart and select which uart 
@@ -34,7 +33,7 @@ Audio::~Audio()
 // uart 2 == effects == select 1
 void Audio::uart_send(const std::vector<int>& vector, int select)
 {
-       for(int i =0; i < 8 ; i++){
+       for(int i =0; i < vector.size(); i++){
         
     if(select == 0){
    uart_poll_out(uart_dev_1, vector[i]);
@@ -58,7 +57,7 @@ void Audio::play_music(play_soundtrack music)
     {
     //menu music
     case MENU_MUSIC:
-    uart1_buffer = {0x7E ,0xFF ,0x06 ,0x0F ,0x00 ,0x01 ,0x01 ,0xEF}; 
+    uart1_buffer = {0x7E ,0xFF ,0x06 ,0x0F ,0x00 ,0x01 ,0x01 ,0xEF};  
         break;
     //stage 1 music
     case STAGE_1:
@@ -141,5 +140,38 @@ void Audio::play_effect(play_effects effect)
         break;
     }
     uart_send(uart2_buffer,1); // use UART2 to select effects select = 1
+}
+
+// state is low when busy 
+int Audio::music_status()
+{
+    return gpio_pin_get(uart_busy, GPIO_PIN_1);
+}
+
+int Audio::sfx_status()
+{
+    return gpio_pin_get(uart_busy, GPIO_PIN_2);
+}
+
+// select sound effect or music to stop
+void Audio::stop(stop_audio stop)
+{
+switch(stop)
+{
+    case MUSIC:
+    
+    uart1_buffer = {0x7E ,0xFF, 0x06 ,0x16 ,0x00  ,0x00 ,0x00 ,0xFE ,0xE5, 0xEF}; 
+    uart_send(uart1_buffer,0);
+    uart1_buffer.clear();
+        break;
+    case SFX:
+    uart2_buffer = {0x7E ,0xFF, 0x06 ,0x16 ,0x00  ,0x00 ,0x00 ,0xFE ,0xE5, 0xEF}; 
+    uart_send(uart2_buffer,1); 
+    uart2_buffer.clear();
+        break;
+
+
+}
+
 }
 

@@ -11,7 +11,8 @@
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
-#include <zephyr/drivers/gpio.h>
+#include "audio_module.h"
+
 
 #include <string>
 // #include "adc.h"
@@ -29,6 +30,7 @@ void updateGame();
 
 int main(void)
 {
+	printk("init");
 	uint32_t count = 0;
 
 
@@ -39,11 +41,11 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
-	ButtonHandler button;
-	FPGA fpga;
-	game game(&fpga, &button);
+	//ButtonHandler button;
+	//FPGA fpga;
+	//game game(&fpga, &button);
 	
-	int lastState = 1;
+	//int lastState = 1;
 
 
 
@@ -52,8 +54,21 @@ int main(void)
 	// 	game.addEntity(enemy1Sprites);
 	// }
 	printk("Starting game loop\n");
+	Audio audio;
+	
+
+
+	int i =0;
 	while (1) {
-       /* Read the state of the GPIO pin */
+    
+	 if(i == 9){	audio.play_music(audio.MENU_MUSIC);}
+		printk("state uart1: %d \n",audio.music_status());
+		printk("state uart2: %d\n",audio.sfx_status());
+		k_msleep(1000);
+		i++;
+
+	if(i == 20){audio.stop(audio.MUSIC);}
+       /* Read the state of the GPIO pin 
         int pin_value = gpio_pin_get(input, GPIO_PIN);
 		// printk("Pin value: %d\n", pin_value);
 		if(pin_value == 0 && lastState == 1)
@@ -63,6 +78,7 @@ int main(void)
 		}
 
 		lastState = pin_value;
+		*/
 	}
 	return 0;
 }

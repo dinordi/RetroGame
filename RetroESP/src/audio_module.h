@@ -5,11 +5,14 @@
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/uart.h>
-
+#include <zephyr/drivers/gpio.h>
 
 
 #define UART_DEVICE_NODE DT_NODELABEL(uart1)
 #define UART_DEVICE_NODE_1 DT_NODELABEL(uart2)
+#define GPIO_PIN_1 9 // check uart1 GPIO41
+#define GPIO_PIN_2 8 // check uart2 GPIO40
+#define BUSY  DT_NODELABEL(gpio1)
 
 
 
@@ -17,7 +20,7 @@ class Audio
 {
 public:
     Audio();
-   ~Audio();
+   ~Audio(); 
 
    public:
    enum play_soundtrack
@@ -51,19 +54,26 @@ enum play_effects
     //Monster effects  
     M_DEATH,
     //Level transistion effects
-    T_NEXT_LEVEL,
+    T_NEXT_LEVEL
+};
+
+enum stop_audio
+{
+ MUSIC,
+ SFX
 };
 public:
    void play_music(play_soundtrack music); 
    void play_effect(play_effects effect);
-   void stop_audio();
+   void stop(stop_audio stop);
    void control_audio();
-   void busy_check();
+   int  music_status();
+   int  sfx_status();
    void uart_send(const std::vector<int>& vector, int select);
 
 private:
 //input gpio devices for busy 
-// when busy pin will be low
+// when busy pin will be low  
 int busy_uart1 = 1;
 int busy_uart2 = 1;
 
