@@ -43,7 +43,7 @@ int main(void)
     }
 	ButtonHandler button;
 	FPGA fpga;
-	game game(&fpga, &button);
+	Game game(&fpga, &button);
 	
 	int lastState = 1;
 

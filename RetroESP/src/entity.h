@@ -27,11 +27,11 @@ typedef struct {
     int maxSpeed;
 }defaultValues;
 
-class game;
+class Game;
 
 class Entity : public Actor{
 public:
-    Entity(const int* entitySprites, game* game);
+    Entity(const int* entitySprites, Game* game);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
@@ -43,7 +43,7 @@ public:
     int getID() override;
 
 private:
-    game* mygame;
+    Game* mygame;
 protected:
     int hp; //Health
     int atk; //Dmg 

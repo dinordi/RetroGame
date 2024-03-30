@@ -17,15 +17,17 @@ typedef enum
     Menu,
     Playing,
     Paused,
-    GameOver
+    GameOver,
+    Drbob,
+    Credits
 
 }gameStates;
 
-class game
+class Game
 {
 public:
-    game(FPGA* fpga, ButtonHandler* button);
-    virtual ~game();
+    Game(FPGA* fpga, ButtonHandler* button);
+    virtual ~Game();
 
     void tick();
     void update();
@@ -35,6 +37,9 @@ public:
     void drawLevel();
     void loadPlatforms(const int level[16][63]);
     void drawMainMenu();
+    void drawCredits();
+    void updateSelection();
+    void drawString(std::string str, int startX, int y);
     std::vector<Platform*>* getPlatforms();
 
 private:
@@ -48,4 +53,5 @@ private:
     Player* player;
     uint64_t frames;
     gameStates gameState;
+    gameStates stateSelect;
 };

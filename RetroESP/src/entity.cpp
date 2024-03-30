@@ -5,7 +5,7 @@
 const float dt = 1.0f / 60;
 const float gravity = 0.52f;
 
-Entity::Entity(const int* entitySprites, game* game) : Actor(entitySprites[0])
+Entity::Entity(const int* entitySprites, Game* game) : Actor(entitySprites[0])
 {
     this->mygame = game;
     hp = 100;
