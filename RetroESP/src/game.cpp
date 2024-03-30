@@ -117,66 +117,6 @@ void Game::updateSelection()
     }
 }
 
-
-void Game::updateSelection()
-{
-    static int counter = 0;
-    counter++;
-    readInput();
-    if(buttonStatus.melee && counter > 60)
-    {
-        switch(stateSelect)
-        {
-            case Playing:
-                gameState = Playing;
-                break;
-            case Drbob:
-                gameState = Drbob;
-                break;
-            case Credits:
-                gameState = Credits;
-                counter = 0;
-                break;
-            default:
-                break;
-        }
-        
-    }
-    if(frames % 10 == 0)
-    {
-        if(buttonStatus.up)
-        {
-            switch(stateSelect)
-            {
-                case Playing:
-                    stateSelect = Credits;
-                    break;
-                case Drbob:
-                    stateSelect = Playing;
-                    break;
-                case Credits:
-                    stateSelect = Drbob;
-                    break;
-            }
-        }
-        if(buttonStatus.down)
-        {
-            switch(stateSelect)
-            {
-                case Playing:
-                    stateSelect = Drbob;
-                    break;
-                case Drbob:
-                    stateSelect = Credits;
-                    break;
-                case Credits:
-                    stateSelect = Playing;
-                    break;
-            }
-        }
-    }
-}
-
 void Game::updateGame()
 {
     //Check for input
