@@ -32,7 +32,7 @@ public:
     void update();
     void updateGame();
     void sendToDisplay();
-    void addEntity(const int* entitySprites);
+    void addEntity(const int* entitySprites,int range);
     void readInput();
     void tick();
     void drawLevel();

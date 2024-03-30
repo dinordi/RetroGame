@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1711708438" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/InterfaceController.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1711729917" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/InterfaceController.dcp">
   <File Type="PA-TCL" Name="Videokaart_full.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="Videokaart_full_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="Videokaart_full_reports.tcl"/>
@@ -73,6 +73,12 @@
       </FileInfo>
     </File>
     <File Path="$PPRDIR/15pix.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../../../Progh/15.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>

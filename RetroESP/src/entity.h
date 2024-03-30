@@ -31,7 +31,7 @@ class Game;
 
 class Entity : public Actor{
 public:
-    Entity(const int* entitySprites, Game* game);
+    Entity(const int* entitySprites,int range);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
@@ -47,8 +47,6 @@ public:
     int getID() override;
     friend class Game;
 
-private:
-    Game* mygame;
 protected:
     int hp; //Health
     int atk; //Dmg 

@@ -3,9 +3,8 @@
 #include <zephyr/sys/printk.h>
 
 
-Entity::Entity(const int* entitySprites, Game* game) : Actor(entitySprites[0])
+Entity::Entity(const int* entitySprites, int range) : Actor(entitySprites[0],range)
 {
-    this->mygame = game;
     hp = 100;
     atk = 10;
     defense = 5;
