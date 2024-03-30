@@ -31,7 +31,6 @@ Game::~Game()
     platforms.clear();
 }
 
-
 void Game::update()
 {
     
@@ -180,7 +179,6 @@ void Game::readInput()
     buttonStatus.atk = button->pinGet(6);
     // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
-
 
 void Game::drawString(std::string str, int startX, int y)
 {
