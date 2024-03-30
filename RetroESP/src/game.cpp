@@ -43,7 +43,7 @@ void Game::update()
             break;
         case Playing:
             sendToDisplay();
-            update();
+            updateGame();
             break;
         case Drbob:
             break;
@@ -117,31 +117,6 @@ void Game::updateSelection()
     }
 }
 
-void Game::updateGame()
-{
-    
-    switch(gameState)
-    {
-        case Menu:
-            updateSelection();
-            drawMainMenu();
-            break;
-        case Playing:
-            sendToDisplay();
-            update();
-            break;
-        case Drbob:
-            break;
-        case Paused:
-            break;
-        case GameOver:
-            break;
-        case Credits:
-            drawCredits();
-            break;
-    }
-    frames++;
-}
 
 void Game::updateSelection()
 {
