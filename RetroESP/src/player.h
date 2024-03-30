@@ -16,7 +16,7 @@ class Game;
 class Player : public Entity
 {
 public:
-    Player(const int* playerSprites, Game* game);
+    Player(const int* playerSprites, int);
     void handleInput(buttonStatuses buttonStatus);
 private:
     int printX;

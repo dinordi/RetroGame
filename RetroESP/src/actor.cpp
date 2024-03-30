@@ -1,7 +1,7 @@
 #include "actor.h"
 
 
-Actor::Actor(int ID) : ID(ID)
+Actor::Actor(int ID,int range) : ID(ID), range(range)
 {
     x = 976;
     y = 240;

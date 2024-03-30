@@ -8,7 +8,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
-    player = new Player(player1Sprites, this);
+    player = new Player(player1Sprites,7);
     entities.push_back(player);
     frames = 0;
     loadPlatforms(level);
@@ -75,9 +75,9 @@ void Game::sendToDisplay()
     spriteDataCount = 0;
 }
 
-void Game::addEntity(const int* playerSprites)
+void Game::addEntity(const int* playerSprites,int range)
 {
-    Entity* entity = new Entity(playerSprites, this);
+    Entity* entity = new Entity(playerSprites,range);
     printk("id: %d\n", entity->getID());
     entities.push_back(entity);
 }
@@ -133,7 +133,7 @@ void Game::loadPlatforms(const int level[16][63])
                 int tileX = j * 31;
                 int tileY = i * 31;
                 int tileID = level[i][j] + 99;
-                Platform* platform = new Platform(tileID, tileX, tileY);
+                Platform* platform = new Platform(tileID, tileX, tileY, 15);
                 platforms.push_back(platform);
             }
         }
@@ -157,12 +157,14 @@ void Game::tick()
         for (Platform* platform : platforms) {
                 int platformx = platform->getX();
                 int platformy = platform->getY();
-                if (entity->getY() <= platformy-22)
+                int platformRange = platform->range;
+                int entityRange = entity->range;
+                if (entity->getY() + entityRange <= platformy - platform->range)
                 {
                     int entityX = entity->getX();
-                    if (entityX >= platformx - 15 && entityX <= platformx  + 15) {  // Check if entity is above the platform
-                        if (platformy-22  < groundLevel) {
-                            groundLevel = platformy-22;
+                    if (entityX >= platformx - platformRange && entityX <= platformx  + platformRange) {  // Check if entity is above the platform
+                        if (platformy-(platformRange + entityRange)  < groundLevel) {
+                            groundLevel = platformy-(platformRange + entityRange);
                             // printk("Ground level: %d\n", groundLevel);
                         }
                     }
