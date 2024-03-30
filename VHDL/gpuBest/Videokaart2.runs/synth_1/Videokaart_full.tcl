@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -91,6 +93,7 @@ OPTRACE "Adding files" START { }
 add_files C:/Retrogame/RetroGame/VHDL/gpuBest/31pix.coe
 add_files C:/Retrogame/RetroGame/VHDL/gpuBest/Background.coe
 add_files C:/Retrogame/RetroGame/VHDL/gpuBest/15pix.coe
+add_files c:/Progh/15.coe
 read_vhdl -library xil_defaultlib {
   C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd
   C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/new/InterfaceController.vhd

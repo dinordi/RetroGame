@@ -21,7 +21,7 @@ public:
 
     void update();
     void sendToDisplay();
-    void addEntity(const int* entitySprites);
+    void addEntity(const int* entitySprites,int range);
     void readInput();
     void tick();
     void drawLevel();

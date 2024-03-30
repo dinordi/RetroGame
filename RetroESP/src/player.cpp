@@ -2,7 +2,7 @@
 
 #include <zephyr/sys/printk.h>
 
-Player::Player(const int* playerSprites, Game* game) : Entity(playerSprites, game)
+Player::Player(const int* playerSprites, int range) : Entity(playerSprites, range)
 {
     printX = 320;
 }
