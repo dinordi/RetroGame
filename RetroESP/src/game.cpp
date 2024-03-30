@@ -31,7 +31,7 @@ Game::~Game()
 }
 
 
-void Game::tick()
+void Game::update()
 {
     
     switch(gameState)
@@ -116,7 +116,7 @@ void Game::updateSelection()
     }
 }
 
-void Game::update()
+void Game::updateGame()
 {
     //Check for input
     readInput();

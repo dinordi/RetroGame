@@ -60,7 +60,7 @@ int main(void)
 		// printk("Pin value: %d\n", pin_value);
 		if(pin_value == 0 && lastState == 1)
 		{
-			game.tick();
+			game.update();
         	// game.sendToDisplay();
 			// game.update();
 		}

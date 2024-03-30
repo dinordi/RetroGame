@@ -29,8 +29,8 @@ public:
     Game(FPGA* fpga, ButtonHandler* button);
     virtual ~Game();
 
-    void tick();
     void update();
+    void updateGame();
     void sendToDisplay();
     void addEntity(const int* entitySprites);
     void readInput();
