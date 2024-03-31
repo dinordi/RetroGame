@@ -2,9 +2,11 @@
 
 #include <zephyr/sys/printk.h>
 
-Player::Player(const int* playerSprites, int range) : Entity(playerSprites, range)
+Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
     printX = 320;
+    hasCollision = true;
+    hasGravity = true;
 }
 
 void Player::handleInput(buttonStatuses buttonStatus) {

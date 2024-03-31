@@ -1,5 +1,13 @@
+#pragma once
 #include "game.h"
 #include "level.h"
+#include "Projectile.h"
+#include "sprites.h"
+#include "endian.h"
+#include "platform.h"
+#include "Entity.h"
+
+
 
 const float dt = 1.0f / 60;
 const float gravity = 0.52f;
@@ -8,7 +16,8 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
-    player = new Player(player1Sprites,7);
+    player = new Player(player1Sprites,7,780,100);
+    objects.push_back(player);
     entities.push_back(player);
     frames = 0;
     gameState = Menu;
@@ -134,13 +143,14 @@ void Game::sendToDisplay()
     //     entities[i]->move((i*15), (i*15));
     // }
 
-    for (auto entity : entities)
+    for (auto object : objects)
     {
         int x;
-        if(player == entity)
+
+        if(player == object)
         {
             x = 320;
-            if(entity->getY() < 0)
+            if(object->getY() < 0)
             {
                 continue;
             }
@@ -148,10 +158,10 @@ void Game::sendToDisplay()
         }
         else
         {
-            x = entity->getX();
+            x = object->getX();
         }
-        int y = entity->getY();
-        int ID = entity->getID();
+        int y = object->getY();
+        int ID = object->getID();
         spriteData[spriteDataCount++] = htobe16(ID);
         spriteData[spriteDataCount++] = htobe16(x+144);
         spriteData[spriteDataCount++] = htobe16(y);
@@ -162,11 +172,20 @@ void Game::sendToDisplay()
     spriteDataCount = 0;
 }
 
-void Game::addEntity(const int* playerSprites,int range)
+void Game::addEntity(const int* playerSprites,int range,int x, int y)
 {
-    Entity* entity = new Entity(playerSprites,range);
+    Object* entity = new Entity(playerSprites,range,x,y);
     printk("id: %d\n", entity->getID());
-    entities.push_back(entity);
+    entities.push_back(static_cast<Entity*>(entity));
+    objects.push_back(entity);
+}
+
+void Game::addProjectile(const int* playerSprites,int range,int x, int y)
+{
+    Object* projectile = new Projectile(playerSprites,range,x,y);
+    printk("id: %d\n", projectile->getID());
+    projectiles.push_back(static_cast<Projectile*>(projectile));
+    objects.push_back(projectile);
 }
 
 void Game::readInput()
@@ -324,21 +343,33 @@ std::vector<Platform*>* Game::getPlatforms()
 
 void Game::tick()
 {
-
+    
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
 
-    for(Entity* entity : entities)
+    for(Object* object : objects)
     {
-        for (Platform* platform : platforms) {
+        object->manageAnimation();
+        groundLevel = collisionCheck(object);
+        y = gravityCheck(object,groundLevel);
+        x = borderCheck(object);
+        object->move(x, y);
+    }
+}
+
+int Game::collisionCheck(Object* object){
+    int groundLevel = 458;
+    if(object->hasCollision)
+        {
+            for (Platform* platform : platforms) {
                 int platformx = platform->getX();
                 int platformy = platform->getY();
                 int platformRange = platform->range;
-                int entityRange = entity->range;
-                if (entity->getY() + entityRange <= platformy - platform->range)
+                int entityRange = object->range;
+                if (object->getY() + entityRange <= platformy - platform->range)
                 {
-                    int entityX = entity->getX();
+                    int entityX = object->getX();
                     if (entityX >= platformx - platformRange && entityX <= platformx  + platformRange) {  // Check if entity is above the platform
                         if (platformy-(platformRange + entityRange)  < groundLevel) {
                             groundLevel = platformy-(platformRange + entityRange);
@@ -347,26 +378,36 @@ void Game::tick()
                     }
                 }
             } 
-    entity->updateySpeed(gravity);
-    y = entity->y + entity->ySpeed;       //add moving speed and gravity to current y
-    // y = y1;
-    if(y > groundLevel) //if player is on platform
-    {
-        y = groundLevel;
-        entity->isGrounded = true;
-        entity->ySpeed = 0;
-    }
-     x = entity->xSpeed + entity->x; //add the moving speed to current x
-    if(x <= 320) // stop at border left
-    {
-        x = 320;
-    }
-    else if(x >= 1600) //stop at border right
-    {
-        x = 1600;
-    }
-    entity->move(x, y);
-    }
+        }
+        return groundLevel;
+}
 
-    
+int Game::gravityCheck(Object* object,int groundlevel){
+    int y = object->y + object->ySpeed; 
+    if(object->hasGravity)
+        {
+            object->updateySpeed(gravity);  
+            printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
+            // y = y1;
+            if(y > groundlevel) //if player is on platform
+            {
+                y = groundlevel;
+                object->isGrounded = true;
+                object->ySpeed = 0;
+            }
+        }
+    return y;
+}
+
+int Game::borderCheck(Object* object){
+    int x = object->xSpeed + object->x; //add the moving speed to current x
+        if(x <= 320) // stop at border left
+        {
+            x = 320;
+        }
+        else if(x >= 1600) //stop at border right
+        {
+            x = 1600;
+        }
+    return x;
 }

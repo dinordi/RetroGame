@@ -1,11 +1,9 @@
 #include "platform.h"
 
 
-Platform::Platform(int ID, int x, int y,int range) : Actor(ID,range)
+Platform::Platform(int ID, int x, int y,int range) : Actor(ID,range,x,y)
 {
     this->ID = ID;
-    this->x = x;
-    this->y = y;
     range = 15;
 }
 
