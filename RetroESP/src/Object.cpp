@@ -92,7 +92,7 @@ void Object::manageAnimation()
         }
 }
 
-// void Object::behaviour()
-// {
+void Object::behaviour()
+{
     
-// }
+}
