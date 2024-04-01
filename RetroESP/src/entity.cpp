@@ -14,6 +14,7 @@ Entity::Entity(const int* entitySprites, int range,int x, int y) : Object(entity
     def.maxSpeed = 5;
     hasGravity = 1;
     hasCollision = 1;
+    isRanged = 0;
 }
 
 bool Entity::getIsGrounded(){
