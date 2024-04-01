@@ -292,7 +292,7 @@ void Game::drawLevel()
         {
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
-            spriteData[spriteDataCount++] = htobe16(actor->getY());
+            spriteData[spriteDataCount++] = htobe16(actorY);
             // if(actor->isProjectile())
             //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
         
