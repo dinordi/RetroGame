@@ -51,7 +51,7 @@
 			zephyr,code = <0xb>;
 		};
 		button6: button_6 {
-			gpios = <&gpio1 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//35
+			gpios = <&gpio1 13 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//45
 			label = "Button 6";
 			zephyr,code = <0xb>;
 		};
