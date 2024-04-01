@@ -20,6 +20,7 @@ class Object : public Actor{
     void updateySpeed(float speed);
     void setySpeed(float speed);
     void manageAnimation();
+    //void behaviour();
     friend class Game;
     
     protected:
@@ -27,6 +28,7 @@ class Object : public Actor{
     float xSpeed;
     const int* entitySprites; //Sprite ID
     state myState;
+    state lastmyState;
     int spriteCounter;
     bool isFacingRight;
     bool hasGravity;

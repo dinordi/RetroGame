@@ -152,13 +152,13 @@ void Game::sendToDisplay()
 //     objects.push_back(entity);
 // }
 
-void Game::addProjectile(const int* playerSprites,int range,int x, int y)
-{
-    Object* projectile = new Projectile(playerSprites,range,x,y);
-    printk("id: %d\n", projectile->getID());
-    projectiles.push_back(static_cast<Projectile*>(projectile));
-    objects.push_back(projectile);
-}
+// void Game::addProjectile(const int* playerSprites,int range,int x, int y)
+// {
+//     Object* projectile = new Projectile(playerSprites,range,x,y);
+//     printk("id: %d\n", projectile->getID());
+//     projectiles.push_back(static_cast<Projectile*>(projectile));
+//     objects.push_back(projectile);
+// }
 
 void Game::readInput()
 {
@@ -266,20 +266,24 @@ void Game::drawLevel()
     int middleX = player->getX();
     int leftBorder = middleX - 320;
     int rightBorder = middleX + 320;
-    int x,delta,actorX,range;
+    int x,delta,actorX,actorY,range;
     for(auto actor : actors)
     { 
         x = actor->getX();
         delta = x - middleX;
         actorX = 320 + delta;
+        actorY = actor->getY();
         range = actor->range; 
-        if(actor->getY() < 0) // if player so above roof of the screen the Y goes below zero
+        if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
             continue;
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actor->getY());
+            // if(actor->isProjectile())
+            //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
+        
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -318,25 +322,21 @@ std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
 }
-Object projectile = Bullet(bulletID,7,600,400);//player->makeProjectile();
+
 void Game::tick()
 {
     
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-    count++;
-    // if(player->myState == attacking && count % 20 == 0)
-    // {
-    //     projectiles.push_back(static_cast<Projectile*>(&projectile));
-    //     objects.push_back(&projectile);
-    //     count = 0;
-    // }
+    for(Entity* entity : entities)
+    {
+        checkRangedAttack(entity);
+    }
     for(Object* object : objects)
     {
         object->manageAnimation();
-       groundLevel = collisionCheck(object);
-        
+        groundLevel = collisionCheck(object);
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
         object->move(x, y);
@@ -395,4 +395,14 @@ int Game::borderCheck(Object* object){
             x = 1600;
         }
     return x;
+}
+
+void Game::checkRangedAttack(Entity* entity){
+    if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
+    {
+        Object* projectile = entity->makeProjectile();
+        projectiles.push_back(static_cast<Projectile*>(projectile));
+        objects.push_back(projectile);
+        actors.push_back(projectile);
+    }
 }

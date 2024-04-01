@@ -9,6 +9,7 @@ public:
     void move(float x, float y);
     //void tick();
     virtual bool isPlayer() const { return false; }
+    virtual bool isProjectile() const { return false; }
     virtual int getID();
     friend class Game;
 
