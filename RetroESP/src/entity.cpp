@@ -25,4 +25,3 @@ void Entity::setIsGrounded(bool ground){
     isGrounded = ground;
 }
 
-
