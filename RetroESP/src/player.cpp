@@ -1,27 +1,31 @@
 #include "player.h"
+#include "sprites.h"
+#include "Bullet.h"
+#include <zephyr/sys/printk.h>
 
-Player::Player(const int* playerSprites) : Entity(playerSprites)
+Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
     printX = 320;
+    hasCollision = true;
+    hasGravity = true;
 }
 
 void Player::handleInput(buttonStatuses buttonStatus) {
     if (buttonStatus.up && isGrounded) {
-        return;
         // Handle up
-        ySpeed = -1;
+        ySpeed = -12;
         isGrounded = false;
     }
     if (buttonStatus.down) {
 
     }
     if (buttonStatus.left) {
-        xSpeed = -2;
+        xSpeed = -3;
         myState = walking;
         isFacingRight = false;
     }
     if (buttonStatus.right) {
-        xSpeed = 2;
+        xSpeed = 3;
         myState = walking;
         isFacingRight = true;
     }
@@ -30,4 +34,12 @@ void Player::handleInput(buttonStatuses buttonStatus) {
         myState = idle;
         
     }
+    if(buttonStatus.melee)
+    {
+        myState = attacking;
+    }
+}
+
+Projectile* Player::makeProjectile(){
+    return new Bullet(bulletID,7,600,100);
 }

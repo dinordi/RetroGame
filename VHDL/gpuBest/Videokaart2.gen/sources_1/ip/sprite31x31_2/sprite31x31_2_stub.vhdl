@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Tue Mar 12 23:03:13 2024
+-- Date        : Tue Mar 12 23:03:12 2024
 -- Host        : Desktop-Joey running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top sprite31x31_2 -prefix
+--               sprite31x31_2_ sprite31x31_2_stub.vhdl
 -- Design      : sprite31x31_2
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1

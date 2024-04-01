@@ -8,12 +8,12 @@
 
 #include "fpga.h"
 
-#define SW0_NODE	DT_ALIAS(pin)
-#define SW1_NODE	DT_ALIAS(pin2)
-#define SW2_NODE	DT_ALIAS(pin3)
-#define SW3_NODE	DT_ALIAS(pin4)
-#define SW4_NODE	DT_ALIAS(pin5)
-#define SW5_NODE	DT_ALIAS(pin6)
+#define L_NODE	DT_ALIAS(joyleft)
+#define R_NODE	DT_ALIAS(joyright)
+#define U_NODE	DT_ALIAS(joyup)
+#define D_NODE	DT_ALIAS(joydown)
+#define SW1_NODE	DT_ALIAS(button1)
+#define SW2_NODE	DT_ALIAS(button2)
 
 struct button_data {
     struct gpio_callback cb;
@@ -39,10 +39,10 @@ public:
     bool pinGet(int pin);
 
 private:
-    const struct gpio_dt_spec button;
+    const struct gpio_dt_spec up;
+    const struct gpio_dt_spec down;
+    const struct gpio_dt_spec left;
+    const struct gpio_dt_spec right;
+    const struct gpio_dt_spec button1;
     const struct gpio_dt_spec button2;
-    const struct gpio_dt_spec button3;
-    const struct gpio_dt_spec button4;
-    const struct gpio_dt_spec button5;
-    const struct gpio_dt_spec button6;
 };

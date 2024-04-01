@@ -1,11 +1,9 @@
 #include "entity.h"
-
+//#include "game.h"
 #include <zephyr/sys/printk.h>
 
-const float dt = 1.0f / 60;
-const float gravity = 9.8f;
 
-Entity::Entity(const int* entitySprites) : Actor(entitySprites[0])
+Entity::Entity(const int* entitySprites, int range,int x, int y) : Object(entitySprites,range,x,y)
 {
     hp = 100;
     atk = 10;
@@ -14,89 +12,15 @@ Entity::Entity(const int* entitySprites) : Actor(entitySprites[0])
     def.maxAttack = 10;
     def.maxDefense = 5;
     def.maxSpeed = 5;
-    isGrounded = true;
-    myState = idle;
-    spriteCounter = 0;
-    this->entitySprites = entitySprites;
+    hasGravity = 1;
+    hasCollision = 1;
 }
 
-
-void Entity::move(int x, int y)
-{
-    m(x, y);
+bool Entity::getIsGrounded(){
+    return isGrounded;
 }
 
-void Entity::tick()
-{
-    ySpeed += gravity * dt;
-    int y1 = y;
-    y1 += ySpeed * dt;
-    if(y1 > 240)
-    {
-        y1 = 240;
-        isGrounded = true;
-    }
-    x += xSpeed;
-    if(x <= 320)
-    {
-        x = 320;
-    }
-    else if(x >= 1600)
-    {
-        x = 1600;
-    }
-    // move(x, y);
+void Entity::setIsGrounded(bool ground){
+    isGrounded = ground;
 }
 
-int Entity::getID()
-{
-    manageAnimation();
-    return ID;
-}
-
-void Entity::manageAnimation()
-{
-    spriteCounter++;
-    if(spriteCounter % 20 == 0)
-    {
-        spriteCounter = 0;
-        switch(myState)
-        {
-            case idle:
-                if(ID == entitySprites[0])
-                {
-                    ID = entitySprites[1];
-                }
-                else
-                {
-                    ID = entitySprites[0];
-                }
-                break;
-            case walking:
-            if(isFacingRight)
-            {
-                if(ID == entitySprites[3])
-                {
-                    ID = entitySprites[2];
-                }
-                else
-                {
-                    ID = entitySprites[3];
-                }
-            }
-            else
-            {
-                if(ID == entitySprites[4])
-                {
-                    ID = entitySprites[4];
-                }
-                else
-                {
-                    ID = entitySprites[4];
-                }
-            }
-                
-                break;
-        }
-    }
-}
