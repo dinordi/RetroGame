@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 #include "game.h"
 #include "level.h"
 //#include "Projectile.h"
@@ -7,7 +7,7 @@
 #include "platform.h"
 #include "Entity.h"
 #include "Bullet.h"
-
+#include "samurai.h"
 
 
 const float dt = 1.0f / 60;
@@ -22,6 +22,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
+    
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -168,7 +169,7 @@ void Game::readInput()
     buttonStatus.down = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
-    printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
+    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -275,15 +276,18 @@ void Game::drawLevel()
         actorY = actor->getY();
         range = actor->range; 
 
-        // Check if player is attacking and adjust the sprite position
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
-        if(actor->isPlayer() && player->myState == attacking)
-        {
-            playerAttackOffsetX = player->attackCheck(true); //Get X offset
-            playerAttackOffsetY = player->attackCheck(false);   //Get Y offset
-            actorX += playerAttackOffsetX;
-            actorY -= playerAttackOffsetY;
-        }
+
+        Entity* ob = dynamic_cast<Entity*>(actor);
+        if(ob != nullptr)
+        // Check if player is attacking and adjust the sprite position
+            if(ob->myState == attacking)
+            {
+                playerAttackOffsetX = ob->attackCheck(true); //Get X offset
+                playerAttackOffsetY = ob->attackCheck(false);   //Get Y offset
+                actorX += playerAttackOffsetX;
+                actorY -= playerAttackOffsetY;
+            }
 
         if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
             continue;

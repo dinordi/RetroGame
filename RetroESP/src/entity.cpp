@@ -25,4 +25,7 @@ void Entity::setIsGrounded(bool ground){
     isGrounded = ground;
 }
 
-
+int Entity::attackCheck(bool isX)
+{
+    return 0;
+}

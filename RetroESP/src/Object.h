@@ -19,11 +19,13 @@ class Object : public Actor{
     int getySpeed();
     void updateySpeed(float speed);
     void setySpeed(float speed);
-    void manageAnimation();
+    virtual void manageAnimation();
     virtual void behaviour();
+    state getState() const { return myState; }
+    // int getState() const { return myState; }
     friend class Game;
     
-    protected:
+protected:
     float ySpeed;
     float xSpeed;
     const int* entitySprites; //Sprite ID

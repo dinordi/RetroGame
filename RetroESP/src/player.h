@@ -21,6 +21,7 @@ public:
     void behaviour() override;
     bool isPlayer() const override { return true; }
     int attackCheck(bool isX) override;
+    void manageAnimation() override;
     friend class Game;
 private:
     int printX;
