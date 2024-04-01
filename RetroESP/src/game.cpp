@@ -22,11 +22,6 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-
-    Samurai* sam = new Samurai(samuraiSprites,15,300,200);
-    objects.push_back(sam);
-    entities.push_back(sam);
-    actors.push_back(sam);
     
     frames = 0;
     gameState = Menu;
