@@ -91,3 +91,8 @@ void Object::manageAnimation()
                 break;
         }
 }
+
+// void Object::behaviour()
+// {
+    
+// }

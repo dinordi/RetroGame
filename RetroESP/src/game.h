@@ -40,6 +40,7 @@ public:
     void drawMainMenu();
     void drawCredits();
     void updateSelection();
+    void checkRangedAttack(Entity* entity);
     void drawString(std::string str, int startX, int y);
     int collisionCheck(Object* object);
     int gravityCheck(Object* object,int);

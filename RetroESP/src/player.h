@@ -21,6 +21,6 @@ public:
     friend class Game;
 private:
     int printX;
-    Bullet* bullet;
+    //Bullet* bullet;
     
 };

@@ -31,7 +31,7 @@ typedef struct {
 
 class Entity : public Object{
 public:
-    Entity(const int* entitySprites,int range,int,int);
+    Entity(const int* entitySprites,int range,int x,int y);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
@@ -46,5 +46,6 @@ protected:
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
+    bool isRanged;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
 };
