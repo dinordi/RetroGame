@@ -168,7 +168,7 @@ void Game::readInput()
     buttonStatus.down = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
-    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
+    printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -273,13 +273,24 @@ void Game::drawLevel()
         delta = x - middleX;
         actorX = 320 + delta;
         range = actor->range; 
-        if(actor->getY() < 0) // if player so above roof of the screen the Y goes below zero
+        int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
+
+        if(actor->isPlayer() && player->myState == attacking)
+        {
+            playerAttackOffsetY = 7;
+            if(player->isFacingRight)
+                playerAttackOffsetX = 10;
+            else
+                playerAttackOffsetX = -10;
+        }
+        if(actor->getY() < 0 + playerAttackOffsetY) // if player so above roof of the screen the Y goes below zero
             continue;
+
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
             spriteData[spriteDataCount++] = htobe16(actor->getID());
-            spriteData[spriteDataCount++] = htobe16(actorX + 144);
-            spriteData[spriteDataCount++] = htobe16(actor->getY());
+            spriteData[spriteDataCount++] = htobe16(actorX + 144 + playerAttackOffsetX);
+            spriteData[spriteDataCount++] = htobe16(actor->getY() - playerAttackOffsetY);
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -318,7 +329,9 @@ std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
 }
+
 Object projectile = Bullet(bulletID,7,600,400);//player->makeProjectile();
+
 void Game::tick()
 {
     
