@@ -132,7 +132,7 @@ void Game::updateGame()
 {
     //Check for input
     readInput();
-    player->handleInput(buttonStatus);
+    player->setButtonStatus(buttonStatus);
     tick();
     frames++;
 }
@@ -168,7 +168,7 @@ void Game::readInput()
     buttonStatus.down = button->pinGet(4);
     buttonStatus.melee = button->pinGet(5);
     buttonStatus.atk = button->pinGet(6);
-    printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
+    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -274,25 +274,13 @@ void Game::drawLevel()
         actorX = 320 + delta;
         actorY = actor->getY();
         range = actor->range; 
-
-        // Check if player is attacking and adjust the sprite position
-        int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
-        if(actor->isPlayer() && player->myState == attacking)
-        {
-            playerAttackOffsetX = player->attackCheck(true); //Get X offset
-            playerAttackOffsetY = player->attackCheck(false);   //Get Y offset
-            actorX += playerAttackOffsetX;
-            actorY -= playerAttackOffsetY;
-        }
-
         if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
             continue;
-
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
-            spriteData[spriteDataCount++] = htobe16(actorY);
+            spriteData[spriteDataCount++] = htobe16(actor->getY());
             // if(actor->isProjectile())
             //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
         
@@ -313,16 +301,16 @@ void Game::drawLevel()
 
 void Game::loadPlatforms(const int level[16][63])
 {
-    for(int i = 0; i < 16; i++) // 16 rows
+    for(int i = 0; i < 16; i++)
     {
-        for(int j = 0; j < 63; j++) // 63 columns
+        for(int j = 0; j < 63; j++)
         {
-            if(level[i][j] != 0)    // If the tile is not empty
+            if(level[i][j] != 0)
             {
-                int tileX = j * 31; //31 is tile width/height
+                int tileX = j * 31;
                 int tileY = i * 31;
-                int tileID = level[i][j] + 99;  // Add 99 to the tileID to get the correct sprite
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
+                int tileID = level[i][j] + 99;
+                Platform* platform = new Platform(tileID, tileX, tileY, 15);
                 platforms.push_back(platform);
                 actors.push_back(platform);
             }
@@ -347,11 +335,12 @@ void Game::tick()
     }
     for(Object* object : objects)
     {
-        object->manageAnimation();
         groundLevel = collisionCheck(object);
+        object->behaviour();
+        object->manageAnimation();
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
-        object->move(x, y);
+        //object->move(x, y);
     }
 }
 
@@ -380,33 +369,33 @@ int Game::collisionCheck(Object* object){
 }
 
 int Game::gravityCheck(Object* object,int groundlevel){
-    int y = object->y + object->ySpeed; 
+    //int y = object->y + object->ySpeed; 
     if(object->hasGravity)
         {
             object->updateySpeed(gravity);  
             //printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
             // y = y1;
-            if(y > groundlevel) //if player is on platform
+            if(object->y > groundlevel) //if player is on platform
             {
-                y = groundlevel;
+                object->y = groundlevel;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
         }
-    return y;
+    return 0;
 }
 
 int Game::borderCheck(Object* object){
-    int x = object->xSpeed + object->x; //add the moving speed to current x
-        if(x <= 320) // stop at border left
+    //int x = object->xSpeed + object->x; //add the moving speed to current x
+        if(object->getX() <= 320) // stop at border left
         {
-            x = 320;
+            object->x = 320;
         }
-        else if(x >= 1600) //stop at border right
+        else if(object->getX() >= 1600) //stop at border right
         {
-            x = 1600;
+            object->x = 1600;
         }
-    return x;
+    return 0;
 }
 
 void Game::checkRangedAttack(Entity* entity){

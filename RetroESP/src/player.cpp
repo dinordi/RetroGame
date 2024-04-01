@@ -11,9 +11,9 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
     isRanged = 1;
 }
 
-void Player::handleInput(buttonStatuses buttonStatus) {
+void Player::behaviour() {
     lastmyState = myState;
-    static int count = 0;
+    static int count;
     if (buttonStatus.up && isGrounded) {
         // Handle up
         ySpeed = -12;
@@ -41,31 +41,25 @@ void Player::handleInput(buttonStatuses buttonStatus) {
     {
         count = 0;
     }
-    if(count < 24)
+    if(count < 3)
     {
         count++;
         myState = attacking;
     }
+    y = y + ySpeed; 
+    x = xSpeed + x; //add the moving speed to current x
     lastButtonState = buttonStatus;
+    
+}
 
+void Player::setButtonStatus(buttonStatuses buttonStatus)
+{
+    this->buttonStatus = buttonStatus;
 }
 
 Projectile* Player::makeProjectile(){
-    return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
-}
-
-
-//This function determines the offset of the sprite to be used for the attack animation
-int Player::attackCheck(bool isX){
-    if(isX) //X offset
-    {
-        if(isFacingRight)
-            return 10;
-        else
-            return -10;
-    }
-    else    //Y offset
-    {
-        return 7;
-    }
+    if(isFacingRight)
+        return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
+    else
+      return new Bullet(bulletID,7, this->getX()-3,this->getY()-3,isFacingRight);
 }

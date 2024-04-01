@@ -39,7 +39,6 @@ public:
     void setIsGrounded(bool ground);
     void attack();
     void jump();
-    virtual int attackCheck(bool isX) = 0;
     virtual Projectile* makeProjectile() = 0;
     friend class Game;
 

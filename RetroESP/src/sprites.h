@@ -5,11 +5,9 @@
 // const int enemy1Sprites[5] = {0,0,0,0,0};
 
 
-const int player1Sprites[12] = {0,1,2,3,2+512,3+512, 115, 116, 117, 115+512, 116+512, 117+512};
+const int player1Sprites[6] = {0,1,2,3,2+512,3+512};
 const int enemy1Sprites[4] = {5,6,7,8};
 const int enemy2Sprites[4] = {9,10,11,12};
-                            // Idle _______ Walking _______________________ Attacking    
-const int samuraiSprites[17] = {112,113,114,104,105,106,107,108,109,110,111,200, 201, 202, 203, 204, 205};
 const int platformIDs[4] = {100,101,102,103};
 const int bulletID[1] = {47};
 
