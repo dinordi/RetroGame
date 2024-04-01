@@ -1,15 +1,27 @@
+#pragma once
 #include "game.h"
 #include "level.h"
+//#include "Projectile.h"
+#include "sprites.h"
+#include "endian.h"
+#include "platform.h"
+#include "Entity.h"
+#include "Bullet.h"
+
+
 
 const float dt = 1.0f / 60;
 const float gravity = 0.52f;
+int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
-    player = new Player(player1Sprites,7);
+    player = new Player(player1Sprites,7,780,100);
+    objects.push_back(player);
     entities.push_back(player);
+    actors.push_back(player);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -127,46 +139,25 @@ void Game::updateGame()
 
 void Game::sendToDisplay()
 {
-    //Send game state to display
-    // (ID, x, y)
-    // for(int i = 1; i < entities.size();i++)
-    // {
-    //     entities[i]->move((i*15), (i*15));
-    // }
-
-    for (auto entity : entities)
-    {
-        int x;
-        if(player == entity)
-        {
-            x = 320;
-            if(entity->getY() < 0)
-            {
-                continue;
-            }
-            // printk("ID: %d\n", entity->getID());
-        }
-        else
-        {
-            x = entity->getX();
-        }
-        int y = entity->getY();
-        int ID = entity->getID();
-        spriteData[spriteDataCount++] = htobe16(ID);
-        spriteData[spriteDataCount++] = htobe16(x+144);
-        spriteData[spriteDataCount++] = htobe16(y);
-        // printk("Added player\n");
-    }
     drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
 
-void Game::addEntity(const int* playerSprites,int range)
+// void Game::addEntity(const int* playerSprites,int range,int x, int y)
+// {
+//     Object* entity = new Entity(playerSprites,range,x,y);
+//     printk("id: %d\n", entity->getID());
+//     entities.push_back(static_cast<Entity*>(entity));
+//     objects.push_back(entity);
+// }
+
+void Game::addProjectile(const int* playerSprites,int range,int x, int y)
 {
-    Entity* entity = new Entity(playerSprites,range);
-    printk("id: %d\n", entity->getID());
-    entities.push_back(entity);
+    Object* projectile = new Projectile(playerSprites,range,x,y);
+    printk("id: %d\n", projectile->getID());
+    projectiles.push_back(static_cast<Projectile*>(projectile));
+    objects.push_back(projectile);
 }
 
 void Game::readInput()
@@ -275,28 +266,33 @@ void Game::drawLevel()
     int middleX = player->getX();
     int leftBorder = middleX - 320;
     int rightBorder = middleX + 320;
-    int tileSize = 31;
-    int leftTileIndex = leftBorder / tileSize;
-    int rightTileIndex = rightBorder / tileSize;
-    int y = 0;
-    int count = 0;
-    for(auto platform : platforms)
-    {
-        int x = platform->getX();
-        int delta = x - middleX;
-        int platformX = 320 + delta;
-        if(x > leftBorder-15 && x < rightBorder+15)
+    int x,delta,actorX,range;
+    for(auto actor : actors)
+    { 
+        x = actor->getX();
+        delta = x - middleX;
+        actorX = 320 + delta;
+        range = actor->range; 
+        if(actor->getY() < 0) // if player so above roof of the screen the Y goes below zero
+            continue;
+        if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
-            // if(platformX < 0)
-            // {
-            //     platformX = 0;
-            // }
-            spriteData[spriteDataCount++] = htobe16(platform->getID());
-            spriteData[spriteDataCount++] = htobe16(platformX+144);
-            spriteData[spriteDataCount++] = htobe16(platform->getY());
+            spriteData[spriteDataCount++] = htobe16(actor->getID());
+            spriteData[spriteDataCount++] = htobe16(actorX + 144);
+            spriteData[spriteDataCount++] = htobe16(actor->getY());
+            //printk("ID: %d\n", actor->getID());
         }
     }
-
+    // actorX = 320;
+    // range = player->range; 
+    // printk("player!");
+    // printk("ID: %d\n", player->getID());
+    // if((x > (leftBorder - range)) && (x < (rightBorder + range)))
+    // {
+    //     spriteData[spriteDataCount++] = htobe16(player->getID());
+    //     spriteData[spriteDataCount++] = htobe16(actorX + 144);
+    //     spriteData[spriteDataCount++] = htobe16(player->getY());
+    // }
 }
 
 void Game::loadPlatforms(const int level[16][63])
@@ -312,6 +308,7 @@ void Game::loadPlatforms(const int level[16][63])
                 int tileID = level[i][j] + 99;
                 Platform* platform = new Platform(tileID, tileX, tileY, 15);
                 platforms.push_back(platform);
+                actors.push_back(platform);
             }
         }
     }
@@ -321,24 +318,43 @@ std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
 }
-
+Object projectile = Bullet(bulletID,7,600,400);//player->makeProjectile();
 void Game::tick()
 {
-
+    
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-
-    for(Entity* entity : entities)
+    count++;
+    // if(player->myState == attacking && count % 20 == 0)
+    // {
+    //     projectiles.push_back(static_cast<Projectile*>(&projectile));
+    //     objects.push_back(&projectile);
+    //     count = 0;
+    // }
+    for(Object* object : objects)
     {
-        for (Platform* platform : platforms) {
+        object->manageAnimation();
+       groundLevel = collisionCheck(object);
+        
+        y = gravityCheck(object,groundLevel);
+        x = borderCheck(object);
+        object->move(x, y);
+    }
+}
+
+int Game::collisionCheck(Object* object){
+    int groundLevel = 458;
+    if(object->hasCollision)
+        {
+            for (Platform* platform : platforms) {
                 int platformx = platform->getX();
                 int platformy = platform->getY();
                 int platformRange = platform->range;
-                int entityRange = entity->range;
-                if (entity->getY() + entityRange <= platformy - platform->range)
+                int entityRange = object->range;
+                if (object->getY() + entityRange <= platformy - platform->range)
                 {
-                    int entityX = entity->getX();
+                    int entityX = object->getX();
                     if (entityX >= platformx - platformRange && entityX <= platformx  + platformRange) {  // Check if entity is above the platform
                         if (platformy-(platformRange + entityRange)  < groundLevel) {
                             groundLevel = platformy-(platformRange + entityRange);
@@ -347,26 +363,36 @@ void Game::tick()
                     }
                 }
             } 
-    entity->updateySpeed(gravity);
-    y = entity->y + entity->ySpeed;       //add moving speed and gravity to current y
-    // y = y1;
-    if(y > groundLevel) //if player is on platform
-    {
-        y = groundLevel;
-        entity->isGrounded = true;
-        entity->ySpeed = 0;
-    }
-     x = entity->xSpeed + entity->x; //add the moving speed to current x
-    if(x <= 320) // stop at border left
-    {
-        x = 320;
-    }
-    else if(x >= 1600) //stop at border right
-    {
-        x = 1600;
-    }
-    entity->move(x, y);
-    }
+        }
+        return groundLevel;
+}
 
-    
+int Game::gravityCheck(Object* object,int groundlevel){
+    int y = object->y + object->ySpeed; 
+    if(object->hasGravity)
+        {
+            object->updateySpeed(gravity);  
+            //printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
+            // y = y1;
+            if(y > groundlevel) //if player is on platform
+            {
+                y = groundlevel;
+                object->isGrounded = true;
+                object->ySpeed = 0;
+            }
+        }
+    return y;
+}
+
+int Game::borderCheck(Object* object){
+    int x = object->xSpeed + object->x; //add the moving speed to current x
+        if(x <= 320) // stop at border left
+        {
+            x = 320;
+        }
+        else if(x >= 1600) //stop at border right
+        {
+            x = 1600;
+        }
+    return x;
 }

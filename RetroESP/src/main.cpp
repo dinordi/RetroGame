@@ -17,7 +17,6 @@
 // #include "adc.h"
 #include "button.h"
 #include "fpga.h" //Serial communication with FPGA
-#include "entity.h"
 #include "game.h"
 #include "sprites.h"
 
