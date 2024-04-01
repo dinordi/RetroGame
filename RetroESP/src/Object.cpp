@@ -31,15 +31,12 @@ void Object::manageAnimation()
         switch(myState)
         {
             case idle:
-                if(spriteCounter % 24 < 8)
+                if(spriteCounter % 30 < 15)
                     ID = entitySprites[0];
-                else if (spriteCounter % 24 < 16)
+                else
                     ID = entitySprites[1];
-                else 
-                    ID = entitySprites[2];
-                if(spriteCounter == 30 || ID >= 1050)
+                if(spriteCounter == 30)
                     spriteCounter = 0;
-                    ID = entitySprites[1];
                 break;
             case walking:
                 if(isFacingRight)
@@ -68,24 +65,24 @@ void Object::manageAnimation()
             case attacking:
                 if(isFacingRight)
                 {
-                    if(spriteCounter % 24 < 8)
+                    if(spriteCounter % 9 < 3)
                         ID = entitySprites[6];
-                    else if( spriteCounter % 24 < 16)
+                    else if( spriteCounter % 9 < 6)
                         ID = entitySprites[7];
                     else
                         ID = entitySprites[8];
-                    if(spriteCounter == 24)
+                    if(spriteCounter == 9)
                         spriteCounter = 0;
                 }
                 else
                 {
-                    if(spriteCounter % 24 < 8)
+                    if(spriteCounter % 9 < 3)
                         ID = entitySprites[9];
-                    else if( spriteCounter % 24 < 16)
+                    else if( spriteCounter % 9 < 6)
                         ID = entitySprites[10];
                     else
                         ID = entitySprites[11];
-                    if(spriteCounter == 24)
+                    if(spriteCounter == 9)
                         spriteCounter = 0;
                 }
                 break;

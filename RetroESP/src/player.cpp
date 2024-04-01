@@ -41,7 +41,7 @@ void Player::behaviour() {
     {
         count = 0;
     }
-    if(count < 24)
+    if(count < 9)
     {
         count++;
         myState = attacking;
