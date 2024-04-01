@@ -274,24 +274,25 @@ void Game::drawLevel()
         actorX = 320 + delta;
         actorY = actor->getY();
         range = actor->range; 
-        int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
 
+        // Check if player is attacking and adjust the sprite position
+        int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
         if(actor->isPlayer() && player->myState == attacking)
         {
-            playerAttackOffsetY = 7;
-            if(player->isFacingRight)
-                playerAttackOffsetX = 10;
-            else
-                playerAttackOffsetX = -10;
+            playerAttackOffsetX = player->attackCheck(true); //Get X offset
+            playerAttackOffsetY = player->attackCheck(false);   //Get Y offset
+            actorX += playerAttackOffsetX;
+            actorY -= playerAttackOffsetY;
         }
-        if(actorY < + playerAttackOffsetY || actorY > 512 - playerAttackOffsetY) // if player so above roof of the screen the Y goes below zero
+
+        if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
             continue;
 
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
             spriteData[spriteDataCount++] = htobe16(actor->getID());
-            spriteData[spriteDataCount++] = htobe16(actorX + 144 + playerAttackOffsetX);
-            spriteData[spriteDataCount++] = htobe16(actor->getY() - playerAttackOffsetY);
+            spriteData[spriteDataCount++] = htobe16(actorX + 144);
+            spriteData[spriteDataCount++] = htobe16(actor->getY());
             // if(actor->isProjectile())
             //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
         
@@ -312,16 +313,16 @@ void Game::drawLevel()
 
 void Game::loadPlatforms(const int level[16][63])
 {
-    for(int i = 0; i < 16; i++)
+    for(int i = 0; i < 16; i++) // 16 rows
     {
-        for(int j = 0; j < 63; j++)
+        for(int j = 0; j < 63; j++) // 63 columns
         {
-            if(level[i][j] != 0)
+            if(level[i][j] != 0)    // If the tile is not empty
             {
-                int tileX = j * 31;
+                int tileX = j * 31; //31 is tile width/height
                 int tileY = i * 31;
-                int tileID = level[i][j] + 99;
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);
+                int tileID = level[i][j] + 99;  // Add 99 to the tileID to get the correct sprite
+                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
                 platforms.push_back(platform);
                 actors.push_back(platform);
             }
@@ -333,8 +334,6 @@ std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
 }
-
-// Object projectile = Bullet(bulletID,7,600,400);//player->makeProjectile();
 
 void Game::tick()
 {

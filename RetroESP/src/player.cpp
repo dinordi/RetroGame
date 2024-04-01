@@ -45,3 +45,19 @@ void Player::handleInput(buttonStatuses buttonStatus) {
 Projectile* Player::makeProjectile(){
     return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
 }
+
+
+//This function determines the offset of the sprite to be used for the attack animation
+int Player::attackCheck(bool isX){
+    if(isX) //X offset
+    {
+        if(isFacingRight)
+            return 10;
+        else
+            return -10;
+    }
+    else    //Y offset
+    {
+        return 7;
+    }
+}

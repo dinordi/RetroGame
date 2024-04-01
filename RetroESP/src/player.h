@@ -18,6 +18,7 @@ public:
     void handleInput(buttonStatuses buttonStatus);
     Projectile* makeProjectile() override;
     bool isPlayer() const override { return true; }
+    int attackCheck(bool isX) override;
     friend class Game;
 private:
     int printX;
