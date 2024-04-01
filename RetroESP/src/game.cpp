@@ -132,7 +132,7 @@ void Game::updateGame()
 {
     //Check for input
     readInput();
-    player->handleInput(buttonStatus);
+    player->setButtonStatus(buttonStatus);
     tick();
     frames++;
 }
@@ -347,11 +347,12 @@ void Game::tick()
     }
     for(Object* object : objects)
     {
-        object->manageAnimation();
         groundLevel = collisionCheck(object);
+        object->behaviour();
+        object->manageAnimation();
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
-        object->move(x, y);
+        //object->move(x, y);
     }
 }
 
@@ -380,33 +381,33 @@ int Game::collisionCheck(Object* object){
 }
 
 int Game::gravityCheck(Object* object,int groundlevel){
-    int y = object->y + object->ySpeed; 
+    //int y = object->y + object->ySpeed; 
     if(object->hasGravity)
         {
             object->updateySpeed(gravity);  
             //printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
             // y = y1;
-            if(y > groundlevel) //if player is on platform
+            if(object->y > groundlevel) //if player is on platform
             {
-                y = groundlevel;
+                object->y = groundlevel;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
         }
-    return y;
+    return 0;
 }
 
 int Game::borderCheck(Object* object){
-    int x = object->xSpeed + object->x; //add the moving speed to current x
-        if(x <= 320) // stop at border left
+    //int x = object->xSpeed + object->x; //add the moving speed to current x
+        if(object->getX() <= 320) // stop at border left
         {
-            x = 320;
+            object->x = 320;
         }
-        else if(x >= 1600) //stop at border right
+        else if(object->getX() >= 1600) //stop at border right
         {
-            x = 1600;
+            object->x = 1600;
         }
-    return x;
+    return 0;
 }
 
 void Game::checkRangedAttack(Entity* entity){

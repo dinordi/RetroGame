@@ -20,7 +20,7 @@ class Object : public Actor{
     void updateySpeed(float speed);
     void setySpeed(float speed);
     void manageAnimation();
-    //void behaviour();
+    virtual void behaviour();
     friend class Game;
     
     protected:

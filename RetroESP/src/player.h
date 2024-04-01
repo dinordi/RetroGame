@@ -16,13 +16,16 @@ class Player : public Entity
 public:
     Player(const int* playerSprites, int range,int x,int y);
     void handleInput(buttonStatuses buttonStatus);
+    void setButtonStatus(buttonStatuses buttonStatus);
     Projectile* makeProjectile() override;
+    void behaviour() override;
     bool isPlayer() const override { return true; }
     int attackCheck(bool isX) override;
     friend class Game;
 private:
     int printX;
     buttonStatuses lastButtonState;
+    buttonStatuses buttonStatus;
     //Bullet* bullet;
     
 };

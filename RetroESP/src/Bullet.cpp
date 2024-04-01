@@ -5,3 +5,8 @@ Bullet::Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight
     ySpeed = 0;
     myState = flying;
 }
+
+void Bullet::behaviour()
+{
+    x = xSpeed + x;
+}

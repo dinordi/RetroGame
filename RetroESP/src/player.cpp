@@ -11,7 +11,7 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
     isRanged = 1;
 }
 
-void Player::handleInput(buttonStatuses buttonStatus) {
+void Player::behaviour() {
     lastmyState = myState;
     static int count = 0;
     if (buttonStatus.up && isGrounded) {
@@ -46,12 +46,10 @@ void Player::handleInput(buttonStatuses buttonStatus) {
         count++;
         myState = attacking;
     }
+    y = y + ySpeed; 
+    x = x + xSpeed;
     lastButtonState = buttonStatus;
 
-}
-
-Projectile* Player::makeProjectile(){
-    return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
 }
 
 
@@ -68,4 +66,15 @@ int Player::attackCheck(bool isX){
     {
         return 7;
     }
+}
+
+Projectile* Player::makeProjectile(){
+    if(isFacingRight)
+        return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
+    else
+      return new Bullet(bulletID,7, this->getX()-3,this->getY()-3,isFacingRight);
+}
+
+void Player::setButtonStatus(buttonStatuses buttonStatus){
+    this->buttonStatus = buttonStatus;
 }
