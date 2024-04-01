@@ -13,6 +13,7 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
 
 void Player::handleInput(buttonStatuses buttonStatus) {
     lastmyState = myState;
+    static int count = 0;
     if (buttonStatus.up && isGrounded) {
         // Handle up
         ySpeed = -12;
@@ -36,10 +37,17 @@ void Player::handleInput(buttonStatuses buttonStatus) {
         myState = idle;
         
     }
-    if(buttonStatus.melee)
+    if(buttonStatus.melee && !lastButtonState.melee)
     {
+        count = 0;
+    }
+    if(count < 24)
+    {
+        count++;
         myState = attacking;
     }
+    lastButtonState = buttonStatus;
+
 }
 
 Projectile* Player::makeProjectile(){

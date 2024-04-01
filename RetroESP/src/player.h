@@ -22,6 +22,7 @@ public:
     friend class Game;
 private:
     int printX;
+    buttonStatuses lastButtonState;
     //Bullet* bullet;
     
 };
