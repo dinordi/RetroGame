@@ -5,7 +5,9 @@ typedef enum {
     idle,
     walking,
     jumping,
-    attacking
+    attacking,
+    flying,
+    hit
 } state;
 
 class Object : public Actor{

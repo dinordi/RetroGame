@@ -8,6 +8,7 @@ public:
     int getY();
     void move(float x, float y);
     //void tick();
+    virtual bool isPlayer() const { return false; }
     virtual int getID();
     friend class Game;
 

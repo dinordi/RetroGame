@@ -28,46 +28,39 @@ void Object::setySpeed(float speed){
 void Object::manageAnimation()
 {
     spriteCounter++;
-    if(spriteCounter % 10 == 0)
-    {
-        spriteCounter = 0;
         switch(myState)
         {
             case idle:
-                if(ID == entitySprites[0])
-                {
-                    ID = entitySprites[1];
-                }
-                else
-                {
+                if(spriteCounter % 30 < 15)
                     ID = entitySprites[0];
-                }
-                break;
+                else
+                    ID = entitySprites[1];
+                if(spriteCounter == 30)
+                    spriteCounter = 0;
+            break;
             case walking:
             if(isFacingRight)
             {
-                if(ID == entitySprites[3])
-                {
+                if(spriteCounter % 16 < 8)
                     ID = entitySprites[2];
-                }
                 else
-                {
                     ID = entitySprites[3];
-                }
+                if(spriteCounter == 16)
+                    spriteCounter = 0;
             }
             else
             {
-                if(ID == entitySprites[4])
-                {
-                    ID = entitySprites[5];
-                }
-                else
-                {
+                if(spriteCounter % 16 < 8)
                     ID = entitySprites[4];
-                }
+                else
+                    ID = entitySprites[5];
+                if(spriteCounter == 16)
+                    spriteCounter = 0;
             }
-                
+            break;
+            case flying:
+                ID = entitySprites[0];
+                spriteCounter = 0;
                 break;
         }
-    }
 }

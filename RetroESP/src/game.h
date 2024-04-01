@@ -51,6 +51,7 @@ private:
     std::vector<Entity*> entities;
     std::vector<Projectile*> projectiles;
     std::vector<Platform*> platforms;
+    std::vector<Actor*> actors;
     uint16_t* spriteData;
     int spriteDataCount;
     FPGA* fpga;
