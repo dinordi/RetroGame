@@ -40,7 +40,7 @@ public:
     void attack();
     void jump();
     virtual int attackCheck(bool isX);
-    virtual Projectile* makeProjectile() = 0;
+    virtual Projectile* makeProjectile();
     friend class Game;
 
 protected:

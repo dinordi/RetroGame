@@ -5,14 +5,13 @@
 #include "sprites.h"
 #include "endian.h"
 #include "platform.h"
-#include "Entity.h"
+//#include "Entity.h"
 #include "Bullet.h"
 #include "samurai.h"
 #include <algorithm>
-
+#include "Enemy.h"
 
 const float dt = 1.0f / 60;
-const float gravity = 0.52f;
 int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
@@ -23,7 +22,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    
+    addEnemy(enemy2Sprites,7,700, 100);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -145,13 +144,14 @@ void Game::sendToDisplay()
     spriteDataCount = 0;
 }
 
-// void Game::addEntity(const int* playerSprites,int range,int x, int y)
-// {
-//     Object* entity = new Entity(playerSprites,range,x,y);
-//     printk("id: %d\n", entity->getID());
-//     entities.push_back(static_cast<Entity*>(entity));
-//     objects.push_back(entity);
-// }
+void Game::addEnemy(const int* sprites,int range,int x, int y)
+{
+    Enemy* entity = new Enemy(sprites,range,x,y);
+    printk("id: %d\n", entity->getID());
+    entities.push_back(entity);
+    objects.push_back(entity);
+    actors.push_back(entity);
+}
 
 // void Game::addProjectile(const int* playerSprites,int range,int x, int y)
 // {
@@ -355,10 +355,13 @@ void Game::tick()
     {
         groundLevel = collisionCheck(object);
         object->behaviour();
-        realCollisionCheck(object);
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
-        object->manageAnimation();
+    }
+    for(Object* object : objects)
+    {
+        realCollisionCheck(object);
+        object->manageAnimation(); 
         //object->move(x, y);
     }
 }
@@ -370,6 +373,7 @@ void Game::checkDeleted(){
         {
             auto gevondenActor = std::find(actors.begin(), actors.end(), object);
             auto gevondenObject = std::find(objects.begin(), objects.end(), object);
+            auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
 
             // Controleer of de pointer is gevonden
             if (gevondenActor != actors.end()) {
@@ -377,6 +381,9 @@ void Game::checkDeleted(){
             } 
             if (gevondenObject != objects.end()) {
                 objects.erase(gevondenObject);
+            }
+            if (gevondenEntity != entities.end()) {
+                entities.erase(gevondenEntity);
             }
             delete object;
         } 
@@ -426,8 +433,7 @@ void Game::realCollisionCheck(Object* object){
             
             if(platformRight >= objectLeft && platformLeft <= objectRight && platformTop <= objectBottom && platformBottom >= objectTop)
             {
-                //printk("kanker");
-                object->collisionWith(0);
+                object->collisionWith(20);
             }
         }
     }
@@ -438,8 +444,15 @@ void Game::realCollisionCheck(Object* object){
             int object2Left = object2->getX() - object2->range;
             int object2Right = object2->getX() + object2->range;
 
-            if(object2Right >= objectLeft && object2Left <= objectRight && object2Top >= objectBottom && object2Bottom <= objectTop)
-                object->collisionWith(object2->damage);
+            if(object2Right >= objectLeft && object2Left <= objectRight && object2Top <= objectBottom && object2Bottom >= objectTop)
+            {
+                if(!object2->isPlayer() && object2 != object)
+                {
+                    printk("ik wil slapen");
+                    object->collisionWith(object2->damage);
+                }
+            }
+                
         }
     }
  
@@ -483,3 +496,4 @@ void Game::checkRangedAttack(Entity* entity){
         actors.push_back(projectile);
     }
 }
+

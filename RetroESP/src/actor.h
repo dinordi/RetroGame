@@ -1,5 +1,6 @@
 #pragma once
 
+const float gravity = 0.52f;
 
 class Actor {
 public:

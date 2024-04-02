@@ -4,7 +4,7 @@
 #include <zephyr/sys/printk.h>
 #include <cstdio>
 
-const float gravity = 0.52f;
+
 Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
     printX = 320;
