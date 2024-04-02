@@ -44,6 +44,8 @@ public:
     void drawString(std::string str, int startX, int y);
     int collisionCheck(Object* object);
     int gravityCheck(Object* object,int);
+    void realCollisionCheck(Object* object);
+    void checkDeleted();
     int borderCheck(Object* object);
     std::vector<Platform*>* getPlatforms();
 
