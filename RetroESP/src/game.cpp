@@ -351,11 +351,11 @@ void Game::tick()
     }
     for(Object* object : objects)
     {
-        groundLevel = collisionCheck(object);
         object->behaviour();
-        object->manageAnimation();
+        groundLevel = collisionCheck(object);
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
+        object->manageAnimation();
         //object->move(x, y);
     }
 }
@@ -372,7 +372,7 @@ int Game::collisionCheck(Object* object){
                 if (object->getY() + entityRange <= platformy - platform->range)
                 {
                     int entityX = object->getX();
-                    if (entityX >= platformx - platformRange && entityX <= platformx  + platformRange) {  // Check if entity is above the platform
+                    if (entityX + entityRange >= platformx - platformRange && entityX - entityRange <= platformx  + platformRange) {  // Check if entity is above the platform
                         if (platformy-(platformRange + entityRange)  < groundLevel) {
                             groundLevel = platformy-(platformRange + entityRange);
                             // printk("Ground level: %d\n", groundLevel);
@@ -388,8 +388,8 @@ int Game::gravityCheck(Object* object,int groundlevel){
     //int y = object->y + object->ySpeed; 
     if(object->hasGravity)
         {
-            object->updateySpeed(gravity);  
-            //printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
+            //object->updateySpeed(gravity);  
+            printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
             if(object->y > groundlevel) //if player is on platform
             {

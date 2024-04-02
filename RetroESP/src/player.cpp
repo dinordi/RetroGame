@@ -3,6 +3,8 @@
 #include "Bullet.h"
 #include <zephyr/sys/printk.h>
 #include <cstdio>
+
+const float gravity = 0.52f;
 Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
     printX = 320;
@@ -46,6 +48,7 @@ void Player::behaviour() {
         count++;
         myState = attacking;
     }
+    updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
     lastButtonState = buttonStatus;
