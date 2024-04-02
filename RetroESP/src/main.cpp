@@ -60,7 +60,7 @@ int main(void)
 		if(pin_value == 0 && lastState == 1)
 		{
 			game.update();
-			printk("Framedone received!\n");
+			//printk("Framedone received!\n");
         	// game.sendToDisplay();
 			// game.update();
 		}

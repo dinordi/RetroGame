@@ -22,6 +22,7 @@ public:
     void behaviour() override;
     bool isPlayer() const override { return true; }
     int attackCheck(bool isX) override;
+    bool collisionWith(int damage) override;
     void manageAnimation() override;
     friend class Game;
 private:
