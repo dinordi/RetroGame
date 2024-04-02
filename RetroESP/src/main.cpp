@@ -23,7 +23,7 @@
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
-#define GPIO_PIN 15
+#define GPIO_PIN 14
 	const struct device *const input = DEVICE_DT_GET(CHECK);
 
 void updateGame();
