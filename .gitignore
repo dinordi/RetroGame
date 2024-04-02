@@ -4,3 +4,4 @@ RetroESP/build/
 RetroESP/.vscode/
 .vscode/
 .cache/
+.DS_Store

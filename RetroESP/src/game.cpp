@@ -135,7 +135,6 @@ void Game::updateGame()
     readInput();
     player->setButtonStatus(buttonStatus);
     tick();
-    frames++;
 }
 
 void Game::sendToDisplay()
