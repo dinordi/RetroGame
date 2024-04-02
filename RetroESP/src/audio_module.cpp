@@ -3,6 +3,7 @@
 static const struct device *const uart_dev_1 = DEVICE_DT_GET(UART_DEVICE_NODE);
 static const struct device *const uart_dev_2 = DEVICE_DT_GET(UART_DEVICE_NODE_1);
 static const struct device *const uart_busy =  DEVICE_DT_GET(BUSY);
+// static const struct device *const uart_busy2 =  DEVICE_DT_GET(BUSY2);
 
 
 Audio::Audio()
@@ -12,11 +13,11 @@ Audio::Audio()
 		printk("%s: device not ready.\n", uart_dev_1->name);
 		return;
 	}
-	if (gpio_pin_configure(uart_busy, GPIO_PIN_1, GPIO_INPUT)) {
+	if (gpio_pin_configure(uart_busy, 19, GPIO_INPUT)) {
         printk("Error: Unable to find GPIO device.\n");
         return;
     }
-    if (gpio_pin_configure(uart_busy, GPIO_PIN_2, GPIO_INPUT)) {
+    if (gpio_pin_configure(uart_busy, 20, GPIO_INPUT)) {
         printk("Error: Unable to find GPIO device.\n");
         return;
     }

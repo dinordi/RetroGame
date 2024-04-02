@@ -21,38 +21,50 @@
 		joydown = &button4;
 		button1 = &button5;
 		button2 = &button6;
+		// busy = &gpio0;
+		// BUSY2 = &button8;
 
 	};
 	buttons {
 		compatible = "gpio-keys";
 		button1: button_1 { 
-			gpios = <&gpio0 19 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; //  gpio0, so GPIO19
+			gpios = <&gpio0 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; //  gpio0, so GPIO19
 			label = "Button 1";
 			zephyr,code = <0xb>;
 		};
 		button2: button_2 {
-			gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	
+			gpios = <&gpio0 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	
 			label = "Button 2";
 			zephyr,code = <0xb>;
 		};
 		button3: button_3 {
-			gpios = <&gpio0 21 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	
+			gpios = <&gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	
 			label = "Button 3";
 			zephyr,code = <0xb>;
 		};
 		button4: button_4 {
-		gpios = <&gpio1 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//gpio1, so 15 + 32 = GPIO47
+		gpios = <&gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//gpio1, so 15 + 32 = GPIO47
 			label = "Button 4";
 			zephyr,code = <0xb>;
 		};
 		button5: button_5 {
-			gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//0
+			gpios = <&gpio0 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//0
 			label = "Button 5";
 			zephyr,code = <0xb>;
 		};
 		button6: button_6 {
-			gpios = <&gpio1 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//35
+			gpios = <&gpio0 16 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//35
 			label = "Button 6";
+			zephyr,code = <0xb>;
+		};
+		button7: button_7 {
+			gpios = <&gpio0 19 (GPIO_ACTIVE_HIGH)>;	//19 BUSY
+			label = "BUSY 1";
+			zephyr,code = <0xb>;
+		};
+		button8: button_8 {
+			gpios = <&gpio0 20 (GPIO_ACTIVE_HIGH)>;	//20 BUSY
+			label = "BUSY 2";
 			zephyr,code = <0xb>;
 		};
 	};
@@ -83,13 +95,36 @@
 	
     check_state {
    state_0: state0 {
-			gpios = <&gpio0 4 0x11>;	
+			gpios = <&gpio0 19 0x11>;	//19
 			label = "state 0";
 		};
 	state_1: state1 {
-			gpios = <&gpio0 5 0x11>;	
+			gpios = <&gpio0 20 0x11>;	//20
 			label = "state 1";
 		};
   
     };
 };
+
+// / {
+// 	uart1_default: uart1_default {
+//         group1 {
+//             pinmux = <UART1_TX_GPIO35>;
+//         };
+ 
+//         group2 {
+//             pinmux = <UART1_RX_GPIO36>;
+//             bias-pull-up;
+//         };
+//     };
+ 
+//     uart2_default: uart2_default {
+//         group1 {
+//             pinmux = <UART2_TX_GPIO43>;
+//         };
+//         group2 {
+//             pinmux = <UART2_RX_GPIO44>;
+//             bias-pull-up;
+//         };
+//     };
+// };

@@ -61,13 +61,13 @@ int main(void)
 	int i =0;
 	while (1) {
     
-	 if(i == 9){	audio.play_music(audio.MENU_MUSIC);}
+	 if(i == 3){	audio.play_music(audio.MENU_MUSIC);}
 		printk("state uart1: %d \n",audio.music_status());
 		printk("state uart2: %d\n",audio.sfx_status());
 		k_msleep(1000);
 		i++;
 
-	if(i == 20){audio.stop(audio.MUSIC);}
+	// if(i == 20){audio.stop(audio.MUSIC);}
        /* Read the state of the GPIO pin 
         int pin_value = gpio_pin_get(input, GPIO_PIN);
 		// printk("Pin value: %d\n", pin_value);
