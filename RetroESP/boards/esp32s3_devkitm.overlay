@@ -116,25 +116,39 @@
     };
 };
 
-// / {
-// 	uart1_default: uart1_default {
-//         group1 {
-//             pinmux = <UART1_TX_GPIO35>;
-//         };
- 
-//         group2 {
-//             pinmux = <UART1_RX_GPIO36>;
-//             bias-pull-up;
-//         };
-//     };
- 
-//     uart2_default: uart2_default {
-//         group1 {
-//             pinmux = <UART2_TX_GPIO43>;
-//         };
-//         group2 {
-//             pinmux = <UART2_RX_GPIO44>;
-//             bias-pull-up;
-//         };
-//     };
-// };
+/ {
+
+	pinctrl: pin-controller {
+		compatible = "espressif,esp32-pinctrl";
+		status = "okay";
+		// uart0_default: uart0_default {
+		// 	phandle = < 0x4 >;
+		// 	group1 {
+		// 		pinmux = < 0x67feb >;
+		// 		output-high;
+		// 	};
+		// 	group2 {
+		// 		pinmux = < 0xff832c >;
+		// 		bias-pull-up;
+		// 	};
+		// };
+		uart1_default: uart1_default {
+			group1 {
+				pinmux = < UART1_TX_GPIO38 >;
+			};
+			group2 {
+				pinmux = < UART1_RX_GPIO39 >;
+				bias-pull-up;
+			};
+		};
+		uart2_default: uart2_default {
+			group1 {
+				pinmux = < UART2_TX_GPIO40 >;
+			};
+			group2 {
+				pinmux = < UART2_RX_GPIO41 >;
+				bias-pull-up;
+			};
+		};
+	};
+};
