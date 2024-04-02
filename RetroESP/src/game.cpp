@@ -15,7 +15,7 @@ const float dt = 1.0f / 60;
 const float gravity = 0.52f;
 int count = 0;
 
-Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
+Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button(button), audio(audio)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
@@ -69,6 +69,10 @@ void Game::update()
             break;
     }
     frames++;
+    if(frames > 30)
+    {
+        audio->play_music(audio->MENU_MUSIC);
+    }
 }
 
 void Game::updateSelection()
@@ -170,7 +174,7 @@ void Game::readInput()
     buttonStatus.dash = button->pinGet(5);
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
-    // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot);
+    // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
 }
 
 void Game::drawString(std::string str, int startX, int y)

@@ -11,7 +11,7 @@
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
-#include <zephyr/drivers/gpio.h>
+
 
 #include <string>
 // #include "adc.h"
@@ -30,6 +30,7 @@ void updateGame();
 
 int main(void)
 {
+	printk("init");
 	uint32_t count = 0;
 
 	initializeCharacters();
@@ -42,7 +43,8 @@ int main(void)
     }
 	ButtonHandler button;
 	FPGA fpga;
-	Game game(&fpga, &button);
+	Audio audio;
+	Game game(&fpga, &button, &audio);
 	
 	int lastState = 1;
 
@@ -53,19 +55,34 @@ int main(void)
 	// 	game.addEntity(enemy1Sprites);
 	// }
 	printk("Starting game loop\n");
+
+	
 	while (1) {
-       /* Read the state of the GPIO pin */
+    
+		// printk("\nSTOPPING MUSIC\n");
+		// audio.stop(audio.MUSIC);
+		// k_sleep(K_MSEC(10000));
+		// printk("Uart1: %d\n", audio.music_status());
+		// printk("Uart2: %d\n", audio.sfx_status());
+		// printk("\nPLAYING MUSIC\n");
+		// audio.play_music(audio.MENU_MUSIC);
+		// k_sleep(K_MSEC(10000));
+		// printk("Uart1: %d\n", audio.music_status());
+		// printk("Uart2: %d\n\n\n", audio.sfx_status());
+
+		// continue;
+       // Read the state of the GPIO pin 
         int pin_value = gpio_pin_get(input, GPIO_PIN);
-		// printk("Pin value: %d\n", pin_value);
+		// // int pin_value = 0;
+		// // lastState = 1;
+		// // printk("Pin value: %d\n", pin_value);
 		if(pin_value == 0 && lastState == 1)
 		{
 			game.update();
-			//printk("Framedone received!\n");
-        	// game.sendToDisplay();
-			// game.update();
 		}
 
 		lastState = pin_value;
+		
 	}
 	return 0;
 }

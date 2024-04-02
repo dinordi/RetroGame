@@ -6,6 +6,7 @@
 #include "fpga.h"
 #include "button.h"
 #include "player.h"
+#include "audio_module.h"
 
 class Platform;
 class Projectile;
@@ -25,7 +26,7 @@ typedef enum
 class Game
 {
 public:
-    Game(FPGA* fpga, ButtonHandler* button);
+    Game(FPGA* fpga, ButtonHandler* button, Audio* audio);
     virtual ~Game();
 
     void update();
@@ -59,6 +60,7 @@ private:
     int spriteDataCount;
     FPGA* fpga;
     ButtonHandler* button;
+    Audio* audio;
     buttonStatuses buttonStatus;
     Player* player;
     uint64_t frames;
