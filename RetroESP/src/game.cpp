@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "Bullet.h"
 #include "samurai.h"
+#include <algorithm>
 
 
 const float dt = 1.0f / 60;
@@ -353,15 +354,38 @@ void Game::tick()
     {
         checkRangedAttack(entity);
     }
+    checkDeleted();
     for(Object* object : objects)
     {
         groundLevel = collisionCheck(object);
         object->behaviour();
-        object->manageAnimation();
+        realCollisionCheck(object);
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
+        object->manageAnimation();
         //object->move(x, y);
     }
+}
+
+void Game::checkDeleted(){
+    for(Object* object : objects)
+    {
+        if(object->myState == dead)
+        {
+            auto gevondenActor = std::find(actors.begin(), actors.end(), object);
+            auto gevondenObject = std::find(objects.begin(), objects.end(), object);
+
+            // Controleer of de pointer is gevonden
+            if (gevondenActor != actors.end()) {
+                actors.erase(gevondenActor); // Verwijder de pointer uit de vector
+            } 
+            if (gevondenObject != objects.end()) {
+                objects.erase(gevondenObject);
+            }
+            delete object;
+        } 
+    }
+
 }
 
 int Game::collisionCheck(Object* object){
@@ -373,10 +397,10 @@ int Game::collisionCheck(Object* object){
                 int platformy = platform->getY();
                 int platformRange = platform->range;
                 int entityRange = object->range;
-                if (object->getY() + entityRange <= platformy - platform->range)
+                if (object->getY() + entityRange <= platformy - platformRange)
                 {
                     int entityX = object->getX();
-                    if (entityX >= platformx - platformRange && entityX <= platformx  + platformRange) {  // Check if entity is above the platform
+                    if (entityX + entityRange >= platformx - platformRange && entityX - entityRange <= platformx  + platformRange) {  // Check if entity is above the platform
                         if (platformy-(platformRange + entityRange)  < groundLevel) {
                             groundLevel = platformy-(platformRange + entityRange);
                             // printk("Ground level: %d\n", groundLevel);
@@ -388,12 +412,46 @@ int Game::collisionCheck(Object* object){
         return groundLevel;
 }
 
+void Game::realCollisionCheck(Object* object){
+
+    int objectTop = object->getY() - object->range;
+    int objectBottom = object->getY() + object->range;
+    int objectLeft = object->getX() - object->range;
+    int objectRight = object->getX() + object->range;
+
+    if(dynamic_cast<Projectile*>(object) != nullptr)
+    {
+        for(auto platform : platforms)
+        {
+            int platformTop = platform->getY() - platform->range;
+            int platformBottom = platform->getY() + platform->range;
+            int platformLeft = platform->getX() - platform->range;
+            int platformRight = platform->getX() + platform->range;
+            
+            if(platformRight >= objectLeft && platformLeft <= objectRight && platformTop <= objectBottom && platformBottom >= objectTop)
+            {
+                //printk("kanker");
+                object->collisionWith(0);
+            }
+        }
+    }
+        for(auto object2 : objects)
+        {
+            int object2Top = object2->getY() - object2->range;
+            int object2Bottom = object2->getY() + object2->range;
+            int object2Left = object2->getX() - object2->range;
+            int object2Right = object2->getX() + object2->range;
+
+            if(object2Right >= objectLeft && object2Left <= objectRight && object2Top >= objectBottom && object2Bottom <= objectTop)
+                object->collisionWith(object2->damage);
+        }
+    }
+ 
 int Game::gravityCheck(Object* object,int groundlevel){
     //int y = object->y + object->ySpeed; 
     if(object->hasGravity)
-        {
-            object->updateySpeed(gravity);  
-            //printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
+        { 
+            printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
             if(object->y > groundlevel) //if player is on platform
             {
@@ -409,10 +467,12 @@ int Game::borderCheck(Object* object){
     //int x = object->xSpeed + object->x; //add the moving speed to current x
         if(object->getX() <= 320) // stop at border left
         {
+            object->collisionWith(0);
             object->x = 320;
         }
         else if(object->getX() >= 1600) //stop at border right
         {
+            object->collisionWith(0);
             object->x = 1600;
         }
     return 0;
@@ -422,7 +482,7 @@ void Game::checkRangedAttack(Entity* entity){
     if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
     {
         Object* projectile = entity->makeProjectile();
-        projectiles.push_back(static_cast<Projectile*>(projectile));
+        //projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
     }

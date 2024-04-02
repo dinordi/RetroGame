@@ -35,3 +35,7 @@ void Object::behaviour()
 {
     
 }
+
+bool Object::collisionWith(int damage){
+    return false;
+ }

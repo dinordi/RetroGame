@@ -79,7 +79,6 @@ int main(void)
 		if(pin_value == 0 && lastState == 1)
 		{
 			game.update();
-
 		}
 
 		lastState = pin_value;
