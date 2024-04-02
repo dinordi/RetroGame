@@ -37,7 +37,7 @@ void Player::behaviour() {
         myState = idle;
         
     }
-    if(buttonStatus.melee && !lastButtonState.melee)
+    if(buttonStatus.shoot && !lastButtonState.shoot)
     {
         count = 0;
     }

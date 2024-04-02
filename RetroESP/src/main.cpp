@@ -23,7 +23,7 @@
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
-#define GPIO_PIN 15
+#define GPIO_PIN 14
 	const struct device *const input = DEVICE_DT_GET(CHECK);
 
 void updateGame();
@@ -60,6 +60,7 @@ int main(void)
 		if(pin_value == 0 && lastState == 1)
 		{
 			game.update();
+			printk("Framedone received!\n");
         	// game.sendToDisplay();
 			// game.update();
 		}

@@ -7,8 +7,9 @@ typedef struct {
     bool down;
     bool left;
     bool right;
-    bool melee;
-    bool atk;
+    bool dash;
+    bool shoot;
+    bool start;
 } buttonStatuses;
 
 class Player : public Entity

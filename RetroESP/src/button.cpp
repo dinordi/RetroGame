@@ -23,8 +23,9 @@ up(GPIO_DT_SPEC_GET_OR(L_NODE, gpios,{0})),
 down(GPIO_DT_SPEC_GET_OR(R_NODE, gpios,{0})), 
 left(GPIO_DT_SPEC_GET_OR(U_NODE, gpios,{0})), 
 right(GPIO_DT_SPEC_GET_OR(D_NODE, gpios,{0})), 
-button1(GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,{0})), 
-button2(GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,{0}))
+dash(GPIO_DT_SPEC_GET_OR(DA_NODE, gpios,{0})), 
+shoot(GPIO_DT_SPEC_GET_OR(SH_NODE, gpios,{0})),
+start(GPIO_DT_SPEC_GET_OR(ST_NODE, gpios,{0}))
 {
 
     printk("Setting up buttons\n");
@@ -32,8 +33,9 @@ button2(GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,{0}))
     setupButton(right, &button_cb_data2, 2);
     setupButton(up, &button_cb_data3, 3);
     setupButton(down, &button_cb_data4, 4);
-    setupButton(button1, &button_cb_data5, 5);
-    setupButton(button2, &button_cb_data6, 6);
+    setupButton(dash, &button_cb_data5, 5);
+    setupButton(shoot, &button_cb_data6, 6);
+	setupButton(start, &button_cb_data7, 7);
 
 }
 
@@ -90,10 +92,13 @@ bool ButtonHandler::pinGet(int ID)
 		return gpio_pin_get(right.port, right.pin);
 		break;
 	case 5:
-		return gpio_pin_get(button1.port, button1.pin);
+		return gpio_pin_get(dash.port, dash.pin);
 		break;
 	case 6:
-		return gpio_pin_get(button2.port, button2.pin);
+		return gpio_pin_get(shoot.port, shoot.pin);
+		break;
+	case 7:
+		return gpio_pin_get(start.port, start.pin);
 		break;
 	default:
 		break;
