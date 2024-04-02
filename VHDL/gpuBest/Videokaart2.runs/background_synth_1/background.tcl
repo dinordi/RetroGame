@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background.tcl"
+  variable script "C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "background_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 OPTRACE "Creating in-memory project" START { }
@@ -80,19 +79,19 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/progh/gpuBest/Videokaart2.cache/wt [current_project]
-set_property parent.project_path C:/progh/gpuBest/Videokaart2.xpr [current_project]
+set_property webtalk.parent_dir C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.cache/wt [current_project]
+set_property parent.project_path C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {C:/Users/Joey/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
+set_property board_part_repo_paths {C:/Users/bentu/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
-set_property ip_output_repo c:/progh/gpuBest/Videokaart2.cache/ip [current_project]
+set_property ip_output_repo c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_ip -quiet C:/progh/gpuBest/Videokaart2.srcs/sources_1/ip/background/background.xci
-set_property used_in_implementation false [get_files -all c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_ooc.xdc]
+read_ip -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/background/background.xci
+set_property used_in_implementation false [get_files -all c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -108,7 +107,7 @@ set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 OPTRACE "Configure IP Cache" START { }
 
-set cacheID [config_ip_cache -export -no_bom  -dir C:/progh/gpuBest/Videokaart2.runs/background_synth_1 -new_name background -ip [get_ips background]]
+set cacheID [config_ip_cache -export -no_bom  -dir C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1 -new_name background -ip [get_ips background]]
 
 OPTRACE "Configure IP Cache" END { }
 if { $cacheID == "" } {
@@ -163,32 +162,32 @@ create_report "background_synth_1_synth_report_utilization_0" "report_utilizatio
 OPTRACE "synth reports" END { }
 
 if { [catch {
-  file copy -force C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background.dcp c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background.dcp
+  file copy -force C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background.dcp c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.v
+  write_verilog -force -mode synth_stub c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl
+  write_vhdl -force -mode synth_stub c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.v
+  write_verilog -force -mode funcsim c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -198,32 +197,32 @@ if { [catch {
 
 
 if { [catch {
-  file copy -force C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background.dcp c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background.dcp
+  file copy -force C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background.dcp c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 status "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  file rename -force C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background_stub.v c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.v
+  file rename -force C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background_stub.v c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background_stub.vhdl c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl
+  file rename -force C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background_stub.vhdl c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background_sim_netlist.v c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.v
+  file rename -force C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background_sim_netlist.v c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force C:/progh/gpuBest/Videokaart2.runs/background_synth_1/background_sim_netlist.vhdl c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.vhdl
+  file rename -force C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/background_synth_1/background_sim_netlist.vhdl c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -231,15 +230,15 @@ if { [catch {
 close [open .end.used_ip_cache.rst w]
 }; # end if cacheID 
 
-if {[file isdir C:/progh/gpuBest/Videokaart2.ip_user_files/ip/background]} {
+if {[file isdir C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.ip_user_files/ip/background]} {
   catch { 
-    file copy -force c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.v C:/progh/gpuBest/Videokaart2.ip_user_files/ip/background
+    file copy -force c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.v C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.ip_user_files/ip/background
   }
 }
 
-if {[file isdir C:/progh/gpuBest/Videokaart2.ip_user_files/ip/background]} {
+if {[file isdir C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.ip_user_files/ip/background]} {
   catch { 
-    file copy -force c:/progh/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl C:/progh/gpuBest/Videokaart2.ip_user_files/ip/background
+    file copy -force c:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.gen/sources_1/ip/background/background_stub.vhdl C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.ip_user_files/ip/background
   }
 }
 file delete __synthesis_is_running__

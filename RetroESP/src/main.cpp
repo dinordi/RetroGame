@@ -18,12 +18,13 @@
 // #include "adc.h"
 #include "button.h"
 #include "fpga.h" //Serial communication with FPGA
-#include "entity.h"
 #include "game.h"
+#include "sprites.h"
+
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
-#define GPIO_PIN 15
+#define GPIO_PIN 14
 	const struct device *const input = DEVICE_DT_GET(CHECK);
 
 void updateGame();
@@ -33,7 +34,7 @@ int main(void)
 	printk("init");
 	uint32_t count = 0;
 
-
+	initializeCharacters();
 
 	 /* Configure GPIO pin as input */
     
@@ -41,9 +42,9 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
-	//ButtonHandler button;
-	//FPGA fpga;
-	//game game(&fpga, &button);
+	ButtonHandler button;
+	FPGA fpga;
+	Game game(&fpga, &button);
 	
 	//int lastState = 1;
 
@@ -73,8 +74,10 @@ int main(void)
 		// printk("Pin value: %d\n", pin_value);
 		if(pin_value == 0 && lastState == 1)
 		{
-        	game.sendToDisplay();
 			game.update();
+			printk("Framedone received!\n");
+        	// game.sendToDisplay();
+			// game.update();
 		}
 
 		lastState = pin_value;

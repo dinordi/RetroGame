@@ -1,24 +1,22 @@
 #pragma once
 
-typedef enum {
-    idle,
-    walking,
-    jumping,
-    attacking
-} state;
 
 class Actor {
 public:
-    Actor(int ID);
-    void m(int x, int y);
+    Actor(int ID,int range,int x, int y);
     int getX();
     int getY();
+    void move(float x, float y);
+    //void tick();
+    virtual bool isPlayer() const { return false; }
+    virtual bool isProjectile() const { return false; }
     virtual int getID();
-    
+    friend class Game;
 
 protected:
-    int x;
+    float x;
     float y;
+    int range;
     int ID;
 
 };

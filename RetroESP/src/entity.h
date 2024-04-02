@@ -1,8 +1,9 @@
 #pragma once
+#include "Object.h"
 
-#include "actor.h"
-#include "platform.h"
-
+//#include "actor.h"
+//#include "platform.h"
+class Projectile;
 typedef enum {
     health,
     attack,
@@ -27,33 +28,25 @@ typedef struct {
     int maxSpeed;
 }defaultValues;
 
-class game;
 
-class Entity : public Actor{
+class Entity : public Object{
 public:
-    Entity(const int* entitySprites, game* game);
+    Entity(const int* entitySprites,int range,int x,int y);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
+    bool getIsGrounded();
+    void setIsGrounded(bool ground);
     void attack();
     void jump();
-    void move (int x, int y);
-    void tick();
-    void manageAnimation();
-    int getID() override;
+    virtual int attackCheck(bool isX);
+    virtual Projectile* makeProjectile() = 0;
+    friend class Game;
 
-private:
-    game* mygame;
 protected:
     int hp; //Health
     int atk; //Dmg 
     int defense;    //Protection
-    float ySpeed;
-    int xSpeed;
+    bool isRanged;
     defaultValues def;  //Maximum values (If character heals, it will not exceed these values)
-    bool isFacingRight;
-    bool isGrounded;
-    const int* entitySprites; //Sprite ID
-    state myState;
-    int spriteCounter;
 };

@@ -3,7 +3,18 @@
         status = "okay";
         clock-frequency = <10000000>;
         cs-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+		// pinctrl-0 = <SPIM2_MISO_GPIO13>, <SPIM2_SCLK_GPIO12>;
+};
 
+
+&pinctrl {
+	spim2_default: spim2_default {
+		group1 {
+			pinmux =
+					 <SPIM2_SCLK_GPIO13>,
+					 <SPIM2_MOSI_GPIO12>;
+		};
+	};
 };
 
 / {
@@ -15,14 +26,13 @@
 	aliases {
 		// adc0 = &adc0;
 		// adc1 = &adc1;
-		joyleft = &button1;
-		joyright = &button2;
-		joyup = &button3;
-		joydown = &button4;
-		button1 = &button5;
-		button2 = &button6;
-		// busy = &gpio0;
-		// BUSY2 = &button8;
+		joyleft = &button3;
+		joyright = &button1;
+		joyup = &button4;
+		joydown = &button2;
+		start = &button5;
+		dash = &button6;
+		shoot = &button7;
 
 	};
 	buttons {

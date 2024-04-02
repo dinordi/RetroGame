@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/impl_1/Videokaart_full.tcl"
+  variable script "C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/impl_1/Videokaart_full.tcl"
   variable category "vivado_impl"
 }
 
@@ -127,27 +127,27 @@ set rc [catch {
   set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a35tcpg236-1
-  set_property board_part_repo_paths {C:/Users/Joey/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
+  set_property board_part_repo_paths {C:/Users/bentu/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
   set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/github/RetroGame/VHDL/gpuBest/Videokaart2.cache/wt [current_project]
-  set_property parent.project_path C:/github/RetroGame/VHDL/gpuBest/Videokaart2.xpr [current_project]
-  set_property ip_output_repo C:/github/RetroGame/VHDL/gpuBest/Videokaart2.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.cache/wt [current_project]
+  set_property parent.project_path C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.xpr [current_project]
+  set_property ip_output_repo C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/github/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/Videokaart_full.dcp
-  read_ip -quiet C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-  read_ip -quiet C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/Sprite15x15_1/Sprite15x15_1.xci
-  read_ip -quiet C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/sprite63x63/sprite63x63.xci
-  read_ip -quiet C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/sprite31x31_2/sprite31x31_2.xci
-  read_ip -quiet C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/background/background.xci
+  add_files -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.runs/synth_1/Videokaart_full.dcp
+  read_ip -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_ip -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/Sprite15x15_1/Sprite15x15_1.xci
+  read_ip -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/sprite63x63/sprite63x63.xci
+  read_ip -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/sprite31x31_2/sprite31x31_2.xci
+  read_ip -quiet C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/sources_1/ip/background/background.xci
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/github/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc
+  read_xdc C:/Retrogame/RetroGame/VHDL/gpuBest/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

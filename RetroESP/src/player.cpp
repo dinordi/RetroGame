@@ -1,13 +1,19 @@
 #include "player.h"
-
+#include "sprites.h"
+#include "Bullet.h"
 #include <zephyr/sys/printk.h>
-
-Player::Player(const int* playerSprites, game* game) : Entity(playerSprites, game)
+#include <cstdio>
+Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
     printX = 320;
+    hasCollision = true;
+    hasGravity = true;
+    isRanged = 1;
 }
 
-void Player::handleInput(buttonStatuses buttonStatus) {
+void Player::behaviour() {
+    lastmyState = myState;
+    static int count = 0;
     if (buttonStatus.up && isGrounded) {
         // Handle up
         ySpeed = -12;
@@ -17,12 +23,12 @@ void Player::handleInput(buttonStatuses buttonStatus) {
 
     }
     if (buttonStatus.left) {
-        xSpeed = -2;
+        xSpeed = -3;
         myState = walking;
         isFacingRight = false;
     }
     if (buttonStatus.right) {
-        xSpeed = 2;
+        xSpeed = 3;
         myState = walking;
         isFacingRight = true;
     }
@@ -31,4 +37,108 @@ void Player::handleInput(buttonStatuses buttonStatus) {
         myState = idle;
         
     }
+    if(buttonStatus.shoot && !lastButtonState.shoot)
+    {
+        count = 0;
+    }
+    if(count < 9)
+    {
+        count++;
+        myState = attacking;
+    }
+    y = y + ySpeed; 
+    x = x + xSpeed;
+    lastButtonState = buttonStatus;
+
+}
+
+
+//This function determines the offset of the sprite to be used for the attack animation
+int Player::attackCheck(bool isX){
+    if(isX) //X offset
+    {
+        if(isFacingRight)
+            return 10;
+        else
+            return -10;
+    }
+    else    //Y offset
+    {
+        return 7;
+    }
+}
+
+Projectile* Player::makeProjectile(){
+    if(isFacingRight)
+        return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
+    else
+      return new Bullet(bulletID,7, this->getX()-3,this->getY()-3,isFacingRight);
+}
+
+void Player::setButtonStatus(buttonStatuses buttonStatus){
+    this->buttonStatus = buttonStatus;
+}
+
+void Player::manageAnimation()
+{
+    spriteCounter++;
+        switch(myState)
+        {
+            case idle:
+                if(spriteCounter % 30 < 15)
+                    ID = entitySprites[0];
+                else
+                    ID = entitySprites[1];
+                if(spriteCounter == 30)
+                    spriteCounter = 0;
+                break;
+            case walking:
+                if(isFacingRight)
+                {
+                    if(spriteCounter % 16 < 8)
+                        ID = entitySprites[2];
+                    else
+                        ID = entitySprites[3];
+                    if(spriteCounter == 16)
+                        spriteCounter = 0;
+                }
+                else
+                {
+                    if(spriteCounter % 16 < 8)
+                        ID = entitySprites[4];
+                    else
+                        ID = entitySprites[5];
+                    if(spriteCounter == 16)
+                        spriteCounter = 0;
+                }
+                break;
+            case flying:
+                ID = entitySprites[0];
+                spriteCounter = 0;
+                break;
+            case attacking:
+                if(isFacingRight)
+                {
+                    if(spriteCounter % 9 < 3)
+                        ID = entitySprites[6];
+                    else if( spriteCounter % 9 < 6)
+                        ID = entitySprites[7];
+                    else
+                        ID = entitySprites[8];
+                    if(spriteCounter == 9)
+                        spriteCounter = 0;
+                }
+                else
+                {
+                    if(spriteCounter % 9 < 3)
+                        ID = entitySprites[9];
+                    else if( spriteCounter % 9 < 6)
+                        ID = entitySprites[10];
+                    else
+                        ID = entitySprites[11];
+                    if(spriteCounter == 9)
+                        spriteCounter = 0;
+                }
+                break;
+        }
 }
