@@ -29,3 +29,7 @@ int Entity::attackCheck(bool isX)
 {
     return 0;
 }
+
+Projectile* Entity::makeProjectile(){
+    return nullptr;
+}
