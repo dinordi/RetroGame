@@ -75,7 +75,7 @@ void Game::updateSelection()
     static int counter = 0;
     counter++;
     readInput();
-    if(buttonStatus.melee && counter > 60)
+    if(buttonStatus.start && counter > 60)
     {
         switch(stateSelect)
         {
@@ -166,9 +166,10 @@ void Game::readInput()
     buttonStatus.right = button->pinGet(2);
     buttonStatus.up = button->pinGet(3);
     buttonStatus.down = button->pinGet(4);
-    buttonStatus.melee = button->pinGet(5);
-    buttonStatus.atk = button->pinGet(6);
-    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
+    buttonStatus.dash = button->pinGet(5);
+    buttonStatus.shoot = button->pinGet(6);
+    buttonStatus.start = button->pinGet(7);
+    // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot);
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -254,7 +255,7 @@ void Game::drawCredits()
     spriteDataCount = 0;
 
     readInput();
-    if(buttonStatus.melee && counter > 60)
+    if(buttonStatus.start && counter > 60)
     {
         gameState = Menu;
         counter = 0;
