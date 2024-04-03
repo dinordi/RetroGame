@@ -87,7 +87,7 @@ void Game::update()
             break;
     }
     frames++;
-    if(frames > 30)
+    if(frames == 30)
     {
         audio->play_music(audio->MENU_MUSIC);
     }

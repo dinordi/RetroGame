@@ -10,7 +10,6 @@ Enemy::Enemy(const int* entitySprites, int range,int x, int y) : Entity(entitySp
 
 bool Enemy::collisionWith(int damage)
 {
-    printk("collision enemy!");
     hp = hp - damage;
     myState = hit;
     return false;

@@ -10,15 +10,13 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
     xSpeed = 0;
     myState = idle;
     isFacingRight = false;
-
+    hitAnimation = 0;
 }
 
 bool Fatbat::collisionWith(int damage)
 {
-    //printk("collision Fatbat!");
     hp = hp - damage;
-    //printk("Fatbat hp: %d",hp);
-    myState = hit;
+    hit = true;
     return false;
 }
 
@@ -80,20 +78,30 @@ void Fatbat::manageAnimation()
     {
         mirror = 512;
     }
-
-    switch(myState)
+    if(hitAnimation == 20)
     {
-        case idle:
-            if(spriteCounter % 30 < 15)
-                ID = entitySprites[0]+mirror;
-            else
-                ID = entitySprites[1]+mirror;
-            if(spriteCounter >= 30)
-                spriteCounter = 0;
+        hit = false;
+        hitAnimation = 0;
+    }
+    if(hit&&spriteCounter % 10 <= 5)
+    {
+        ID = empty15x15[0];
+        hitAnimation++;
+    }
+    else{
+        switch(myState)
+        {
+            case idle:
+                if(spriteCounter % 30 < 15)
+                    ID = entitySprites[0]+mirror;
+                else
+                    ID = entitySprites[1]+mirror;
+                if(spriteCounter >= 30)
+                    spriteCounter = 0;
             break;
-
-        case attacking:
-            ID = entitySprites[2]+mirror;
+            case attacking:
+                ID = entitySprites[2]+mirror;
             break;
+        }
     }
 }
