@@ -16,15 +16,15 @@ bool Enemy::collisionWith(int damage)
     return false;
 }
 
-void Enemy::behaviour() {
-    lastmyState = myState;
-    static int count = 0;
-    if(hp <= 0)
-    {
-        myState = dead;
-    }
-    updateySpeed(gravity); 
-    y = y + ySpeed; 
-    x = x + xSpeed;
+// void Enemy::behaviour() {
+//     lastmyState = myState;
+//     static int count = 0;
+//     if(hp <= 0)
+//     {
+//         myState = dead;
+//     }
+//     updateySpeed(gravity); 
+//     y = y + ySpeed; 
+//     x = x + xSpeed;
    
-}
+// }

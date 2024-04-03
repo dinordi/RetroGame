@@ -9,7 +9,8 @@
 #include "Bullet.h"
 #include "samurai.h"
 #include <algorithm>
-#include "Enemy.h"
+#include "Fatbat.h"
+
 
 const float dt = 1.0f / 60;
 int count = 0;
@@ -22,7 +23,26 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    addEnemy(enemy2Sprites,7,700, 100);
+    addFatbat(1000,100);
+    addFatbat(1050,200);
+    addFatbat(1500,400);
+    addFatbat(1200,300);
+    addFatbat(1400,50);
+    addFatbat(1350,100);
+    addFatbat(1280,100);
+    addFatbat(800,100);
+    addFatbat(1000,100);
+    addFatbat(756,100);
+    addFatbat(656,100);
+    addFatbat(954,100);
+    addFatbat(360,100);
+    addFatbat(420,100);
+    addFatbat(696,100);
+    addFatbat(484,100);
+    addFatbat(988,100);
+    addFatbat(1100,100);
+    addFatbat(1150,100);
+    addFatbat(820,100);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -46,7 +66,6 @@ Game::~Game()
 
 void Game::update()
 {
-    
     switch(gameState)
     {
         case Menu:
@@ -148,9 +167,9 @@ void Game::sendToDisplay()
     spriteDataCount = 0;
 }
 
-void Game::addEnemy(const int* sprites,int range,int x, int y)
+void Game::addFatbat(int x, int y)
 {
-    Enemy* entity = new Enemy(sprites,range,x,y);
+    Fatbat* entity = new Fatbat(x,y);
     printk("id: %d\n", entity->getID());
     entities.push_back(entity);
     objects.push_back(entity);

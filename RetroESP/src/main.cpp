@@ -19,7 +19,7 @@
 #include "fpga.h" //Serial communication with FPGA
 #include "game.h"
 #include "sprites.h"
-
+// #include <zephyr/kernel.h>
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
@@ -58,7 +58,8 @@ int main(void)
 
 	
 	while (1) {
-    
+		
+    	// uint64_t time = k_uptime_get()
 		// printk("\nSTOPPING MUSIC\n");
 		// audio.stop(audio.MUSIC);
 		// k_sleep(K_MSEC(10000));

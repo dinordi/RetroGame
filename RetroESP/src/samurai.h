@@ -1,9 +1,9 @@
 #pragma once
 
-#include "entity.h"
+#include "Enemy.h"
 
 
-class Samurai : public Entity
+class Samurai : public Enemy
 {
 public:
     Samurai(const int* samuraiSprites, int range,int x,int y);

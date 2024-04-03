@@ -3,7 +3,7 @@
 #include <zephyr/sys/printk.h>
 
 
-Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Entity(samuraiSprites, range,x,y)
+Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samuraiSprites, range,x,y)
 {
     hasCollision = true;
     hasGravity = true;

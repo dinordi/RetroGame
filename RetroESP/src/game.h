@@ -32,7 +32,7 @@ public:
     void update();
     void updateGame();
     void sendToDisplay();
-    void addEnemy(const int* entitySprites,int range,int x,int y);
+    void addFatbat(int x,int y);
     void addProjectile(const int* playerSprites,int range,int x, int y);
     void readInput();
     void tick();
