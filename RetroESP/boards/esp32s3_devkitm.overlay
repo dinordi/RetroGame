@@ -30,12 +30,12 @@ aliases {
 	joyright = &button1;
 	joyup = &button4;
 	joydown = &button2;
-	start = &button5;
+	start = &button9;
 	dash = &button6;
-	shoot = &button7;
+	shoot = &button5;
 
 };
-buttons {
+buttons {																																																																																																																																																															
 	compatible = "gpio-keys";
 	button1: button_1 { 
 		gpios = <&gpio0 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; //  gpio0, so GPIO19
@@ -63,16 +63,97 @@ buttons {
 		zephyr,code = <0xb>;
 	};
 	button6: button_6 {
-		gpios = <&gpio0 16 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//45
+		gpios = <&gpio0 16 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//35
 		label = "Button 6";
 		zephyr,code = <0xb>;
 	};
 	button7: button_7 {
-		gpios = <&gpio0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-		label = "Button 7";
+		gpios = <&gpio0 19 (GPIO_ACTIVE_HIGH)>;	//19 BUSY
+		label = "BUSY 1";
+		zephyr,code = <0xb>;
+	};
+	button8: button_8 {
+		gpios = <&gpio0 20 (GPIO_ACTIVE_HIGH)>;	//20 BUSY
+		label = "BUSY 2";
+		zephyr,code = <0xb>;
+	};
+	button9: button_9 {
+		gpios = <&gpio0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;	//35
+		label = "Button 6";
 		zephyr,code = <0xb>;
 	};
 };
 
 
+};
+
+
+
+	&uart1 {
+
+		status = "okay";
+		current-speed = < 9600 >;
+		pinctrl-0 = < &uart1_default >;
+		pinctrl-names = "default";
+		
+	};
+
+	&uart2 {
+
+		status = "okay";
+		current-speed = < 9600 >;
+		pinctrl-0 = < &uart2_default >;
+		pinctrl-names = "default";
+	};
+	
+/ {
+
+check_state {
+state_0: state0 {
+		gpios = <&gpio0 19 0x11>;	//19
+		label = "state 0";
+	};
+state_1: state1 {
+		gpios = <&gpio0 20 0x11>;	//20
+		label = "state 1";
+	};
+
+};
+};
+
+/ {
+
+pinctrl: pin-controller {
+	compatible = "espressif,esp32-pinctrl";
+	status = "okay";
+	// uart0_default: uart0_default {
+	// 	phandle = < 0x4 >;
+	// 	group1 {
+	// 		pinmux = < UART1_TX_GPIO38 >;
+	// 		output-high;
+	// 	};
+	// 	group2 {
+	// 		pinmux = < UART1_RX_GPIO39 >;
+	// 		bias-pull-up;
+	// 	};
+	// };
+	uart1_default: uart1_default {
+		group1 {
+			pinmux = < UART1_TX_GPIO1 >;
+		};
+		group2 {
+			pinmux = < UART1_RX_GPIO2 >;
+			bias-pull-up;
+		};
+	};
+	uart2_default: uart2_default {
+		group1 {
+			pinmux = < UART2_TX_GPIO38 >;
+		};
+		group2 {
+			pinmux = < UART2_RX_GPIO39 >;
+			bias-pull-up;
+		};
+	};
+};
 };

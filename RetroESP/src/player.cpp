@@ -3,12 +3,15 @@
 #include "Bullet.h"
 #include <zephyr/sys/printk.h>
 #include <cstdio>
+
+
 Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
     printX = 320;
     hasCollision = true;
     hasGravity = true;
     isRanged = 1;
+    damage = 0;
 }
 
 void Player::behaviour() {
@@ -37,7 +40,7 @@ void Player::behaviour() {
         myState = idle;
         
     }
-    if(buttonStatus.melee && !lastButtonState.melee)
+    if(buttonStatus.start && !lastButtonState.start)
     {
         count = 0;
     }
@@ -46,6 +49,7 @@ void Player::behaviour() {
         count++;
         myState = attacking;
     }
+    updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
     lastButtonState = buttonStatus;
@@ -141,4 +145,9 @@ void Player::manageAnimation()
                 }
                 break;
         }
+}
+
+bool Player::collisionWith(int damage)
+{
+    return false;
 }

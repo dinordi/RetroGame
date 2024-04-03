@@ -12,8 +12,9 @@
 #define R_NODE	DT_ALIAS(joyright)
 #define U_NODE	DT_ALIAS(joyup)
 #define D_NODE	DT_ALIAS(joydown)
-#define SW1_NODE	DT_ALIAS(button1)
-#define SW2_NODE	DT_ALIAS(button2)
+#define ST_NODE	DT_ALIAS(start)
+#define DA_NODE	DT_ALIAS(dash)
+#define SH_NODE	DT_ALIAS(shoot)
 
 struct button_data {
     struct gpio_callback cb;
@@ -26,6 +27,7 @@ static struct button_data button_cb_data3;
 static struct button_data button_cb_data4;
 static struct button_data button_cb_data5;
 static struct button_data button_cb_data6;
+static struct button_data button_cb_data7;
 
 
 class ButtonHandler
@@ -43,6 +45,7 @@ private:
     const struct gpio_dt_spec down;
     const struct gpio_dt_spec left;
     const struct gpio_dt_spec right;
-    const struct gpio_dt_spec button1;
-    const struct gpio_dt_spec button2;
+    const struct gpio_dt_spec dash;
+    const struct gpio_dt_spec shoot;
+    const struct gpio_dt_spec start;
 };
