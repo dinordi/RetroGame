@@ -494,7 +494,7 @@ void Game::realCollisionCheck(Object* object){
 
             if(projectileRight >= objectLeft && projectileLeft <= objectRight && projectileTop <= objectBottom && projectileBottom >= objectTop)
             {
-                printk("collisie %d", projectile->damage);
+                //printk("collisie %d", projectile->damage);
                 object->collisionWith(projectile->damage);
             }
                 

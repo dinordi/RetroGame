@@ -22,7 +22,7 @@ bool Fatbat::collisionWith(int damage)
 
 void Fatbat::behaviour() {
     lastmyState = myState;
-    printk("Fatbat hp in behav: %d\n",hp);
+    //printk("Fatbat hp in behav: %d\n",hp);
     //Randomly attack
     uint32_t rnd = sys_rand32_get();
 
