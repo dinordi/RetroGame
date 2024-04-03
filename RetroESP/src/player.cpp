@@ -7,6 +7,7 @@
 
 Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
+    hp = 100;
     printX = 320;
     hasCollision = true;
     hasGravity = true;
@@ -19,6 +20,10 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
 void Player::behaviour() {
     lastmyState = myState;
     static int count = 0;
+    if(hit == true && lastHit == false)
+    {
+        hp = hp - damageDone;
+    }
     if (buttonStatus.up && isGrounded) {
         // Handle up
         ySpeed = -12;
@@ -51,10 +56,16 @@ void Player::behaviour() {
         count++;
         myState = attacking;
     }
+    if(hp <= 0)
+    {
+        myState = dead;
+        printk("Player is dead\n");
+    }
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
     lastButtonState = buttonStatus;
+    lastHit = hit;
 
 }
 
@@ -88,7 +99,7 @@ void Player::setButtonStatus(buttonStatuses buttonStatus){
 void Player::manageAnimation()
 {
     spriteCounter++;
-     if(hitAnimation == 20)
+    if(hitAnimation == 20)
     {
         hit = false;
         hitAnimation = 0;
@@ -165,6 +176,7 @@ bool Player::collisionWith(int damage)
 {
     if(damage && damage != 20){
         hit = true;
+        damageDone = damage;
     }
     return false;
 }

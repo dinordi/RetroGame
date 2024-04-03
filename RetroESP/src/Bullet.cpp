@@ -18,17 +18,15 @@ bool Bullet::collisionWith(int damage)
 {
     //printk("bullet: %d",damage);
     xSpeed = 0;
-    myState = hit;
+    hit = 1;
     return false;
 }
 
 void Bullet::manageAnimation() 
 {
     spriteCounter++;
-    switch(myState)
+    if(hit)
     {
-        case hit:
-            myState = dead;
-        break;
+        myState = dead;
     }
 }

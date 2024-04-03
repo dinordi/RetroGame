@@ -15,7 +15,6 @@ public:
     void manageAnimation() override;
     bool collisionWith(int damage);
 private:
-    bool hit;
     int hitAnimation;
 };
 
