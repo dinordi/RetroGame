@@ -63,7 +63,7 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if(rnd % 4000 < 2 || x <= 340 || x >= 1580)
+    if((rnd % 4000 < 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
     {
         isFacingRight = !isFacingRight;
     }
