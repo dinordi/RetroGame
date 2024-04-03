@@ -14,6 +14,7 @@ Entity::Entity(const int* entitySprites, int range,int x, int y) : Object(entity
     def.maxSpeed = 5;
     hasGravity = 1;
     hasCollision = 1;
+    isRanged = 0;
 }
 
 bool Entity::getIsGrounded(){
@@ -24,3 +25,11 @@ void Entity::setIsGrounded(bool ground){
     isGrounded = ground;
 }
 
+int Entity::attackCheck(bool isX)
+{
+    return 0;
+}
+
+Projectile* Entity::makeProjectile(){
+    return nullptr;
+}

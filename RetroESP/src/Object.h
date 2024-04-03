@@ -7,7 +7,8 @@ typedef enum {
     jumping,
     attacking,
     flying,
-    hit
+    hit,
+    dead
 } state;
 
 class Object : public Actor{
@@ -19,18 +20,24 @@ class Object : public Actor{
     int getySpeed();
     void updateySpeed(float speed);
     void setySpeed(float speed);
-    void manageAnimation();
+    virtual void manageAnimation();
+    virtual void behaviour();
+    state getState() const { return myState; }
+    virtual bool collisionWith(int damage);
+    // int getState() const { return myState; }
     friend class Game;
     
-    protected:
+protected:
     float ySpeed;
     float xSpeed;
     const int* entitySprites; //Sprite ID
     state myState;
+    state lastmyState;
     int spriteCounter;
     bool isFacingRight;
     bool hasGravity;
     bool hasCollision;
     bool isGrounded;
+    int damage;
     
 };

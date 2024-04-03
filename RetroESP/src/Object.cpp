@@ -6,6 +6,7 @@ Object::Object(const int* entitySprites,int range,int x ,int y) : Actor(entitySp
     xSpeed = 0;
     myState = idle;
     spriteCounter = 0;
+    isFacingRight = true;
 }
 
 int Object::getxSpeed()
@@ -27,40 +28,14 @@ void Object::setySpeed(float speed){
 
 void Object::manageAnimation()
 {
-    spriteCounter++;
-        switch(myState)
-        {
-            case idle:
-                if(spriteCounter % 30 < 15)
-                    ID = entitySprites[0];
-                else
-                    ID = entitySprites[1];
-                if(spriteCounter == 30)
-                    spriteCounter = 0;
-            break;
-            case walking:
-            if(isFacingRight)
-            {
-                if(spriteCounter % 16 < 8)
-                    ID = entitySprites[2];
-                else
-                    ID = entitySprites[3];
-                if(spriteCounter == 16)
-                    spriteCounter = 0;
-            }
-            else
-            {
-                if(spriteCounter % 16 < 8)
-                    ID = entitySprites[4];
-                else
-                    ID = entitySprites[5];
-                if(spriteCounter == 16)
-                    spriteCounter = 0;
-            }
-            break;
-            case flying:
-                ID = entitySprites[0];
-                spriteCounter = 0;
-                break;
-        }
+    
 }
+
+void Object::behaviour()
+{
+    
+}
+
+bool Object::collisionWith(int damage){
+    return false;
+ }

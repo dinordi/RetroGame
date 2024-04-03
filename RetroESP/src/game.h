@@ -6,6 +6,7 @@
 #include "fpga.h"
 #include "button.h"
 #include "player.h"
+#include "audio_module.h"
 
 class Platform;
 class Projectile;
@@ -25,13 +26,13 @@ typedef enum
 class Game
 {
 public:
-    Game(FPGA* fpga, ButtonHandler* button);
+    Game(FPGA* fpga, ButtonHandler* button, Audio* audio);
     virtual ~Game();
 
     void update();
     void updateGame();
     void sendToDisplay();
-    void addEntity(const int* entitySprites,int range,int,int);
+    void addEnemy(const int* entitySprites,int range,int x,int y);
     void addProjectile(const int* playerSprites,int range,int x, int y);
     void readInput();
     void tick();
@@ -40,9 +41,12 @@ public:
     void drawMainMenu();
     void drawCredits();
     void updateSelection();
+    void checkRangedAttack(Entity* entity);
     void drawString(std::string str, int startX, int y);
     int collisionCheck(Object* object);
     int gravityCheck(Object* object,int);
+    void realCollisionCheck(Object* object);
+    void checkDeleted();
     int borderCheck(Object* object);
     std::vector<Platform*>* getPlatforms();
 
@@ -56,6 +60,7 @@ private:
     int spriteDataCount;
     FPGA* fpga;
     ButtonHandler* button;
+    Audio* audio;
     buttonStatuses buttonStatus;
     Player* player;
     uint64_t frames;

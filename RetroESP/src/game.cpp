@@ -1,20 +1,20 @@
-#pragma once
+// #pragma once
 #include "game.h"
 #include "level.h"
 //#include "Projectile.h"
 #include "sprites.h"
 #include "endian.h"
 #include "platform.h"
-#include "Entity.h"
+//#include "Entity.h"
 #include "Bullet.h"
-
-
+#include "samurai.h"
+#include <algorithm>
+#include "Enemy.h"
 
 const float dt = 1.0f / 60;
-const float gravity = 0.52f;
 int count = 0;
 
-Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
+Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button(button), audio(audio)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
@@ -22,6 +22,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button) : fpga(fpga), button(button)
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
+    addEnemy(enemy2Sprites,7,700, 100);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -67,6 +68,10 @@ void Game::update()
             break;
     }
     frames++;
+    if(frames > 30)
+    {
+        audio->play_music(audio->MENU_MUSIC);
+    }
 }
 
 void Game::updateSelection()
@@ -74,7 +79,7 @@ void Game::updateSelection()
     static int counter = 0;
     counter++;
     readInput();
-    if(buttonStatus.melee && counter > 60)
+    if(buttonStatus.start && counter > 60)
     {
         switch(stateSelect)
         {
@@ -132,9 +137,8 @@ void Game::updateGame()
 {
     //Check for input
     readInput();
-    player->handleInput(buttonStatus);
+    player->setButtonStatus(buttonStatus);
     tick();
-    frames++;
 }
 
 void Game::sendToDisplay()
@@ -144,21 +148,22 @@ void Game::sendToDisplay()
     spriteDataCount = 0;
 }
 
-// void Game::addEntity(const int* playerSprites,int range,int x, int y)
-// {
-//     Object* entity = new Entity(playerSprites,range,x,y);
-//     printk("id: %d\n", entity->getID());
-//     entities.push_back(static_cast<Entity*>(entity));
-//     objects.push_back(entity);
-// }
-
-void Game::addProjectile(const int* playerSprites,int range,int x, int y)
+void Game::addEnemy(const int* sprites,int range,int x, int y)
 {
-    Object* projectile = new Projectile(playerSprites,range,x,y);
-    printk("id: %d\n", projectile->getID());
-    projectiles.push_back(static_cast<Projectile*>(projectile));
-    objects.push_back(projectile);
+    Enemy* entity = new Enemy(sprites,range,x,y);
+    printk("id: %d\n", entity->getID());
+    entities.push_back(entity);
+    objects.push_back(entity);
+    actors.push_back(entity);
 }
+
+// void Game::addProjectile(const int* playerSprites,int range,int x, int y)
+// {
+//     Object* projectile = new Projectile(playerSprites,range,x,y);
+//     printk("id: %d\n", projectile->getID());
+//     projectiles.push_back(static_cast<Projectile*>(projectile));
+//     objects.push_back(projectile);
+// }
 
 void Game::readInput()
 {
@@ -166,9 +171,10 @@ void Game::readInput()
     buttonStatus.right = button->pinGet(2);
     buttonStatus.up = button->pinGet(3);
     buttonStatus.down = button->pinGet(4);
-    buttonStatus.melee = button->pinGet(5);
-    buttonStatus.atk = button->pinGet(6);
-    // printk("up: %d, down: %d, left: %d, right: %d, melee: %d, atk: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.melee, buttonStatus.atk);
+    buttonStatus.dash = button->pinGet(5);
+    buttonStatus.shoot = button->pinGet(6);
+    buttonStatus.start = button->pinGet(7);
+    // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -254,7 +260,7 @@ void Game::drawCredits()
     spriteDataCount = 0;
 
     readInput();
-    if(buttonStatus.melee && counter > 60)
+    if(buttonStatus.start && counter > 60)
     {
         gameState = Menu;
         counter = 0;
@@ -266,20 +272,39 @@ void Game::drawLevel()
     int middleX = player->getX();
     int leftBorder = middleX - 320;
     int rightBorder = middleX + 320;
-    int x,delta,actorX,range;
+    int x,delta,actorX,actorY,range;
     for(auto actor : actors)
     { 
         x = actor->getX();
         delta = x - middleX;
         actorX = 320 + delta;
+        actorY = actor->getY();
         range = actor->range; 
-        if(actor->getY() < 0) // if player so above roof of the screen the Y goes below zero
+
+        int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
+
+        Entity* ob = dynamic_cast<Entity*>(actor);
+        if(ob != nullptr)
+        // Check if player is attacking and adjust the sprite position
+            if(ob->myState == attacking)
+            {
+                playerAttackOffsetX = ob->attackCheck(true); //Get X offset
+                playerAttackOffsetY = ob->attackCheck(false);   //Get Y offset
+                actorX += playerAttackOffsetX;
+                actorY -= playerAttackOffsetY;
+            }
+
+        if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
             continue;
+
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
-            spriteData[spriteDataCount++] = htobe16(actor->getY());
+            spriteData[spriteDataCount++] = htobe16(actorY);
+            // if(actor->isProjectile())
+            //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
+        
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -297,16 +322,16 @@ void Game::drawLevel()
 
 void Game::loadPlatforms(const int level[16][63])
 {
-    for(int i = 0; i < 16; i++)
+    for(int i = 0; i < 16; i++) // 16 rows
     {
-        for(int j = 0; j < 63; j++)
+        for(int j = 0; j < 63; j++) // 63 columns
         {
-            if(level[i][j] != 0)
+            if(level[i][j] != 0)    // If the tile is not empty
             {
-                int tileX = j * 31;
+                int tileX = j * 31; //31 is tile width/height
                 int tileY = i * 31;
-                int tileID = level[i][j] + 99;
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);
+                int tileID = level[i][j] + 99;  // Add 99 to the tileID to get the correct sprite
+                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
                 platforms.push_back(platform);
                 actors.push_back(platform);
             }
@@ -318,29 +343,56 @@ std::vector<Platform*>* Game::getPlatforms()
 {
     return &platforms;
 }
-Object projectile = Bullet(bulletID,7,600,400);//player->makeProjectile();
+
 void Game::tick()
 {
     
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-    count++;
-    // if(player->myState == attacking && count % 20 == 0)
-    // {
-    //     projectiles.push_back(static_cast<Projectile*>(&projectile));
-    //     objects.push_back(&projectile);
-    //     count = 0;
-    // }
+    for(Entity* entity : entities)
+    {
+        checkRangedAttack(entity);
+    }
+    checkDeleted();
     for(Object* object : objects)
     {
-        object->manageAnimation();
-       groundLevel = collisionCheck(object);
-        
+        groundLevel = collisionCheck(object);
+        object->behaviour();
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
-        object->move(x, y);
     }
+    for(Object* object : objects)
+    {
+        realCollisionCheck(object);
+        object->manageAnimation(); 
+        //object->move(x, y);
+    }
+}
+
+void Game::checkDeleted(){
+    for(Object* object : objects)
+    {
+        if(object->myState == dead)
+        {
+            auto gevondenActor = std::find(actors.begin(), actors.end(), object);
+            auto gevondenObject = std::find(objects.begin(), objects.end(), object);
+            auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
+
+            // Controleer of de pointer is gevonden
+            if (gevondenActor != actors.end()) {
+                actors.erase(gevondenActor); // Verwijder de pointer uit de vector
+            } 
+            if (gevondenObject != objects.end()) {
+                objects.erase(gevondenObject);
+            }
+            if (gevondenEntity != entities.end()) {
+                entities.erase(gevondenEntity);
+            }
+            delete object;
+        } 
+    }
+
 }
 
 int Game::collisionCheck(Object* object){
@@ -352,10 +404,10 @@ int Game::collisionCheck(Object* object){
                 int platformy = platform->getY();
                 int platformRange = platform->range;
                 int entityRange = object->range;
-                if (object->getY() + entityRange <= platformy - platform->range)
+                if (object->getY() + entityRange <= platformy - platformRange)
                 {
                     int entityX = object->getX();
-                    if (entityX >= platformx - platformRange && entityX <= platformx  + platformRange) {  // Check if entity is above the platform
+                    if (entityX + entityRange >= platformx - platformRange && entityX - entityRange <= platformx  + platformRange) {  // Check if entity is above the platform
                         if (platformy-(platformRange + entityRange)  < groundLevel) {
                             groundLevel = platformy-(platformRange + entityRange);
                             // printk("Ground level: %d\n", groundLevel);
@@ -367,32 +419,85 @@ int Game::collisionCheck(Object* object){
         return groundLevel;
 }
 
-int Game::gravityCheck(Object* object,int groundlevel){
-    int y = object->y + object->ySpeed; 
-    if(object->hasGravity)
+void Game::realCollisionCheck(Object* object){
+
+    int objectTop = object->getY() - object->range;
+    int objectBottom = object->getY() + object->range;
+    int objectLeft = object->getX() - object->range;
+    int objectRight = object->getX() + object->range;
+
+    if(dynamic_cast<Projectile*>(object) != nullptr)
+    {
+        for(auto platform : platforms)
         {
-            object->updateySpeed(gravity);  
-            //printf("%f %d\n",y,object->isGrounded);    //add moving speed and gravity to current y
-            // y = y1;
-            if(y > groundlevel) //if player is on platform
+            int platformTop = platform->getY() - platform->range;
+            int platformBottom = platform->getY() + platform->range;
+            int platformLeft = platform->getX() - platform->range;
+            int platformRight = platform->getX() + platform->range;
+            
+            if(platformRight >= objectLeft && platformLeft <= objectRight && platformTop <= objectBottom && platformBottom >= objectTop)
             {
-                y = groundlevel;
+                object->collisionWith(20);
+            }
+        }
+    }
+        for(auto object2 : objects)
+        {
+            int object2Top = object2->getY() - object2->range;
+            int object2Bottom = object2->getY() + object2->range;
+            int object2Left = object2->getX() - object2->range;
+            int object2Right = object2->getX() + object2->range;
+
+            if(object2Right >= objectLeft && object2Left <= objectRight && object2Top <= objectBottom && object2Bottom >= objectTop)
+            {
+                if(!object2->isPlayer() && object2 != object)
+                {
+                    printk("ik wil slapen");
+                    object->collisionWith(object2->damage);
+                }
+            }
+                
+        }
+    }
+ 
+int Game::gravityCheck(Object* object,int groundlevel){
+    //int y = object->y + object->ySpeed; 
+    if(object->hasGravity)
+        { 
+            printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
+            // y = y1;
+            if(object->y > groundlevel) //if player is on platform
+            {
+                object->y = groundlevel;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
         }
-    return y;
+    return 0;
 }
 
 int Game::borderCheck(Object* object){
-    int x = object->xSpeed + object->x; //add the moving speed to current x
-        if(x <= 320) // stop at border left
+    //int x = object->xSpeed + object->x; //add the moving speed to current x
+        if(object->getX() <= 320) // stop at border left
         {
-            x = 320;
+            object->collisionWith(0);
+            object->x = 320;
         }
-        else if(x >= 1600) //stop at border right
+        else if(object->getX() >= 1600) //stop at border right
         {
-            x = 1600;
+            object->collisionWith(0);
+            object->x = 1600;
         }
-    return x;
+    return 0;
 }
+
+void Game::checkRangedAttack(Entity* entity){
+    if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
+    {
+        Object* projectile = entity->makeProjectile();
+        //projectiles.push_back(static_cast<Projectile*>(projectile));
+        objects.push_back(projectile);
+        actors.push_back(projectile);
+    }
+}
+
