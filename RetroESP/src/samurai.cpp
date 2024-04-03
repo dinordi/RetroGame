@@ -1,28 +1,80 @@
 #include "samurai.h"
 
 #include <zephyr/sys/printk.h>
+#include <cstdlib>
+#include <zephyr/random/random.h>
 
 
-Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samuraiSprites, range,x,y)
+Samurai::Samurai(int x,int y, int playerX, int playerY) : Enemy(samuraiSprites, 15,x,y)
 {
     hasCollision = true;
     hasGravity = true;
     isRanged = false;
+    samState = waiting;
+    this->playerX = playerX;
+    this->playerY = playerY;
 }
 
 void Samurai::behaviour() 
 { 
-    if (isFacingRight && x >= 1000) {
-        isFacingRight = false;
-    } else if (!isFacingRight && x <= 340) {
-        isFacingRight = true;
+   static int count = 0;
+   count++;
+    switch(samState)
+    {
+        case waiting:
+        {
+            if(seesPlayer())
+            {
+                samState = spottedPlayer;
+            }
+            if(count > 60)
+            {
+                isFacingRight = !isFacingRight;
+            }
+            else if(count > 120)
+            {
+                isFacingRight = !isFacingRight;
+            }
+            else if(count > 180)
+            {
+                samState = patrol;
+                count = 0;
+            }
+            break;
+        }
+        case patrol:
+        {
+            if (isFacingRight ? xSpeed = 2 : xSpeed = -2);
+            if(sys_rand32_get() % 100 ==0)
+            {
+                samState = waiting;
+                count = 0;
+            }
+            break;
+        }
+        case spottedPlayer:
+        {
+            if(abs(playerX - x) < 10)
+            {
+                //Attack
+            }
+            if(x < playerX)
+            {
+                isFacingRight = true;
+                xSpeed = 4;
+            }
+            else
+            {
+                isFacingRight = false;
+                xSpeed = -4;
+            }
+            break;
+        }
     }
-
-    xSpeed = isFacingRight ? 2 : -2;
 
     y = y + ySpeed; 
     x = x + xSpeed;
-    myState = walking;
+    myState = idle;
 }
 
 int Samurai::attackCheck(bool isX)
@@ -97,4 +149,37 @@ void Samurai::manageAnimation()
                 spriteCounter = 0;
             break;
     }
+}
+
+bool Samurai::seesPlayer()
+{
+    if(isFacingRight)
+    {
+        if((x-playerX) < 100 && abs(playerY - y) < 30)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        if((playerX-x) < 100 && abs(playerY - y) < 30)  
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+}
+
+void Samurai::setPlayerPos(int x, int y)
+{
+    playerX = x;
+    playerY = y;
 }

@@ -23,26 +23,29 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    addFatbat(1000,100);
-    addFatbat(1050,200);
-    addFatbat(1500,400);
-    addFatbat(1200,300);
-    addFatbat(1400,50);
-    addFatbat(1350,100);
-    addFatbat(1280,100);
-    addFatbat(800,100);
-    addFatbat(1000,100);
-    addFatbat(756,100);
-    addFatbat(656,100);
-    addFatbat(954,100);
-    addFatbat(360,100);
-    addFatbat(420,100);
-    addFatbat(696,100);
-    addFatbat(484,100);
-    addFatbat(988,100);
-    addFatbat(1100,100);
-    addFatbat(1150,100);
-    addFatbat(820,100);
+    // addFatbat(1000,100);
+    // addFatbat(1050,200);
+    // addFatbat(1500,400);
+    // addFatbat(1200,300);
+    // addFatbat(1400,50);
+    // addFatbat(1350,100);
+    // addFatbat(1280,100);
+    // addFatbat(800,100);
+    // addFatbat(1000,100);
+    // addFatbat(756,100);
+    // addFatbat(656,100);
+    // addFatbat(954,100);
+    // addFatbat(360,100);
+    // addFatbat(420,100);
+    // addFatbat(696,100);
+    // addFatbat(484,100);
+    // addFatbat(988,100);
+    // addFatbat(1100,100);
+    // addFatbat(1150,100);
+    // addFatbat(820,100);
+
+    addSamurai(1000,200);
+
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -174,6 +177,16 @@ void Game::addFatbat(int x, int y)
     entities.push_back(entity);
     objects.push_back(entity);
     actors.push_back(entity);
+}
+
+void Game::addSamurai(int x, int y)
+{
+    Samurai* entity = new Samurai(x,y, player->getX(), player->getY());
+    printk("id: %d\n", entity->getID());
+    entities.push_back(entity);
+    objects.push_back(entity);
+    actors.push_back(entity);
+
 }
 
 // void Game::addProjectile(const int* playerSprites,int range,int x, int y)
@@ -376,6 +389,7 @@ void Game::tick()
     checkDeleted();
     for(Object* object : objects)
     {
+        
         groundLevel = collisionCheck(object);
         object->behaviour();
         y = gravityCheck(object,groundLevel);
@@ -387,6 +401,7 @@ void Game::tick()
         object->manageAnimation(); 
         //object->move(x, y);
     }
+
 }
 
 void Game::checkDeleted(){

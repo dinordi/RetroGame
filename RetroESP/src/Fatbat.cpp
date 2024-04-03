@@ -26,6 +26,7 @@ void Fatbat::behaviour() {
     if(hp <= 0)
     {
         myState = dead;
+        return;
     }
 
     //Randomly attack
