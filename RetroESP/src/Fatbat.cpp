@@ -11,6 +11,7 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
     myState = idle;
     isFacingRight = false;
     hitAnimation = 0;
+    hit = false;
 }
 
 bool Fatbat::collisionWith(int damage)
