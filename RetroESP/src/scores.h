@@ -30,6 +30,7 @@ public:
     void decrease_multiplier(int time_sim);
 public:
     void get_leaderboard();
+    std::string receive_Scores(int i);
     void reset_leaderboard();
     void write_leaderboard();
     void compare_leaderboard();

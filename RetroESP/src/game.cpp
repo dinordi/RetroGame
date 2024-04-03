@@ -15,7 +15,7 @@
 const float dt = 1.0f / 60;
 int count = 0;
 
-Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button(button), audio(audio)
+Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
@@ -92,6 +92,9 @@ void Game::update()
         case Credits:
             drawCredits();
             break;
+        case Highscores:
+            drawHighscores();
+            break;
     }
     frames++;
     if(frames == 30)
@@ -119,6 +122,9 @@ void Game::updateSelection()
                 gameState = Credits;
                 counter = 0;
                 break;
+            case Highscores:
+                gameState = Highscores;
+                counter = 0;
             default:
                 break;
         }
@@ -136,9 +142,15 @@ void Game::updateSelection()
                 case Drbob:
                     stateSelect = Playing;
                     break;
-                case Credits:
+                     printk("drBOB init\n");
+                case Highscores:
+                printk("highscore init\n");
                     stateSelect = Drbob;
                     break;
+                case Credits:
+                    stateSelect = Highscores;
+                    break;
+
             }
         }
         if(buttonStatus.down)
@@ -149,11 +161,15 @@ void Game::updateSelection()
                     stateSelect = Drbob;
                     break;
                 case Drbob:
+                    stateSelect = Highscores;
+                    break;
+               case Highscores:
                     stateSelect = Credits;
                     break;
                 case Credits:
                     stateSelect = Playing;
                     break;
+
             }
         }
     }
@@ -284,7 +300,8 @@ void Game::drawMainMenu()
     std::string start = "press start to play";
     std::string option1 = "play";
     std::string option2 = "dr bob mode";
-    std::string option3 = "credits";
+    std::string option3 = "highscore";
+    std::string option4 = "credits";
     static int yval = 300;
     static bool draw = true;
 
@@ -301,6 +318,8 @@ void Game::drawMainMenu()
     drawString(option1, 250, 300);
     drawString(option2, 250, 350);
     drawString(option3, 250, 400);
+    drawString(option4, 250, 450);
+
 
     readInput();
     switch(stateSelect)  // Toggle selection
@@ -311,9 +330,14 @@ void Game::drawMainMenu()
         case Drbob:
             yval = 350;
             break;
-        case Credits:
+        case Highscores:
             yval = 400;
             break;
+        case Credits:
+            yval = 450;
+            break;
+        
+
     }
 
     spriteData[spriteDataCount++] = htobe16(0);                     // Playersprite Cursor
@@ -323,7 +347,53 @@ void Game::drawMainMenu()
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
+bool test =false;
+void Game::drawHighscores()
+{
+    if(test == false)
+    {
+        score->reset_leaderboard();
+        test = true;
+        score->get_leaderboard();
+    }
+    static int counter = 0;
+    counter++;
 
+    std::string title = "   highscores";
+    std::string highscore_1 = score->receive_Scores(0);
+    std::string highscore_2 = score->receive_Scores(1);
+    std::string highscore_3 = score->receive_Scores(2);
+    std::string highscore_4 = score->receive_Scores(3);
+    std::string highscore_5 = score->receive_Scores(4);
+    std::string highscore_6 = score->receive_Scores(5);
+    std::string highscore_7 = score->receive_Scores(6);
+    std::string highscore_8 = score->receive_Scores(7);
+    std::string highscore_9 = score->receive_Scores(8);
+
+    drawString(title, 240, 50);
+
+    drawString(highscore_1, 240, 100);
+    drawString(highscore_2, 240, 150);
+    drawString(highscore_3, 240, 200);
+    drawString(highscore_4, 240, 250);
+    drawString(highscore_5, 240, 300);
+    drawString(highscore_6, 240, 350);
+    drawString(highscore_7, 240, 400);
+    drawString(highscore_8, 240, 450);
+
+
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+
+    readInput();
+    if(buttonStatus.start && counter > 60)
+    {
+        gameState = Menu;
+        counter = 0;
+    }
+    
+
+}
 void Game::drawCredits()
 {
     static int counter = 0;

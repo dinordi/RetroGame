@@ -19,6 +19,8 @@
 #include "fpga.h" //Serial communication with FPGA
 #include "game.h"
 #include "sprites.h"
+#include "scores.h"
+#include "flash_esp32.h"
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
@@ -41,9 +43,12 @@ int main(void)
         return 0;
     }
 	ButtonHandler button;
+	Flash_esp flash_esp;
 	FPGA fpga;
 	Audio audio;
-	Game game(&fpga, &button, &audio);
+	Score score(&flash_esp);
+
+	Game game(&fpga, &button, &audio,&score);
 	
 	int lastState = 1;
 

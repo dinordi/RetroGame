@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <string>
+#include <sstream>
 #define FPS 60
 
 Score::Score(Flash_esp* flash_esp)
@@ -53,17 +54,15 @@ void Score::assign_time_points()
 void Score::reset_leaderboard()
 {
  
-flash_esp->write_string  (  "# Highscore: 10000&"
-                            "# Highscore: 9000&"
-                            "# Highscore: 8000&"
-                            "# Highscore: 7000&"
-                            "# Highscore: 6000&"
-                            "# Highscore: 5000&"
-                            "# Highscore: 4000&"
-                            "# Highscore: 3000&"
-                            "# Highscore: 2000&");
-
-
+flash_esp->write_string  (  "M highscore 10000&"
+                            "M highscore 9000&"
+                            "M highscore 8000&"
+                            "M highscore 7000&"
+                            "M highscore 6000&"
+                            "M highscore 5000&"
+                            "M highscore 4000&"
+                            "M highscore 3000&"
+                            "M highscore 2000&");
 }
 
 void Score::get_leaderboard()
@@ -95,7 +94,7 @@ void Score::compare_leaderboard()
   int array_size = sizeof(player_and_score) / sizeof(player_and_score[0]);
   for (int i = 0; i < array_size; i++) {
     // Find the location of "score: " in player_and_score[5]
-    char* searchString = strstr(player_and_score[i], "score: ");
+    char* searchString = strstr(player_and_score[i], "re ");
 
     if (searchString != nullptr) {
       // Calculate the location (index) of the substring
@@ -175,4 +174,13 @@ void Score::write_leaderboard()
      flash_esp->write_string(cppstr);
   }
   
+}
+
+std::string Score::receive_Scores(int i)
+{
+  // Create a stringstream to store the concatenated strings
+    
+    std::string cpp_string(player_and_score[i]);
+
+     return cpp_string;
 }

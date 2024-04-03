@@ -1,6 +1,6 @@
 #include "Fatbat.h"
 #include <zephyr/sys/printk.h>
-#include <zephyr/random/random.h>
+//#include <zephyr/random/random.h>
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
@@ -24,7 +24,7 @@ void Fatbat::behaviour() {
     lastmyState = myState;
     //printk("Fatbat hp in behav: %d\n",hp);
     //Randomly attack
-    uint32_t rnd = sys_rand32_get();
+    uint32_t rnd = 0; //sys_rand32_get();
 
     if(rnd % 120 == 0 && myState != attacking)
     {
