@@ -1,0 +1,229 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
+| Date         : Wed Apr  3 20:03:43 2024
+| Host         : Desktop-Joey running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Videokaart_full_control_sets_placed.rpt
+| Design       : Videokaart_full
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   151 |
+|    Minimum number of control sets                        |   151 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   480 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   151 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |   141 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              79 |           45 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              27 |           13 |
+| Yes          | No                    | No                     |            3977 |         2371 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             109 |           36 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------+--------------------------------+--------------------------+------------------+----------------+--------------+
+|    Clock Signal   |          Enable Signal         |     Set/Reset Signal     | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------+--------------------------------+--------------------------+------------------+----------------+--------------+
+|  clk100_IBUF_BUFG |                                | z8/frameDone0            |                1 |              1 |         1.00 |
+|  z0/inst/clk_out1 |                                | z8/ltOp                  |                1 |              1 |         1.00 |
+|  z0/inst/clk_out1 |                                | z8/vsync_i_1_n_0         |                1 |              1 |         1.00 |
+|  clk100_IBUF_BUFG | z8/DataCount1815_out           |                          |                3 |              4 |         1.33 |
+|  clk100_IBUF_BUFG | z1/ypos[8]_i_1_n_0             |                          |                2 |              9 |         4.50 |
+|  z0/inst/clk_out1 |                                | z8/backaddr[8]_i_1_n_0   |                4 |              9 |         2.25 |
+|  z0/inst/clk_out1 | z8/eqOp                        | z8/vcount[9]_i_1_n_0     |                3 |             10 |         3.33 |
+|  clk100_IBUF_BUFG | z1/ID[9]_i_1_n_0               |                          |                3 |             10 |         3.33 |
+|  clk100_IBUF_BUFG | z1/xpos[9]_i_1_n_0             |                          |                3 |             10 |         3.33 |
+|  z0/inst/clk_out1 |                                | z8/eqOp                  |                6 |             15 |         2.50 |
+|  clk100_IBUF_BUFG | z1/data[15]_i_2_n_0            | z8/SS[0]                 |                3 |             16 |         5.33 |
+|  z0/inst/clk_out1 |                                |                          |                8 |             16 |         2.00 |
+|  clk100_IBUF_BUFG | z2/PrintIndex[7]_i_2_n_0       | z2/PrintIndex[7]_i_1_n_0 |               11 |             26 |         2.36 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_24[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_30[0]         |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_12[0]         |                          |               13 |             29 |         2.23 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_7[0]          |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_28[0]         |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_18[0]         |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_5[0]          |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_35[0]         |                          |               12 |             29 |         2.42 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_16[0]         |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_3[0]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_25[0]         |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_13[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_22[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_23[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_27[0]         |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_9[0]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_21[0]         |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_31[0]         |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_33[0]         |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_11[0]         |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_36[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_2[0]          |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_34[0]         |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_19[0]         |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_14[0]         |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_10[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_20[0]         |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_15[0]         |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_32[0]         |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_6[0]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_29[0]         |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_38[0]         |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_26[0]         |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_4[0]          |                          |               12 |             29 |         2.42 |
+|  clk100_IBUF_BUFG | z2/DataArray[0][ID][9]_i_1_n_0 |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z2/DataArray[110][ID]          |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[10][ID]           |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[103][ID]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[112][ID]          |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[105][ID]          |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[114][ID]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[111][ID]          |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[113][ID]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[101][ID]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[104][ID]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[107][ID]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[102][ID]          |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z2/DataArray[117][ID]          |                          |               22 |             29 |         1.32 |
+|  clk100_IBUF_BUFG | z2/DataArray[106][ID]          |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[100][ID]          |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[115][ID]          |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[120][ID]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[121][ID]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[15][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[24][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[25][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[27][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[131][ID]          |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z2/DataArray[19][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[123][ID]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[133][ID]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[17][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[26][ID]           |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z2/DataArray[129][ID]          |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[18][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[20][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[12][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[128][ID]          |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z2/DataArray[130][ID]          |                          |               13 |             29 |         2.23 |
+|  clk100_IBUF_BUFG | z2/DataArray[126][ID]          |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[125][ID]          |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[134][ID]          |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[127][ID]          |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[13][ID]           |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[31][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[38][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[42][ID]           |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[3][ID]            |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[41][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[46][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[44][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[28][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[34][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[33][ID]           |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[35][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[39][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[29][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[30][ID]           |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z2/DataArray[47][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[52][ID]           |                          |               22 |             29 |         1.32 |
+|  clk100_IBUF_BUFG | z2/DataArray[74][ID]           |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[5][ID]            |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[77][ID]           |                          |               23 |             29 |         1.26 |
+|  clk100_IBUF_BUFG | z2/DataArray[78][ID]           |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[55][ID]           |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z2/DataArray[73][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[67][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[79][ID]           |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z2/DataArray[51][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[60][ID]           |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[61][ID]           |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[62][ID]           |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z2/DataArray[63][ID]           |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z2/DataArray[6][ID]            |                          |               24 |             29 |         1.21 |
+|  clk100_IBUF_BUFG | z2/DataArray[71][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[4][ID]            |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[53][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[59][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[49][ID]           |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[58][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[66][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[69][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[89][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[8][ID]            |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[95][ID]           |                          |               13 |             29 |         2.23 |
+|  clk100_IBUF_BUFG | z2/DataArray[99][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[83][ID]           |                          |               12 |             29 |         2.42 |
+|  clk100_IBUF_BUFG | z2/DataArray[87][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[48][ID]           |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z2/DataArray[90][ID]           |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataArray[96][ID]           |                          |               13 |             29 |         2.23 |
+|  clk100_IBUF_BUFG | z2/DataArray[98][ID]           |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[84][ID]           |                          |               14 |             29 |         2.07 |
+|  clk100_IBUF_BUFG | z2/DataArray[88][ID]           |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[82][ID]           |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z2/DataArray[91][ID]           |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z2/DataArray[94][ID]           |                          |               21 |             29 |         1.38 |
+|  clk100_IBUF_BUFG | z2/DataArray[9][ID]            |                          |               19 |             29 |         1.53 |
+|  clk100_IBUF_BUFG | z2/DataArray[7][ID]            |                          |               18 |             29 |         1.61 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_8[0]          |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z8/E[0]                        |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_0[0]          |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_1[0]          |                          |               17 |             29 |         1.71 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_17[0]         |                          |               20 |             29 |         1.45 |
+|  clk100_IBUF_BUFG | z8/vcount_reg[7]_37[0]         |                          |               16 |             29 |         1.81 |
+|  clk100_IBUF_BUFG | z2/DataArray[85][ID]           |                          |               15 |             29 |         1.93 |
+|  clk100_IBUF_BUFG | z2/DataCount                   | z8/hcount_reg[4]_5       |               19 |             57 |         3.00 |
+|  clk100_IBUF_BUFG |                                |                          |               37 |             67 |         1.81 |
++-------------------+--------------------------------+--------------------------+------------------+----------------+--------------+
+
+

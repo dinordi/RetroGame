@@ -1,0 +1,378 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Apr  3 20:01:55 2024
+# Process ID: 30512
+# Current directory: C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1
+# Command line: vivado.exe -log Videokaart_full.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Videokaart_full.tcl
+# Log file: C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/Videokaart_full.vds
+# Journal file: C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1\vivado.jou
+# Running On: Desktop-Joey, OS: Windows, CPU Frequency: 3400 MHz, CPU Physical cores: 16, Host memory: 34281 MB
+#-----------------------------------------------------------
+source Videokaart_full.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 462.801 ; gain = 183.809
+Command: read_checkpoint -auto_incremental -incremental C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Videokaart_full -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 10884
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1311.133 ; gain = 439.961
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Videokaart_full' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:42]
+INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff0' of component 'threeFlipFlop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:149]
+INFO: [Synth 8-638] synthesizing module 'threeFlipFlop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:40]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF0' of component 'Dflipflop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Dflipflop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'Dflipflop' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:11]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF1' of component 'Dflipflop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:51]
+INFO: [Synth 8-3491] module 'Dflipflop' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd:4' bound to instance 'FF2' of component 'Dflipflop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'threeFlipFlop' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:40]
+INFO: [Synth 8-3491] module 'threeFlipFlop' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd:34' bound to instance 'ff1' of component 'threeFlipFlop' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:150]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/clk_wiz_0_stub.v:6' bound to instance 'z0' of component 'clk_wiz_0' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:151]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-3491] module 'InterfaceController' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:34' bound to instance 'z1' of component 'InterfaceController' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:152]
+INFO: [Synth 8-638] synthesizing module 'InterfaceController' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'InterfaceController' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/InterfaceController.vhd:46]
+INFO: [Synth 8-3491] module 'spriteController' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd:29' bound to instance 'z2' of component 'spriteController' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:154]
+INFO: [Synth 8-638] synthesizing module 'spriteController' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd:41]
+INFO: [Synth 8-226] default block is never used [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd:80]
+WARNING: [Synth 8-614] signal 'hpos' is read in the process but is not in the sensitivity list [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd:59]
+WARNING: [Synth 8-614] signal 'vpos' is read in the process but is not in the sensitivity list [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd:59]
+INFO: [Synth 8-256] done synthesizing module 'spriteController' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd:41]
+INFO: [Synth 8-3491] module 'Sprite15x15_1' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/Sprite15x15_1_stub.v:6' bound to instance 'z3' of component 'sprite15x15_1' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:156]
+INFO: [Synth 8-6157] synthesizing module 'Sprite15x15_1' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/Sprite15x15_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'Sprite15x15_1' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/Sprite15x15_1_stub.v:6]
+INFO: [Synth 8-3491] module 'sprite31x31_2' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/sprite31x31_2_stub.v:6' bound to instance 'z5' of component 'sprite31x31_2' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:157]
+INFO: [Synth 8-6157] synthesizing module 'sprite31x31_2' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/sprite31x31_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sprite31x31_2' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/sprite31x31_2_stub.v:6]
+INFO: [Synth 8-3491] module 'sprite63x63' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/sprite63x63_stub.v:6' bound to instance 'z6' of component 'sprite63x63' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:158]
+INFO: [Synth 8-6157] synthesizing module 'sprite63x63' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/sprite63x63_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sprite63x63' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/sprite63x63_stub.v:6]
+INFO: [Synth 8-3491] module 'VGA' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:20' bound to instance 'z8' of component 'VGA' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:160]
+INFO: [Synth 8-638] synthesizing module 'VGA' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:30]
+INFO: [Synth 8-3491] module 'background' declared at 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/background_stub.v:6' bound to instance 'z0' of component 'background' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:91]
+INFO: [Synth 8-6157] synthesizing module 'background' [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/background_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'background' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/.Xil/Vivado-30512-Desktop-Joey/realtime/background_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'VGA' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'Videokaart_full' (0#1) [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd:42]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1587.398 ; gain = 716.227
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1587.398 ; gain = 716.227
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1587.398 ; gain = 716.227
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.148 . Memory (MB): peak = 1587.398 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'z0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'z0'
+Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1/Sprite15x15_1_in_context.xdc] for cell 'z3'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1/Sprite15x15_1_in_context.xdc] for cell 'z3'
+Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63/sprite63x63_in_context.xdc] for cell 'z6'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63/sprite63x63_in_context.xdc] for cell 'z6'
+Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2/sprite31x31_2_in_context.xdc] for cell 'z5'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2/sprite31x31_2_in_context.xdc] for cell 'z5'
+Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/background/background/background_in_context.xdc] for cell 'z8/z0'
+Finished Parsing XDC File [c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/background/background/background_in_context.xdc] for cell 'z8/z0'
+Parsing XDC File [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
+Finished Parsing XDC File [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Videokaart_full_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Videokaart_full_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1689.633 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1689.633 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for z0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for z3. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for z6. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for z5. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for z8/z0. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+Videokaart_full__GC0spriteController__GB7spriteController__GB6spriteController__GB5spriteController__GB4spriteController__GB3spriteController__GB2spriteController__GB1spriteController__GB0---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:13 ; elapsed = 00:00:17 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Mimic Skeleton from Reference
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Mimic Skeleton from Reference : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: yes
+
+   Stitch points used : changed
+
+
+2. Change Summary
+
+Report Incremental Modules: 
++-+----------------+------------+----------+----------+
+| |Changed Modules |Replication |Instances |Changed % |
++-+----------------+------------+----------+----------+
++-+----------------+------------+----------+----------+
+
+
+   Full Design Size (number of cells) : 104385
+   Resynthesis Design Size (number of cells) : 0
+   Resynth % : 0.0000,  Reuse % : 100.0000
+
+3. Reference Checkpoint Information
+
++--------------------------------------------------------------------------------------------------------------------+
+| DCP Location:  | C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp |
++--------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------+------------------------------+
+|         DCP Information        |             Value            |
++--------------------------------+------------------------------+
+| Vivado Version                 |                    v2023.2 |
+| DCP State                      |                              |
++--------------------------------+------------------------------+
+
+
+
+Report RTL Partitions: 
++------+------------------------------+------------+----------+
+|      |RTL Partition                 |Replication |Instances |
++------+------------------------------+------------+----------+
+|1     |spriteController__GB0_#REUSE# |           1|         0|
+|2     |spriteController__GB1_#REUSE# |           1|         0|
+|3     |spriteController__GB2_#REUSE# |           1|         0|
+|4     |spriteController__GB3_#REUSE# |           1|         0|
+|5     |spriteController__GB4_#REUSE# |           1|         0|
+|6     |spriteController__GB5_#REUSE# |           1|         0|
+|7     |spriteController__GB6_#REUSE# |           1|         0|
+|8     |spriteController__GB7_#REUSE# |           1|         0|
+|9     |Videokaart_full__GC0_#REUSE#  |           1|         0|
++------+------------------------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7077] IncrSyn: subsequent runs will still be incremental as the reference run was parallel and that data is reused
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Stitch Unchanged AreaOpt Partitions
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Stitch Unchanged AreaOpt Partitions : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7077] IncrSyn: subsequent runs will still be incremental as the reference run was parallel and that data is reused
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Stitch Unchanged Partitions
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Stitch Unchanged Partitions : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:32 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:32 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++----------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name           | DSP Mapping   | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++----------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|spriteController      | A*B           | 10     | 6      | -      | -      | 18     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|spriteController      | C+A*B         | 17     | 14     | 17     | -      | 17     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|spriteController__GB7 | (PCIN+A:B+C)' | 0      | 10     | -      | -      | 17     | 0    | 0    | -    | -    | -     | 0    | 1    | 
++----------------------+---------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
+|2     |Sprite15x15_1 |         1|
+|3     |sprite31x31_2 |         1|
+|4     |sprite63x63   |         1|
+|5     |background    |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+------------+------+
+|      |Cell        |Count |
++------+------------+------+
+|1     |Sprite15x15 |     1|
+|2     |background  |     1|
+|3     |clk_wiz     |     1|
+|4     |sprite31x31 |     1|
+|5     |sprite63x63 |     1|
+|6     |BUFG        |     1|
+|7     |CARRY4      |  3162|
+|8     |DSP48E1     |     3|
+|9     |LUT1        |   963|
+|10    |LUT2        |  6264|
+|11    |LUT3        |   277|
+|12    |LUT4        |  4193|
+|13    |LUT5        |  2029|
+|14    |LUT6        |  3296|
+|15    |MUXF7       |   522|
+|16    |MUXF8       |   261|
+|17    |FDRE        |  4102|
+|18    |FDSE        |    42|
+|19    |IBUF        |     3|
+|20    |OBUF        |    15|
++------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1689.633 ; gain = 818.461
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:30 . Memory (MB): peak = 1689.633 ; gain = 716.227
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1689.633 ; gain = 818.461
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.221 . Memory (MB): peak = 1689.633 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 3948 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'Videokaart_full' is not ideal for floorplanning, since the cellview 'spriteController' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1689.633 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 936564df
+INFO: [Common 17-83] Releasing license: Synthesis
+53 Infos, 7 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:40 . Memory (MB): peak = 1689.633 ; gain = 1212.086
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1689.633 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/Videokaart_full.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Videokaart_full_utilization_synth.rpt -pb Videokaart_full_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  3 20:02:47 2024...
