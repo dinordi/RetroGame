@@ -16,7 +16,7 @@ void Bullet::behaviour()
 
 bool Bullet::collisionWith(int damage)
 {
-    printk("%d",damage);
+    printk("bullet: %d",damage);
     xSpeed = 0;
     myState = hit;
     return false;
@@ -28,7 +28,6 @@ void Bullet::manageAnimation()
     switch(myState)
     {
         case hit:
-        
             myState = dead;
         break;
     }

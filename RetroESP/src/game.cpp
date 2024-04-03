@@ -24,25 +24,25 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button
     entities.push_back(player);
     actors.push_back(player);
     addFatbat(1000,100);
-    addFatbat(1050,200);
-    addFatbat(1500,400);
-    addFatbat(1200,300);
-    addFatbat(1400,50);
-    addFatbat(1350,100);
-    addFatbat(1280,100);
-    addFatbat(800,100);
-    addFatbat(1000,100);
-    addFatbat(756,100);
-    addFatbat(656,100);
-    addFatbat(954,100);
-    addFatbat(360,100);
-    addFatbat(420,100);
-    addFatbat(696,100);
-    addFatbat(484,100);
-    addFatbat(988,100);
-    addFatbat(1100,100);
-    addFatbat(1150,100);
-    addFatbat(820,100);
+    // addFatbat(1050,200);
+    // addFatbat(1500,400);
+    // addFatbat(1200,300);
+    // addFatbat(1400,50);
+    // addFatbat(1350,100);
+    // addFatbat(1280,100);
+    // addFatbat(800,100);
+    // addFatbat(1000,100);
+    // addFatbat(756,100);
+    // addFatbat(656,100);
+    // addFatbat(954,100);
+    // addFatbat(360,100);
+    // addFatbat(420,100);
+    // addFatbat(696,100);
+    // addFatbat(484,100);
+    // addFatbat(988,100);
+    // addFatbat(1100,100);
+    // addFatbat(1150,100);
+    // addFatbat(820,100);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -170,8 +170,9 @@ void Game::sendToDisplay()
 void Game::addFatbat(int x, int y)
 {
     Fatbat* entity = new Fatbat(x,y);
-    printk("id: %d\n", entity->getID());
+    //printk("id: %d\n", entity->getID());
     entities.push_back(entity);
+    enemies.push_back(entity);
     objects.push_back(entity);
     actors.push_back(entity);
 }
@@ -397,6 +398,8 @@ void Game::checkDeleted(){
             auto gevondenActor = std::find(actors.begin(), actors.end(), object);
             auto gevondenObject = std::find(objects.begin(), objects.end(), object);
             auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
+            auto gevondenProjectile = std::find(projectiles.begin(), projectiles.end(), object);
+            auto gevondenEnemy = std::find(enemies.begin(), enemies.end(), object);
 
             // Controleer of de pointer is gevonden
             if (gevondenActor != actors.end()) {
@@ -407,6 +410,12 @@ void Game::checkDeleted(){
             }
             if (gevondenEntity != entities.end()) {
                 entities.erase(gevondenEntity);
+            }
+            if (gevondenProjectile != projectiles.end()) {
+                projectiles.erase(gevondenProjectile);
+            }
+            if (gevondenEnemy != enemies.end()) {
+                enemies.erase(gevondenEnemy);
             }
             delete object;
         } 
@@ -460,30 +469,44 @@ void Game::realCollisionCheck(Object* object){
             }
         }
     }
-        for(auto object2 : objects)
+    if(dynamic_cast<Projectile*>(object) != nullptr || object->isPlayer()) {
+        for(auto enemy : enemies)
         {
-            int object2Top = object2->getY() - object2->range;
-            int object2Bottom = object2->getY() + object2->range;
-            int object2Left = object2->getX() - object2->range;
-            int object2Right = object2->getX() + object2->range;
+            int enemyTop = enemy->getY() - enemy->range;
+            int enemyBottom = enemy->getY() + enemy->range;
+            int enemyLeft = enemy->getX() - enemy->range;
+            int enemyRight = enemy->getX() + enemy->range;
 
-            if(object2Right >= objectLeft && object2Left <= objectRight && object2Top <= objectBottom && object2Bottom >= objectTop)
+            if(enemyRight >= objectLeft && enemyLeft <= objectRight && enemyTop <= objectBottom && enemyBottom >= objectTop)
             {
-                if(!object2->isPlayer() && object2 != object)
-                {
-                    printk("ik wil slapen");
-                    object->collisionWith(object2->damage);
-                }
+                    object->collisionWith(enemy->damage);
             }
                 
         }
     }
+    if(dynamic_cast<Enemy*>(object) != nullptr) {
+        for(auto projectile : projectiles)
+        {
+            int projectileTop = projectile->getY() - projectile->range;
+            int projectileBottom = projectile->getY() + projectile->range;
+            int projectileLeft = projectile->getX() - projectile->range;
+            int projectileRight = projectile->getX() + projectile->range;
+
+            if(projectileRight >= objectLeft && projectileLeft <= objectRight && projectileTop <= objectBottom && projectileBottom >= objectTop)
+            {
+                printk("collisie %d", projectile->damage);
+                object->collisionWith(projectile->damage);
+            }
+                
+        }
+    }
+}
  
 int Game::gravityCheck(Object* object,int groundlevel){
     //int y = object->y + object->ySpeed; 
     if(object->hasGravity)
         { 
-            printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
+            //printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
             if(object->y > groundlevel) //if player is on platform
             {
@@ -514,7 +537,7 @@ void Game::checkRangedAttack(Entity* entity){
     if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
     {
         Object* projectile = entity->makeProjectile();
-        //projectiles.push_back(static_cast<Projectile*>(projectile));
+        projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
     }

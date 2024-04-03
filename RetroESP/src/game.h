@@ -8,6 +8,7 @@
 #include "player.h"
 #include "audio_module.h"
 
+class Enemy;
 class Platform;
 class Projectile;
 class Entity;
@@ -53,6 +54,7 @@ public:
 private:
     std::vector<Object*> objects;
     std::vector<Entity*> entities;
+    std::vector<Enemy*> enemies;
     std::vector<Projectile*> projectiles;
     std::vector<Platform*> platforms;
     std::vector<Actor*> actors;
