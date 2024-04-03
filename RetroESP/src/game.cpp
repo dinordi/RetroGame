@@ -29,6 +29,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     currentLevel = 0;
     Curtain = 0;
     fadeIn = false;
+    BOB = false;
     addEnemy();
     frames = 0;
     gameState = Menu;
@@ -77,6 +78,8 @@ void Game::update()
             break;
         }
         case Drbob:
+            player->setBobMode();
+            BOB = true;
             gameState = Playing;
             break;
         case Paused:
@@ -265,6 +268,7 @@ void Game::nextLevelAnimation()
                 delete actor;
             }
             player = new Player(player1Sprites,7,780,100);
+            if(BOB) player->setBobMode();
             actors.clear();
             objects.clear();
             entities.clear();
@@ -727,6 +731,7 @@ void Game::checkRangedAttack(Entity* entity){
     if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
     {
         Object* projectile = entity->makeProjectile();
+        if(BOB) static_cast<Bullet*>(projectile)->setBobMode();
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
@@ -755,6 +760,8 @@ void Game::resetToBegin()
     gameState = Menu;
     stateSelect = Playing;
     loadPlatforms(level);
+    liveEnemies = 0;
+    killedEnemies = 0;
     Curtain = 0;
     fadeIn = false;
 }

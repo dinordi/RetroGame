@@ -85,4 +85,5 @@ private:
     int killedEnemies;
     bool fadeIn;
     int randomNumbers[1000];
+    bool BOB;
 };

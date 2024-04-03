@@ -63,6 +63,7 @@ void Score::set_time_points()
   
   time_score = time_score + (time_multiplier * 0.05);
   printk("score= %d\n",time_score);
+
 }
 void Score::reset_leaderboard()
 {

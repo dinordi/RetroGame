@@ -25,11 +25,12 @@ public:
     bool collisionWith(int damage) override;
     void manageAnimation() override;
     friend class Game;
+    void setBobMode();
 private:
     int printX;
     buttonStatuses lastButtonState;
     buttonStatuses buttonStatus;
     //Bullet* bullet;
     int hitAnimation;
-    
+    bool BOB;
 };
