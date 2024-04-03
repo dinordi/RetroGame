@@ -11,6 +11,7 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
     {
         randomNumbers[i] = sys_rand32_get();
     }
+
     damage = 5;
     hp = 50;
     xSpeed = 0;
