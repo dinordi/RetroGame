@@ -84,6 +84,7 @@ void Game::update()
             updateGame();
             break;
         case Drbob:
+            gameState = Playing;
             break;
         case Paused:
             break;
@@ -238,6 +239,8 @@ void Game::nextLevelAnimation()
             objects.clear();
             entities.clear();
             platforms.clear();
+            enemies.clear();
+            projectiles.clear();
             objects.push_back(player);
             entities.push_back(player);
             actors.push_back(player);
@@ -246,8 +249,6 @@ void Game::nextLevelAnimation()
             fadeIn = true;
     }
     }
-    
-    
     levelFading(Curtain);
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
@@ -462,29 +463,37 @@ void Game::checkDeleted(){
     {
         if(object->myState == dead)
         {
-            auto gevondenActor = std::find(actors.begin(), actors.end(), object);
-            auto gevondenObject = std::find(objects.begin(), objects.end(), object);
-            auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
-            auto gevondenProjectile = std::find(projectiles.begin(), projectiles.end(), object);
-            auto gevondenEnemy = std::find(enemies.begin(), enemies.end(), object);
+            if(object->isPlayer())
+            {
+                gameState = GameOver;
+            }
+            else
+            {
+                auto gevondenActor = std::find(actors.begin(), actors.end(), object);
+                auto gevondenObject = std::find(objects.begin(), objects.end(), object);
+                auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
+                auto gevondenProjectile = std::find(projectiles.begin(), projectiles.end(), object);
+                auto gevondenEnemy = std::find(enemies.begin(), enemies.end(), object);
 
-            // Controleer of de pointer is gevonden
-            if (gevondenActor != actors.end()) {
-                actors.erase(gevondenActor); // Verwijder de pointer uit de vector
-            } 
-            if (gevondenObject != objects.end()) {
-                objects.erase(gevondenObject);
+                // Controleer of de pointer is gevonden
+                if (gevondenActor != actors.end()) {
+                    actors.erase(gevondenActor); // Verwijder de pointer uit de vector
+                } 
+                if (gevondenObject != objects.end()) {
+                    objects.erase(gevondenObject);
+                }
+                if (gevondenEntity != entities.end()) {
+                    entities.erase(gevondenEntity);
+                }
+                if (gevondenProjectile != projectiles.end()) {
+                    projectiles.erase(gevondenProjectile);
+                }
+                if (gevondenEnemy != enemies.end()) {
+                    enemies.erase(gevondenEnemy);
+                }
+                delete object;
             }
-            if (gevondenEntity != entities.end()) {
-                entities.erase(gevondenEntity);
-            }
-            if (gevondenProjectile != projectiles.end()) {
-                projectiles.erase(gevondenProjectile);
-            }
-            if (gevondenEnemy != enemies.end()) {
-                enemies.erase(gevondenEnemy);
-            }
-            delete object;
+                
         } 
     }
 

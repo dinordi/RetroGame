@@ -9,6 +9,5 @@ class Enemy : public Entity{
     bool collisionWith(int damage);
     // void behaviour();
 private:
-    bool hit;
     int hitAnimation;
 };

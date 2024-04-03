@@ -38,6 +38,9 @@ protected:
     bool hasGravity;
     bool hasCollision;
     bool isGrounded;
+    bool hit;
+    bool lastHit;
     int damage;
+    int damageDone;
     
 };
