@@ -22,12 +22,7 @@ bool Fatbat::collisionWith(int damage)
 
 void Fatbat::behaviour() {
     lastmyState = myState;
-    static int count = 0;
-    if(hp <= 0)
-    {
-        myState = dead;
-    }
-
+    //printk("Fatbat hp in behav: %d\n",hp);
     //Randomly attack
     uint32_t rnd = sys_rand32_get();
 
@@ -64,6 +59,10 @@ void Fatbat::behaviour() {
     if(rnd % 4000 ==0 || x <= 340 || x >= 1580)
     {
         isFacingRight = !isFacingRight;
+    }
+    if(hp <= 0)
+    {
+        myState = dead;
     }
    
 }

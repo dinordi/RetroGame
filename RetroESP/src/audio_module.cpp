@@ -38,7 +38,7 @@ void Audio::uart_send(const std::vector<int>& vector, int select)
         
     if(select == 0){
    uart_poll_out(uart_dev_1, vector[i]);
-   printk("%x ",vector[i]);
+   //printk("%x ",vector[i]);
     }
 
     else{
