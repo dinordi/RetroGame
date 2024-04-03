@@ -8,6 +8,8 @@ Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samur
     hasCollision = true;
     hasGravity = true;
     isRanged = false;
+    hitAnimation = 0;
+    hit = false;
 }
 
 void Samurai::behaviour() 
