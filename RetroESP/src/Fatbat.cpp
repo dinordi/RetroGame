@@ -2,9 +2,12 @@
 #include <zephyr/sys/printk.h>
 #include <zephyr/random/random.h>
 
+int Fatbat::randomCounter = 0;
+
+
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
-
+    sys_csrand_get(randomNumbers, 1000);
     damage = 5;
     hp = 50;
     xSpeed = 0;
@@ -24,12 +27,13 @@ bool Fatbat::collisionWith(int damage)
 }
 
 void Fatbat::behaviour() {
+    randomCounter++;
     lastmyState = myState;
     //printk("Fatbat hp in behav: %d\n",hp);
     //Randomly attack
-    uint32_t rnd = sys_rand32_get();
+   int rnd = randomNumbers[randomCounter + static_cast<int>(x) %1000];
 
-    if(rnd % 120 == 0 && myState != attacking)
+    if(rnd % 120 < rnd % 5 && myState != attacking)
     {
         myState = attacking;
     }
@@ -59,7 +63,7 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if((rnd % 4000 == 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
+    if((rnd % 4000 < 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
     {
         isFacingRight = !isFacingRight;
     }
