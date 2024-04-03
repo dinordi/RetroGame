@@ -54,6 +54,8 @@ public:
     void realCollisionCheck(Object* object);
     void checkDeleted();
     int borderCheck(Object* object);
+    void GameOverFunc();
+    void resetToBegin();
     std::vector<Platform*>* getPlatforms();
 
 private:
