@@ -15,9 +15,9 @@
 const float dt = 1.0f / 60;
 int count = 0;
 
-Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button(button), audio(audio)
+Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
-    sys_csrand_get(randomNumbers, 1000);
+    //sys_csrand_get(randomNumbers, 1000);
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
@@ -56,30 +56,50 @@ void Game::update()
     switch(gameState)
     {
         case Menu:
+        {
             updateSelection();
             drawMainMenu();
             break;
+        }
         case NextLevel:
+        {
             nextLevelAnimation();
+            score->assign_time_points(); // give the player a level complete score based on time
+            score->set_multiplier(); // set the scoremultiplier back to 100
             break;
+        }
         case Playing:
+        {
             sendToDisplay();
+            score->set_time_points(); // increase the level complete score
+            score->decrease_multiplier(frames);
             updateGame();
             break;
+        }
         case Drbob:
             gameState = Playing;
             break;
         case Paused:
             break;
         case GameOver:
+        {
             sendToDisplay();
             GameOverFunc();
             break;
+        }
         case Credits:
+        {
             drawCredits();
             break;
+        }
+        case Highscores:
+        {
+            drawHighscores();
+            break;
+        }
     }
     frames++;
+  
     if(frames == 30)
     {
         audio->play_music(audio->MENU_MUSIC);
@@ -108,6 +128,9 @@ void Game::updateSelection()
                 gameState = Credits;
                 counter = 0;
                 break;
+            case Highscores:
+                gameState = Highscores;
+                counter = 0;
             default:
                 break;
         }
@@ -125,9 +148,13 @@ void Game::updateSelection()
                 case Drbob:
                     stateSelect = Playing;
                     break;
-                case Credits:
+                case Highscores:
                     stateSelect = Drbob;
                     break;
+                case Credits:
+                    stateSelect = Highscores;
+                    break;
+
             }
         }
         if(buttonStatus.down)
@@ -138,11 +165,15 @@ void Game::updateSelection()
                     stateSelect = Drbob;
                     break;
                 case Drbob:
+                    stateSelect = Highscores;
+                    break;
+               case Highscores:
                     stateSelect = Credits;
                     break;
                 case Credits:
                     stateSelect = Playing;
                     break;
+
             }
         }
     }
@@ -289,7 +320,8 @@ void Game::drawMainMenu()
     std::string start = "press start to play";
     std::string option1 = "play";
     std::string option2 = "dr bob mode";
-    std::string option3 = "credits";
+    std::string option3 = "highscore";
+    std::string option4 = "credits";
     static int yval = 300;
     static bool draw = true;
 
@@ -306,6 +338,8 @@ void Game::drawMainMenu()
     drawString(option1, 250, 300);
     drawString(option2, 250, 350);
     drawString(option3, 250, 400);
+    drawString(option4, 250, 450);
+
 
     readInput();
     switch(stateSelect)  // Toggle selection
@@ -316,19 +350,69 @@ void Game::drawMainMenu()
         case Drbob:
             yval = 350;
             break;
-        case Credits:
+        case Highscores:
             yval = 400;
             break;
+        case Credits:
+            yval = 450;
+            break;
+        
+
     }
 
     spriteData[spriteDataCount++] = htobe16(0);                     // Playersprite Cursor
     spriteData[spriteDataCount++] = htobe16(250+124);
     spriteData[spriteDataCount++] = htobe16(yval);
-
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
+bool execute_once =false;
+void Game::drawHighscores()
+{
+    if(execute_once == false)
+    {
+        score->reset_leaderboard();
+        execute_once = true;
+        score->get_leaderboard();
+    }
+    static int counter = 0;
+    counter++;
 
+    std::string title = "   highscores";
+    std::string highscore_1 = score->receive_Scores(0);
+    std::string highscore_2 = score->receive_Scores(1);
+    std::string highscore_3 = score->receive_Scores(2);
+    std::string highscore_4 = score->receive_Scores(3);
+    std::string highscore_5 = score->receive_Scores(4);
+    std::string highscore_6 = score->receive_Scores(5);
+    std::string highscore_7 = score->receive_Scores(6);
+    std::string highscore_8 = score->receive_Scores(7);
+    std::string highscore_9 = score->receive_Scores(8);
+
+    drawString(title, 240, 50);
+
+    drawString(highscore_1, 240, 100);
+    drawString(highscore_2, 240, 150);
+    drawString(highscore_3, 240, 200);
+    drawString(highscore_4, 240, 250);
+    drawString(highscore_5, 240, 300);
+    drawString(highscore_6, 240, 350);
+    drawString(highscore_7, 240, 400);
+    drawString(highscore_8, 240, 450);
+
+
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+
+    readInput();
+    if(buttonStatus.start && counter > 60)
+    {
+        gameState = Menu;
+        counter = 0;
+    }
+    
+
+}
 void Game::drawCredits()
 {
     static int counter = 0;
@@ -521,11 +605,11 @@ void Game::checkDeleted(){
                     enemies.erase(gevondenEnemy);
                     killedEnemies++;
                     liveEnemies--;
+                    score->assign_monster_points();
                 }
                 delete object;
             } 
         }
-
     }
 }
 

@@ -27,11 +27,11 @@ aliases {
 	// adc0 = &adc0;
 	// adc1 = &adc1;
 	joyleft = &button3;
-	joyright = &button1;
-	joyup = &button4;
+	joyright= &button1;
+	joyup   = &button4;
 	joydown = &button2;
 	start = &button9;
-	dash = &button6;
+	dash  = &button6;
 	shoot = &button5;
 
 };

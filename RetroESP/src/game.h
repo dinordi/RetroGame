@@ -7,6 +7,7 @@
 #include "button.h"
 #include "player.h"
 #include "audio_module.h"
+#include "scores.h"
 #include <zephyr/random/random.h>
 
 class Enemy;
@@ -22,14 +23,15 @@ typedef enum
     GameOver,
     Drbob,
     Credits,
-    NextLevel
+    NextLevel,
+    Highscores
 
 }gameStates;
 
 class Game
 {
 public:
-    Game(FPGA* fpga, ButtonHandler* button, Audio* audio);
+    Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score);
     virtual ~Game();
 
     void update();
@@ -44,6 +46,7 @@ public:
     void loadPlatforms(const int level[8][16][63]);
     void drawMainMenu();
     void drawCredits();
+    void drawHighscores();
     void updateSelection();
     void checkRangedAttack(Entity* entity);
     void drawString(std::string str, int startX, int y);
@@ -68,6 +71,7 @@ private:
     uint16_t* spriteData;
     int spriteDataCount;
     FPGA* fpga;
+    Score* score;
     ButtonHandler* button;
     Audio* audio;
     buttonStatuses buttonStatus;
