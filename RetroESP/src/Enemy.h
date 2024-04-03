@@ -8,4 +8,6 @@ class Enemy : public Entity{
     Enemy(const int* entitySprites, int range,int x, int y);
     bool collisionWith(int damage);
     // void behaviour();
+private:
+    int hitAnimation;
 };

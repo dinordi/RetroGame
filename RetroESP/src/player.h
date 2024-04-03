@@ -30,5 +30,6 @@ private:
     buttonStatuses lastButtonState;
     buttonStatuses buttonStatus;
     //Bullet* bullet;
+    int hitAnimation;
     
 };

@@ -11,7 +11,9 @@ Enemy::Enemy(const int* entitySprites, int range,int x, int y) : Entity(entitySp
 bool Enemy::collisionWith(int damage)
 {
     hp = hp - damage;
-    myState = hit;
+    if(damage){
+        hit = true;
+    }
     return false;
 }
 

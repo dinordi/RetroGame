@@ -11,12 +11,15 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
     myState = idle;
     isFacingRight = false;
     hitAnimation = 0;
+    hit = false;
 }
 
 bool Fatbat::collisionWith(int damage)
 {
     hp = hp - damage;
-    hit = true;
+    if(damage){
+        hit = true;
+    }
     return false;
 }
 
@@ -56,7 +59,7 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if(rnd % 4000 ==0 || x <= 340 || x >= 1580)
+    if((rnd % 4000 == 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
     {
         isFacingRight = !isFacingRight;
     }

@@ -12,6 +12,5 @@ public:
     void behaviour() override;
     void manageAnimation() override;
 private:
-    bool hit;
     int hitAnimation;
 };

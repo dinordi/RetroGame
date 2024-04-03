@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Enemy.h"
-
+#include "sprites.h"
 
 class Samurai : public Enemy
 {
@@ -13,5 +13,8 @@ public:
     int attackCheck(bool isX) override;
     Projectile* makeProjectile() override;
     void manageAnimation() override;
+    bool collisionWith(int damage);
+private:
+    int hitAnimation;
 };
 
