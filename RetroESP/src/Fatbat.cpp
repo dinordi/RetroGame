@@ -7,7 +7,7 @@ int Fatbat::randomCounter = 0;
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
-    sys_csrand_get(randomNumbers, 1000);
+    //sys_csrand_get(randomNumbers, 1000);
     damage = 5;
     hp = 50;
     xSpeed = 0;
