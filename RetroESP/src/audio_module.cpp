@@ -34,18 +34,16 @@ Audio::~Audio()
 // uart 2 == effects == select 1
 void Audio::uart_send(const std::vector<int>& vector, int select)
 {
-       for(int i =0; i < vector.size(); i++){
-        
-    if(select == 0){
-   uart_poll_out(uart_dev_1, vector[i]);
-   printk("%x ",vector[i]);
-    }
-
-    else{
-   uart_poll_out(uart_dev_2, vector[i]);
-   
-    }
-
+    for(int i =0; i < vector.size(); i++){
+        if(select == 0){
+            uart_poll_out(uart_dev_1, vector[i]);
+            printk("%x ",vector[i]);
+        }
+        else
+        {
+            uart_poll_out(uart_dev_2, vector[i]);
+            printk("%x ",vector[i]);
+        }
    }
 }
 
@@ -87,7 +85,7 @@ void Audio::play_music(play_soundtrack music)
 }
 void Audio::play_effect(play_effects effect)
 {
-        switch(effect)
+    switch(effect)
     {
     //menu effects
     case MNU_CONFIRM:

@@ -1,5 +1,4 @@
 #include "Fatbat.h"
-#include <zephyr/sys/printk.h>
 #include <zephyr/random/random.h>
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)

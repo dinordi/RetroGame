@@ -16,7 +16,6 @@ void Bullet::behaviour()
 
 bool Bullet::collisionWith(int damage)
 {
-    printk("%d",damage);
     xSpeed = 0;
     myState = hit;
     return false;

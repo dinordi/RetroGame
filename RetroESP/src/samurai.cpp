@@ -1,6 +1,4 @@
 #include "samurai.h"
-
-#include <zephyr/sys/printk.h>
 #include <cstdlib>
 #include <zephyr/random/random.h>
 
@@ -23,20 +21,23 @@ void Samurai::behaviour()
     {
         case waiting:
         {
+            xSpeed = 0;
+            myState = idle;
             if(seesPlayer())
             {
                 samState = spottedPlayer;
             }
-            if(count > 60)
+            if(count == 60)
             {
                 isFacingRight = !isFacingRight;
             }
-            else if(count > 120)
+            else if(count == 120)
             {
                 isFacingRight = !isFacingRight;
             }
-            else if(count > 180)
+            else if(count == 180)
             {
+                isFacingRight = !isFacingRight;
                 samState = patrol;
                 count = 0;
             }
@@ -44,20 +45,29 @@ void Samurai::behaviour()
         }
         case patrol:
         {
-            if (isFacingRight ? xSpeed = 2 : xSpeed = -2);
-            if(sys_rand32_get() % 100 ==0)
+            myState = walking;
+            xSpeed = isFacingRight ? 2 : -2;
+            if(sys_rand32_get() % 200 ==0)
             {
                 samState = waiting;
                 count = 0;
+            }
+            if(seesPlayer())
+            {
+                samState = spottedPlayer;
             }
             break;
         }
         case spottedPlayer:
         {
+            myState = walking;
             if(abs(playerX - x) < 10)
             {
                 //Attack
+                samState = waiting;
+                myState = attacking;
             }
+            
             if(x < playerX)
             {
                 isFacingRight = true;
@@ -72,9 +82,10 @@ void Samurai::behaviour()
         }
     }
 
+    updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    myState = idle;
+
 }
 
 int Samurai::attackCheck(bool isX)

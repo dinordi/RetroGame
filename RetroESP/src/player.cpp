@@ -1,7 +1,6 @@
 #include "player.h"
 #include "sprites.h"
 #include "Bullet.h"
-#include <zephyr/sys/printk.h>
 #include <cstdio>
 
 

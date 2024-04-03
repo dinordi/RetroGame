@@ -90,9 +90,13 @@ void Game::update()
             break;
     }
     frames++;
-    if(frames == 30)
+    if(frames == 120)
     {
-        audio->play_music(audio->MENU_MUSIC);
+        printk("Sending music\n");
+        // audio->play_music(audio->MENU_MUSIC);
+        // printk("\nSending sfx\n");
+        audio->play_effect(audio->B_HIT);
+        printk("\nAudio sent\n");
     }
 }
 
@@ -207,6 +211,11 @@ void Game::readInput()
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
     // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
+
+    // if(buttonStatus.start)
+    // {
+    //     audio->play_effect(audio->P_SHOOT);
+    // }
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -389,7 +398,11 @@ void Game::tick()
     checkDeleted();
     for(Object* object : objects)
     {
-        
+        if(dynamic_cast<Samurai*>(object) != nullptr)
+        {
+            Samurai* samurai = static_cast<Samurai*>(object);
+            samurai->setPlayerPos(player->getX(), player->getY());
+        }
         groundLevel = collisionCheck(object);
         object->behaviour();
         y = gravityCheck(object,groundLevel);
@@ -532,6 +545,8 @@ void Game::checkRangedAttack(Entity* entity){
         //projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
+
+        audio->play_effect(audio->MNU_CONFIRM);
     }
 }
 
