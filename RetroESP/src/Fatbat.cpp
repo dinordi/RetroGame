@@ -1,6 +1,6 @@
 #include "Fatbat.h"
 #include <zephyr/sys/printk.h>
-//#include <zephyr/random/random.h>
+#include <zephyr/random/random.h>
 
 int Fatbat::randomCounter = 0;
 
