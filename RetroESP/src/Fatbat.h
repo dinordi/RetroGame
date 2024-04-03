@@ -11,6 +11,9 @@ public:
     bool collisionWith(int damage);
     void behaviour() override;
     void manageAnimation() override;
+    
 private:
     int hitAnimation;
+    int randomNumbers[1000];
+    static int randomCounter;
 };
