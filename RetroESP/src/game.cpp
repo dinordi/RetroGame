@@ -23,6 +23,10 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
+    
+    currentLevel = 0;
+    Curtain = 0;
+    fadeIn = false;
     addFatbat(1000,100);
     // addFatbat(1050,200);
     // addFatbat(1500,400);
@@ -71,6 +75,9 @@ void Game::update()
         case Menu:
             updateSelection();
             drawMainMenu();
+            break;
+        case NextLevel:
+            nextLevelAnimation();
             break;
         case Playing:
             sendToDisplay();
@@ -157,6 +164,9 @@ void Game::updateGame()
     //Check for input
     readInput();
     player->setButtonStatus(buttonStatus);
+    if(buttonStatus.down){
+        gameState = NextLevel;
+    }
     tick();
 }
 
@@ -211,6 +221,62 @@ void Game::drawString(std::string str, int startX, int y)
         // printk("adding ID: %d\n", characters[title[i]]);
     }
 }
+
+void Game::nextLevelAnimation()
+{
+    if(fadeIn){
+        Curtain -= 3;
+        if(Curtain < 0){
+            fadeIn = false;
+            gameState = Playing;
+        }
+    } 
+    else{
+        Curtain += 3;
+        if(Curtain > 640){
+            actors.clear();
+            objects.clear();
+            entities.clear();
+            platforms.clear();
+            objects.push_back(player);
+            entities.push_back(player);
+            actors.push_back(player);
+            currentLevel++;
+            loadPlatforms(level);
+            fadeIn = true;
+    }
+    }
+    
+    
+    levelFading(Curtain);
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+}
+
+void Game::levelFading(int line)
+{
+    int middleX = player->getX();
+    int leftBorder = middleX + line - 320;
+    int rightBorder = middleX + 320;
+    int x,delta,actorX,range;
+    for(auto actor : actors)
+    { 
+        x = actor->getX();
+        delta = x - middleX;
+        actorX = 320 + delta;
+        range = actor->range; 
+        if(actor->getY() < 0) // if player so above roof of the screen the Y goes below zero
+            continue;
+        if((x > (leftBorder - range)) && (x < (rightBorder + range)))
+        {
+            spriteData[spriteDataCount++] = htobe16(actor->getID());
+            spriteData[spriteDataCount++] = htobe16(actorX + 144);
+            spriteData[spriteDataCount++] = htobe16(actor->getY());
+            //printk("ID: %d\n", actor->getID());
+        }
+    }
+}
+
 
 void Game::drawMainMenu()
 {
@@ -340,22 +406,23 @@ void Game::drawLevel()
     // }
 }
 
-void Game::loadPlatforms(const int level[16][63])
+void Game::loadPlatforms(const int level[8][16][63])
 {
     for(int i = 0; i < 16; i++) // 16 rows
     {
         for(int j = 0; j < 63; j++) // 63 columns
         {
-            if(level[i][j] != 0)    // If the tile is not empty
+            if(level[currentLevel][i][j] != 0)    // If the tile is not empty
             {
                 int tileX = j * 31; //31 is tile width/height
                 int tileY = i * 31;
-                int tileID = level[i][j] + 99;  // Add 99 to the tileID to get the correct sprite
+                int tileID = level[currentLevel][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
                 Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
                 platforms.push_back(platform);
                 actors.push_back(platform);
             }
         }
+       
     }
 }
 

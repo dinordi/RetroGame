@@ -20,7 +20,8 @@ typedef enum
     Paused,
     GameOver,
     Drbob,
-    Credits
+    Credits,
+    NextLevel
 
 }gameStates;
 
@@ -38,12 +39,14 @@ public:
     void readInput();
     void tick();
     void drawLevel();
-    void loadPlatforms(const int level[16][63]);
+    void loadPlatforms(const int level[8][16][63]);
     void drawMainMenu();
     void drawCredits();
     void updateSelection();
     void checkRangedAttack(Entity* entity);
     void drawString(std::string str, int startX, int y);
+    void nextLevelAnimation();
+    void levelFading(int line);
     int collisionCheck(Object* object);
     int gravityCheck(Object* object,int);
     void realCollisionCheck(Object* object);
@@ -68,4 +71,7 @@ private:
     uint64_t frames;
     gameStates gameState;
     gameStates stateSelect;
+    int Curtain;
+    int currentLevel;
+    bool fadeIn;
 };
