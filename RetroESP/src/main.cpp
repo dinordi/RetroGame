@@ -11,7 +11,7 @@
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
-
+#include <zephyr/kernel.h>
 
 #include <string>
 // #include "adc.h"
@@ -19,7 +19,6 @@
 #include "fpga.h" //Serial communication with FPGA
 #include "game.h"
 #include "sprites.h"
-// #include <zephyr/kernel.h>
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
@@ -59,7 +58,7 @@ int main(void)
 	
 	while (1) {
 		
-    	// uint64_t time = k_uptime_get()
+    	
 		// printk("\nSTOPPING MUSIC\n");
 		// audio.stop(audio.MUSIC);
 		// k_sleep(K_MSEC(10000));
@@ -79,7 +78,10 @@ int main(void)
 		// // printk("Pin value: %d\n", pin_value);
 		if(pin_value == 0 && lastState == 1)
 		{
+			// uint64_t time = k_cycle_get_64();
 			game.update();
+			// uint64_t time2 = k_cycle_get_64();
+			// printk("Cycles: %lld\n", time);
 		}
 
 		lastState = pin_value;

@@ -15,7 +15,6 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 
 bool Fatbat::collisionWith(int damage)
 {
-    printk("collision Fatbat!");
     hp = hp - damage;
     myState = hit;
     return false;

@@ -87,7 +87,7 @@ void Game::update()
             break;
     }
     frames++;
-    if(frames > 30)
+    if(frames == 30)
     {
         audio->play_music(audio->MENU_MUSIC);
     }
@@ -471,7 +471,7 @@ void Game::realCollisionCheck(Object* object){
             {
                 if(!object2->isPlayer() && object2 != object)
                 {
-                    printk("ik wil slapen");
+                    // printk("ik wil slapen");
                     object->collisionWith(object2->damage);
                 }
             }
@@ -483,7 +483,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
     //int y = object->y + object->ySpeed; 
     if(object->hasGravity)
         { 
-            printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
+            // printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
             if(object->y > groundlevel) //if player is on platform
             {
