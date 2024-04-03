@@ -11,4 +11,7 @@ public:
     bool collisionWith(int damage);
     void behaviour() override;
     void manageAnimation() override;
+private:
+    bool hit;
+    int hitAnimation;
 };
