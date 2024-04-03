@@ -56,45 +56,63 @@ void Samurai::manageAnimation()
     {
         mirror = 512;
     }
-
-    switch(myState)
+     if(hitAnimation == 20)
     {
-        case idle:
-            if(spriteCounter % 30 < 15)
-                ID = entitySprites[0];
-            else
-                ID = entitySprites[1];
-            if(spriteCounter >= 30)
-                spriteCounter = 0;
-            break;
-
-        case walking:
-        {
-            divider = 8;
-            if (index < divider) 
-            {
-                ID = entitySprites[index + 3] + mirror;
-            } 
-            else
-            {
-                ID = entitySprites[10] + mirror;
-            }
-            if (spriteCounter >= 64) 
-            {
-                spriteCounter = 0;
-            }
-            break;
-        }
-
-        case attacking:
-            divider = 6;
-            if(index < divider)
-                ID = entitySprites[index + 11] + mirror;
-            else
-                ID = entitySprites[16] + mirror;
-
-            if(spriteCounter >= 64)
-                spriteCounter = 0;
-            break;
+        hit = false;
+        hitAnimation = 0;
     }
+    if(hit&&spriteCounter % 10 <= 5)
+    {
+        ID = empty15x15[0];
+        hitAnimation++;
+    }
+    else{
+	    switch (myState) {
+	    case idle:
+		    if (spriteCounter % 30 < 15) {
+			    ID = entitySprites[0];
+		    } else {
+			    ID = entitySprites[1];
+		    }
+		    if (spriteCounter >= 30) {
+			    spriteCounter = 0;
+		    }
+		    break;
+
+	    case walking: {
+		    divider = 8;
+		    if (index < divider) {
+			    ID = entitySprites[index + 3] + mirror;
+		    } else {
+			    ID = entitySprites[10] + mirror;
+		    }
+		    if (spriteCounter >= 64) {
+			    spriteCounter = 0;
+		    }
+		    break;
+	    }
+
+	    case attacking:
+		    divider = 6;
+		    if (index < divider) {
+			    ID = entitySprites[index + 11] + mirror;
+		    } else {
+			    ID = entitySprites[16] + mirror;
+		    }
+
+		    if (spriteCounter >= 64) {
+			    spriteCounter = 0;
+		    }
+		    break;
+	    }
+    }
+}
+
+bool Samurai::collisionWith(int damage)
+{
+    hp = hp - damage;
+    if(damage){
+        hit = true;
+    }
+	return false;
 }
