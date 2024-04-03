@@ -30,3 +30,9 @@ void Bullet::manageAnimation()
         myState = dead;
     }
 }
+
+void Bullet::setBobMode()
+{
+    damage = 1000;
+   
+}

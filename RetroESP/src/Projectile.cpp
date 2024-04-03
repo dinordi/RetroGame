@@ -8,3 +8,5 @@ Projectile::Projectile(const int* entitySprites,int range,int x,int y,bool isFac
     hasCollision = 0;
     hasGravity = 0;
 }
+
+

@@ -6,4 +6,5 @@ class Bullet : public Projectile {
     void behaviour() override;
     bool collisionWith(int damage) override;
     void manageAnimation() override;
+    void setBobMode();
 };
