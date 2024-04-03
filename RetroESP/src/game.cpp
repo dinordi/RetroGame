@@ -17,36 +17,19 @@ int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button(button), audio(audio)
 {
+    sys_rand_get(randomNumbers, 1000);
     spriteData = new uint16_t[900];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    
+    liveEnemies = 0;
+    killedEnemies = 0;
     currentLevel = 0;
     Curtain = 0;
     fadeIn = false;
-    addFatbat(1000,100);
-    addFatbat(1050,200);
-    addFatbat(1500,400);
-    addFatbat(1200,300);
-    addFatbat(1400,50);
-    addFatbat(1350,100);
-    addFatbat(1280,100);
-    addFatbat(800,100);
-    addFatbat(1000,100);
-    addFatbat(756,100);
-    addFatbat(656,100);
-    addFatbat(954,100);
-    addFatbat(360,100);
-    addFatbat(420,100);
-    addFatbat(696,100);
-    addFatbat(484,100);
-    addFatbat(988,100);
-    addFatbat(1100,100);
-    addFatbat(1150,100);
-    addFatbat(820,100);
+    addEnemy();
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -164,9 +147,6 @@ void Game::updateGame()
     //Check for input
     readInput();
     player->setButtonStatus(buttonStatus);
-    if(buttonStatus.down){
-        gameState = NextLevel;
-    }
     tick();
 }
 
@@ -175,6 +155,15 @@ void Game::sendToDisplay()
     drawLevel();
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
+}
+
+void Game::addEnemy()
+{
+    while(liveEnemies < maxEnemyScreen[currentLevel]){
+    
+        addFatbat(randomNumbers[frames % 1000] % 1280 + 320, randomNumbers[frames % 1000] % 400);
+        liveEnemies++;
+    }
 }
 
 void Game::addFatbat(int x, int y)
@@ -234,6 +223,8 @@ void Game::nextLevelAnimation()
     else{
         Curtain += 3;
         if(Curtain > 640){
+            liveEnemies = 0;
+            killedEnemies = 0;
             actors.clear();
             objects.clear();
             entities.clear();
@@ -437,6 +428,8 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
+    if(killedEnemies >= maxEnemies[currentLevel]) gameState = NextLevel;
+    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) addEnemy();
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
@@ -483,6 +476,8 @@ void Game::checkDeleted(){
             }
             if (gevondenEnemy != enemies.end()) {
                 enemies.erase(gevondenEnemy);
+                killedEnemies++;
+                liveEnemies--;
             }
             delete object;
         } 
