@@ -229,6 +229,11 @@ void Game::nextLevelAnimation()
         if(Curtain > 640){
             liveEnemies = 0;
             killedEnemies = 0;
+            for(auto actor : actors)
+            {
+                delete actor;
+            }
+            player = new Player(player1Sprites,7,780,100);
             actors.clear();
             objects.clear();
             entities.clear();
