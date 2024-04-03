@@ -88,11 +88,15 @@ void Game::update()
             break;
         }
         case Credits:
+        {
             drawCredits();
             break;
+        }
         case Highscores:
+        {
             drawHighscores();
             break;
+        }
     }
     frames++;
   
@@ -224,7 +228,7 @@ void Game::readInput()
     buttonStatus.dash = button->pinGet(5);
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
-    printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
+    // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
 }
 
 void Game::drawString(std::string str, int startX, int y)
