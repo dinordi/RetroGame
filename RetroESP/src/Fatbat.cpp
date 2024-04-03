@@ -9,25 +9,22 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
     xSpeed = 0;
     myState = idle;
     isFacingRight = false;
-
+    hitAnimation = 0;
+    hit = false;
 }
 
 bool Fatbat::collisionWith(int damage)
 {
     hp = hp - damage;
-    myState = hit;
+    if(damage){
+        hit = true;
+    }
     return false;
 }
 
 void Fatbat::behaviour() {
     lastmyState = myState;
-    static int count = 0;
-    if(hp <= 0)
-    {
-        myState = dead;
-        return;
-    }
-
+    
     //Randomly attack
     uint32_t rnd = sys_rand32_get();
 
@@ -65,6 +62,10 @@ void Fatbat::behaviour() {
     {
         isFacingRight = !isFacingRight;
     }
+    if(hp <= 0)
+    {
+        myState = dead;
+    }
    
 }
 
@@ -79,20 +80,30 @@ void Fatbat::manageAnimation()
     {
         mirror = 512;
     }
-
-    switch(myState)
+    if(hitAnimation == 20)
     {
-        case idle:
-            if(spriteCounter % 30 < 15)
-                ID = entitySprites[0]+mirror;
-            else
-                ID = entitySprites[1]+mirror;
-            if(spriteCounter >= 30)
-                spriteCounter = 0;
+        hit = false;
+        hitAnimation = 0;
+    }
+    if(hit&&spriteCounter % 10 <= 5)
+    {
+        ID = empty15x15[0];
+        hitAnimation++;
+    }
+    else{
+        switch(myState)
+        {
+            case idle:
+                if(spriteCounter % 30 < 15)
+                    ID = entitySprites[0]+mirror;
+                else
+                    ID = entitySprites[1]+mirror;
+                if(spriteCounter >= 30)
+                    spriteCounter = 0;
             break;
-
-        case attacking:
-            ID = entitySprites[2]+mirror;
+            case attacking:
+                ID = entitySprites[2]+mirror;
             break;
+        }
     }
 }

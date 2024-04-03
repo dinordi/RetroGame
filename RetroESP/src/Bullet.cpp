@@ -27,7 +27,6 @@ void Bullet::manageAnimation()
     switch(myState)
     {
         case hit:
-        
             myState = dead;
         break;
     }

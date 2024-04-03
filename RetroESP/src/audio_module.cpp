@@ -37,12 +37,12 @@ void Audio::uart_send(const std::vector<int>& vector, int select)
     for(int i =0; i < vector.size(); i++){
         if(select == 0){
             uart_poll_out(uart_dev_1, vector[i]);
-            printk("%x ",vector[i]);
+            // printk("%x ",vector[i]);
         }
         else
         {
             uart_poll_out(uart_dev_2, vector[i]);
-            printk("%x ",vector[i]);
+            // printk("%x ",vector[i]);
         }
    }
 }

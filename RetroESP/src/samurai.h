@@ -27,5 +27,8 @@ private:
     SamuraiState samState;
     int playerX;
     int playerY;
+    bool collisionWith(int damage);
+    bool hit;
+    int hitAnimation;
 };
 

@@ -132,8 +132,7 @@ void Samurai::manageAnimation()
     {
         mirror = 512;
     }
-
-    switch(myState)
+     if(hitAnimation == 20)
     {
         case idle:
             if(spriteCounter % 30 < 15)

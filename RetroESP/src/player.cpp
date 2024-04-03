@@ -11,6 +11,8 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
     hasGravity = true;
     isRanged = 1;
     damage = 0;
+    hit = false;
+    hitAnimation = 0;
 }
 
 void Player::behaviour() {
@@ -85,6 +87,17 @@ void Player::setButtonStatus(buttonStatuses buttonStatus){
 void Player::manageAnimation()
 {
     spriteCounter++;
+     if(hitAnimation == 20)
+    {
+        hit = false;
+        hitAnimation = 0;
+    }
+    if(hit&&spriteCounter % 10 <= 5)
+    {
+        ID = empty15x15[0];
+        hitAnimation++;
+    }
+    else{
         switch(myState)
         {
             case idle:
@@ -144,9 +157,13 @@ void Player::manageAnimation()
                 }
                 break;
         }
+    }
 }
 
 bool Player::collisionWith(int damage)
 {
+    if(damage && damage != 20){
+        hit = true;
+    }
     return false;
 }

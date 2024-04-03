@@ -12,6 +12,7 @@ const int wherewolfSprites[4] = {9,10,11,12};
 const int samuraiSprites[17] = {112,113,114,104,105,106,107,108,109,110,111,200, 201, 202, 203, 204, 205};
 const int platformIDs[4] = {100,101,102,103};
 const int bulletID[1] = {47};
+const int empty15x15[1] = {52};
 
 extern std::map<char, int> characters;
 
