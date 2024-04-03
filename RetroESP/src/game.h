@@ -7,6 +7,7 @@
 #include "button.h"
 #include "player.h"
 #include "audio_module.h"
+#include <zephyr/random/random.h>
 
 class Enemy;
 class Platform;
@@ -34,6 +35,7 @@ public:
     void update();
     void updateGame();
     void sendToDisplay();
+    void addEnemy();
     void addFatbat(int x,int y);
     void addProjectile(const int* playerSprites,int range,int x, int y);
     void readInput();
@@ -73,5 +75,8 @@ private:
     gameStates stateSelect;
     int Curtain;
     int currentLevel;
+    int liveEnemies;
+    int killedEnemies;
     bool fadeIn;
+    int randomNumbers[1000];
 };
