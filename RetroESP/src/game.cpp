@@ -56,7 +56,6 @@ void Game::update()
     switch(gameState)
     {
         case Menu:
-        printk("menu\n");
             updateSelection();
             drawMainMenu();
             break;
