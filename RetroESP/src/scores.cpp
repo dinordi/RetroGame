@@ -28,6 +28,18 @@ void Score::decrease_multiplier(int time_sim)
     }
   }
 }
+void Score::set_multiplier()
+{
+time_multiplier = 100;
+
+}
+
+// receive every game tick some points
+void Score::assign_time_points()
+{
+
+  current_score = current_score + time_score;
+}
 
 // receive points when killing a boss
 void Score::assign_boss_points()
@@ -46,10 +58,11 @@ void Score::assign_monster_points()
 }
 
 // receive every game tick some points
-void Score::assign_time_points()
+void Score::set_time_points()
 {
-
-  current_score = current_score + time_multiplier;
+  
+  time_score = time_score + (time_multiplier * 0.05);
+  printk("score= %d\n",time_score);
 }
 void Score::reset_leaderboard()
 {

@@ -78,9 +78,13 @@ void Game::update()
             break;
         case NextLevel:
             nextLevelAnimation();
+            score->assign_time_points(); // give the player a level complete score based on time
+            score->set_multiplier(); // set the scoremultiplier back to 100
             break;
         case Playing:
             sendToDisplay();
+            score->set_time_points(); // increase the level complete score
+            score->decrease_multiplier(frames);
             updateGame();
             break;
         case Drbob:
@@ -97,6 +101,7 @@ void Game::update()
             break;
     }
     frames++;
+  
     if(frames == 30)
     {
         audio->play_music(audio->MENU_MUSIC);
@@ -347,13 +352,13 @@ void Game::drawMainMenu()
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
-bool test =false;
+bool execute_once =false;
 void Game::drawHighscores()
 {
-    if(test == false)
+    if(execute_once == false)
     {
         score->reset_leaderboard();
-        test = true;
+        execute_once = true;
         score->get_leaderboard();
     }
     static int counter = 0;
@@ -553,6 +558,7 @@ void Game::checkDeleted(){
             }
             if (gevondenEnemy != enemies.end()) {
                 enemies.erase(gevondenEnemy);
+                score->assign_monster_points();
             }
             delete object;
         } 

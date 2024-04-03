@@ -25,8 +25,10 @@ public:
 public:
     void assign_boss_points();
     void assign_monster_points();
+    void set_time_points();
     void assign_time_points();
      //add transistion for reseting the multiplier when it is done
+    void set_multiplier();
     void decrease_multiplier(int time_sim);
 public:
     void get_leaderboard();
@@ -41,7 +43,8 @@ private:
 private:
     int time = 0;
     int second_decrease = 35; 
-    int current_score = 1099999900; // gamescore
+    int current_score = 0; // gamescore
+    int time_score =0;
     bool high_score = false;
 private:   
     std::string leader_board;
