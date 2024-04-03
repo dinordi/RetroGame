@@ -236,6 +236,11 @@ void Game::nextLevelAnimation()
             entities.push_back(player);
             actors.push_back(player);
             currentLevel++;
+            if(currentLevel==3)
+            {
+                currentLevel = 0;
+            }
+
             loadPlatforms(level);
             fadeIn = true;
     }
@@ -398,7 +403,7 @@ void Game::drawLevel()
     // }
 }
 
-void Game::loadPlatforms(const int level[8][16][63])
+void Game::loadPlatforms(const int level[3][16][63])
 {
     for(int i = 0; i < 16; i++) // 16 rows
     {
@@ -590,15 +595,15 @@ int Game::gravityCheck(Object* object,int groundlevel){
 
 int Game::borderCheck(Object* object){
     //int x = object->xSpeed + object->x; //add the moving speed to current x
-        if(object->getX() <= 320) // stop at border left
+        if(object->getX() <= 300) // stop at border left
         {
             object->collisionWith(0);
-            object->x = 320;
+            object->x = 300;
         }
-        else if(object->getX() >= 1600) //stop at border right
+        else if(object->getX() >= 1530) //stop at border right
         {
             object->collisionWith(0);
-            object->x = 1600;
+            object->x = 1530;
         }
     return 0;
 }
