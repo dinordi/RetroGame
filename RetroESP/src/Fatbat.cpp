@@ -7,7 +7,11 @@ int Fatbat::randomCounter = 0;
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
-    //sys_csrand_get(randomNumbers, 1000);
+    for(int i = 0; i < 1000; i++)
+    {
+        randomNumbers[i] = sys_rand32_get();
+    }
+
     damage = 5;
     hp = 50;
     xSpeed = 0;
@@ -33,22 +37,22 @@ void Fatbat::behaviour() {
     //Randomly attack
    int rnd = randomNumbers[randomCounter + static_cast<int>(x) %1000];
 
-    if(rnd % 120 < rnd % 5 && myState != attacking)
+    if(rnd % 400 == 0 && myState != attacking)
     {
         myState = attacking;
     }
 
     if(myState == attacking && lastmyState != attacking)
     {
-        ySpeed = -11;
+        ySpeed = rnd % 6 - 12;
         isGrounded = false;
         if(isFacingRight)
         {
-            xSpeed = 5;
+            xSpeed = rnd % 2 + 3;
         }
         else
         {
-            xSpeed = -5;
+            xSpeed = rnd % 2 - 5;
         }
     }
     else if(myState == idle)
@@ -63,7 +67,7 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if((rnd % 4000 < 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
+    if((rnd % 1000 == 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
     {
         isFacingRight = !isFacingRight;
     }
