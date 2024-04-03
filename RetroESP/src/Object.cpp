@@ -7,6 +7,8 @@ Object::Object(const int* entitySprites,int range,int x ,int y) : Actor(entitySp
     myState = idle;
     spriteCounter = 0;
     isFacingRight = true;
+    hit  = 0;
+    lastHit = 0;
 }
 
 int Object::getxSpeed()

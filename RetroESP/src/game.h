@@ -8,6 +8,8 @@
 #include "player.h"
 #include "audio_module.h"
 #include "scores.h"
+#include <zephyr/random/random.h>
+
 class Enemy;
 class Platform;
 class Projectile;
@@ -35,6 +37,7 @@ public:
     void update();
     void updateGame();
     void sendToDisplay();
+    void addEnemy();
     void addFatbat(int x,int y);
     void addProjectile(const int* playerSprites,int range,int x, int y);
     void readInput();
@@ -54,6 +57,8 @@ public:
     void realCollisionCheck(Object* object);
     void checkDeleted();
     int borderCheck(Object* object);
+    void GameOverFunc();
+    void resetToBegin();
     std::vector<Platform*>* getPlatforms();
 
 private:
@@ -76,5 +81,8 @@ private:
     gameStates stateSelect;
     int Curtain;
     int currentLevel;
+    int liveEnemies;
+    int killedEnemies;
     bool fadeIn;
+    int randomNumbers[1000];
 };

@@ -42,13 +42,13 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
-	ButtonHandler button;
+	ButtonHandler* button = new ButtonHandler();
 	Flash_esp flash_esp;
-	FPGA fpga;
-	Audio audio;
+	FPGA* fpga = new FPGA();
+	Audio* audio = new Audio();
 	Score score(&flash_esp);
 
-	Game game(&fpga, &button, &audio,&score);
+	Game* game = new Game(fpga, button, audio,&score);
 	
 	int lastState = 1;
 
@@ -77,6 +77,7 @@ int main(void)
 
 		// continue;
        // Read the state of the GPIO pin 
+	//    game->readInput();
         int pin_value = gpio_pin_get(input, GPIO_PIN);
 		// // int pin_value = 0;
 		// // lastState = 1;
@@ -84,7 +85,7 @@ int main(void)
 		if(pin_value == 0 && lastState == 1)
 		{
 			// uint64_t time = k_cycle_get_64();
-			game.update();
+			game->update();
 			// uint64_t time2 = k_cycle_get_64();
 			// printk("Cycles: %lld\n", time);
 		}
@@ -92,6 +93,10 @@ int main(void)
 		lastState = pin_value;
 		
 	}
+	delete game;
+	delete button;
+	delete fpga;
+
 	return 0;
 }
 

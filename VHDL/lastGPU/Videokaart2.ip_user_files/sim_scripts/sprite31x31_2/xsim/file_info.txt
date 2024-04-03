@@ -1,0 +1,2 @@
+sprite31x31_2.v,verilog,xil_defaultlib,../../../../Videokaart2.gen/sources_1/ip/sprite31x31_2/sim/sprite31x31_2.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
