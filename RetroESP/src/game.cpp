@@ -73,6 +73,7 @@ void Game::update()
     switch(gameState)
     {
         case Menu:
+        printk("menu\n");
             updateSelection();
             drawMainMenu();
             break;
@@ -89,6 +90,8 @@ void Game::update()
         case Paused:
             break;
         case GameOver:
+            sendToDisplay();
+            GameOverFunc();
             break;
         case Credits:
             drawCredits();
@@ -101,6 +104,7 @@ void Game::update()
     }
 }
 
+
 void Game::updateSelection()
 {
     static int counter = 0;
@@ -112,9 +116,11 @@ void Game::updateSelection()
         {
             case Playing:
                 gameState = Playing;
+                counter = 0;
                 break;
             case Drbob:
                 gameState = Drbob;
+                counter = 0;
                 break;
             case Credits:
                 gameState = Credits;
@@ -354,6 +360,29 @@ void Game::drawCredits()
     }
 }
 
+void Game::GameOverFunc(){
+    static int counter = 0;
+    counter++;
+    static bool draw = true;
+    drawString("game over", 250, 150);
+    if(frames % 30 == 0)                                        //Blink every 0.5 seconds
+    {
+        draw = !draw;
+    }
+    if(draw)
+    {
+        drawString("press start and return to menu", 133, 200);
+    }
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+
+    readInput();
+    if(buttonStatus.start && counter > 60)
+    {
+        resetToBegin();
+        counter = 0;
+    }
+}
 void Game::drawLevel()
 {
     int middleX = player->getX();
@@ -381,7 +410,7 @@ void Game::drawLevel()
                 actorY -= playerAttackOffsetY;
             }
 
-        if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
+        if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
 
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
@@ -619,3 +648,28 @@ void Game::checkRangedAttack(Entity* entity){
     }
 }
 
+void Game::resetToBegin()
+{
+    for(auto actor : actors)
+    {
+        delete actor;
+    }
+    actors.clear();
+    objects.clear();
+    entities.clear();
+    platforms.clear();
+    enemies.clear();
+    projectiles.clear();
+    player = new Player(player1Sprites,7,780,100);
+    objects.push_back(player);
+    entities.push_back(player);
+    actors.push_back(player);
+    currentLevel = 0;
+    loadPlatforms(level);
+    frames = 0;
+    gameState = Menu;
+    stateSelect = Playing;
+    loadPlatforms(level);
+    Curtain = 0;
+    fadeIn = false;
+}
