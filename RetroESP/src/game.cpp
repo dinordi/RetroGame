@@ -530,10 +530,10 @@ int Game::borderCheck(Object* object){
             object->collisionWith(0);
             object->x = 320;
         }
-        else if(object->getX() >= 1600) //stop at border right
+        else if(object->getX() >= 1530) //stop at border right
         {
             object->collisionWith(0);
-            object->x = 1600;
+            object->x = 1530;
         }
     return 0;
 }

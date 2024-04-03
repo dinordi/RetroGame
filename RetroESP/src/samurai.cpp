@@ -26,6 +26,7 @@ void Samurai::behaviour()
             if(seesPlayer())
             {
                 samState = spottedPlayer;
+                count = 0;
             }
             if(count == 60)
             {
@@ -55,18 +56,13 @@ void Samurai::behaviour()
             if(seesPlayer())
             {
                 samState = spottedPlayer;
+                count = 0;
             }
             break;
         }
         case spottedPlayer:
         {
             myState = walking;
-            if(abs(playerX - x) < 10)
-            {
-                //Attack
-                samState = waiting;
-                myState = attacking;
-            }
             
             if(x < playerX)
             {
@@ -77,6 +73,23 @@ void Samurai::behaviour()
             {
                 isFacingRight = false;
                 xSpeed = -4;
+            }
+            if(abs(playerX - x) < 10)
+            {
+                //Attack
+                samState = attackingPlayer;
+                myState = attacking;
+                xSpeed = 0;
+                count = 0;
+            }
+            break;
+        }
+        case attackingPlayer:
+        {
+            if(count == 60)
+            {
+                samState = waiting;
+                count = 0;
             }
             break;
         }
@@ -124,9 +137,9 @@ void Samurai::manageAnimation()
     {
         case idle:
             if(spriteCounter % 30 < 15)
-                ID = entitySprites[0];
+                ID = entitySprites[0] + mirror;
             else
-                ID = entitySprites[1];
+                ID = entitySprites[1] + mirror;
             if(spriteCounter >= 30)
                 spriteCounter = 0;
             break;

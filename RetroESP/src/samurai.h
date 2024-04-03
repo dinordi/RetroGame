@@ -7,7 +7,8 @@ typedef enum
 {
     waiting,
     patrol,
-    spottedPlayer
+    spottedPlayer,
+    attackingPlayer
 } SamuraiState;
 
 class Samurai : public Enemy
