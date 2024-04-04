@@ -47,7 +47,7 @@ private:
 private:
     int time = 0;
     int second_decrease = 35; 
-    int current_score = 190200; // gamescore
+    int current_score = 0; // gamescore
     int time_score =0;
 private:
     bool high_score = false;
