@@ -154,4 +154,36 @@ int main(void)
 
 	return 0;
 }
+// class Fatbat2
+// {
+// 	public:
+// 	Fatbat2(int id)
+// 	{
+// 		this->id = id;
+// 	}
+// 	void test()
+// 	{
+// 		rnd = sys_rand32_get();
+// 		printk("Random %d: %u\n", id, rnd);
 
+// 	}
+// 	private:
+// 	uint32_t rnd;
+// 	int id;
+// };
+
+// int main(void)
+// {
+//     printk("Random Number Generator Example\n");
+// 	Fatbat2 f1(1);
+// 	Fatbat2 f2(2);
+//     while (1) {
+//         // uint32_t random_number = sys_rand32_get();
+//         // printk("Random Number: %u\n", random_number);
+// 		f1.test();
+// 		f2.test();
+//         // k_sleep(K_MSEC(1)); // Sleep for 1 second
+// 		// k_sleep(K_USEC(100));
+//     }
+// 	return 0;
+// }

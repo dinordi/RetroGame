@@ -201,7 +201,7 @@ void Game::sendToDisplay()
 
 void Game::addEnemy()
 {
-    addFatbat(randomNumbers[frames % 1000] % 1200 + 360, randomNumbers[frames % 1000] % 400);
+    addFatbat((sys_rand32_get() % 1200) + 300, (sys_rand32_get() % 400));
     liveEnemies++;
     
 }
