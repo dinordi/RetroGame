@@ -257,7 +257,7 @@ void Game::addWereWolf(int beginx,int endx, int y)
             werewolfman->x = (beginx + endx) / 2;
             werewolfman->beginx = beginx;
             werewolfman->endx = endx;
-            werewolfman->y = y - werewolfman->range - 1;
+            werewolfman->y = y - werewolfman->range;
             werewolfman->inUse = true;
             werewolfman->myState = walking;
             werewolfman->hp = 50;
