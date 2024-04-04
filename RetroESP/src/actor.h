@@ -10,7 +10,6 @@ public:
         PLAYER,
         PROJECTILE,
         OBJECT,
-        ENTITY,
         ACTOR
     };
 public:

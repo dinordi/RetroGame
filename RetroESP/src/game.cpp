@@ -490,7 +490,8 @@ void Game::drawLevel()
         range = actor->range; 
 
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
-        if(actor->getType() == Actor::Type::ACTOR)
+        // printk("Actor type: %d\n", actor->getType());
+        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY)
         {
             Entity* ob = static_cast<Entity*>(actor);
 
@@ -588,16 +589,16 @@ void Game::checkDeleted(){
     {
         if(object->myState == dead)
         {
-            printk("CheckDeleted someone is dead\n");
+            // printk("CheckDeleted someone is dead\n");
 
             if(object->getType() == Actor::Type::PLAYER)
             {
-                printk("player\n");
+                // printk("player\n");
                 gameState = GameOver;
             }
             else
             {
-                printk("geen player\n");
+                // printk("geen player\n");
                 auto gevondenActor = std::find(actors.begin(), actors.end(), object);
                 auto gevondenObject = std::find(objects.begin(), objects.end(), object);
                 auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
@@ -606,27 +607,27 @@ void Game::checkDeleted(){
 
                 // Controleer of de pointer is gevonden
                 if (gevondenActor != actors.end()) {
-                    printk("gevondenActor != actors.end()\n");
+                    // printk("gevondenActor != actors.end()\n");
 
                     actors.erase(gevondenActor); // Verwijder de pointer uit de vector
                 } 
                 if (gevondenObject != objects.end()) {
-                    printk("gevondenObject != objects.end()\n");
+                    // printk("gevondenObject != objects.end()\n");
 
                     objects.erase(gevondenObject);
                 }
                 if (gevondenEntity != entities.end()) {
-                    printk("gevondenEntity != entities.end()\n");
+                    // printk("gevondenEntity != entities.end()\n");
 
                     entities.erase(gevondenEntity);
                 }
                 if (gevondenProjectile != projectiles.end()) {
-                    printk("gevondenProjectile != projectiles.end()\n");
+                    // printk("gevondenProjectile != projectiles.end()\n");
 
                     projectiles.erase(gevondenProjectile);
                 }
                 if (gevondenEnemy != enemies.end()) {
-                    printk("gevondenEnemy != enemies.end()\n");
+                    // printk("gevondenEnemy != enemies.end()\n");
                     enemies.erase(gevondenEnemy);
                     killedEnemies++;
                     liveEnemies--;
