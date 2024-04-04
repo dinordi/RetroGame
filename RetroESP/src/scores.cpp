@@ -62,7 +62,7 @@ void Score::set_time_points()
 {
   
   time_score = time_score + (time_multiplier * 0.05);
-  printk("score= %d\n",time_score);
+  // printk("score= %d\n",time_score);
 
 }
 void Score::reset_leaderboard()
@@ -82,7 +82,7 @@ flash_esp->write_string  (  "M highscore 10000&"
 void Score::get_leaderboard()
 {
    leader_board = flash_esp->read_esp_flash();
-   printk("leaderboard : %d\n",leader_board.size());
+  //  printk("leaderboard : %d\n",leader_board.size());
   // Dynamically allocate memory for the C-style string
   char* inputString = new char[leader_board.size() + 1];
 
@@ -92,13 +92,13 @@ void Score::get_leaderboard()
  
 
   int index = 0;
-  printk("get score");
+  // printk("get score");
   // Tokenize the input string by space
   char* token = strtok(inputString, "&");
   while (token != NULL && index < 100) {
     player_and_score[index++] = token;
     token = strtok(NULL, "&");
-    printk("test");
+    // printk("test");
   }
 }
 
@@ -121,13 +121,13 @@ void Score::compare_leaderboard()
       compare_score = std::atoi(compare_score_string);
 
       // Print or use the score
-      printk(" %d\n", compare_score);
+      // printk(" %d\n", compare_score);
     } else {
-      printk("Substring 'score: ' not found\n");
+      // printk("Substring 'score: ' not found\n");
     }
 
     if (current_score > compare_score) {
-      printk("highscore achieved place: %d\n", i + 1);
+      // printk("highscore achieved place: %d\n", i + 1);
       high_score = true;
       compare_score = current_score;
       replace_score = i;
@@ -141,7 +141,7 @@ void Score::move_down_leaderboard()
 {
 
   // Start moving elements from the end towards the replace_score position
-  printk("replace player: %d\n", replace_score);
+  // printk("replace player: %d\n", replace_score);
   
   for (int i = 9; i > replace_score; i--) {
     player_and_score[i] = player_and_score[i - 1];
@@ -165,7 +165,7 @@ void Score::write_leaderboard()
     c_string.push_back('\0'); // Add null terminator
 
     // Output the C string
-    printk("c sr: %s\n", c_string.data());
+    // printk("c sr: %s\n", c_string.data());
     player_and_score[replace_score] = c_string.data();
     
   }
@@ -181,8 +181,8 @@ void Score::write_leaderboard()
     }
 
     cString = new_leaderboard.c_str();
-    printk("print new leades \n");
-     printk("%s\n",cString);
+    // printk("print new leades \n");
+    //  printk("%s\n",cString);
      std::string cppstr(cString);
 
      flash_esp->write_string(cppstr);
