@@ -198,3 +198,14 @@ std::string Score::receive_Scores(int i)
 
      return cpp_string;
 }
+
+std::string Score::currentscore_string()
+{
+
+  return std::to_string(current_score);
+}
+
+bool Score::higscore_state()
+{
+return high_score;
+}

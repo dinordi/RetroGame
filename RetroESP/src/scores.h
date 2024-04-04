@@ -36,6 +36,10 @@ public:
     void reset_leaderboard();
     void write_leaderboard();
     void compare_leaderboard();
+    public:
+    std::string currentscore_string();
+    bool higscore_state();
+
 private:
     int time_multiplier = 100;
     int monster_exp = 1000;  // base points without multiplier

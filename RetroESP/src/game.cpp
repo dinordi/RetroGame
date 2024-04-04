@@ -452,6 +452,7 @@ void Game::GameOverFunc(){
     counter++;
     static bool draw = true;
     drawString("game over", 250, 150);
+ 
     if(frames % 30 == 0)                                        //Blink every 0.5 seconds
     {
         draw = !draw;
@@ -459,6 +460,14 @@ void Game::GameOverFunc(){
     if(draw)
     {
         drawString("press start and return to menu", 133, 200);
+        if(score->higscore_state()){
+        drawString("new highscore detected",133,250);
+        }
+        else
+        {
+        drawString("player score ", 250, 300);
+        }
+        drawString(score->currentscore_string(), 250, 350);
     }
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
