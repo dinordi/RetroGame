@@ -37,6 +37,11 @@ void WerewolfMan::behaviour(){
     xSpeed = isFacingRight ? 1.25 : -1.25;
             break;
     }
+    if (hp <= 0)
+    {
+        myState = dead;
+    }
+    
 
 }
 void WerewolfMan::manageAnimation(){
