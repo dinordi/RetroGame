@@ -7,8 +7,8 @@ class Enemy : public Entity{
     public:
     Enemy(const int* entitySprites, int range,int x, int y);
     bool collisionWith(int damage);
+    Type getType() const { return ENEMY; }
     // void behaviour();
 private:
-    bool hit;
     int hitAnimation;
 };

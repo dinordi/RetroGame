@@ -4,67 +4,53 @@
 //#include "Projectile.h"
 #include "sprites.h"
 #include "endian.h"
-#include "platform.h"
 //#include "Entity.h"
 #include "Bullet.h"
 #include "samurai.h"
-#include <algorithm>
-#include "Fatbat.h"
+// #include <algorithm>
 
+#include "globals.h"
 
 const float dt = 1.0f / 60;
 int count = 0;
 
-Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio) : fpga(fpga), button(button), audio(audio)
+Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
-    spriteData = new uint16_t[900];
+    sys_csrand_get(randomNumbers, 1000);
+    spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
+    boss = new Samurai(1000, 250, 400, 400);
+    boss->inUse = false;
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    // addFatbat(1000,100);
-    // addFatbat(1050,200);
-    // addFatbat(1500,400);
-    // addFatbat(1200,300);
-    // addFatbat(1400,50);
-    // addFatbat(1350,100);
-    // addFatbat(1280,100);
-    // addFatbat(800,100);
-    // addFatbat(1000,100);
-    // addFatbat(756,100);
-    // addFatbat(656,100);
-    // addFatbat(954,100);
-    // addFatbat(360,100);
-    // addFatbat(420,100);
-    // addFatbat(696,100);
-    // addFatbat(484,100);
-    // addFatbat(988,100);
-    // addFatbat(1100,100);
-    // addFatbat(1150,100);
-    // addFatbat(820,100);
-
-    addSamurai(1000,200);
-
+    liveEnemies = 0;
+    killedEnemies = 0;
+    currentLevel = 0;
+    Curtain = 0;
+    fadeIn = false;
+    BOB = false;
+    // addEnemy();
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
-    loadPlatforms(level);
+    loadPlatforms(currentLevel);
     readInput();
 }
 
 Game::~Game()
 {
-    for (auto entity : entities)
-    {
-        delete entity;
-    }
-    entities.clear();
-    for (auto platform : platforms)
-    {
-        delete platform;
-    }
-    platforms.clear();
+    // for (auto entity : entities)
+    // {
+    //     delete entity;
+    // }
+    // entities.clear();
+    // for (auto platform : platforms)
+    // {
+    //     delete platform;
+    // }
+    // platforms.clear();
 }
 
 void Game::update()
@@ -72,27 +58,65 @@ void Game::update()
     switch(gameState)
     {
         case Menu:
+        {
             updateSelection();
             drawMainMenu();
             break;
+        }
         case NextLevel:
+        {
             nextLevelAnimation();
+            score->assign_time_points(); // give the player a level complete score based on time
+            score->set_multiplier(); // set the scoremultiplier back to 100
             break;
+        }
+        case BOSSFIGHT:
+        {
+            // sendToDisplay();
+            boss->inUse = true;
+            boss->hp = 150;
+            boss->myState = idle;
+            objects.push_back(boss);
+            entities.push_back(boss);
+            actors.push_back(boss);
+            gameState = Playing;
+            break;
+        }
         case Playing:
+        {
             sendToDisplay();
+            score->set_time_points(); // increase the level complete score
+            score->decrease_multiplier(frames);
             updateGame();
             break;
+        }
         case Drbob:
+            player->setBobMode();
+            BOB = true;
+            gameState = BOSSFIGHT;
+            getRangePlatforms();
             break;
         case Paused:
             break;
         case GameOver:
+        {
+            sendToDisplay();
+            GameOverFunc();
             break;
+        }
         case Credits:
+        {
             drawCredits();
             break;
+        }
+        case Highscores:
+        {
+            drawHighscores();
+            break;
+        }
     }
     frames++;
+  
     if(frames == 120)
     {
         printk("Sending music\n");
@@ -103,6 +127,7 @@ void Game::update()
     }
 }
 
+
 void Game::updateSelection()
 {
     static int counter = 0;
@@ -110,18 +135,25 @@ void Game::updateSelection()
     readInput();
     if(buttonStatus.start && counter > 60)
     {
+        audio->play_effect(audio->MNU_CONFIRM);
+
         switch(stateSelect)
         {
             case Playing:
                 gameState = Playing;
+                counter = 0;
                 break;
             case Drbob:
                 gameState = Drbob;
+                counter = 0;
                 break;
             case Credits:
                 gameState = Credits;
                 counter = 0;
                 break;
+            case Highscores:
+                gameState = Highscores;
+                counter = 0;
             default:
                 break;
         }
@@ -139,9 +171,13 @@ void Game::updateSelection()
                 case Drbob:
                     stateSelect = Playing;
                     break;
-                case Credits:
+                case Highscores:
                     stateSelect = Drbob;
                     break;
+                case Credits:
+                    stateSelect = Highscores;
+                    break;
+
             }
         }
         if(buttonStatus.down)
@@ -152,11 +188,15 @@ void Game::updateSelection()
                     stateSelect = Drbob;
                     break;
                 case Drbob:
+                    stateSelect = Highscores;
+                    break;
+               case Highscores:
                     stateSelect = Credits;
                     break;
                 case Credits:
                     stateSelect = Playing;
                     break;
+
             }
         }
     }
@@ -167,9 +207,6 @@ void Game::updateGame()
     //Check for input
     readInput();
     player->setButtonStatus(buttonStatus);
-    if(buttonStatus.down){
-        gameState = NextLevel;
-    }
     tick();
 }
 
@@ -180,33 +217,33 @@ void Game::sendToDisplay()
     spriteDataCount = 0;
 }
 
+void Game::addEnemy()
+{
+    addFatbat((sys_rand32_get() % 1200) + 300, (sys_rand32_get() % 400));
+    liveEnemies++;
+    
+}
+
 void Game::addFatbat(int x, int y)
 {
-    Fatbat* entity = new Fatbat(x,y);
-    //printk("id: %d\n", entity->getID());
-    entities.push_back(entity);
-    enemies.push_back(entity);
-    objects.push_back(entity);
-    actors.push_back(entity);
+    for(auto fatbat : fatbats)
+    {
+        if(!fatbat->inUse)
+        {
+            fatbat->x = x;
+            fatbat->y = y;
+            fatbat->inUse = true;
+            fatbat->myState = idle;
+            fatbat->hp = 20;
+            entities.push_back(fatbat);
+            enemies.push_back(fatbat);
+            objects.push_back(fatbat);
+            actors.push_back(fatbat);
+            return;
+        }
+    }
+
 }
-
-void Game::addSamurai(int x, int y)
-{
-    Samurai* entity = new Samurai(x,y, player->getX(), player->getY());
-    printk("id: %d\n", entity->getID());
-    entities.push_back(entity);
-    objects.push_back(entity);
-    actors.push_back(entity);
-
-}
-
-// void Game::addProjectile(const int* playerSprites,int range,int x, int y)
-// {
-//     Object* projectile = new Projectile(playerSprites,range,x,y);
-//     printk("id: %d\n", projectile->getID());
-//     projectiles.push_back(static_cast<Projectile*>(projectile));
-//     objects.push_back(projectile);
-// }
 
 void Game::readInput()
 {
@@ -252,20 +289,36 @@ void Game::nextLevelAnimation()
     else{
         Curtain += 3;
         if(Curtain > 640){
+            liveEnemies = 0;
+            killedEnemies = 0;
+            for(auto object : objects)
+            {
+                object->inUse = false;
+            }
+            player->inUse = true;
+            player->x = 780;
+            player->y = 100;
+            player->hp = 100;
+            if(BOB) player->setBobMode();
             actors.clear();
             objects.clear();
             entities.clear();
             platforms.clear();
+            enemies.clear();
+            projectiles.clear();
             objects.push_back(player);
             entities.push_back(player);
             actors.push_back(player);
             currentLevel++;
-            loadPlatforms(level);
+            if(currentLevel==3)
+            {
+                currentLevel = 0;
+            }
+
+            loadPlatforms(currentLevel);
             fadeIn = true;
     }
     }
-    
-    
     levelFading(Curtain);
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
@@ -298,27 +351,33 @@ void Game::levelFading(int line)
 
 void Game::drawMainMenu()
 {
-    std::string title = "beste game";
-    std::string start = "press start to play";
+    std::string title = "cosmic conquest";
+    std::string title2 = "saga of sacrifice";
+
+    std::string start = "press start";
     std::string option1 = "play";
     std::string option2 = "dr bob mode";
-    std::string option3 = "credits";
+    std::string option3 = "highscore";
+    std::string option4 = "credits";
     static int yval = 300;
     static bool draw = true;
 
-    drawString(title, 250, 100);
+    // drawString(title, 230, 100);
+    drawString(title2, 200, 130);
     if(frames % 30 == 0)                                        //Blink every 0.5 seconds
     {
         draw = !draw;
     }
     if(draw)
     {
-        drawString(start, 200, 200);
+        drawString(start, 220, 200);
     }
 
     drawString(option1, 250, 300);
     drawString(option2, 250, 350);
     drawString(option3, 250, 400);
+    drawString(option4, 250, 450);
+
 
     readInput();
     switch(stateSelect)  // Toggle selection
@@ -329,19 +388,69 @@ void Game::drawMainMenu()
         case Drbob:
             yval = 350;
             break;
-        case Credits:
+        case Highscores:
             yval = 400;
             break;
+        case Credits:
+            yval = 450;
+            break;
+        
+
     }
 
     spriteData[spriteDataCount++] = htobe16(0);                     // Playersprite Cursor
     spriteData[spriteDataCount++] = htobe16(250+124);
     spriteData[spriteDataCount++] = htobe16(yval);
-
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
+bool execute_once =false;
+void Game::drawHighscores()
+{
+    if(execute_once == false)
+    {
+        score->reset_leaderboard();
+        execute_once = true;
+        score->get_leaderboard();
+    }
+    static int counter = 0;
+    counter++;
 
+    std::string title = "   highscores";
+    std::string highscore_1 = score->receive_Scores(0);
+    std::string highscore_2 = score->receive_Scores(1);
+    std::string highscore_3 = score->receive_Scores(2);
+    std::string highscore_4 = score->receive_Scores(3);
+    std::string highscore_5 = score->receive_Scores(4);
+    std::string highscore_6 = score->receive_Scores(5);
+    std::string highscore_7 = score->receive_Scores(6);
+    std::string highscore_8 = score->receive_Scores(7);
+    std::string highscore_9 = score->receive_Scores(8);
+
+    drawString(title, 240, 50);
+
+    drawString(highscore_1, 240, 100);
+    drawString(highscore_2, 240, 150);
+    drawString(highscore_3, 240, 200);
+    drawString(highscore_4, 240, 250);
+    drawString(highscore_5, 240, 300);
+    drawString(highscore_6, 240, 350);
+    drawString(highscore_7, 240, 400);
+    drawString(highscore_8, 240, 450);
+
+
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+
+    readInput();
+    if(buttonStatus.start && counter > 60)
+    {
+        gameState = Menu;
+        counter = 0;
+    }
+    
+
+}
 void Game::drawCredits()
 {
     static int counter = 0;
@@ -371,6 +480,29 @@ void Game::drawCredits()
     }
 }
 
+void Game::GameOverFunc(){
+    static int counter = 0;
+    counter++;
+    static bool draw = true;
+    drawString("game over", 250, 150);
+    if(frames % 30 == 0)                                        //Blink every 0.5 seconds
+    {
+        draw = !draw;
+    }
+    if(draw)
+    {
+        drawString("press start and return to menu", 133, 200);
+    }
+    fpga->sendSprite(spriteData, spriteDataCount);
+    spriteDataCount = 0;
+
+    readInput();
+    if(buttonStatus.start && counter > 60)
+    {
+        resetToBegin();
+        counter = 0;
+    }
+}
 void Game::drawLevel()
 {
     int middleX = player->getX();
@@ -386,10 +518,12 @@ void Game::drawLevel()
         range = actor->range; 
 
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
+        // printk("Actor type: %d\n", actor->getType());
+        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY)
+        {
+            Entity* ob = static_cast<Entity*>(actor);
 
-        Entity* ob = dynamic_cast<Entity*>(actor);
-        if(ob != nullptr)
-        // Check if player is attacking and adjust the sprite position
+            // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
             {
                 playerAttackOffsetX = ob->attackCheck(true); //Get X offset
@@ -397,8 +531,12 @@ void Game::drawLevel()
                 actorX += playerAttackOffsetX;
                 actorY -= playerAttackOffsetY;
             }
-
-        if(actorY < 0 || actorY > 512) // if player so above roof of the screen the Y goes below zero
+        }
+        if(actor->getType() == Actor::Type::PROJECTILE)
+        {
+            printk("Projectile drawing\n");
+        }
+        if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
 
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
@@ -406,9 +544,7 @@ void Game::drawLevel()
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actorY);
-            // if(actor->isProjectile())
-            //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
-        
+    
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -424,23 +560,37 @@ void Game::drawLevel()
     // }
 }
 
-void Game::loadPlatforms(const int level[8][16][63])
+void Game::loadPlatforms(int levelNum)
 {
-    for(int i = 0; i < 16; i++) // 16 rows
+    switch(levelNum)
     {
-        for(int j = 0; j < 63; j++) // 63 columns
-        {
-            if(level[currentLevel][i][j] != 0)    // If the tile is not empty
+        case 0:
             {
-                int tileX = j * 31; //31 is tile width/height
-                int tileY = i * 31;
-                int tileID = level[currentLevel][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
-                platforms.push_back(platform);
-                actors.push_back(platform);
+                for(auto platform : level1)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
             }
-        }
-       
+        case 1:
+            {
+                for(auto platform : level2)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
+            }
+        case 2:
+            {
+                for(auto platform : level3)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
+            }
     }
 }
 
@@ -455,6 +605,9 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
+    if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
+    if(boss->myState == dead) gameState = NextLevel;
+    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) addEnemy();
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
@@ -462,7 +615,7 @@ void Game::tick()
     checkDeleted();
     for(Object* object : objects)
     {
-        if(dynamic_cast<Samurai*>(object) != nullptr)
+        if(object->getType() == Actor::Type::BOSS)
         {
             Samurai* samurai = static_cast<Samurai*>(object);
             samurai->setPlayerPos(player->getX(), player->getY());
@@ -486,32 +639,63 @@ void Game::checkDeleted(){
     {
         if(object->myState == dead)
         {
-            auto gevondenActor = std::find(actors.begin(), actors.end(), object);
-            auto gevondenObject = std::find(objects.begin(), objects.end(), object);
-            auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
-            auto gevondenProjectile = std::find(projectiles.begin(), projectiles.end(), object);
-            auto gevondenEnemy = std::find(enemies.begin(), enemies.end(), object);
+            // printk("CheckDeleted someone is dead\n");
 
-            // Controleer of de pointer is gevonden
-            if (gevondenActor != actors.end()) {
-                actors.erase(gevondenActor); // Verwijder de pointer uit de vector
+            if(object->getType() == Actor::Type::PLAYER)
+            {
+                // printk("player\n");
+                gameState = GameOver;
+            }
+            else
+            {
+                // printk("geen player\n");
+                auto gevondenActor = std::find(actors.begin(), actors.end(), object);
+                auto gevondenObject = std::find(objects.begin(), objects.end(), object);
+                auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
+                auto gevondenProjectile = std::find(projectiles.begin(), projectiles.end(), object);
+                auto gevondenEnemy = std::find(enemies.begin(), enemies.end(), object);
+
+                // Controleer of de pointer is gevonden
+                if (gevondenActor != actors.end()) {
+                    // printk("gevondenActor != actors.end()\n");
+
+                    actors.erase(gevondenActor); // Verwijder de pointer uit de vector
+                } 
+                if (gevondenObject != objects.end()) {
+                    // printk("gevondenObject != objects.end()\n");
+
+                    objects.erase(gevondenObject);
+                }
+                if (gevondenEntity != entities.end()) {
+                    // printk("gevondenEntity != entities.end()\n");
+
+                    entities.erase(gevondenEntity);
+                }
+                if (gevondenProjectile != projectiles.end()) {
+                    // printk("gevondenProjectile != projectiles.end()\n");
+
+                    projectiles.erase(gevondenProjectile);
+                }
+                if (gevondenEnemy != enemies.end()) {
+                    // printk("gevondenEnemy != enemies.end()\n");
+                    enemies.erase(gevondenEnemy);
+                    killedEnemies++;
+                    liveEnemies--;
+                    audio->play_effect(audio->M_DEATH);
+                    if(object->getType() == Actor::Type::BOSS)
+                    {
+                        score->assign_boss_points();
+                    }
+                    else
+                    {
+                        score->assign_monster_points();
+                    }
+                }
+                // delete object;
+                object->inUse = false;
             } 
-            if (gevondenObject != objects.end()) {
-                objects.erase(gevondenObject);
-            }
-            if (gevondenEntity != entities.end()) {
-                entities.erase(gevondenEntity);
-            }
-            if (gevondenProjectile != projectiles.end()) {
-                projectiles.erase(gevondenProjectile);
-            }
-            if (gevondenEnemy != enemies.end()) {
-                enemies.erase(gevondenEnemy);
-            }
-            delete object;
-        } 
+        }
     }
-
 }
 
 int Game::collisionCheck(Object* object){
@@ -545,7 +729,7 @@ void Game::realCollisionCheck(Object* object){
     int objectLeft = object->getX() - object->range;
     int objectRight = object->getX() + object->range;
 
-    if(dynamic_cast<Projectile*>(object) != nullptr)
+    if(object->getType() == Actor::Type::PROJECTILE)
     {
         for(auto platform : platforms)
         {
@@ -560,7 +744,7 @@ void Game::realCollisionCheck(Object* object){
             }
         }
     }
-    if(dynamic_cast<Projectile*>(object) != nullptr || object->isPlayer()) {
+    if(object->getType() == Actor::Type::PROJECTILE || object->isPlayer()) {
         for(auto enemy : enemies)
         {
             int enemyTop = enemy->getY() - enemy->range;
@@ -575,7 +759,7 @@ void Game::realCollisionCheck(Object* object){
                 
         }
     }
-    if(dynamic_cast<Enemy*>(object) != nullptr) {
+    if(object->getType() == Actor::Type::ENEMY || object->getType() == Actor::Type::BOSS) {
         for(auto projectile : projectiles)
         {
             int projectileTop = projectile->getY() - projectile->range;
@@ -591,6 +775,18 @@ void Game::realCollisionCheck(Object* object){
                 
         }
     }
+    if(object->isPlayer()) 
+    {
+        int bossTop = boss->getY() - boss->range;
+        int bossBottom = boss->getY() + boss->range;
+        int bossLeft = boss->getX() - boss->range;
+        int bossRight = boss->getX() + boss->range;
+
+        if(bossRight >= objectLeft && bossLeft <= objectRight && bossTop <= objectBottom && bossBottom >= objectTop && boss->myState == attacking)
+        {
+                object->collisionWith(boss->damage);
+        }
+    }
 }
  
 int Game::gravityCheck(Object* object,int groundlevel){
@@ -599,7 +795,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
         { 
             //printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
-            if(object->y > groundlevel) //if player is on platform
+            if(object->getY() > groundlevel) //if player is on platform
             {
                 object->y = groundlevel;
                 object->isGrounded = true;
@@ -611,10 +807,10 @@ int Game::gravityCheck(Object* object,int groundlevel){
 
 int Game::borderCheck(Object* object){
     //int x = object->xSpeed + object->x; //add the moving speed to current x
-        if(object->getX() <= 320) // stop at border left
+        if(object->getX() <= 300) // stop at border left
         {
             object->collisionWith(0);
-            object->x = 320;
+            object->x = 300;
         }
         else if(object->getX() >= 1530) //stop at border right
         {
@@ -628,6 +824,7 @@ void Game::checkRangedAttack(Entity* entity){
     if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
     {
         Object* projectile = entity->makeProjectile();
+        if(BOB) static_cast<Bullet*>(projectile)->setBobMode();
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
@@ -636,3 +833,62 @@ void Game::checkRangedAttack(Entity* entity){
     }
 }
 
+void Game::resetToBegin()
+{
+    for(auto object : objects)
+    {
+        // delete actor;
+        object->inUse = false;
+    }
+    actors.clear();
+    objects.clear();
+    entities.clear();
+    platforms.clear();
+    enemies.clear();
+    projectiles.clear();
+    player->inUse = true;
+    player->x = 780;
+    player->y = 100;
+    player->hp = 100;
+    player->myState = idle;
+    objects.push_back(player);
+    entities.push_back(player);
+    actors.push_back(player);
+    currentLevel = 0;
+    loadPlatforms(currentLevel);
+    frames = 0;
+    gameState = Menu;
+    stateSelect = Playing;
+    liveEnemies = 0;
+    killedEnemies = 0;
+    Curtain = 0;
+    fadeIn = false;
+}
+
+void Game::getRangePlatforms(){
+    for (int i = 0; i < platforms.size(); ++i) {
+        if (platforms[i]->getID() == 100) { // Begin van een platform
+            int start = platforms[i]->getX() - platforms[i]->range;
+            int y = platforms[i]->getY(); // Y-positie van het platform
+            // Zoek het einde van het platform
+            int end = start;
+            while (i < platforms.size() && platforms[i]->getY() == y) {
+                if (platforms[i]->getID() == 101) { // Einde van een platform
+                    PlatformRange range;
+                    range.xbegin = start;
+                    range.xend = platforms[i]->getX() + platforms[i]->range;
+                    platformRanges.push_back(range);
+                    // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
+                    break;
+                }
+                end = platforms[i]->getX();
+                ++i;
+            }
+        }
+    }
+
+// Print de start- en eindposities van de platformen
+    // for (const auto& range : platformRanges) {
+    //     printk("Start: %d, End: %d\n", range.xbegin, range.xend);
+    // }
+}

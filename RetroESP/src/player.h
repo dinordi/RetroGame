@@ -24,13 +24,14 @@ public:
     int attackCheck(bool isX) override;
     bool collisionWith(int damage) override;
     void manageAnimation() override;
+    Type getType() const override { return PLAYER; }
     friend class Game;
+    void setBobMode();
 private:
     int printX;
     buttonStatuses lastButtonState;
     buttonStatuses buttonStatus;
     //Bullet* bullet;
-    bool hit;
     int hitAnimation;
-    
+    bool BOB;
 };

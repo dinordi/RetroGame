@@ -1,11 +1,19 @@
 #include "Fatbat.h"
 #include <zephyr/random/random.h>
+#include "cstdlib"
+
+int Fatbat::randomCounter = 0;
+
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
+    for(int i = 0; i < 1000; i++)
+    {
+        randomNumbers[i] = sys_rand32_get();
+    }
 
     damage = 5;
-    hp = 50;
+    hp = 20;
     xSpeed = 0;
     myState = idle;
     isFacingRight = false;
@@ -23,34 +31,47 @@ bool Fatbat::collisionWith(int damage)
 }
 
 void Fatbat::behaviour() {
+    randomCounter++;
     lastmyState = myState;
-    
     //Randomly attack
     uint32_t rnd = sys_rand32_get();
 
-    if(rnd % 120 == 0 && myState != attacking)
+
+    if(rnd % 400 < 7 && myState == idle)
     {
         myState = attacking;
+        // printk("rnd: %u\n",rnd % 400);
+    }
+
+
+    if(x < 320.0)
+    {
+        isFacingRight = true;
+    }
+    else if(x > 1500.0)
+    {
+        isFacingRight = false;
+    }
+    else if(rnd % 1000 == 0)
+    {
+        isFacingRight = !isFacingRight;
     }
 
     if(myState == attacking && lastmyState != attacking)
     {
-        ySpeed = -11;
-        isGrounded = false;
-        if(isFacingRight)
-        {
-            xSpeed = 5;
-        }
-        else
-        {
-            xSpeed = -5;
-        }
+            int rndint = static_cast<int>(rnd);
+            ySpeed = static_cast<float>((rndint%3)-12);
+            // printk("ySpeed: %d\n",static_cast<int>(ySpeed));
+            isGrounded = false;
+            xSpeed = isFacingRight ? static_cast<float>((rndint%3)+2) : static_cast<float>((rndint%3)-5);
+
     }
     else if(myState == idle)
     {
         xSpeed = 0;
     }
-    if(isGrounded==true)
+
+    if(isGrounded == true)
     {
         myState = idle;
     }
@@ -58,10 +79,7 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if(rnd % 4000 ==0 || x <= 340 || x >= 1580)
-    {
-        isFacingRight = !isFacingRight;
-    }
+   
     if(hp <= 0)
     {
         myState = dead;
@@ -74,7 +92,6 @@ void Fatbat::manageAnimation()
     spriteCounter+= 1;
     int mirror = 0;
     static int divider = 100;
-    int index = spriteCounter / divider;
 
     if(!isFacingRight)
     {

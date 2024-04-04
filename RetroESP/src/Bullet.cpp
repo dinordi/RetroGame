@@ -3,7 +3,7 @@
 #include <utility>
 #include <zephyr/sys/printk.h>
 Bullet::Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight) : Projectile(entitySprites,range,x,y,isFacingRight){
-    xSpeed = xSpeed * 8;
+    xSpeed = 8;
     ySpeed = 0;
     myState = flying;
     damage = 10;
@@ -11,23 +11,29 @@ Bullet::Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight
 
 void Bullet::behaviour()
 {
+    if(!isFacingRight && xSpeed > 0)
+        xSpeed = xSpeed * -1;
     x = xSpeed + x;
 }
 
 bool Bullet::collisionWith(int damage)
 {
     xSpeed = 0;
-    myState = hit;
+    hit = 1;
     return false;
 }
 
 void Bullet::manageAnimation() 
 {
     spriteCounter++;
-    switch(myState)
+    if(hit)
     {
-        case hit:
-            myState = dead;
-        break;
+        myState = dead;
     }
+}
+
+void Bullet::setBobMode()
+{
+    damage = 1000;
+   
 }

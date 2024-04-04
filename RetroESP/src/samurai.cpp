@@ -11,6 +11,9 @@ Samurai::Samurai(int x,int y, int playerX, int playerY) : Enemy(samuraiSprites, 
     samState = waiting;
     this->playerX = playerX;
     this->playerY = playerY;
+    hitAnimation = 0;
+    hit = false;
+    damage = 40;
 }
 
 void Samurai::behaviour() 
@@ -95,8 +98,15 @@ void Samurai::behaviour()
         }
     }
 
-    updateySpeed(gravity); 
-    y = y + ySpeed; 
+    xSpeed = isFacingRight ? 2 : -2;
+
+    if(hp <= 0)
+    {
+        myState = dead;
+    }
+
+    updateySpeed(gravity);
+    y = y + ySpeed;
     x = x + xSpeed;
 
 }
@@ -132,8 +142,19 @@ void Samurai::manageAnimation()
     {
         mirror = 512;
     }
-     if(hitAnimation == 20)
+    if(hitAnimation == 20)
     {
+        hit = false;
+        hitAnimation = 0;
+    }
+    if(hit&&spriteCounter % 10 <= 5)
+    {
+        ID = empty15x15[0];
+        hitAnimation++;
+    }
+    else{
+        switch(myState)
+        {
         case idle:
             if(spriteCounter % 30 < 15)
                 ID = entitySprites[0] + mirror;
@@ -171,6 +192,7 @@ void Samurai::manageAnimation()
             if(spriteCounter >= 64)
                 spriteCounter = 0;
             break;
+        }
     }
 }
 
@@ -205,4 +227,14 @@ void Samurai::setPlayerPos(int x, int y)
 {
     playerX = x;
     playerY = y;
+}
+
+
+bool Samurai::collisionWith(int damage)
+{
+    hp = hp - damage;
+    if(damage){
+        hit = true;
+    }
+    return false;
 }

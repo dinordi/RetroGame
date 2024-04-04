@@ -23,12 +23,15 @@ public:
     void manageAnimation() override;
     bool seesPlayer();
     void setPlayerPos(int x, int y);
+    bool collisionWith(int damage);
+    Type getType() const override { return Type::BOSS; }
 private:
     SamuraiState samState;
     int playerX;
     int playerY;
-    bool collisionWith(int damage);
     bool hit;
+    friend class Game;
+private:
     int hitAnimation;
 };
 

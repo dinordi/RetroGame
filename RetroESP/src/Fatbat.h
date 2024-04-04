@@ -8,10 +8,12 @@ class Fatbat : public Enemy
 {
 public:
     Fatbat(int x, int y);
-    bool collisionWith(int damage);
+    bool collisionWith(int damage) override;
     void behaviour() override;
     void manageAnimation() override;
+    
 private:
-    bool hit;
     int hitAnimation;
+    uint32_t randomNumbers[1000];
+    static int randomCounter;
 };

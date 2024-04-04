@@ -23,6 +23,7 @@ class Object : public Actor{
     virtual void manageAnimation();
     virtual void behaviour() = 0;
     state getState() const { return myState; }
+    Type getType() const { return OBJECT; }
     virtual bool collisionWith(int damage);
     // int getState() const { return myState; }
     friend class Game;
@@ -38,6 +39,10 @@ protected:
     bool hasGravity;
     bool hasCollision;
     bool isGrounded;
+    bool hit;
+    bool lastHit;
     int damage;
-    
+    int damageDone;
+protected:
+    bool inUse;
 };
