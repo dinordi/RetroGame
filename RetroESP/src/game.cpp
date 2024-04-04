@@ -81,6 +81,7 @@ void Game::update()
             entities.push_back(boss);
             actors.push_back(boss);
             gameState = Playing;
+            killedEnemies = 0;
             break;
         }
         case Playing:
@@ -520,7 +521,7 @@ void Game::drawLevel()
 
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
         // printk("Actor type: %d\n", actor->getType());
-        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY)
+        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY || actor->getType() == Actor::Type::BOSS)
         {
             Entity* ob = static_cast<Entity*>(actor);
 
@@ -532,10 +533,6 @@ void Game::drawLevel()
                 actorX += playerAttackOffsetX;
                 actorY -= playerAttackOffsetY;
             }
-        }
-        if(actor->getType() == Actor::Type::PROJECTILE)
-        {
-            printk("Projectile drawing\n");
         }
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
