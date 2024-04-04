@@ -201,7 +201,7 @@ void Game::sendToDisplay()
 
 void Game::addEnemy()
 {
-    addFatbat(randomNumbers[frames % 1000] % 1200 + 360, randomNumbers[frames % 1000] % 400);
+    addFatbat((sys_rand32_get() % 1200) + 300, (sys_rand32_get() % 400));
     liveEnemies++;
     
 }
@@ -745,7 +745,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
         { 
             //printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
-            if(object->y > groundlevel) //if player is on platform
+            if(object->getY() > groundlevel) //if player is on platform
             {
                 object->y = groundlevel;
                 object->isGrounded = true;
