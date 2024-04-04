@@ -1,7 +1,7 @@
 #include "actor.h"
 
 
-Actor::Actor(int ID,int range,int x, int y) : ID(ID), range(range), x(x), y(y){}
+Actor::Actor(int ID,int range,int x, int y, void* heapPtr) : ID(ID), range(range), x(x), y(y), heapPtr(heapPtr){}
 
 int Actor::getX()
 {

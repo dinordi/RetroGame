@@ -11,16 +11,24 @@
 #include <algorithm>
 #include "Fatbat.h"
 
-
+K_HEAP_DEFINE(actorheap, 150000);
 const float dt = 1.0f / 60;
 int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
     //sys_csrand_get(randomNumbers, 1000);
-    spriteData = new uint16_t[900];
+    void* actormemory = k_heap_alloc(&actorheap, sizeof(uint16_t[400]), K_NO_WAIT);
+    spriteData = new(actormemory) uint16_t[400];
+    if (actormemory == NULL) {
+        printk("Failed to allocate memory for spritedata!\n");
+    }
     spriteDataCount = 0;
-    player = new Player(player1Sprites,7,780,100);
+    actormemory = k_heap_alloc(&actorheap, sizeof(player), K_NO_WAIT);
+    player = new(actormemory) Player(player1Sprites,7,780,100, actormemory);
+     if (actormemory == NULL) {
+        printk("Failed to allocate memory for player!\n");
+    }
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
@@ -207,7 +215,8 @@ void Game::addEnemy()
 
 void Game::addFatbat(int x, int y)
 {
-    Fatbat* entity = new Fatbat(x,y);
+    void *actormemory = k_heap_alloc(&actorheap, sizeof(Fatbat), K_NO_WAIT);
+    Fatbat* entity = new(actormemory) Fatbat(x,y, actormemory);
     //printk("id: %d\n", entity->getID());
     entities.push_back(entity);
     enemies.push_back(entity);
@@ -266,9 +275,12 @@ void Game::nextLevelAnimation()
             killedEnemies = 0;
             for(auto actor : actors)
             {
+                void* actormemory = actor->heapPtr;
                 delete actor;
+                k_free(actormemory);
             }
-            player = new Player(player1Sprites,7,780,100);
+            void* actormemory = k_heap_alloc(&actorheap, sizeof(player), K_NO_WAIT);
+            player = new(actormemory) Player(player1Sprites,7,780,100, actormemory);
             if(BOB) player->setBobMode();
             actors.clear();
             objects.clear();
@@ -476,32 +488,35 @@ void Game::drawLevel()
     int leftBorder = middleX - 320;
     int rightBorder = middleX + 320;
     int x,delta,actorX,actorY,range;
+    printk("in drawlevel\n");
     for(auto actor : actors)
     { 
+        printk("%d\n", actor);
         x = actor->getX();
         delta = x - middleX;
         actorX = 320 + delta;
         actorY = actor->getY();
         range = actor->range; 
-
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
 
-        Entity* ob = dynamic_cast<Entity*>(actor);
-        if(ob != nullptr)
-        // Check if player is attacking and adjust the sprite position
-            if(ob->myState == attacking)
-            {
-                playerAttackOffsetX = ob->attackCheck(true); //Get X offset
-                playerAttackOffsetY = ob->attackCheck(false);   //Get Y offset
-                actorX += playerAttackOffsetX;
-                actorY -= playerAttackOffsetY;
-            }
+        // Entity* ob = dynamic_cast<Entity*>(actor);
+        // if(ob != nullptr)
+        // // Check if player is attacking and adjust the sprite position
+        //     if(ob->myState == attacking)
+        //     {
+        //         playerAttackOffsetX = ob->attackCheck(true); //Get X offset
+        //         playerAttackOffsetY = ob->attackCheck(false);   //Get Y offset
+        //         actorX += playerAttackOffsetX;
+        //         actorY -= playerAttackOffsetY;
+        //     }
 
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
+           printk("kanker continue\n");
             continue;
 
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
+            printk("in de andere kanker if\n");
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actorY);
@@ -511,6 +526,7 @@ void Game::drawLevel()
             //printk("ID: %d\n", actor->getID());
         }
     }
+    printk("door loop gekomen\n");
     // actorX = 320;
     // range = player->range; 
     // printk("player!");
@@ -534,7 +550,12 @@ void Game::loadPlatforms(const int level[3][16][63])
                 int tileX = j * 31; //31 is tile width/height
                 int tileY = i * 31;
                 int tileID = level[currentLevel][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
+                void* actormemory = k_heap_alloc(&actorheap, sizeof(Platform), K_NO_WAIT);
+                Platform* platform = new(actormemory) Platform(tileID, tileX, tileY, 15, actormemory);    // Create a new platform
+                 if (actormemory == NULL) {
+                    printk("Failed to allocate memory for platforms!\n");
+                }
+                printk("%d\n", sizeof(Platform));
                 platforms.push_back(platform);
                 actors.push_back(platform);
             }
@@ -612,7 +633,9 @@ void Game::checkDeleted(){
                     liveEnemies--;
                     score->assign_monster_points();
                 }
+                void* actormemory = object->heapPtr;
                 delete object;
+                k_free(actormemory);
             } 
         }
     }
@@ -731,7 +754,7 @@ int Game::borderCheck(Object* object){
 void Game::checkRangedAttack(Entity* entity){
     if(entity->myState == attacking && entity->lastmyState != attacking && entity->isRanged)
     {
-        Object* projectile = entity->makeProjectile();
+        Object* projectile = entity->makeProjectile(&actorheap);
         if(BOB) static_cast<Bullet*>(projectile)->setBobMode();
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
@@ -743,7 +766,9 @@ void Game::resetToBegin()
 {
     for(auto actor : actors)
     {
+        void* actormemory = actor->heapPtr;
         delete actor;
+         k_free(actormemory);
     }
     actors.clear();
     objects.clear();
@@ -751,7 +776,8 @@ void Game::resetToBegin()
     platforms.clear();
     enemies.clear();
     projectiles.clear();
-    player = new Player(player1Sprites,7,780,100);
+    void* actormemory = k_heap_alloc(&actorheap, sizeof(player), K_NO_WAIT);
+    player = new(actormemory) Player(player1Sprites,7,780,100, actormemory);
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);

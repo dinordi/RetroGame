@@ -3,7 +3,7 @@
 #include <zephyr/sys/printk.h>
 
 
-Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samuraiSprites, range,x,y)
+Samurai::Samurai(const int* samuraiSprites, int range,int x,int y,void* heapPtr) : Enemy(samuraiSprites, range,x,y,heapPtr)
 {
     hasCollision = true;
     hasGravity = true;
@@ -42,10 +42,10 @@ int Samurai::attackCheck(bool isX)
     }
 }
 
-Projectile* Samurai::makeProjectile()
-{
-    return nullptr;
-}
+// Projectile* Samurai::makeProjectile()
+// {
+//     return nullptr;
+// }
 
 void Samurai::manageAnimation()
 {

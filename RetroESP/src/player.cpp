@@ -3,9 +3,10 @@
 #include "Bullet.h"
 #include <zephyr/sys/printk.h>
 #include <cstdio>
+#include <zephyr/kernel.h>
 
 
-Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
+Player::Player(const int* playerSprites, int range,int x,int y,void* heapPtr) : Entity(playerSprites, range,x,y,heapPtr)
 {
     hp = 100;
     printX = 320;
@@ -86,11 +87,12 @@ int Player::attackCheck(bool isX){
     }
 }
 
-Projectile* Player::makeProjectile(){
+Projectile* Player::makeProjectile(struct k_heap* actorheap){
+    void* actormemory = k_heap_alloc(actorheap, sizeof(Bullet), K_NO_WAIT);
     if(isFacingRight)
-        return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
+        return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight, actormemory);
     else
-      return new Bullet(bulletID,7, this->getX()-3,this->getY()-3,isFacingRight);
+      return new Bullet(bulletID,7, this->getX()-3,this->getY()-3,isFacingRight, actormemory);
 }
 
 void Player::setButtonStatus(buttonStatuses buttonStatus){

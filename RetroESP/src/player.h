@@ -15,10 +15,10 @@ typedef struct {
 class Player : public Entity
 {
 public:
-    Player(const int* playerSprites, int range,int x,int y);
+    Player(const int* playerSprites, int range,int x,int y,void* heapPtr);
     void handleInput(buttonStatuses buttonStatus);
     void setButtonStatus(buttonStatuses buttonStatus);
-    Projectile* makeProjectile() override;
+    Projectile* makeProjectile(struct k_heap* actorheap) override;
     void behaviour() override;
     bool isPlayer() const override { return true; }
     int attackCheck(bool isX) override;

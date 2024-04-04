@@ -31,7 +31,7 @@ typedef struct {
 
 class Entity : public Object{
 public:
-    Entity(const int* entitySprites,int range,int x,int y);
+    Entity(const int* entitySprites,int range,int x,int y,void* heapPtr);
     virtual ~Entity() = default;
     void set(types type, int value);
     int get(types type);
@@ -40,7 +40,7 @@ public:
     void attack();
     void jump();
     virtual int attackCheck(bool isX);
-    virtual Projectile* makeProjectile();
+    virtual Projectile* makeProjectile(struct k_heap* actorheap);
     friend class Game;
 
 protected:

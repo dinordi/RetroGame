@@ -3,7 +3,7 @@
 #include <zephyr/sys/printk.h>
 
 
-Entity::Entity(const int* entitySprites, int range,int x, int y) : Object(entitySprites,range,x,y)
+Entity::Entity(const int* entitySprites, int range,int x, int y,void* heapPtr) : Object(entitySprites,range,x,y,heapPtr)
 {
     hp = 100;
     atk = 10;
@@ -30,6 +30,6 @@ int Entity::attackCheck(bool isX)
     return 0;
 }
 
-Projectile* Entity::makeProjectile(){
+Projectile* Entity::makeProjectile(struct k_heap* actorheap){
     return nullptr;
 }

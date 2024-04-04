@@ -2,7 +2,7 @@
 
 class Bullet : public Projectile {
     public:
-    Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight);
+    Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight, void* heapPtr);
     void behaviour() override;
     bool collisionWith(int damage) override;
     void manageAnimation() override;

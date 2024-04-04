@@ -1,6 +1,6 @@
 #include "Enemy.h"
 #include <zephyr/sys/printk.h>
-Enemy::Enemy(const int* entitySprites, int range,int x, int y) : Entity(entitySprites,range,x,y)
+Enemy::Enemy(const int* entitySprites, int range,int x, int y,void* heapPtr) : Entity(entitySprites,range,x,y,heapPtr)
 {
     damage = 5;
     hp = 50;

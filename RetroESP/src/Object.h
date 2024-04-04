@@ -15,7 +15,7 @@ class Object : public Actor{
 
     public:
 
-    Object(const int* entitySprites,int range,int x ,int y);
+    Object(const int* entitySprites,int range,int x ,int y,void* heapPtr);
     int getxSpeed();
     int getySpeed();
     void updateySpeed(float speed);

@@ -96,4 +96,5 @@ private:
     bool fadeIn;
     int randomNumbers[1000];
     bool BOB;
+    
 };

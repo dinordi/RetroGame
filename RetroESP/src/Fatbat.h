@@ -7,7 +7,7 @@
 class Fatbat : public Enemy
 {
 public:
-    Fatbat(int x, int y);
+    Fatbat(int x, int y,void* heapPtr);
     bool collisionWith(int damage) override;
     void behaviour() override;
     void manageAnimation() override;

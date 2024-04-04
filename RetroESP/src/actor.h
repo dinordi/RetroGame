@@ -4,7 +4,7 @@ const float gravity = 0.52f;
 
 class Actor {
 public:
-    Actor(int ID,int range,int x, int y);
+    Actor(int ID,int range,int x, int y, void*);
     int getX();
     int getY();
     void move(float x, float y);
@@ -19,5 +19,6 @@ protected:
     float y;
     int range;
     int ID;
+    void* heapPtr;
 
 };

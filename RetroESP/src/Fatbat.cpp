@@ -6,7 +6,7 @@
 int Fatbat::randomCounter = 0;
 
 
-Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
+Fatbat::Fatbat(int x, int y,void* heapPtr) : Enemy(fatbatSprites,7,x,y,heapPtr)
 {
     // for(int i = 0; i < 1000; i++)
     // {

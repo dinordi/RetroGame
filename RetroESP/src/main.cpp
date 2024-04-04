@@ -11,7 +11,6 @@
 #include <zephyr/sys/byteorder.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
-#include <zephyr/kernel.h>
 
 #include <string>
 // #include "adc.h"
@@ -22,10 +21,12 @@
 #include "scores.h"
 #include "flash_esp32.h"
 
+K_HEAP_DEFINE(game_heap, sizeof(Game) + sizeof(Game) + sizeof(ButtonHandler) + sizeof(FPGA) + sizeof(Audio));
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
 #define GPIO_PIN 14
 	const struct device *const input = DEVICE_DT_GET(CHECK);
+
 
 void updateGame();
 
@@ -42,13 +43,29 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
-	ButtonHandler* button = new ButtonHandler();
+	void* othersmem = k_heap_alloc(&game_heap, sizeof(ButtonHandler), K_NO_WAIT);
+	ButtonHandler* button = new(othersmem) ButtonHandler();
 	Flash_esp flash_esp;
-	FPGA* fpga = new FPGA();
-	Audio* audio = new Audio();
+	othersmem = k_heap_alloc(&game_heap, sizeof(FPGA), K_NO_WAIT);
+	FPGA* fpga = new(othersmem) FPGA();
+	othersmem = k_heap_alloc(&game_heap, sizeof(Audio), K_NO_WAIT);
+	Audio* audio = new(othersmem) Audio();
 	Score score(&flash_esp);
 
-	Game* game = new Game(fpga, button, audio,&score);
+	void* game_memory = k_heap_alloc(&game_heap, sizeof(Game), K_NO_WAIT);
+    if (game_memory == NULL) {
+        printk("Failed to allocate memory for Game object!\n");
+        return -1;
+    }
+
+    // Construct a Game object in the allocated memory using placement new
+    Game* game = new (game_memory) Game(fpga, button, audio,&score);
+	if (game == nullptr) {
+	while(1)
+    printk("Error: Failed to allocate memory for Game object.\n");
+	// Return an error code to indicate failure
+}
+
 	
 	int lastState = 1;
 
@@ -58,8 +75,6 @@ int main(void)
 	// {
 	// 	game.addEntity(enemy1Sprites);
 	// }
-	printk("Starting game loop\n");
-
 	
 	while (1) {
 		

@@ -1,7 +1,7 @@
 #include "werewolfman.h"
 #include "sprites.h"
 
-WerewolfMan::WerewolfMan(int x, int y) : Enemy(wherewolfSprites,7,x,y)
+WerewolfMan::WerewolfMan(int x, int y,void* heapPtr) : Enemy(wherewolfSprites,7,x,y,heapPtr)
 {
     damage = 20;
     hp = 60;

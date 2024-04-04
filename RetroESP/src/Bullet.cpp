@@ -2,7 +2,7 @@
 //#include "platform.h"
 #include <utility>
 #include <zephyr/sys/printk.h>
-Bullet::Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight) : Projectile(entitySprites,range,x,y,isFacingRight){
+Bullet::Bullet(const int* entitySprites,int range,int x,int y,bool isFacingRight, void* heapPtr) : Projectile(entitySprites,range,x,y,isFacingRight, heapPtr){
     xSpeed = xSpeed * 8;
     ySpeed = 0;
     myState = flying;
