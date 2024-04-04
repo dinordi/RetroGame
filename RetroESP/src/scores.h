@@ -42,18 +42,20 @@ public:
 
 private:
     int time_multiplier = 100;
-    int monster_exp = 1000;  // base points without multiplier
-    int boss_exp    = 10000; // base points without multiplier
+    int monster_exp = 200;  // base points without multiplier
+    int boss_exp    = 1000; // base points without multiplier
 private:
     int time = 0;
     int second_decrease = 35; 
     int current_score = 0; // gamescore
     int time_score =0;
+private:
     bool high_score = false;
+    bool execute_compare_once =true;
 private:   
     std::string leader_board;
     int compare_score;
-    char *player_and_score[10]; // Array to store the split strings
+    std::vector<std::string> player_and_score; // Array to store the split strings
     char *store_new_score;
     int replace_score =0;
     void move_down_leaderboard();

@@ -87,6 +87,7 @@ void Game::update()
             break;
         case GameOver:
         {
+            
             sendToDisplay();
             GameOverFunc();
             break;
@@ -448,6 +449,7 @@ void Game::drawCredits()
 }
 
 void Game::GameOverFunc(){
+    score->compare_leaderboard();
     static int counter = 0;
     counter++;
     static bool draw = true;

@@ -8,10 +8,7 @@
 Score::Score(Flash_esp* flash_esp)
   : flash_esp(flash_esp)
 {
-  // Initialize all elements to nullptr
-  for (int i = 0; i < 10; ++i) {
-    player_and_score[i] = nullptr;
-  }
+
 }
 Score::~Score() {}
 
@@ -105,36 +102,34 @@ void Score::get_leaderboard()
 // compare the player score with the leader board
 void Score::compare_leaderboard()
 {
-  int array_size = sizeof(player_and_score) / sizeof(player_and_score[0]);
-  for (int i = 0; i < array_size; i++) {
-    // Find the location of "score: " in player_and_score[5]
-    char* searchString = strstr(player_and_score[i], "re ");
+    for (size_t i = 0; i < player_and_score.size(); ++i) {
+        // Find the location of "score: " in player_and_score[i]
+        size_t pos = player_and_score[i].find("score ");
 
-    if (searchString != nullptr) {
-      // Calculate the location (index) of the substring
-      size_t location = searchString - player_and_score[i];
+        if (pos != std::string::npos) {
+            // Get the substring starting from index pos + 6 (to skip "score: ")
+            std::string score_string = player_and_score[i].substr(pos + 6);
 
-      // Get the substring starting from index 7 (to skip "score: ")
-      const char* compare_score_string = player_and_score[i] + location + 7;
+            // Convert the substring to an integer
+            compare_score = std::stoi(score_string);
 
-      // Convert the substring to an integer
-      compare_score = std::atoi(compare_score_string);
+            
 
-      // Print or use the score
-      printk(" %d\n", compare_score);
-    } else {
-      printk("Substring 'score: ' not found\n");
+            if (current_score > compare_score) {
+                std::cout << "Highscore achieved. Place: " << i + 1 << std::endl;
+                current_score = compare_score; // Update current_score with the new high score
+
+                high_score = true;
+                compare_score = current_score;
+                replace_score = i;
+                break; // Break after finding the first high score
+            }
+        }
+        else {
+            std::cout << "Substring 'score: ' not found in entry " << i << std::endl;
+        }
+
     }
-
-    if (current_score > compare_score) {
-      printk("highscore achieved place: %d\n", i + 1);
-      high_score = true;
-      compare_score = current_score;
-      replace_score = i;
-      break;
-    }
-  }
-  // compare every element score with
 }
 
 void Score::move_down_leaderboard()
@@ -149,6 +144,7 @@ void Score::move_down_leaderboard()
 }
 void Score::write_leaderboard()
 {
+  /*
   const char* cString;
   std::string new_leaderboard;
   std::string player_name = "Highscore";
@@ -186,7 +182,7 @@ void Score::write_leaderboard()
      std::string cppstr(cString);
 
      flash_esp->write_string(cppstr);
-  }
+  }*/
   
 }
 
@@ -194,9 +190,9 @@ std::string Score::receive_Scores(int i)
 {
   // Create a stringstream to store the concatenated strings
     
-    std::string cpp_string(player_and_score[i]);
+    
 
-     return cpp_string;
+     return player_and_score[i];
 }
 
 std::string Score::currentscore_string()
