@@ -8,12 +8,20 @@
 #include "player.h"
 #include "audio_module.h"
 #include <zephyr/random/random.h>
+#include <utility>  // Voor std::pair
+
 
 class Enemy;
 class Platform;
 class Projectile;
 class Entity;
 class Object;
+
+struct PlatformRange {
+    int xbegin;
+    int xend;
+};
+
 typedef enum
 {
     Menu,
@@ -56,6 +64,7 @@ public:
     int borderCheck(Object* object);
     void GameOverFunc();
     void resetToBegin();
+    void getRangePlatforms();
     std::vector<Platform*>* getPlatforms();
 
 private:
@@ -65,6 +74,7 @@ private:
     std::vector<Projectile*> projectiles;
     std::vector<Platform*> platforms;
     std::vector<Actor*> actors;
+    std::vector<PlatformRange> platformRanges;
     uint16_t* spriteData;
     int spriteDataCount;
     FPGA* fpga;
