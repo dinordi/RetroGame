@@ -78,30 +78,31 @@ flash_esp->write_string  (  "M highscore 10000&"
 
 void Score::get_leaderboard()
 {
-   leader_board = flash_esp->read_esp_flash();
-   printk("leaderboard : %d\n",leader_board.size());
-  // Dynamically allocate memory for the C-style string
-  char* inputString = new char[leader_board.size() + 1];
+  if(execute_get_once){
+  execute_get_once = false;
+    leader_board = flash_esp->read_esp_flash();
+    printk("leaderboard : %zu\n", leader_board.size());
+    
+    // Use std::stringstream to tokenize the string
+    std::stringstream ss(leader_board);
+    std::string token;
 
-  // Copy the contents of leader_board to inputString
-  strcpy(inputString, leader_board.c_str());
-
- 
-
-  int index = 0;
-  printk("get score");
-  // Tokenize the input string by space
-  char* token = strtok(inputString, "&");
-  while (token != NULL && index < 100) {
-    player_and_score[index++] = token;
-    token = strtok(NULL, "&");
-    printk("test");
+    printk("get score");
+    // Tokenize the input string by '&' delimiter
+    while (std::getline(ss, token, '&') && player_and_score.size() < 100) {
+        player_and_score.push_back(token);
+        printk("test");
+    }
+    printk("nothing");
   }
 }
 
 // compare the player score with the leader board
 void Score::compare_leaderboard()
 {
+  if(execute_compare_once){
+    execute_compare_once = false;
+    printk("compare");
     for (size_t i = 0; i < player_and_score.size(); ++i) {
         // Find the location of "score: " in player_and_score[i]
         size_t pos = player_and_score[i].find("score ");
@@ -114,9 +115,9 @@ void Score::compare_leaderboard()
             compare_score = std::stoi(score_string);
 
             
-
+            //printk("current_score : %d\n",current_score);
             if (current_score > compare_score) {
-                std::cout << "Highscore achieved. Place: " << i + 1 << std::endl;
+                //std::cout << "Highscore achieved. Place: " << i + 1 << std::endl;
                 current_score = compare_score; // Update current_score with the new high score
 
                 high_score = true;
@@ -126,10 +127,11 @@ void Score::compare_leaderboard()
             }
         }
         else {
-            std::cout << "Substring 'score: ' not found in entry " << i << std::endl;
+           printk("not found\n");
         }
-
+      
     }
+  }
 }
 
 void Score::move_down_leaderboard()
@@ -144,46 +146,36 @@ void Score::move_down_leaderboard()
 }
 void Score::write_leaderboard()
 {
-  /*
-  const char* cString;
-  std::string new_leaderboard;
-  std::string player_name = "Highscore";
-  // check if read is empty
+  if(execute_write_once){
+    execute_write_once =false;
+   std::string new_leaderboard;
+    std::string player_name = "M Highscore";
 
-  // Assuming replace_score is a valid index
-  if (high_score) {
-    // move all scores down that are below the new highscore
-    move_down_leaderboard();
-    // Create a C++ string
-    std::string new_score_str = player_name + ": " + std::to_string(current_score);
-    // Create a vector to hold the characters of the C++ string
-    std::vector<char>c_string(new_score_str.begin(),new_score_str.end());
-    c_string.push_back('\0'); // Add null terminator
+    if (high_score) {
+        move_down_leaderboard();
 
-    // Output the C string
-    printk("c sr: %s\n", c_string.data());
-    player_and_score[replace_score] = c_string.data();
-    
-  }
-  // Concatenate the strings
-  // printk("size = %d",size);
+        // Create a new score string
+        std::string new_score_str = player_name + ": " + std::to_string(current_score);
 
-    printk("%s\n\n",player_and_score[1]);
-  if (player_and_score[0] != nullptr) {
-    for (int i = 0; i < 10; ++i) { // Adjust the loop termination condition  accordingly
-
-      new_leaderboard += player_and_score[i];
-      new_leaderboard += '&'; // Add the '&' delimiter
+        // Add the new score to the vector
+        player_and_score[replace_score] = new_score_str;
     }
 
-    cString = new_leaderboard.c_str();
-    printk("print new leades \n");
-     printk("%s\n",cString);
-     std::string cppstr(cString);
+    // Concatenate the strings
+    if (player_and_score[0] != "") {
+        for (int i = 0; i < 10; ++i) {
+            new_leaderboard += player_and_score[i];
+            new_leaderboard += '&'; // Add the '&' delimiter
+        }
 
-     flash_esp->write_string(cppstr);
-  }*/
-  
+        // Convert the leaderboard to a C-style string and print it
+        const char* cString = new_leaderboard.c_str();
+        printk("New leaderboard:\n%s\n", cString);
+
+        // Write the new leaderboard to flash
+        flash_esp->write_string(new_leaderboard);
+    }
+  }
 }
 
 std::string Score::receive_Scores(int i)

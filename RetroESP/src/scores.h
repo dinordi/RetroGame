@@ -51,6 +51,8 @@ private:
     int time_score =0;
 private:
     bool high_score = false;
+    bool execute_write_once = true;
+    bool execute_get_once = true;
     bool execute_compare_once =true;
 private:   
     std::string leader_board;

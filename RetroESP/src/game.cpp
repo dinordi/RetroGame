@@ -372,15 +372,13 @@ void Game::drawMainMenu()
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
-bool execute_once =false;
+
+
 void Game::drawHighscores()
 {
-    if(execute_once == false)
-    {
-        score->reset_leaderboard();
-        execute_once = true;
-        score->get_leaderboard();
-    }
+
+    score->get_leaderboard();
+
     static int counter = 0;
     counter++;
 
@@ -464,6 +462,7 @@ void Game::GameOverFunc(){
         drawString("press start and return to menu", 133, 200);
         if(score->higscore_state()){
         drawString("new highscore detected",133,250);
+        score->write_leaderboard();
         }
         else
         {
