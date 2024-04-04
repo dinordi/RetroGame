@@ -745,7 +745,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
         { 
             //printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
-            if(object->y > groundlevel) //if player is on platform
+            if(object->getY() > groundlevel) //if player is on platform
             {
                 object->y = groundlevel;
                 object->isGrounded = true;
