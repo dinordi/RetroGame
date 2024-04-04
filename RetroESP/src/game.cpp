@@ -117,6 +117,8 @@ void Game::updateSelection()
     readInput();
     if(buttonStatus.start && counter > 60)
     {
+        audio->play_effect(audio->MNU_CONFIRM);
+
         switch(stateSelect)
         {
             case Playing:
@@ -320,8 +322,10 @@ void Game::levelFading(int line)
 
 void Game::drawMainMenu()
 {
-    std::string title = "beste game";
-    std::string start = "press start to play";
+    std::string title = "cosmic conquest";
+    std::string title2 = "saga of sacrifice";
+
+    std::string start = "press start";
     std::string option1 = "play";
     std::string option2 = "dr bob mode";
     std::string option3 = "highscore";
@@ -329,14 +333,15 @@ void Game::drawMainMenu()
     static int yval = 300;
     static bool draw = true;
 
-    drawString(title, 250, 100);
+    // drawString(title, 230, 100);
+    drawString(title2, 200, 130);
     if(frames % 30 == 0)                                        //Blink every 0.5 seconds
     {
         draw = !draw;
     }
     if(draw)
     {
-        drawString(start, 200, 200);
+        drawString(start, 220, 200);
     }
 
     drawString(option1, 250, 300);
@@ -484,10 +489,11 @@ void Game::drawLevel()
         range = actor->range; 
 
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
+        if(actor->getType() == Actor::Type::ACTOR)
+        {
+            Entity* ob = static_cast<Entity*>(actor);
 
-        Entity* ob = dynamic_cast<Entity*>(actor);
-        if(ob != nullptr)
-        // Check if player is attacking and adjust the sprite position
+            // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
             {
                 playerAttackOffsetX = ob->attackCheck(true); //Get X offset
@@ -495,6 +501,7 @@ void Game::drawLevel()
                 actorX += playerAttackOffsetX;
                 actorY -= playerAttackOffsetY;
             }
+        }
 
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
@@ -580,12 +587,16 @@ void Game::checkDeleted(){
     {
         if(object->myState == dead)
         {
-            if(object->isPlayer())
+            printk("CheckDeleted someone is dead\n");
+
+            if(object->getType() == Actor::Type::PLAYER)
             {
+                printk("player\n");
                 gameState = GameOver;
             }
             else
             {
+                printk("geen player\n");
                 auto gevondenActor = std::find(actors.begin(), actors.end(), object);
                 auto gevondenObject = std::find(objects.begin(), objects.end(), object);
                 auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
@@ -594,21 +605,31 @@ void Game::checkDeleted(){
 
                 // Controleer of de pointer is gevonden
                 if (gevondenActor != actors.end()) {
+                    printk("gevondenActor != actors.end()\n");
+
                     actors.erase(gevondenActor); // Verwijder de pointer uit de vector
                 } 
                 if (gevondenObject != objects.end()) {
+                    printk("gevondenObject != objects.end()\n");
+
                     objects.erase(gevondenObject);
                 }
                 if (gevondenEntity != entities.end()) {
+                    printk("gevondenEntity != entities.end()\n");
+
                     entities.erase(gevondenEntity);
                 }
                 if (gevondenProjectile != projectiles.end()) {
+                    printk("gevondenProjectile != projectiles.end()\n");
+
                     projectiles.erase(gevondenProjectile);
                 }
                 if (gevondenEnemy != enemies.end()) {
+                    printk("gevondenEnemy != enemies.end()\n");
                     enemies.erase(gevondenEnemy);
                     killedEnemies++;
                     liveEnemies--;
+                    audio->play_effect(audio->M_DEATH);
                     score->assign_monster_points();
                 }
                 delete object;
@@ -648,7 +669,7 @@ void Game::realCollisionCheck(Object* object){
     int objectLeft = object->getX() - object->range;
     int objectRight = object->getX() + object->range;
 
-    if(dynamic_cast<Projectile*>(object) != nullptr)
+    if(object->getType() == Actor::Type::PROJECTILE)
     {
         for(auto platform : platforms)
         {
@@ -663,7 +684,7 @@ void Game::realCollisionCheck(Object* object){
             }
         }
     }
-    if(dynamic_cast<Projectile*>(object) != nullptr || object->isPlayer()) {
+    if(object->getType() == Actor::Type::PROJECTILE || object->isPlayer()) {
         for(auto enemy : enemies)
         {
             int enemyTop = enemy->getY() - enemy->range;
@@ -678,7 +699,7 @@ void Game::realCollisionCheck(Object* object){
                 
         }
     }
-    if(dynamic_cast<Enemy*>(object) != nullptr) {
+    if(object->getType() == Actor::Type::ENEMY) {
         for(auto projectile : projectiles)
         {
             int projectileTop = projectile->getY() - projectile->range;

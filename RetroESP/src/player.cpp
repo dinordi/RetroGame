@@ -21,6 +21,10 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
 void Player::behaviour() {
     lastmyState = myState;
     static int count = 0;
+    static int dashCount = 0;
+    static bool dash = false;
+    static bool hasDashedInAir = false;
+
     if(hit == true && lastHit == false)
     {
         hp = hp - damageDone;
@@ -57,6 +61,29 @@ void Player::behaviour() {
         count++;
         myState = attacking;
     }
+
+    if((buttonStatus.dash && !lastButtonState.dash) && !dash && (isGrounded || !hasDashedInAir))
+    {
+        dash = true;
+        hasDashedInAir = true;
+        ySpeed = -7;
+    }
+    if(dash)
+    {
+        xSpeed = isFacingRight ? 6 : -6;
+        if(dashCount >= 30)
+        {
+            dash = false;
+            dashCount = 0;  
+            xSpeed = 0;  
+        }
+        dashCount++;
+    }
+    if(isGrounded)
+    {
+        hasDashedInAir = false;
+    }
+
     if(hp <= 0)
     {
         myState = dead;
@@ -142,7 +169,7 @@ void Player::manageAnimation()
                 }
                 break;
             case flying:
-                ID = entitySprites[0];
+                ID = entitySprites[12];
                 spriteCounter = 0;
                 break;
             case attacking:

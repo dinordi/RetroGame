@@ -79,6 +79,8 @@ int main(void)
        // Read the state of the GPIO pin 
 	//    game->readInput();
         int pin_value = gpio_pin_get(input, GPIO_PIN);
+		// int pin_value = button->pinGet(7);
+		// printk("Pin value: %d\n", pin_value);
 		// // int pin_value = 0;
 		// // lastState = 1;
 		// // printk("Pin value: %d\n", pin_value);
@@ -86,6 +88,10 @@ int main(void)
 		{
 			// uint64_t time = k_cycle_get_64();
 			game->update();
+			// printk("PLAY AUDIO\n");;
+			// audio->play_effect(audio->M_DEATH);
+			// audio->uart_send({0x7E, 0xFF, 0x06, 0x03, 0x00, 0x00, 0x01, 0xEF}, 1);
+			// k_sleep(K_MSEC(1000));
 			// uint64_t time2 = k_cycle_get_64();
 			// printk("Cycles: %lld\n", time);
 		}
