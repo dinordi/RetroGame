@@ -41,7 +41,6 @@ public:
     void jump();
     virtual int attackCheck(bool isX);
     virtual Projectile* makeProjectile();
-    Type getType() const { return ENTITY; }
     friend class Game;
 
 protected:
