@@ -81,6 +81,7 @@ void Game::update()
             player->setBobMode();
             BOB = true;
             gameState = Playing;
+            getRangePlatforms();
             break;
         case Paused:
             break;
@@ -201,7 +202,7 @@ void Game::sendToDisplay()
 
 void Game::addEnemy()
 {
-    addFatbat(randomNumbers[frames % 1000] % 1280 + 320, randomNumbers[frames % 1000] % 400);
+    addFatbat(randomNumbers[frames % 1000] % 1200 + 360, randomNumbers[frames % 1000] % 400);
     liveEnemies++;
     
 }
@@ -785,4 +786,32 @@ void Game::resetToBegin()
     killedEnemies = 0;
     Curtain = 0;
     fadeIn = false;
+}
+
+void Game::getRangePlatforms(){
+    for (int i = 0; i < platforms.size(); ++i) {
+        if (platforms[i]->getID() == 100) { // Begin van een platform
+            int start = platforms[i]->getX() - platforms[i]->range;
+            int y = platforms[i]->getY(); // Y-positie van het platform
+            // Zoek het einde van het platform
+            int end = start;
+            while (i < platforms.size() && platforms[i]->getY() == y) {
+                if (platforms[i]->getID() == 101) { // Einde van een platform
+                    PlatformRange range;
+                    range.xbegin = start;
+                    range.xend = platforms[i]->getX() + platforms[i]->range;
+                    platformRanges.push_back(range);
+                    printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
+                    break;
+                }
+                end = platforms[i]->getX();
+                ++i;
+            }
+        }
+    }
+
+// Print de start- en eindposities van de platformen
+    // for (const auto& range : platformRanges) {
+    //     printk("Start: %d, End: %d\n", range.xbegin, range.xend);
+    // }
 }

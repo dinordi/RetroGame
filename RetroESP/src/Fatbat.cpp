@@ -1,19 +1,20 @@
 #include "Fatbat.h"
 #include <zephyr/sys/printk.h>
 #include <zephyr/random/random.h>
+#include "cstdlib"
 
 int Fatbat::randomCounter = 0;
 
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
-    for(int i = 0; i < 1000; i++)
-    {
-        randomNumbers[i] = sys_rand32_get();
-    }
+    // for(int i = 0; i < 1000; i++)
+    // {
+    //     randomNumbers[i] = sys_rand32_get();
+    // }
 
     damage = 5;
-    hp = 50;
+    hp = 20;
     xSpeed = 0;
     myState = idle;
     isFacingRight = false;
@@ -33,16 +34,15 @@ bool Fatbat::collisionWith(int damage)
 void Fatbat::behaviour() {
     randomCounter++;
     lastmyState = myState;
-    //printk("Fatbat hp in behav: %d\n",hp);
     //Randomly attack
    int rnd = randomNumbers[randomCounter + static_cast<int>(x) %1000];
 
-    if(rnd % 400 == 0 && myState != attacking)
+    if(rnd % 400 == 0 && lastmyState == idle)
     {
         myState = attacking;
     }
 
-    if(myState == attacking && lastmyState != attacking)
+    if(myState == attacking && lastmyState == idle)
     {
         ySpeed = rnd % 6 - 12;
         isGrounded = false;
@@ -52,8 +52,7 @@ void Fatbat::behaviour() {
         }
         else
         {
-            xSpeed = rnd % 2 - 5;
-        }
+            xSpeed = rnd % 2 - 5;        }
     }
     else if(myState == idle)
     {
@@ -67,7 +66,18 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if((rnd % 1000 == 0 || x <= 350 || x >= 1500) && lastmyState == attacking && isGrounded)
+    if(x <= 320)  
+    {
+        isFacingRight = true;
+        myState = idle;
+        x = x + 2 * abs(xSpeed);
+    }
+    else if(x >= 1500){
+        isFacingRight = false;
+        myState = idle;
+        x = x + -2 * abs(xSpeed);
+    }
+    else if(rnd % 1000 == 0 && lastmyState == attacking)
     {
         isFacingRight = !isFacingRight;
     }
@@ -83,7 +93,6 @@ void Fatbat::manageAnimation()
     spriteCounter+= 1;
     int mirror = 0;
     static int divider = 100;
-    int index = spriteCounter / divider;
 
     if(!isFacingRight)
     {
