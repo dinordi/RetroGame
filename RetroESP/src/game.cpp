@@ -236,7 +236,7 @@ void Game::addWereWolf(int beginx,int endx, int y)
             werewolfman->x = (beginx + endx) / 2;
             werewolfman->beginx = beginx;
             werewolfman->endx = endx;
-            werewolfman->y = y - werewolfman->range;
+            werewolfman->y = y - werewolfman->range - 1;
             werewolfman->inUse = true;
             werewolfman->myState = walking;
             werewolfman->hp = 50;
@@ -608,8 +608,8 @@ void Game::tick()
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = NextLevel;
     if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) 
     {
-        if(killedEnemies % 2 == 0)
-            addWereWolf(platformRanges[killedEnemies/2].xbegin,platformRanges[killedEnemies/2].xend,platformRanges[killedEnemies/2].y); 
+        if(frames%platformRanges.size() % 2 == 0)
+            addWereWolf(platformRanges[frames%platformRanges.size()].xbegin,platformRanges[frames%platformRanges.size()].xend,platformRanges[frames%platformRanges.size()].y); 
         else
             addEnemy();
     }
