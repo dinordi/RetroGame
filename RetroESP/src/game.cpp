@@ -68,6 +68,7 @@ void Game::update()
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
+            boss->myState = idle;
             break;
         }
         case BOSSFIGHT:
@@ -525,6 +526,7 @@ void Game::drawLevel()
         {
             Entity* ob = static_cast<Entity*>(actor);
 
+            
             // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
             {
@@ -795,7 +797,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
             // y = y1;
             if(object->getY() > groundlevel) //if player is on platform
             {
-                object->y = groundlevel;
+                object->y = groundlevel-1;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }

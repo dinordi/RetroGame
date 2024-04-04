@@ -70,12 +70,12 @@ void Samurai::behaviour()
             if(x < playerX)
             {
                 isFacingRight = true;
-                xSpeed = 4;
+                xSpeed = 6;
             }
             else
             {
                 isFacingRight = false;
-                xSpeed = -4;
+                xSpeed = -6;
             }
             if(abs(playerX - x) < 10)
             {
@@ -89,6 +89,7 @@ void Samurai::behaviour()
         }
         case attackingPlayer:
         {
+            xSpeed = 0;
             if(count == 60)
             {
                 samState = waiting;
@@ -97,8 +98,6 @@ void Samurai::behaviour()
             break;
         }
     }
-
-    xSpeed = isFacingRight ? 2 : -2;
 
     if(hp <= 0)
     {
