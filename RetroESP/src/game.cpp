@@ -76,6 +76,7 @@ void Game::update()
             boss->inUse = true;
             boss->hp = 150;
             boss->myState = idle;
+            boss->samState = waiting;
             objects.push_back(boss);
             entities.push_back(boss);
             actors.push_back(boss);
@@ -93,7 +94,7 @@ void Game::update()
         case Drbob:
             player->setBobMode();
             BOB = true;
-            gameState = BOSSFIGHT;
+            gameState = Playing;
             getRangePlatforms();
             break;
         case Paused:
