@@ -1,6 +1,6 @@
 #include "Object.h"
 
-Object::Object(const int* entitySprites,int range,int x ,int y) : Actor(entitySprites[0],range,x,y), entitySprites(entitySprites){
+Object::Object(const int* entitySprites,int range,int x ,int y) : Actor(entitySprites[0],range,x,y), entitySprites(entitySprites), inUse(false){
     this->entitySprites = entitySprites;
     ySpeed = 0;
     xSpeed = 0;

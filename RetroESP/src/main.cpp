@@ -35,6 +35,7 @@ std::vector<Fatbat*> fatbats;
 std::vector<Platform*> level1;
 std::vector<Platform*> level2;
 std::vector<Platform*> level3;
+std::vector<Bullet*> bullets;
 
 
 
@@ -71,7 +72,7 @@ int main(void)
     }
 
 	for (int i = 0; i < 40; i++) {
-    	Fatbat* fatbat = new Fatbat(0, 0);
+    	Fatbat* fatbat = new Fatbat(360, 0);
     	fatbats.push_back(fatbat);
 	}
 	// std::vector<Werewolf*> werewolfs;
@@ -84,6 +85,11 @@ int main(void)
 	loadPlatforms(1, &level2);
 	loadPlatforms(2, &level3);
 
+	for(int i=0; i < 20; i++)
+	{
+		Bullet* bullet = new Bullet(bulletID,7, 400,400,true);
+		bullets.push_back(bullet);
+	}
 
 	ButtonHandler* button = new ButtonHandler();
 	Flash_esp* flash_esp = new Flash_esp();

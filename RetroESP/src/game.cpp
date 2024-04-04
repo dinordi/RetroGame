@@ -223,17 +223,8 @@ void Game::addFatbat(int x, int y)
             return;
         }
     }
-    //printk("id: %d\n", entity->getID());
 
 }
-
-// void Game::addProjectile(const int* playerSprites,int range,int x, int y)
-// {
-//     Object* projectile = new Projectile(playerSprites,range,x,y);
-//     printk("id: %d\n", projectile->getID());
-//     projectiles.push_back(static_cast<Projectile*>(projectile));
-//     objects.push_back(projectile);
-// }
 
 void Game::readInput()
 {
@@ -276,9 +267,9 @@ void Game::nextLevelAnimation()
         if(Curtain > 640){
             liveEnemies = 0;
             killedEnemies = 0;
-            for(auto actor : actors)
+            for(auto object : objects)
             {
-                actor->inUse = false;
+                object->inUse = false;
             }
             player->inUse = true;
             player->x = 780;
@@ -516,7 +507,10 @@ void Game::drawLevel()
                 actorY -= playerAttackOffsetY;
             }
         }
-
+        if(actor->getType() == Actor::Type::PROJECTILE)
+        {
+            printk("Projectile drawing\n");
+        }
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
 
@@ -525,9 +519,7 @@ void Game::drawLevel()
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actorY);
-            // if(actor->isProjectile())
-            //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
-        
+    
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -649,7 +641,8 @@ void Game::checkDeleted(){
                 }
                 if (gevondenProjectile != projectiles.end()) {
                     // printk("gevondenProjectile != projectiles.end()\n");
-
+                    object->hit = 0;
+                    object->myState = flying;
                     projectiles.erase(gevondenProjectile);
                 }
                 if (gevondenEnemy != enemies.end()) {
@@ -785,15 +778,16 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
+        // printk("projectile added\n");
     }
 }
 
 void Game::resetToBegin()
 {
-    for(auto actor : actors)
+    for(auto object : objects)
     {
         // delete actor;
-        actor->inUse = false;
+        object->inUse = false;
     }
     actors.clear();
     objects.clear();
@@ -831,7 +825,7 @@ void Game::getRangePlatforms(){
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
                     platformRanges.push_back(range);
-                    printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
+                    // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
                     break;
                 }
                 end = platforms[i]->getX();

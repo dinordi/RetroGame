@@ -43,5 +43,6 @@ protected:
     bool lastHit;
     int damage;
     int damageDone;
-
+protected:
+    bool inUse;
 };

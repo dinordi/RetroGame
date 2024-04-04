@@ -1,7 +1,7 @@
 #include "actor.h"
 
 
-Actor::Actor(int ID,int range,int x, int y, bool inUse) : ID(ID), range(range), x(x), y(y){}
+Actor::Actor(int ID,int range,int x, int y) : ID(ID), range(range), x(x), y(y){}
 
 int Actor::getX()
 {
