@@ -10,7 +10,8 @@ public:
         PLAYER,
         PROJECTILE,
         OBJECT,
-        ACTOR
+        ACTOR,
+        BOSS
     };
 public:
     Actor(int ID,int range,int x, int y);

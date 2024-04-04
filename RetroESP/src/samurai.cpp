@@ -10,6 +10,7 @@ Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samur
     isRanged = false;
     hitAnimation = 0;
     hit = false;
+    damage = 40;
 }
 
 void Samurai::behaviour() 
@@ -22,6 +23,7 @@ void Samurai::behaviour()
 
     xSpeed = isFacingRight ? 2 : -2;
 
+    updateySpeed(gravity);
     y = y + ySpeed; 
     x = x + xSpeed;
     myState = walking;

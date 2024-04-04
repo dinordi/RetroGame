@@ -14,6 +14,8 @@ public:
     Projectile* makeProjectile() override;
     void manageAnimation() override;
     bool collisionWith(int damage);
+    Type getType() const override { return Type::BOSS; }
+    friend class Game;
 private:
     int hitAnimation;
 };
