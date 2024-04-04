@@ -275,6 +275,7 @@ void Game::nextLevelAnimation()
             player->inUse = true;
             player->x = 780;
             player->y = 100;
+            player->hp = 100;
             if(BOB) player->setBobMode();
             actors.clear();
             objects.clear();
@@ -798,6 +799,8 @@ void Game::resetToBegin()
     player->inUse = true;
     player->x = 780;
     player->y = 100;
+    player->hp = 100;
+    player->myState = idle;
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
