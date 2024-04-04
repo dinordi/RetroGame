@@ -7,7 +7,8 @@
 //#include "Entity.h"
 #include "Bullet.h"
 #include "samurai.h"
-#include <algorithm>
+// #include <algorithm>
+
 #include "globals.h"
 
 const float dt = 1.0f / 60;
@@ -641,8 +642,7 @@ void Game::checkDeleted(){
                 }
                 if (gevondenProjectile != projectiles.end()) {
                     // printk("gevondenProjectile != projectiles.end()\n");
-                    object->hit = 0;
-                    object->myState = flying;
+
                     projectiles.erase(gevondenProjectile);
                 }
                 if (gevondenEnemy != enemies.end()) {

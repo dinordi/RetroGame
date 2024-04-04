@@ -8,10 +8,10 @@ int Fatbat::randomCounter = 0;
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
-    // for(int i = 0; i < 1000; i++)
-    // {
-    //     randomNumbers[i] = sys_rand32_get();
-    // }
+    for(int i = 0; i < 1000; i++)
+    {
+        randomNumbers[i] = sys_rand32_get();
+    }
 
     damage = 5;
     hp = 20;

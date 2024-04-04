@@ -123,10 +123,13 @@ Projectile* Player::makeProjectile(){
                 bullet->inUse = true;
                 bullet->y = this->getY() - 3;
                 bullet->isFacingRight = isFacingRight;
+                bullet->hit = 0;
+                bullet->myState = flying;
+                bullet->xSpeed = 8;
                 bulletLocal =  bullet;
                 break;
             }
-            
+
         }
 
     if(bulletLocal != nullptr)
