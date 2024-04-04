@@ -43,12 +43,12 @@ int main(void)
         return 0;
     }
 	ButtonHandler* button = new ButtonHandler();
-	Flash_esp flash_esp;
+	Flash_esp* flash_esp = new Flash_esp();
 	FPGA* fpga = new FPGA();
 	Audio* audio = new Audio();
-	Score score(&flash_esp);
+	Score* score = new Score(flash_esp);
 
-	Game* game = new Game(fpga, button, audio,&score);
+	Game* game = new Game(fpga, button, audio, score);
 	
 	int lastState = 1;
 
