@@ -4,23 +4,24 @@
 //#include "Projectile.h"
 #include "sprites.h"
 #include "endian.h"
-#include "platform.h"
 //#include "Entity.h"
 #include "Bullet.h"
 #include "samurai.h"
-#include <algorithm>
-#include "Fatbat.h"
+// #include <algorithm>
 
+#include "globals.h"
 
 const float dt = 1.0f / 60;
 int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
-    //sys_csrand_get(randomNumbers, 1000);
-    spriteData = new uint16_t[900];
+    sys_csrand_get(randomNumbers, 1000);
+    spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
+    boss = new Samurai(samuraiSprites, 15, 1000, 250);
+    boss->inUse = false;
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
@@ -34,22 +35,22 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
-    loadPlatforms(level);
+    loadPlatforms(currentLevel);
     readInput();
 }
 
 Game::~Game()
 {
-    for (auto entity : entities)
-    {
-        delete entity;
-    }
-    entities.clear();
-    for (auto platform : platforms)
-    {
-        delete platform;
-    }
-    platforms.clear();
+    // for (auto entity : entities)
+    // {
+    //     delete entity;
+    // }
+    // entities.clear();
+    // for (auto platform : platforms)
+    // {
+    //     delete platform;
+    // }
+    // platforms.clear();
 }
 
 void Game::update()
@@ -67,6 +68,18 @@ void Game::update()
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
+            break;
+        }
+        case BOSSFIGHT:
+        {
+            sendToDisplay();
+            boss->inUse = true;
+            boss->hp = 150;
+            boss->myState = idle;
+            objects.push_back(boss);
+            entities.push_back(boss);
+            actors.push_back(boss);
+            gameState = Playing;
             break;
         }
         case Playing:
@@ -119,6 +132,8 @@ void Game::updateSelection()
     readInput();
     if(buttonStatus.start && counter > 60)
     {
+        audio->play_effect(audio->MNU_CONFIRM);
+
         switch(stateSelect)
         {
             case Playing:
@@ -201,28 +216,31 @@ void Game::sendToDisplay()
 
 void Game::addEnemy()
 {
-    addFatbat(randomNumbers[frames % 1000] % 1200 + 360, randomNumbers[frames % 1000] % 400);
+    addFatbat((sys_rand32_get() % 1200) + 300, (sys_rand32_get() % 400));
     liveEnemies++;
     
 }
 
 void Game::addFatbat(int x, int y)
 {
-    Fatbat* entity = new Fatbat(x,y);
-    //printk("id: %d\n", entity->getID());
-    entities.push_back(entity);
-    enemies.push_back(entity);
-    objects.push_back(entity);
-    actors.push_back(entity);
-}
+    for(auto fatbat : fatbats)
+    {
+        if(!fatbat->inUse)
+        {
+            fatbat->x = x;
+            fatbat->y = y;
+            fatbat->inUse = true;
+            fatbat->myState = idle;
+            fatbat->hp = 20;
+            entities.push_back(fatbat);
+            enemies.push_back(fatbat);
+            objects.push_back(fatbat);
+            actors.push_back(fatbat);
+            return;
+        }
+    }
 
-// void Game::addProjectile(const int* playerSprites,int range,int x, int y)
-// {
-//     Object* projectile = new Projectile(playerSprites,range,x,y);
-//     printk("id: %d\n", projectile->getID());
-//     projectiles.push_back(static_cast<Projectile*>(projectile));
-//     objects.push_back(projectile);
-// }
+}
 
 void Game::readInput()
 {
@@ -265,11 +283,14 @@ void Game::nextLevelAnimation()
         if(Curtain > 640){
             liveEnemies = 0;
             killedEnemies = 0;
-            for(auto actor : actors)
+            for(auto object : objects)
             {
-                delete actor;
+                object->inUse = false;
             }
-            player = new Player(player1Sprites,7,780,100);
+            player->inUse = true;
+            player->x = 780;
+            player->y = 100;
+            player->hp = 100;
             if(BOB) player->setBobMode();
             actors.clear();
             objects.clear();
@@ -286,7 +307,7 @@ void Game::nextLevelAnimation()
                 currentLevel = 0;
             }
 
-            loadPlatforms(level);
+            loadPlatforms(currentLevel);
             fadeIn = true;
     }
     }
@@ -322,8 +343,10 @@ void Game::levelFading(int line)
 
 void Game::drawMainMenu()
 {
-    std::string title = "beste game";
-    std::string start = "press start to play";
+    std::string title = "cosmic conquest";
+    std::string title2 = "saga of sacrifice";
+
+    std::string start = "press start";
     std::string option1 = "play";
     std::string option2 = "dr bob mode";
     std::string option3 = "highscore";
@@ -331,14 +354,15 @@ void Game::drawMainMenu()
     static int yval = 300;
     static bool draw = true;
 
-    drawString(title, 250, 100);
+    // drawString(title, 230, 100);
+    drawString(title2, 200, 130);
     if(frames % 30 == 0)                                        //Blink every 0.5 seconds
     {
         draw = !draw;
     }
     if(draw)
     {
-        drawString(start, 200, 200);
+        drawString(start, 220, 200);
     }
 
     drawString(option1, 250, 300);
@@ -495,10 +519,12 @@ void Game::drawLevel()
         range = actor->range; 
 
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
+        // printk("Actor type: %d\n", actor->getType());
+        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY)
+        {
+            Entity* ob = static_cast<Entity*>(actor);
 
-        Entity* ob = dynamic_cast<Entity*>(actor);
-        if(ob != nullptr)
-        // Check if player is attacking and adjust the sprite position
+            // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
             {
                 playerAttackOffsetX = ob->attackCheck(true); //Get X offset
@@ -506,7 +532,11 @@ void Game::drawLevel()
                 actorX += playerAttackOffsetX;
                 actorY -= playerAttackOffsetY;
             }
-
+        }
+        if(actor->getType() == Actor::Type::PROJECTILE)
+        {
+            printk("Projectile drawing\n");
+        }
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
 
@@ -515,9 +545,7 @@ void Game::drawLevel()
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actorY);
-            // if(actor->isProjectile())
-            //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
-        
+    
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -533,23 +561,37 @@ void Game::drawLevel()
     // }
 }
 
-void Game::loadPlatforms(const int level[3][16][63])
+void Game::loadPlatforms(int levelNum)
 {
-    for(int i = 0; i < 16; i++) // 16 rows
+    switch(levelNum)
     {
-        for(int j = 0; j < 63; j++) // 63 columns
-        {
-            if(level[currentLevel][i][j] != 0)    // If the tile is not empty
+        case 0:
             {
-                int tileX = j * 31; //31 is tile width/height
-                int tileY = i * 31;
-                int tileID = level[currentLevel][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
-                platforms.push_back(platform);
-                actors.push_back(platform);
+                for(auto platform : level1)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
             }
-        }
-       
+        case 1:
+            {
+                for(auto platform : level2)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
+            }
+        case 2:
+            {
+                for(auto platform : level3)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
+            }
     }
 }
 
@@ -564,7 +606,8 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-    if(killedEnemies >= maxEnemies[currentLevel]) gameState = NextLevel;
+    if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
+    if(boss->myState == dead) gameState = NextLevel;
     if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) addEnemy();
     for(Entity* entity : entities)
     {
@@ -591,12 +634,16 @@ void Game::checkDeleted(){
     {
         if(object->myState == dead)
         {
-            if(object->isPlayer())
+            // printk("CheckDeleted someone is dead\n");
+
+            if(object->getType() == Actor::Type::PLAYER)
             {
+                // printk("player\n");
                 gameState = GameOver;
             }
             else
             {
+                // printk("geen player\n");
                 auto gevondenActor = std::find(actors.begin(), actors.end(), object);
                 auto gevondenObject = std::find(objects.begin(), objects.end(), object);
                 auto gevondenEntity = std::find(entities.begin(), entities.end(), object);
@@ -605,24 +652,42 @@ void Game::checkDeleted(){
 
                 // Controleer of de pointer is gevonden
                 if (gevondenActor != actors.end()) {
+                    // printk("gevondenActor != actors.end()\n");
+
                     actors.erase(gevondenActor); // Verwijder de pointer uit de vector
                 } 
                 if (gevondenObject != objects.end()) {
+                    // printk("gevondenObject != objects.end()\n");
+
                     objects.erase(gevondenObject);
                 }
                 if (gevondenEntity != entities.end()) {
+                    // printk("gevondenEntity != entities.end()\n");
+
                     entities.erase(gevondenEntity);
                 }
                 if (gevondenProjectile != projectiles.end()) {
+                    // printk("gevondenProjectile != projectiles.end()\n");
+
                     projectiles.erase(gevondenProjectile);
                 }
                 if (gevondenEnemy != enemies.end()) {
+                    // printk("gevondenEnemy != enemies.end()\n");
                     enemies.erase(gevondenEnemy);
                     killedEnemies++;
                     liveEnemies--;
-                    score->assign_monster_points();
+                    audio->play_effect(audio->M_DEATH);
+                    if(object->getType() == Actor::Type::BOSS)
+                    {
+                        score->assign_boss_points();
+                    }
+                    else
+                    {
+                        score->assign_monster_points();
+                    }
                 }
-                delete object;
+                // delete object;
+                object->inUse = false;
             } 
         }
     }
@@ -659,7 +724,7 @@ void Game::realCollisionCheck(Object* object){
     int objectLeft = object->getX() - object->range;
     int objectRight = object->getX() + object->range;
 
-    if(dynamic_cast<Projectile*>(object) != nullptr)
+    if(object->getType() == Actor::Type::PROJECTILE)
     {
         for(auto platform : platforms)
         {
@@ -674,7 +739,7 @@ void Game::realCollisionCheck(Object* object){
             }
         }
     }
-    if(dynamic_cast<Projectile*>(object) != nullptr || object->isPlayer()) {
+    if(object->getType() == Actor::Type::PROJECTILE || object->isPlayer()) {
         for(auto enemy : enemies)
         {
             int enemyTop = enemy->getY() - enemy->range;
@@ -689,7 +754,7 @@ void Game::realCollisionCheck(Object* object){
                 
         }
     }
-    if(dynamic_cast<Enemy*>(object) != nullptr) {
+    if(object->getType() == Actor::Type::ENEMY || object->getType() == Actor::Type::BOSS) {
         for(auto projectile : projectiles)
         {
             int projectileTop = projectile->getY() - projectile->range;
@@ -705,6 +770,18 @@ void Game::realCollisionCheck(Object* object){
                 
         }
     }
+    if(object->isPlayer()) 
+    {
+        int bossTop = boss->getY() - boss->range;
+        int bossBottom = boss->getY() + boss->range;
+        int bossLeft = boss->getX() - boss->range;
+        int bossRight = boss->getX() + boss->range;
+
+        if(bossRight >= objectLeft && bossLeft <= objectRight && bossTop <= objectBottom && bossBottom >= objectTop && boss->myState == attacking)
+        {
+                object->collisionWith(boss->damage);
+        }
+    }
 }
  
 int Game::gravityCheck(Object* object,int groundlevel){
@@ -713,7 +790,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
         { 
             //printf("GL: %d Y: %d\n",groundlevel,object->getY());    //add moving speed and gravity to current y
             // y = y1;
-            if(object->y > groundlevel) //if player is on platform
+            if(object->getY() > groundlevel) //if player is on platform
             {
                 object->y = groundlevel;
                 object->isGrounded = true;
@@ -746,14 +823,16 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
+        // printk("projectile added\n");
     }
 }
 
 void Game::resetToBegin()
 {
-    for(auto actor : actors)
+    for(auto object : objects)
     {
-        delete actor;
+        // delete actor;
+        object->inUse = false;
     }
     actors.clear();
     objects.clear();
@@ -761,16 +840,19 @@ void Game::resetToBegin()
     platforms.clear();
     enemies.clear();
     projectiles.clear();
-    player = new Player(player1Sprites,7,780,100);
+    player->inUse = true;
+    player->x = 780;
+    player->y = 100;
+    player->hp = 100;
+    player->myState = idle;
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
     currentLevel = 0;
-    loadPlatforms(level);
+    loadPlatforms(currentLevel);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
-    loadPlatforms(level);
     liveEnemies = 0;
     killedEnemies = 0;
     Curtain = 0;
@@ -790,7 +872,7 @@ void Game::getRangePlatforms(){
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
                     platformRanges.push_back(range);
-                    printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
+                    // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
                     break;
                 }
                 end = platforms[i]->getX();

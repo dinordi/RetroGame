@@ -24,6 +24,7 @@ public:
     int attackCheck(bool isX) override;
     bool collisionWith(int damage) override;
     void manageAnimation() override;
+    Type getType() const override { return PLAYER; }
     friend class Game;
     void setBobMode();
 private:

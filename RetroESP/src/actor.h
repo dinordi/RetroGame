@@ -3,6 +3,16 @@
 const float gravity = 0.52f;
 
 class Actor {
+public: 
+    enum Type {
+        ENEMY,
+        PLATFORM,
+        PLAYER,
+        PROJECTILE,
+        OBJECT,
+        ACTOR,
+        BOSS
+    };
 public:
     Actor(int ID,int range,int x, int y);
     int getX();
@@ -12,6 +22,7 @@ public:
     virtual bool isPlayer() const { return false; }
     virtual bool isProjectile() const { return false; }
     virtual int getID();
+    virtual Type getType() const {return ACTOR;}
     friend class Game;
 
 protected:

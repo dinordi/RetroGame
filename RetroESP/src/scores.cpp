@@ -59,7 +59,7 @@ void Score::set_time_points()
 {
   
   time_score = time_score + (time_multiplier * 0.05);
-  printk("score= %d\n",time_score);
+  // printk("score= %d\n",time_score);
 
 }
 void Score::reset_leaderboard()
@@ -138,7 +138,7 @@ void Score::move_down_leaderboard()
 {
 
   // Start moving elements from the end towards the replace_score position
-  printk("replace player: %d\n", replace_score);
+  // printk("replace player: %d\n", replace_score);
   
   for (int i = 9; i > replace_score; i--) {
     player_and_score[i] = player_and_score[i - 1];
