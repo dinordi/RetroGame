@@ -14,6 +14,7 @@ Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerS
     isRanged = 1;
     damage = 0;
     hit = false;
+    BOB = false;
     hitAnimation = 0;
 }
 
@@ -172,9 +173,14 @@ void Player::manageAnimation()
     }
 }
 
+void Player::setBobMode()
+{
+    BOB = true;
+}
+
 bool Player::collisionWith(int damage)
 {
-    if(damage && damage != 20){
+    if(damage && damage != 20 && !BOB){
         hit = true;
         damageDone = damage;
     }

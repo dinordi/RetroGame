@@ -14,6 +14,6 @@ public:
     
 private:
     int hitAnimation;
-    int randomNumbers[1000];
+    uint32_t randomNumbers[1000];
     static int randomCounter;
 };
