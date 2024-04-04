@@ -21,8 +21,9 @@ class Object : public Actor{
     void updateySpeed(float speed);
     void setySpeed(float speed);
     virtual void manageAnimation();
-    virtual void behaviour();
+    virtual void behaviour() = 0;
     state getState() const { return myState; }
+    Type getType() const { return OBJECT; }
     virtual bool collisionWith(int damage);
     // int getState() const { return myState; }
     friend class Game;
@@ -38,6 +39,9 @@ protected:
     bool hasGravity;
     bool hasCollision;
     bool isGrounded;
+    bool hit;
+    bool lastHit;
     int damage;
+    int damageDone;
     
 };

@@ -1,0 +1,7 @@
+verilog xil_defaultlib  \
+"../../../../Videokaart2.gen/sources_1/ip/Sprite15x15_1/sim/Sprite15x15_1.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "entity.h"
+#include "Enemy.h"
+#include "sprites.h"
 
-
-class Samurai : public Entity
+class Samurai : public Enemy
 {
 public:
     Samurai(const int* samuraiSprites, int range,int x,int y);
@@ -13,5 +13,8 @@ public:
     int attackCheck(bool isX) override;
     Projectile* makeProjectile() override;
     void manageAnimation() override;
+    bool collisionWith(int damage);
+private:
+    int hitAnimation;
 };
 
