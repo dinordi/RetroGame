@@ -13,7 +13,7 @@ Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
     }
 
     damage = 5;
-    hp = 50;
+    hp = 20;
     xSpeed = 0;
     myState = idle;
     isFacingRight = false;
@@ -83,7 +83,6 @@ void Fatbat::manageAnimation()
     spriteCounter+= 1;
     int mirror = 0;
     static int divider = 100;
-    int index = spriteCounter / divider;
 
     if(!isFacingRight)
     {
