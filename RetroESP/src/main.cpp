@@ -22,12 +22,39 @@
 #include "scores.h"
 #include "flash_esp32.h"
 
+#include "globals.h"
+#include "level.h"
+
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
 #define GPIO_PIN 14
 	const struct device *const input = DEVICE_DT_GET(CHECK);
 
-void updateGame();
+
+std::vector<Fatbat*> fatbats;
+std::vector<Platform*> level1;
+std::vector<Platform*> level2;
+std::vector<Platform*> level3;
+
+
+
+void loadPlatforms(int levelNum, std::vector<Platform*>* platforms)
+{
+	for(int i = 0; i < 16; i++) // 16 rows
+    {
+        for(int j = 0; j < 63; j++) // 63 columns
+        {
+            if(level[levelNum][i][j] != 0)    // If the tile is not empty
+            {
+                int tileX = j * 31; //31 is tile width/height
+                int tileY = i * 31;
+                int tileID = level[levelNum][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
+                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
+                platforms->push_back(platform);
+            }
+        }
+    }
+}
 
 int main(void)
 {
@@ -42,6 +69,22 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
+
+	for (int i = 0; i < 40; i++) {
+    	Fatbat* fatbat = new Fatbat(0, 0);
+    	fatbats.push_back(fatbat);
+	}
+	// std::vector<Werewolf*> werewolfs;
+	// for (int i = 0; i < 40; i++) {
+    // 	Werewolf* werewolf = new Fatbat(0, 0);
+    // 	werewolfs.push_back(werewolf);
+	// }
+
+	loadPlatforms(0, &level1);
+	loadPlatforms(1, &level2);
+	loadPlatforms(2, &level3);
+
+
 	ButtonHandler* button = new ButtonHandler();
 	Flash_esp* flash_esp = new Flash_esp();
 	FPGA* fpga = new FPGA();

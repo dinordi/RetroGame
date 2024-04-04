@@ -13,7 +13,7 @@ public:
         ACTOR
     };
 public:
-    Actor(int ID,int range,int x, int y);
+    Actor(int ID,int range,int x, int y, bool inUse=false);
     int getX();
     int getY();
     void move(float x, float y);
@@ -29,5 +29,7 @@ protected:
     float y;
     int range;
     int ID;
+protected:
+    bool inUse;
 
 };
