@@ -21,6 +21,7 @@ class Object;
 struct PlatformRange {
     int xbegin;
     int xend;
+    int y;
 };
 
 typedef enum
@@ -47,6 +48,7 @@ public:
     void sendToDisplay();
     void addEnemy();
     void addFatbat(int x,int y);
+    void addWereWolf(int beginx,int endx, int y);
     void addProjectile(const int* playerSprites,int range,int x, int y);
     void readInput();
     void tick();

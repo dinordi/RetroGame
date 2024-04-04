@@ -8,7 +8,7 @@
 #include <zephyr/storage/flash_map.h>
 #include <zephyr/fs/nvs.h>
 #include <cstdint>
-#include <sstream>
+//#include <sstream>
 #include <cstdint>
 #include <vector>
 #include <string>

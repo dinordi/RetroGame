@@ -4,13 +4,14 @@
 WerewolfMan::WerewolfMan(int x, int y) : Enemy(wherewolfSprites,7,x,y)
 {
     damage = 20;
-    hp = 60;
+    hp = 50;
     ySpeed = 0;
     xSpeed = 2;
-    myState = idle;
+    myState = walking;
     isFacingRight = false;
     hitAnimation = 0;
     hit = false;
+    range = 7;
 }
 
 bool WerewolfMan::collisionWith(int damage){
@@ -23,15 +24,21 @@ bool WerewolfMan::collisionWith(int damage){
 }
 void WerewolfMan::behaviour(){
 
-    if(isFacingRight)
+    switch (myState)
     {
-        xSpeed = 1;
+        case walking:
+            x = x + xSpeed;
+            if(x < endx)
+                xSpeed = 1;
+            else
+                isFacingRight = false;
+            if(x > beginx)
+                xSpeed = -1;
+            else
+                isFacingRight = true;
+            break;
     }
-    else
-    {
-        xSpeed = -1;
-    }
-    x = x + xSpeed;
+
 }
 void WerewolfMan::manageAnimation(){
     spriteCounter+= 1;

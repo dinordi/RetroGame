@@ -34,6 +34,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     gameState = Menu;
     stateSelect = Playing;
     loadPlatforms(currentLevel);
+    getRangePlatforms();
     readInput();
 }
 
@@ -80,7 +81,6 @@ void Game::update()
             player->setBobMode();
             BOB = true;
             gameState = Playing;
-            getRangePlatforms();
             break;
         case Paused:
             break;
@@ -226,7 +226,29 @@ void Game::addFatbat(int x, int y)
     }
 
 }
+void Game::addWereWolf(int beginx,int endx, int y)
+{
+    for(auto werewolfman : werewolfMans)
+    {
+        if(!werewolfman->inUse)
+        {
+            liveEnemies++;
+            werewolfman->x = (beginx + endx) / 2;
+            werewolfman->beginx = beginx;
+            werewolfman->endx = endx;
+            werewolfman->y = y - werewolfman->range;
+            werewolfman->inUse = true;
+            werewolfman->myState = walking;
+            werewolfman->hp = 50;
+            entities.push_back(werewolfman);
+            enemies.push_back(werewolfman);
+            objects.push_back(werewolfman);
+            actors.push_back(werewolfman);
+            return;
+        }
+    }
 
+}
 void Game::readInput()
 {
     buttonStatus.left = button->pinGet(1);
@@ -282,6 +304,7 @@ void Game::nextLevelAnimation()
             platforms.clear();
             enemies.clear();
             projectiles.clear();
+            platformRanges.clear();
             objects.push_back(player);
             entities.push_back(player);
             actors.push_back(player);
@@ -292,6 +315,7 @@ void Game::nextLevelAnimation()
             }
 
             loadPlatforms(currentLevel);
+            getRangePlatforms();
             fadeIn = true;
     }
     }
@@ -582,7 +606,13 @@ void Game::tick()
     int xSpeed = 0, x = 0;
     float y  = 0;
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = NextLevel;
-    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) addEnemy();
+    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) 
+    {
+        if(killedEnemies % 2 == 0)
+            addWereWolf(platformRanges[killedEnemies/2].xbegin,platformRanges[killedEnemies/2].xend,platformRanges[killedEnemies/2].y); 
+        else
+            addEnemy();
+    }
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
@@ -795,6 +825,7 @@ void Game::resetToBegin()
     platforms.clear();
     enemies.clear();
     projectiles.clear();
+    platformRanges.clear();
     player->inUse = true;
     player->x = 780;
     player->y = 100;
@@ -803,6 +834,7 @@ void Game::resetToBegin()
     actors.push_back(player);
     currentLevel = 0;
     loadPlatforms(currentLevel);
+    getRangePlatforms();
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -824,6 +856,7 @@ void Game::getRangePlatforms(){
                     PlatformRange range;
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
+                    range.y = platforms[i]->getY() - platforms[i]->range;
                     platformRanges.push_back(range);
                     // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
                     break;
