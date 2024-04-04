@@ -9,7 +9,7 @@
 #include "audio_module.h"
 #include "scores.h"
 #include <zephyr/random/random.h>
-#include <utility>  // Voor std::pair
+// #include <utility>  // Voor std::pair
 
 
 class Enemy;
@@ -51,7 +51,7 @@ public:
     void readInput();
     void tick();
     void drawLevel();
-    void loadPlatforms(const int level[8][16][63]);
+    void loadPlatforms(int levelNum);
     void drawMainMenu();
     void drawCredits();
     void drawHighscores();

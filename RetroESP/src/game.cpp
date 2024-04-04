@@ -4,13 +4,12 @@
 //#include "Projectile.h"
 #include "sprites.h"
 #include "endian.h"
-#include "platform.h"
 //#include "Entity.h"
 #include "Bullet.h"
 #include "samurai.h"
-#include <algorithm>
-#include "Fatbat.h"
+// #include <algorithm>
 
+#include "globals.h"
 
 const float dt = 1.0f / 60;
 int count = 0;
@@ -18,7 +17,7 @@ int count = 0;
 Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
     sys_csrand_get(randomNumbers, 1000);
-    spriteData = new uint16_t[900];
+    spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
     objects.push_back(player);
@@ -34,22 +33,22 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
-    loadPlatforms(level);
+    loadPlatforms(currentLevel);
     readInput();
 }
 
 Game::~Game()
 {
-    for (auto entity : entities)
-    {
-        delete entity;
-    }
-    entities.clear();
-    for (auto platform : platforms)
-    {
-        delete platform;
-    }
-    platforms.clear();
+    // for (auto entity : entities)
+    // {
+    //     delete entity;
+    // }
+    // entities.clear();
+    // for (auto platform : platforms)
+    // {
+    //     delete platform;
+    // }
+    // platforms.clear();
 }
 
 void Game::update()
@@ -209,21 +208,24 @@ void Game::addEnemy()
 
 void Game::addFatbat(int x, int y)
 {
-    Fatbat* entity = new Fatbat(x,y);
-    //printk("id: %d\n", entity->getID());
-    entities.push_back(entity);
-    enemies.push_back(entity);
-    objects.push_back(entity);
-    actors.push_back(entity);
-}
+    for(auto fatbat : fatbats)
+    {
+        if(!fatbat->inUse)
+        {
+            fatbat->x = x;
+            fatbat->y = y;
+            fatbat->inUse = true;
+            fatbat->myState = idle;
+            fatbat->hp = 20;
+            entities.push_back(fatbat);
+            enemies.push_back(fatbat);
+            objects.push_back(fatbat);
+            actors.push_back(fatbat);
+            return;
+        }
+    }
 
-// void Game::addProjectile(const int* playerSprites,int range,int x, int y)
-// {
-//     Object* projectile = new Projectile(playerSprites,range,x,y);
-//     printk("id: %d\n", projectile->getID());
-//     projectiles.push_back(static_cast<Projectile*>(projectile));
-//     objects.push_back(projectile);
-// }
+}
 
 void Game::readInput()
 {
@@ -266,11 +268,13 @@ void Game::nextLevelAnimation()
         if(Curtain > 640){
             liveEnemies = 0;
             killedEnemies = 0;
-            for(auto actor : actors)
+            for(auto object : objects)
             {
-                delete actor;
+                object->inUse = false;
             }
-            player = new Player(player1Sprites,7,780,100);
+            player->inUse = true;
+            player->x = 780;
+            player->y = 100;
             if(BOB) player->setBobMode();
             actors.clear();
             objects.clear();
@@ -287,7 +291,7 @@ void Game::nextLevelAnimation()
                 currentLevel = 0;
             }
 
-            loadPlatforms(level);
+            loadPlatforms(currentLevel);
             fadeIn = true;
     }
     }
@@ -504,7 +508,10 @@ void Game::drawLevel()
                 actorY -= playerAttackOffsetY;
             }
         }
-
+        if(actor->getType() == Actor::Type::PROJECTILE)
+        {
+            printk("Projectile drawing\n");
+        }
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
 
@@ -513,9 +520,7 @@ void Game::drawLevel()
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actorY);
-            // if(actor->isProjectile())
-            //     printf("New bullet: x: %d y: %d",actorX + 144, actor->getY());
-        
+    
             //printk("ID: %d\n", actor->getID());
         }
     }
@@ -531,23 +536,37 @@ void Game::drawLevel()
     // }
 }
 
-void Game::loadPlatforms(const int level[3][16][63])
+void Game::loadPlatforms(int levelNum)
 {
-    for(int i = 0; i < 16; i++) // 16 rows
+    switch(levelNum)
     {
-        for(int j = 0; j < 63; j++) // 63 columns
-        {
-            if(level[currentLevel][i][j] != 0)    // If the tile is not empty
+        case 0:
             {
-                int tileX = j * 31; //31 is tile width/height
-                int tileY = i * 31;
-                int tileID = level[currentLevel][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
-                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
-                platforms.push_back(platform);
-                actors.push_back(platform);
+                for(auto platform : level1)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
             }
-        }
-       
+        case 1:
+            {
+                for(auto platform : level2)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
+            }
+        case 2:
+            {
+                for(auto platform : level3)
+                {
+                    platforms.push_back(platform);
+                    actors.push_back(platform);
+                }
+                break;
+            }
     }
 }
 
@@ -634,7 +653,8 @@ void Game::checkDeleted(){
                     audio->play_effect(audio->M_DEATH);
                     score->assign_monster_points();
                 }
-                delete object;
+                // delete object;
+                object->inUse = false;
             } 
         }
     }
@@ -758,14 +778,16 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
+        // printk("projectile added\n");
     }
 }
 
 void Game::resetToBegin()
 {
-    for(auto actor : actors)
+    for(auto object : objects)
     {
-        delete actor;
+        // delete actor;
+        object->inUse = false;
     }
     actors.clear();
     objects.clear();
@@ -773,16 +795,17 @@ void Game::resetToBegin()
     platforms.clear();
     enemies.clear();
     projectiles.clear();
-    player = new Player(player1Sprites,7,780,100);
+    player->inUse = true;
+    player->x = 780;
+    player->y = 100;
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
     currentLevel = 0;
-    loadPlatforms(level);
+    loadPlatforms(currentLevel);
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
-    loadPlatforms(level);
     liveEnemies = 0;
     killedEnemies = 0;
     Curtain = 0;
@@ -802,7 +825,7 @@ void Game::getRangePlatforms(){
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
                     platformRanges.push_back(range);
-                    printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
+                    // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
                     break;
                 }
                 end = platforms[i]->getX();
