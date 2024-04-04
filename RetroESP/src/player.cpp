@@ -1,7 +1,6 @@
 #include "player.h"
 #include "sprites.h"
 #include "Bullet.h"
-#include <zephyr/sys/printk.h>
 #include <cstdio>
 #include "globals.h"
 
@@ -87,7 +86,6 @@ void Player::behaviour() {
     if(hp <= 0)
     {
         myState = dead;
-        printk("Player is dead\n");
     }
     updateySpeed(gravity); 
     y = y + ySpeed; 
@@ -119,7 +117,6 @@ Projectile* Player::makeProjectile(){
         {
             if(!bullet->inUse )
             {
-                printk("Bullet found\n");
                 bullet->inUse = true;
                 bullet->y = this->getY() - 3;
                 bullet->isFacingRight = isFacingRight;
@@ -138,10 +135,6 @@ Projectile* Player::makeProjectile(){
             bulletLocal->x = this->getX() + 3;
         else
             bulletLocal->x = this->getX() - 3;
-    }
-    if(bulletLocal == nullptr)
-    {
-        printk("No bullets available\n");
     }
     // printk("bullet X: %d, bullet Y:%d\n",static_cast<int>(bulletLocal->x), static_cast<int>(bulletLocal->y));
     return bulletLocal;

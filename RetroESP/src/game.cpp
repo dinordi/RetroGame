@@ -20,7 +20,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
-    boss = new Samurai(samuraiSprites, 15, 1000, 250);
+    boss = new Samurai(1000, 250, 400, 400);
     boss->inUse = false;
     objects.push_back(player);
     entities.push_back(player);
@@ -31,7 +31,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     Curtain = 0;
     fadeIn = false;
     BOB = false;
-    addEnemy();
+    // addEnemy();
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -70,18 +70,21 @@ void Game::update()
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
+            boss->myState = idle;
             break;
         }
         case BOSSFIGHT:
         {
-            sendToDisplay();
+            // sendToDisplay();
             boss->inUse = true;
             boss->hp = 150;
             boss->myState = idle;
+            boss->samState = waiting;
             objects.push_back(boss);
             entities.push_back(boss);
             actors.push_back(boss);
             gameState = Playing;
+            killedEnemies = 0;
             break;
         }
         case Playing:
@@ -120,9 +123,13 @@ void Game::update()
     }
     frames++;
   
-    if(frames == 30)
+    if(frames == 120)
     {
-        audio->play_music(audio->MENU_MUSIC);
+        printk("Sending music\n");
+        // audio->play_music(audio->MENU_MUSIC);
+        // printk("\nSending sfx\n");
+        audio->play_effect(audio->B_HIT);
+        printk("\nAudio sent\n");
     }
 }
 
@@ -254,6 +261,11 @@ void Game::readInput()
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
     // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
+
+    // if(buttonStatus.start)
+    // {
+    //     audio->play_effect(audio->P_SHOOT);
+    // }
 }
 
 void Game::drawString(std::string str, int startX, int y)
@@ -522,10 +534,11 @@ void Game::drawLevel()
 
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
         // printk("Actor type: %d\n", actor->getType());
-        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY)
+        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY || actor->getType() == Actor::Type::BOSS)
         {
             Entity* ob = static_cast<Entity*>(actor);
 
+            
             // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
             {
@@ -534,10 +547,6 @@ void Game::drawLevel()
                 actorX += playerAttackOffsetX;
                 actorY -= playerAttackOffsetY;
             }
-        }
-        if(actor->getType() == Actor::Type::PROJECTILE)
-        {
-            printk("Projectile drawing\n");
         }
         if(actorY < 0 || actorY > 512 || actorX + 144 > 810 || actorX + 144 < 0 ) // if player so above roof of the screen the Y goes below zero
             continue;
@@ -610,7 +619,7 @@ void Game::tick()
     float y  = 0;
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
     if(boss->myState == dead) gameState = NextLevel;
-    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) addEnemy();
+    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) addEnemy();
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
@@ -618,6 +627,11 @@ void Game::tick()
     checkDeleted();
     for(Object* object : objects)
     {
+        if(object->getType() == Actor::Type::BOSS)
+        {
+            Samurai* samurai = static_cast<Samurai*>(object);
+            samurai->setPlayerPos(player->getX(), player->getY());
+        }
         groundLevel = collisionCheck(object);
         object->behaviour();
         y = gravityCheck(object,groundLevel);
@@ -629,6 +643,7 @@ void Game::tick()
         object->manageAnimation(); 
         //object->move(x, y);
     }
+
 }
 
 void Game::checkDeleted(){
@@ -794,7 +809,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
             // y = y1;
             if(object->getY() > groundlevel) //if player is on platform
             {
-                object->y = groundlevel;
+                object->y = groundlevel-1;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
@@ -825,7 +840,8 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
-        // printk("projectile added\n");
+
+        audio->play_effect(audio->MNU_CONFIRM);
     }
 }
 
