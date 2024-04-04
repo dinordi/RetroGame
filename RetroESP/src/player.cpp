@@ -7,7 +7,7 @@
 
 Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
-    hp = 100;
+    hp = 1;
     printX = 320;
     hasCollision = true;
     hasGravity = true;

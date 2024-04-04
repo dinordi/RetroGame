@@ -101,6 +101,7 @@ void Score::get_leaderboard()
 void Score::compare_leaderboard()
 {
   if(execute_compare_once){
+
     execute_compare_once = false;
     printk("compare");
     for (size_t i = 0; i < player_and_score.size(); ++i) {
@@ -112,17 +113,18 @@ void Score::compare_leaderboard()
             std::string score_string = player_and_score[i].substr(pos + 6);
 
             // Convert the substring to an integer
-            compare_score = std::stoi(score_string);
+              compare_score = std::stoi(score_string);
 
-            
-            //printk("current_score : %d\n",current_score);
+            //compare_score = 0;
+            printk("current_score : %d compare score : %d\n",current_score,compare_score);
             if (current_score > compare_score) {
                 //std::cout << "Highscore achieved. Place: " << i + 1 << std::endl;
-                current_score = compare_score; // Update current_score with the new high score
+                //current_score = compare_score; // Update current_score with the new high score
 
                 high_score = true;
                 compare_score = current_score;
                 replace_score = i;
+                printk("exit");
                 break; // Break after finding the first high score
             }
         }
@@ -148,14 +150,14 @@ void Score::write_leaderboard()
 {
   if(execute_write_once){
     execute_write_once =false;
-   std::string new_leaderboard;
-    std::string player_name = "M Highscore";
+    std::string new_leaderboard;
+    std::string player_name = "M highscore ";
 
     if (high_score) {
         move_down_leaderboard();
 
         // Create a new score string
-        std::string new_score_str = player_name + ": " + std::to_string(current_score);
+        std::string new_score_str = player_name + std::to_string(current_score);
 
         // Add the new score to the vector
         player_and_score[replace_score] = new_score_str;
@@ -195,5 +197,6 @@ std::string Score::currentscore_string()
 
 bool Score::higscore_state()
 {
+  //printk("highscore %d",high_score);
 return high_score;
 }

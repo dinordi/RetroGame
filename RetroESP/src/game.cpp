@@ -16,7 +16,7 @@ int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
-    sys_csrand_get(randomNumbers, 1000);
+    //sys_csrand_get(randomNumbers, 1000);
     spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
@@ -59,6 +59,8 @@ void Game::update()
     {
         case Menu:
         {
+            //score->reset_leaderboard();
+            score->get_leaderboard();
             updateSelection();
             drawMainMenu();
             break;
@@ -216,7 +218,7 @@ void Game::sendToDisplay()
 
 void Game::addEnemy()
 {
-    addFatbat((sys_rand32_get() % 1200) + 300, (sys_rand32_get() % 400));
+    addFatbat((/*sys_rand32_get() %*/ 1200) + 300, (/*sys_rand32_get() %*/ 400));
     liveEnemies++;
     
 }
@@ -400,8 +402,8 @@ void Game::drawMainMenu()
 
 void Game::drawHighscores()
 {
-
-    score->get_leaderboard();
+    //score->reset_leaderboard();
+   
 
     static int counter = 0;
     counter++;
