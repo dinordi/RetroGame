@@ -9,6 +9,7 @@
 #include "audio_module.h"
 #include "scores.h"
 #include <zephyr/random/random.h>
+#include "samurai.h"
 // #include <utility>  // Voor std::pair
 
 
@@ -32,7 +33,8 @@ typedef enum
     Drbob,
     Credits,
     NextLevel,
-    Highscores
+    Highscores,
+    BOSSFIGHT
 
 }gameStates;
 
@@ -86,6 +88,7 @@ private:
     Audio* audio;
     buttonStatuses buttonStatus;
     Player* player;
+    Samurai* boss;
     uint64_t frames;
     gameStates gameState;
     gameStates stateSelect;

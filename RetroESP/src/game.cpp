@@ -20,6 +20,8 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
+    boss = new Samurai(samuraiSprites, 15, 1000, 250);
+    boss->inUse = false;
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
@@ -66,6 +68,18 @@ void Game::update()
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
+            break;
+        }
+        case BOSSFIGHT:
+        {
+            sendToDisplay();
+            boss->inUse = true;
+            boss->hp = 150;
+            boss->myState = idle;
+            objects.push_back(boss);
+            entities.push_back(boss);
+            actors.push_back(boss);
+            gameState = Playing;
             break;
         }
         case Playing:
@@ -581,7 +595,8 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-    if(killedEnemies >= maxEnemies[currentLevel]) gameState = NextLevel;
+    if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
+    if(boss->myState == dead) gameState = NextLevel;
     if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel]) addEnemy();
     for(Entity* entity : entities)
     {
@@ -651,7 +666,14 @@ void Game::checkDeleted(){
                     killedEnemies++;
                     liveEnemies--;
                     audio->play_effect(audio->M_DEATH);
-                    score->assign_monster_points();
+                    if(object->getType() == Actor::Type::BOSS)
+                    {
+                        score->assign_boss_points();
+                    }
+                    else
+                    {
+                        score->assign_monster_points();
+                    }
                 }
                 // delete object;
                 object->inUse = false;
@@ -721,7 +743,7 @@ void Game::realCollisionCheck(Object* object){
                 
         }
     }
-    if(object->getType() == Actor::Type::ENEMY) {
+    if(object->getType() == Actor::Type::ENEMY || object->getType() == Actor::Type::BOSS) {
         for(auto projectile : projectiles)
         {
             int projectileTop = projectile->getY() - projectile->range;
@@ -735,6 +757,18 @@ void Game::realCollisionCheck(Object* object){
                 object->collisionWith(projectile->damage);
             }
                 
+        }
+    }
+    if(object->isPlayer()) 
+    {
+        int bossTop = boss->getY() - boss->range;
+        int bossBottom = boss->getY() + boss->range;
+        int bossLeft = boss->getX() - boss->range;
+        int bossRight = boss->getX() + boss->range;
+
+        if(bossRight >= objectLeft && bossLeft <= objectRight && bossTop <= objectBottom && bossBottom >= objectTop && boss->myState == attacking)
+        {
+                object->collisionWith(boss->damage);
         }
     }
 }
