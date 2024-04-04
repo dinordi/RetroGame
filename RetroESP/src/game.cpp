@@ -549,7 +549,7 @@ void Game::drawLevel()
         if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY || actor->getType() == Actor::Type::BOSS)
         {
             Entity* ob = static_cast<Entity*>(actor);
-
+            actorY--;
             
             // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
@@ -629,6 +629,7 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
+    printk("Entered tick\n");
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
     if(boss->myState == dead) gameState = NextLevel;
     if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) 
@@ -638,11 +639,17 @@ void Game::tick()
         else
             addEnemy();
     }
+    printk("possibly added enemies\n");
+
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
     }
+    printk("checked Ranged attack\n");
+
     checkDeleted();
+    printk("checkced deleted\n");
+
     for(Object* object : objects)
     {
         if(object->getType() == Actor::Type::BOSS)
@@ -655,12 +662,16 @@ void Game::tick()
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
     }
+    printk("gravity and behaviour done\n");
+
     for(Object* object : objects)
     {
         realCollisionCheck(object);
         object->manageAnimation(); 
         //object->move(x, y);
     }
+    printk("realcollisioncheck\n");
+
 
 }
 
@@ -827,7 +838,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
             // y = y1;
             if(object->getY() > groundlevel) //if player is on platform
             {
-                object->y = groundlevel-1;
+                object->y = groundlevel;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
@@ -898,14 +909,31 @@ void Game::resetToBegin()
 }
 
 void Game::getRangePlatforms(){
+    int leftplatformID;
+    int rightplatformID;
+    switch(currentLevel)
+    {
+        case 0:
+            leftplatformID = 100;
+            rightplatformID = 101;
+            break;
+        case 1:
+            leftplatformID = 123;
+            rightplatformID = 124;
+            break;
+        case 2:
+            leftplatformID = 127;
+            rightplatformID = 128;
+            break;
+    }
     for (int i = 0; i < platforms.size(); ++i) {
-        if (platforms[i]->getID() == 100) { // Begin van een platform
+        if (platforms[i]->getID() == leftplatformID) { // Begin van een platform
             int start = platforms[i]->getX() - platforms[i]->range;
             int y = platforms[i]->getY(); // Y-positie van het platform
             // Zoek het einde van het platform
             int end = start;
             while (i < platforms.size() && platforms[i]->getY() == y) {
-                if (platforms[i]->getID() == 101) { // Einde van een platform
+                if (platforms[i]->getID() == rightplatformID) { // Einde van een platform
                     PlatformRange range;
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
