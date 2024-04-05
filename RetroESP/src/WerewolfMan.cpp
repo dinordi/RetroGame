@@ -3,14 +3,15 @@
 
 WerewolfMan::WerewolfMan(int x, int y) : Enemy(wherewolfSprites,7,x,y)
 {
-    damage = 20;
-    hp = 60;
+    damage = 15;
+    hp = 40;
     ySpeed = 0;
-    xSpeed = 2;
-    myState = idle;
+    xSpeed = 0.75;
+    myState = walking;
     isFacingRight = false;
     hitAnimation = 0;
     hit = false;
+    range = 7;
 }
 
 bool WerewolfMan::collisionWith(int damage){
@@ -23,15 +24,25 @@ bool WerewolfMan::collisionWith(int damage){
 }
 void WerewolfMan::behaviour(){
 
-    if(isFacingRight)
+    switch (myState)
     {
-        xSpeed = 1;
+        case walking:
+            x = x + xSpeed;
+            if (isFacingRight && x >= endx - range) {
+        isFacingRight = false;
+    } else if (!isFacingRight && x <= beginx + range) {
+        isFacingRight = true;
     }
-    else
+
+    xSpeed = isFacingRight ? 1.00 : -1.00;
+            break;
+    }
+    if (hp <= 0)
     {
-        xSpeed = -1;
+        myState = dead;
     }
-    x = x + xSpeed;
+    
+
 }
 void WerewolfMan::manageAnimation(){
     spriteCounter+= 1;
@@ -65,18 +76,18 @@ void WerewolfMan::manageAnimation(){
             break;
             case attacking:
                 if(spriteCounter % 20 < 10)
-                    ID = entitySprites[0]+mirror;
+                    ID = entitySprites[4]+mirror;
                 else
-                    ID = entitySprites[1]+mirror;
+                    ID = entitySprites[5]+mirror;
                 if(spriteCounter >= 20)
                     spriteCounter = 0;
             break;
             case walking:
-                if(spriteCounter % 60 < 30)
-                    ID = entitySprites[0]+mirror;
+                if(spriteCounter % 30 < 15)
+                    ID = entitySprites[2]+mirror;
                 else
-                    ID = entitySprites[1]+mirror;
-                if(spriteCounter >= 60)
+                    ID = entitySprites[3]+mirror;
+                if(spriteCounter >= 30)
                     spriteCounter = 0;
             break;
         }

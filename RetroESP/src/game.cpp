@@ -36,6 +36,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     gameState = Menu;
     stateSelect = Playing;
     loadPlatforms(currentLevel);
+    getRangePlatforms();
     readInput();
 }
 
@@ -75,7 +76,18 @@ void Game::update()
         {
             // sendToDisplay();
             boss->inUse = true;
-            boss->hp = 150;
+            switch(currentLevel)
+            {
+            case 0:
+                boss->hp = 150;
+                break;
+            case 1:
+                boss->hp = 300;
+                break;
+            case 2:
+                boss->hp = 500;
+                break;
+            }
             boss->myState = idle;
             boss->samState = waiting;
             objects.push_back(boss);
@@ -97,7 +109,6 @@ void Game::update()
             player->setBobMode();
             BOB = true;
             gameState = Playing;
-            getRangePlatforms();
             break;
         case Paused:
             break;
@@ -247,7 +258,29 @@ void Game::addFatbat(int x, int y)
     }
 
 }
+void Game::addWereWolf(int beginx,int endx, int y)
+{
+    for(auto werewolfman : werewolfMans)
+    {
+        if(!werewolfman->inUse)
+        {
+            liveEnemies++;
+            werewolfman->x = (beginx + endx) / 2;
+            werewolfman->beginx = beginx;
+            werewolfman->endx = endx;
+            werewolfman->y = y - werewolfman->range;
+            werewolfman->inUse = true;
+            werewolfman->myState = walking;
+            werewolfman->hp = 40;
+            entities.push_back(werewolfman);
+            enemies.push_back(werewolfman);
+            objects.push_back(werewolfman);
+            actors.push_back(werewolfman);
+            return;
+        }
+    }
 
+}
 void Game::readInput()
 {
     buttonStatus.left = button->pinGet(1);
@@ -309,6 +342,7 @@ void Game::nextLevelAnimation()
             platforms.clear();
             enemies.clear();
             projectiles.clear();
+            platformRanges.clear();
             objects.push_back(player);
             entities.push_back(player);
             actors.push_back(player);
@@ -319,6 +353,7 @@ void Game::nextLevelAnimation()
             }
 
             loadPlatforms(currentLevel);
+            getRangePlatforms();
             fadeIn = true;
     }
     }
@@ -525,7 +560,7 @@ void Game::drawLevel()
         if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY || actor->getType() == Actor::Type::BOSS)
         {
             Entity* ob = static_cast<Entity*>(actor);
-
+            actorY--;
             
             // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
@@ -611,14 +646,27 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
+    printk("Entered tick\n");
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
     if(boss->myState == dead) gameState = NextLevel;
-    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) addEnemy();
+    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) 
+    {
+        if(frames%platformRanges.size() % 2 == 0)
+            addWereWolf(platformRanges[frames%platformRanges.size()].xbegin,platformRanges[frames%platformRanges.size()].xend,platformRanges[frames%platformRanges.size()].y); 
+        else
+            addEnemy();
+    }
+    printk("possibly added enemies\n");
+
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
     }
+    printk("checked Ranged attack\n");
+
     checkDeleted();
+    printk("checkced deleted\n");
+
     for(Object* object : objects)
     {
         if(object->getType() == Actor::Type::BOSS)
@@ -631,12 +679,16 @@ void Game::tick()
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
     }
+    printk("gravity and behaviour done\n");
+
     for(Object* object : objects)
     {
         realCollisionCheck(object);
         object->manageAnimation(); 
         //object->move(x, y);
     }
+    printk("realcollisioncheck\n");
+
 
 }
 
@@ -803,7 +855,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
             // y = y1;
             if(object->getY() > groundlevel) //if player is on platform
             {
-                object->y = groundlevel-1;
+                object->y = groundlevel;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
@@ -852,6 +904,7 @@ void Game::resetToBegin()
     platforms.clear();
     enemies.clear();
     projectiles.clear();
+    platformRanges.clear();
     player->inUse = true;
     player->x = 780;
     player->y = 100;
@@ -862,6 +915,7 @@ void Game::resetToBegin()
     actors.push_back(player);
     currentLevel = 0;
     loadPlatforms(currentLevel);
+    getRangePlatforms();
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -872,17 +926,35 @@ void Game::resetToBegin()
 }
 
 void Game::getRangePlatforms(){
+    int leftplatformID;
+    int rightplatformID;
+    switch(currentLevel)
+    {
+        case 0:
+            leftplatformID = 100;
+            rightplatformID = 101;
+            break;
+        case 1:
+            leftplatformID = 123;
+            rightplatformID = 124;
+            break;
+        case 2:
+            leftplatformID = 127;
+            rightplatformID = 128;
+            break;
+    }
     for (int i = 0; i < platforms.size(); ++i) {
-        if (platforms[i]->getID() == 100) { // Begin van een platform
+        if (platforms[i]->getID() == leftplatformID) { // Begin van een platform
             int start = platforms[i]->getX() - platforms[i]->range;
             int y = platforms[i]->getY(); // Y-positie van het platform
             // Zoek het einde van het platform
             int end = start;
             while (i < platforms.size() && platforms[i]->getY() == y) {
-                if (platforms[i]->getID() == 101) { // Einde van een platform
+                if (platforms[i]->getID() == rightplatformID) { // Einde van een platform
                     PlatformRange range;
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
+                    range.y = platforms[i]->getY() - platforms[i]->range;
                     platformRanges.push_back(range);
                     // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
                     break;

@@ -21,7 +21,7 @@
 #include "sprites.h"
 #include "scores.h"
 #include "flash_esp32.h"
-
+#include "WerewolfMan.h"
 #include "globals.h"
 #include "level.h"
 
@@ -36,6 +36,8 @@ std::vector<Platform*> level1;
 std::vector<Platform*> level2;
 std::vector<Platform*> level3;
 std::vector<Bullet*> bullets;
+std::vector<WerewolfMan*> werewolfMans;
+
 std::vector<Teleporter*> teleporters;
 
 
@@ -81,11 +83,11 @@ int main(void)
     	Fatbat* fatbat = new Fatbat(360, 0);
     	fatbats.push_back(fatbat);
 	}
-	// std::vector<Werewolf*> werewolfs;
-	// for (int i = 0; i < 40; i++) {
-    // 	Werewolf* werewolf = new Fatbat(0, 0);
-    // 	werewolfs.push_back(werewolf);
-	// }
+	
+	for (int i = 0; i < 20; i++) {
+    	WerewolfMan* werewolfMan = new WerewolfMan(360, 0);
+    	werewolfMans.push_back(werewolfMan);
+	}
 
 	loadPlatforms(0, &level1);
 	loadPlatforms(1, &level2);
