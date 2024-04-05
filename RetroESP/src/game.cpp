@@ -60,6 +60,7 @@ void Game::update()
         case Menu:
         {
             //score->reset_leaderboard();
+            score->reset_score();
             score->get_leaderboard();
             updateSelection();
             drawMainMenu();
@@ -418,11 +419,11 @@ void Game::drawHighscores()
     std::string highscore_1 = score->receive_Scores(0);
     std::string highscore_2 = score->receive_Scores(1);
     std::string highscore_3 = score->receive_Scores(2);
-   // std::string highscore_4 = score->receive_Scores(3);
-   // std::string highscore_5 = score->receive_Scores(4);
-   // std::string highscore_6 = score->receive_Scores(5);
-   // std::string highscore_7 = score->receive_Scores(6);
-   // std::string highscore_8 = score->receive_Scores(7);
+   score->receive_Scores(3);
+    score->receive_Scores(4);
+    score->receive_Scores(5);
+    score->receive_Scores(6);
+    score->receive_Scores(7);
     
 
     drawString(title, 240, 50);
@@ -852,7 +853,7 @@ void Game::resetToBegin()
     player->inUse = true;
     player->x = 780;
     player->y = 100;
-    player->hp = 100;
+    player->hp = 1;
     player->myState = idle;
     objects.push_back(player);
     entities.push_back(player);

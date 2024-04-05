@@ -204,3 +204,9 @@ bool Score::higscore_state()
   //printk("highscore %d",high_score);
 return high_score;
 }
+
+void Score::reset_score()
+{
+  high_score = false;
+  current_score = 0;
+}
