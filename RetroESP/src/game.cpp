@@ -59,12 +59,14 @@ void Game::update()
     {
         case Menu:
         {
+            if(audio->music_status()){audio->play_music(audio->MENU_MUSIC);}
             updateSelection();
             drawMainMenu();
             break;
         }
         case NextLevel:
         {
+            
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
@@ -72,7 +74,8 @@ void Game::update()
             break;
         }
         case BOSSFIGHT:
-        {
+        {   
+            audio->play_music(audio->STAGE_1_BOSS);
             // sendToDisplay();
             boss->inUse = true;
             boss->hp = 150;
@@ -109,6 +112,10 @@ void Game::update()
         }
         case Credits:
         {
+            if(audio->sfx_status())
+            {
+                audio->play_effect(audio->B_ELECTRICITY);
+            }
             drawCredits();
             break;
         }
@@ -142,7 +149,7 @@ void Game::updateSelection()
 
         switch(stateSelect)
         {
-            case Playing:
+            case Playing:       
                 gameState = Playing;
                 counter = 0;
                 break;
@@ -164,6 +171,9 @@ void Game::updateSelection()
     }
     if(frames % 10 == 0)
     {
+
+        if(buttonStatus.up || buttonStatus.down)
+            audio->play_effect(audio->MNU_SELECT);
         if(buttonStatus.up)
         {
             switch(stateSelect)
@@ -250,11 +260,11 @@ void Game::addFatbat(int x, int y)
 
 void Game::readInput()
 {
-    buttonStatus.left = button->pinGet(1);
+    buttonStatus.left  = button->pinGet(1);
     buttonStatus.right = button->pinGet(2);
-    buttonStatus.up = button->pinGet(3);
-    buttonStatus.down = button->pinGet(4);
-    buttonStatus.dash = button->pinGet(5);
+    buttonStatus.up    = button->pinGet(3);
+    buttonStatus.down  = button->pinGet(4);
+    buttonStatus.dash  = button->pinGet(5);
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
     // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
@@ -285,6 +295,19 @@ void Game::nextLevelAnimation()
     if(fadeIn){
         Curtain -= 3;
         if(Curtain < 0){
+            switch(currentLevel){
+            case 0:     
+                audio->play_music(audio->STAGE_1);
+                break;
+            case 1:
+                audio->play_music(audio->STAGE_2);
+                break;
+            case 2:
+                audio->play_music(audio->STAGE_3);
+                break;
+            }
+
+
             fadeIn = false;
             gameState = Playing;
         }
@@ -834,8 +857,9 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
-
-        audio->play_effect(audio->MNU_CONFIRM);
+        if(audio->sfx_status()){
+        audio->play_effect(audio->P_SHOOT);
+        }
     }
 }
 
