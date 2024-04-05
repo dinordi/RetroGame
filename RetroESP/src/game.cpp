@@ -606,6 +606,8 @@ void Game::loadPlatforms(int levelNum)
                     platforms.push_back(platform);
                     actors.push_back(platform);
                 }
+                objects.push_back(teleporters[0]);
+                actors.push_back(teleporters[0]);
                 break;
             }
         case 1:
@@ -615,6 +617,8 @@ void Game::loadPlatforms(int levelNum)
                     platforms.push_back(platform);
                     actors.push_back(platform);
                 }
+                objects.push_back(teleporters[1]);
+                actors.push_back(teleporters[1]);
                 break;
             }
         case 2:
@@ -624,6 +628,8 @@ void Game::loadPlatforms(int levelNum)
                     platforms.push_back(platform);
                     actors.push_back(platform);
                 }
+                objects.push_back(teleporters[2]);
+                actors.push_back(teleporters[2]);
                 break;
             }
     }
