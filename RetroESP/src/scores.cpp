@@ -180,13 +180,17 @@ void Score::write_leaderboard()
   }
 }
 
-std::string Score::receive_Scores(int i)
-{
-  // Create a stringstream to store the concatenated strings
-    
-    
-
-     return player_and_score[i];
+std::string Score::receive_Scores(int i) {
+    // Check if index i is within the valid range
+    if (i >= 0 && i < player_and_score.size()) {
+        // Return the string at index i
+        return player_and_score[i];
+    } else {
+        // Handle index out of bounds
+        // For example, you could throw an exception or return an error message
+        return "0";
+        //throw std::out_of_range("Index out of bounds");
+    }
 }
 
 std::string Score::currentscore_string()

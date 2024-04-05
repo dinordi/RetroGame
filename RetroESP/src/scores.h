@@ -38,6 +38,7 @@ public:
     void compare_leaderboard();
     public:
     std::string currentscore_string();
+    void reset_score();
     bool higscore_state();
 
 private:

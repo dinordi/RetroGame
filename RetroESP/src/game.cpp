@@ -86,10 +86,13 @@ void Game::update()
         }
         case Playing:
         {
+             printk("plaing init\n");
             sendToDisplay();
-            score->set_time_points(); // increase the level complete score
-            score->decrease_multiplier(frames);
+            printk("send to display\n");
+            //score->set_time_points(); // increase the level complete score
+            //score->decrease_multiplier(frames);
             updateGame();
+            printk("updated\n");
             break;
         }
         case Drbob:
@@ -211,8 +214,11 @@ void Game::updateGame()
 
 void Game::sendToDisplay()
 {
+    printk("draw\n");
     drawLevel();
+    printk("fpga\n");
     fpga->sendSprite(spriteData, spriteDataCount);
+    printk("done\n");
     spriteDataCount = 0;
 }
 
@@ -412,23 +418,23 @@ void Game::drawHighscores()
     std::string highscore_1 = score->receive_Scores(0);
     std::string highscore_2 = score->receive_Scores(1);
     std::string highscore_3 = score->receive_Scores(2);
-    std::string highscore_4 = score->receive_Scores(3);
-    std::string highscore_5 = score->receive_Scores(4);
-    std::string highscore_6 = score->receive_Scores(5);
-    std::string highscore_7 = score->receive_Scores(6);
-    std::string highscore_8 = score->receive_Scores(7);
-    std::string highscore_9 = score->receive_Scores(8);
+   // std::string highscore_4 = score->receive_Scores(3);
+   // std::string highscore_5 = score->receive_Scores(4);
+   // std::string highscore_6 = score->receive_Scores(5);
+   // std::string highscore_7 = score->receive_Scores(6);
+   // std::string highscore_8 = score->receive_Scores(7);
+    
 
     drawString(title, 240, 50);
 
-    drawString(highscore_1, 240, 100);
-    drawString(highscore_2, 240, 150);
-    drawString(highscore_3, 240, 200);
-    drawString(highscore_4, 240, 250);
-    drawString(highscore_5, 240, 300);
-    drawString(highscore_6, 240, 350);
-    drawString(highscore_7, 240, 400);
-    drawString(highscore_8, 240, 450);
+    drawString(highscore_1, 220, 100);
+    drawString(highscore_2, 220, 150);
+    drawString(highscore_3, 220, 200);
+    //drawString(highscore_4, 240, 250);
+    //drawString(highscore_5, 240, 300);
+    //drawString(highscore_6, 240, 350);
+    //drawString(highscore_7, 240, 400);
+    //drawString(highscore_8, 240, 450);
 
 
     fpga->sendSprite(spriteData, spriteDataCount);
@@ -519,15 +525,15 @@ void Game::drawLevel()
         actorX = 320 + delta;
         actorY = actor->getY();
         range = actor->range; 
-
+    
         int playerAttackOffsetX = 0, playerAttackOffsetY = 0;
         // printk("Actor type: %d\n", actor->getType());
-        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY)
+        if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY) //crash
         {
             Entity* ob = static_cast<Entity*>(actor);
 
             // Check if player is attacking and adjust the sprite position
-            if(ob->myState == attacking)
+            if(ob->myState == attacking) //crash
             {
                 playerAttackOffsetX = ob->attackCheck(true); //Get X offset
                 playerAttackOffsetY = ob->attackCheck(false);   //Get Y offset
@@ -535,7 +541,7 @@ void Game::drawLevel()
                 actorY -= playerAttackOffsetY;
             }
         }
-        if(actor->getType() == Actor::Type::PROJECTILE)
+        if(actor->getType() == Actor::Type::PROJECTILE) //crash
         {
             printk("Projectile drawing\n");
         }
@@ -544,6 +550,7 @@ void Game::drawLevel()
 
         if((x > (leftBorder - range)) && (x < (rightBorder + range)))
         {
+            //crash
             spriteData[spriteDataCount++] = htobe16(actor->getID());
             spriteData[spriteDataCount++] = htobe16(actorX + 144);
             spriteData[spriteDataCount++] = htobe16(actorY);
