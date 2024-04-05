@@ -133,11 +133,7 @@ void Game::update()
   
     if(frames == 120)
     {
-        printk("Sending music\n");
-        // audio->play_music(audio->MENU_MUSIC);
-        // printk("\nSending sfx\n");
         audio->play_effect(audio->B_HIT);
-        printk("\nAudio sent\n");
     }
 }
 
@@ -646,7 +642,6 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-    printk("Entered tick\n");
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
     if(boss->myState == dead) gameState = NextLevel;
     if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) 
@@ -656,16 +651,13 @@ void Game::tick()
         else
             addEnemy();
     }
-    printk("possibly added enemies\n");
 
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
     }
-    printk("checked Ranged attack\n");
 
     checkDeleted();
-    printk("checkced deleted\n");
 
     for(Object* object : objects)
     {
@@ -679,7 +671,6 @@ void Game::tick()
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
     }
-    printk("gravity and behaviour done\n");
 
     for(Object* object : objects)
     {
@@ -687,7 +678,6 @@ void Game::tick()
         object->manageAnimation(); 
         //object->move(x, y);
     }
-    printk("realcollisioncheck\n");
 
 
 }
