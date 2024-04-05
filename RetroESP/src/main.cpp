@@ -36,7 +36,7 @@ std::vector<Platform*> level1;
 std::vector<Platform*> level2;
 std::vector<Platform*> level3;
 std::vector<Bullet*> bullets;
-
+std::vector<Teleporter*> teleporters;
 
 
 void loadPlatforms(int levelNum, std::vector<Platform*>* platforms)
@@ -47,6 +47,12 @@ void loadPlatforms(int levelNum, std::vector<Platform*>* platforms)
         {
             if(level[levelNum][i][j] != 0)    // If the tile is not empty
             {
+				if(level[levelNum][i][j] == 21)
+				{
+					// Teleporter
+					teleporters.push_back(new Teleporter(j * 31, i * 31));
+					continue;
+				}
                 int tileX = j * 31; //31 is tile width/height
                 int tileY = i * 31;
                 int tileID = level[levelNum][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
