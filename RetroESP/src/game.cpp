@@ -59,7 +59,7 @@ void Game::update()
     {
         case Menu:
         {
-            if(audio->music_status()){audio->play_music(audio->MENU_MUSIC);}
+            // if(audio->music_status()){audio->play_music(audio->MENU_MUSIC);}
             updateSelection();
             drawMainMenu();
             break;
@@ -129,11 +129,11 @@ void Game::update()
   
     if(frames == 120)
     {
-        printk("Sending music\n");
+        // printk("Sending music\n");
         // audio->play_music(audio->MENU_MUSIC);
         // printk("\nSending sfx\n");
-        audio->play_effect(audio->B_HIT);
-        printk("\nAudio sent\n");
+        audio->play_music(audio->MENU_MUSIC);
+        // printk("\nAudio sent\n");
     }
 }
 

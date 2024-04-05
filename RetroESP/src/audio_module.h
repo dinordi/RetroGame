@@ -8,8 +8,8 @@
 #include <zephyr/drivers/gpio.h>
 
 
-#define UART_DEVICE_NODE DT_NODELABEL(uart2)
-#define UART_DEVICE_NODE_1 DT_NODELABEL(uart1)
+#define UART_DEVICE_NODE DT_NODELABEL(uart1)
+#define UART_DEVICE_NODE_1 DT_NODELABEL(uart2)
 #define GPIO_PIN_1 19 // check uart1 GPIO41
 #define GPIO_PIN_2 20 // check uart2 GPIO40
 #define BUSY  DT_NODELABEL(gpio0)

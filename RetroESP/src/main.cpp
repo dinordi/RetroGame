@@ -145,6 +145,7 @@ int main(void)
 			game->update();
 			// printk("PLAY AUDIO\n");;
 			// audio->play_effect(audio->M_DEATH);
+			// audio->play_music(audio->MENU_MUSIC);
 			// audio->uart_send({0x7E, 0xFF, 0x06, 0x03, 0x00, 0x00, 0x01, 0xEF}, 1);
 			// k_sleep(K_MSEC(1000));
 			// uint64_t time2 = k_cycle_get_64();
