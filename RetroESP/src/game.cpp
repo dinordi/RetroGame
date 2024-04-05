@@ -27,7 +27,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     actors.push_back(player);
     liveEnemies = 0;
     killedEnemies = 0;
-    currentLevel = 0;
+    currentLevel = -1;
     Curtain = 0;
     fadeIn = false;
     BOB = false;
@@ -111,7 +111,7 @@ void Game::update()
         case Drbob:
             player->setBobMode();
             BOB = true;
-            gameState = Playing;
+            gameState = NextLevel;
             break;
         case Paused:
             break;
@@ -123,10 +123,6 @@ void Game::update()
         }
         case Credits:
         {
-            if(audio->sfx_status())
-            {
-                audio->play_effect(audio->B_ELECTRICITY);
-            }
             drawCredits();
             break;
         }
@@ -140,7 +136,7 @@ void Game::update()
   
     if(frames == 120)
     {
-        audio->play_effect(audio->B_HIT);
+        audio->play_music(audio->MENU_MUSIC);
     }
 }
 
@@ -157,7 +153,7 @@ void Game::updateSelection()
         switch(stateSelect)
         {
             case Playing:       
-                gameState = Playing;
+                gameState = NextLevel;
                 counter = 0;
                 break;
             case Drbob:
@@ -512,6 +508,10 @@ void Game::drawCredits()
 {
     static int counter = 0;
     counter++;
+    if(counter == 1)
+    {
+        audio->play_effect(audio->B_ELECTRICITY);
+    }
     std::string title = "credits";
     std::string name1 = "joey";
     std::string name2 = "ben";
