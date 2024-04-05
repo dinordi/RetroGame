@@ -419,11 +419,11 @@ void Game::drawHighscores()
     std::string highscore_1 = score->receive_Scores(0);
     std::string highscore_2 = score->receive_Scores(1);
     std::string highscore_3 = score->receive_Scores(2);
-   score->receive_Scores(3);
-    score->receive_Scores(4);
-    score->receive_Scores(5);
-    score->receive_Scores(6);
-    score->receive_Scores(7);
+   //score->receive_Scores(3);
+    //score->receive_Scores(4);
+    //score->receive_Scores(5);
+    //score->receive_Scores(6);
+    //score->receive_Scores(7);
     
 
     drawString(title, 240, 50);
@@ -431,11 +431,11 @@ void Game::drawHighscores()
     drawString(highscore_1, 220, 100);
     drawString(highscore_2, 220, 150);
     drawString(highscore_3, 220, 200);
-    //drawString(highscore_4, 240, 250);
-    //drawString(highscore_5, 240, 300);
-    //drawString(highscore_6, 240, 350);
-    //drawString(highscore_7, 240, 400);
-    //drawString(highscore_8, 240, 450);
+    //drawString(highscore_1, 240, 250);
+    //drawString(highscore_2, 240, 300);
+    //drawString(highscore_1, 240, 350);
+    //drawString(highscore_1, 240, 400);
+    //drawString(highscore_1, 240, 450);
 
 
     fpga->sendSprite(spriteData, spriteDataCount);

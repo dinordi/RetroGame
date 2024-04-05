@@ -114,7 +114,7 @@ void Score::compare_leaderboard()
 
             // Convert the substring to an integer
               compare_score = std::stoi(score_string);
-
+  
             //compare_score = 0;
             printk("current_score : %d compare score : %d\n",current_score,compare_score);
             if (current_score > compare_score) {
