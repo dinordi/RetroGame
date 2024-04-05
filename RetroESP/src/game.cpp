@@ -76,7 +76,18 @@ void Game::update()
         {
             // sendToDisplay();
             boss->inUse = true;
-            boss->hp = 150;
+            switch(currentLevel)
+            {
+            case 0:
+                boss->hp = 150;
+                break;
+            case 1:
+                boss->hp = 300;
+                break;
+            case 2:
+                boss->hp = 500;
+                break;
+            }
             boss->myState = idle;
             boss->samState = waiting;
             objects.push_back(boss);
@@ -257,10 +268,10 @@ void Game::addWereWolf(int beginx,int endx, int y)
             werewolfman->x = (beginx + endx) / 2;
             werewolfman->beginx = beginx;
             werewolfman->endx = endx;
-            werewolfman->y = y - werewolfman->range - 1;
+            werewolfman->y = y - werewolfman->range;
             werewolfman->inUse = true;
             werewolfman->myState = walking;
-            werewolfman->hp = 50;
+            werewolfman->hp = 40;
             entities.push_back(werewolfman);
             enemies.push_back(werewolfman);
             objects.push_back(werewolfman);

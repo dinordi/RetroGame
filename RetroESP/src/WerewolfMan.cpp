@@ -4,7 +4,7 @@
 WerewolfMan::WerewolfMan(int x, int y) : Enemy(wherewolfSprites,7,x,y)
 {
     damage = 15;
-    hp = 50;
+    hp = 40;
     ySpeed = 0;
     xSpeed = 0.75;
     myState = walking;
@@ -28,9 +28,9 @@ void WerewolfMan::behaviour(){
     {
         case walking:
             x = x + xSpeed;
-            if (isFacingRight && x >= endx) {
+            if (isFacingRight && x >= endx - range) {
         isFacingRight = false;
-    } else if (!isFacingRight && x <= beginx) {
+    } else if (!isFacingRight && x <= beginx + range) {
         isFacingRight = true;
     }
 
