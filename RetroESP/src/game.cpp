@@ -134,7 +134,7 @@ void Game::update()
     }
     frames++;
   
-    if(frames == 120)
+    if(frames == 120 || (frames % 21600 == 0 && gameState == Menu))
     {
         audio->play_music(audio->MENU_MUSIC);
     }
