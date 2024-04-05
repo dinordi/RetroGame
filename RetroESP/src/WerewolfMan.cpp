@@ -34,7 +34,7 @@ void WerewolfMan::behaviour(){
         isFacingRight = true;
     }
 
-    xSpeed = isFacingRight ? 1.25 : -1.25;
+    xSpeed = isFacingRight ? 1.00 : -1.00;
             break;
     }
     if (hp <= 0)
@@ -83,11 +83,11 @@ void WerewolfMan::manageAnimation(){
                     spriteCounter = 0;
             break;
             case walking:
-                if(spriteCounter % 60 < 30)
+                if(spriteCounter % 30 < 15)
                     ID = entitySprites[2]+mirror;
                 else
                     ID = entitySprites[3]+mirror;
-                if(spriteCounter >= 60)
+                if(spriteCounter >= 30)
                     spriteCounter = 0;
             break;
         }
