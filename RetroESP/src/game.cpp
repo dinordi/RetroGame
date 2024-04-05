@@ -899,9 +899,7 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
-        if(audio->sfx_status()){
         audio->play_effect(audio->P_SHOOT);
-        }
     }
 }
 
@@ -927,7 +925,7 @@ void Game::resetToBegin()
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    currentLevel = 0;
+    currentLevel = -1;
     loadPlatforms(currentLevel);
     getRangePlatforms();
     frames = 0;
