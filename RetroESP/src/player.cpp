@@ -1,9 +1,8 @@
 #include "player.h"
 #include "sprites.h"
 #include "Bullet.h"
-#include <zephyr/sys/printk.h>
 #include <cstdio>
-
+#include "globals.h"
 
 Player::Player(const int* playerSprites, int range,int x,int y) : Entity(playerSprites, range,x,y)
 {
@@ -87,7 +86,6 @@ void Player::behaviour() {
     if(hp <= 0)
     {
         myState = dead;
-        printk("Player is dead\n");
     }
     updateySpeed(gravity); 
     y = y + ySpeed; 
@@ -114,10 +112,32 @@ int Player::attackCheck(bool isX){
 }
 
 Projectile* Player::makeProjectile(){
-    if(isFacingRight)
-        return new Bullet(bulletID,7, this->getX()+3,this->getY()-3,isFacingRight);
-    else
-      return new Bullet(bulletID,7, this->getX()-3,this->getY()-3,isFacingRight);
+    Bullet* bulletLocal = nullptr;
+    for(auto bullet : bullets)
+        {
+            if(!bullet->inUse )
+            {
+                bullet->inUse = true;
+                bullet->y = this->getY() - 3;
+                bullet->isFacingRight = isFacingRight;
+                bullet->hit = 0;
+                bullet->myState = flying;
+                bullet->xSpeed = 8;
+                bulletLocal =  bullet;
+                break;
+            }
+
+        }
+
+    if(bulletLocal != nullptr)
+    {
+        if(isFacingRight)
+            bulletLocal->x = this->getX() + 3;
+        else
+            bulletLocal->x = this->getX() - 3;
+    }
+    // printk("bullet X: %d, bullet Y:%d\n",static_cast<int>(bulletLocal->x), static_cast<int>(bulletLocal->y));
+    return bulletLocal;
 }
 
 void Player::setButtonStatus(buttonStatuses buttonStatus){

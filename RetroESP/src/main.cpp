@@ -21,13 +21,49 @@
 #include "sprites.h"
 #include "scores.h"
 #include "flash_esp32.h"
+#include "WerewolfMan.h"
+#include "globals.h"
+#include "level.h"
 
 #define CHECK  DT_NODELABEL(gpio0)
 /* GPIO pin configuration */
 #define GPIO_PIN 14
 	const struct device *const input = DEVICE_DT_GET(CHECK);
 
-void updateGame();
+
+std::vector<Fatbat*> fatbats;
+std::vector<Platform*> level1;
+std::vector<Platform*> level2;
+std::vector<Platform*> level3;
+std::vector<Bullet*> bullets;
+std::vector<WerewolfMan*> werewolfMans;
+
+std::vector<Teleporter*> teleporters;
+
+
+void loadPlatforms(int levelNum, std::vector<Platform*>* platforms)
+{
+	for(int i = 0; i < 16; i++) // 16 rows
+    {
+        for(int j = 0; j < 63; j++) // 63 columns
+        {
+            if(level[levelNum][i][j] != 0)    // If the tile is not empty
+            {
+				if(level[levelNum][i][j] == 21)
+				{
+					// Teleporter
+					teleporters.push_back(new Teleporter(j * 31, i * 31));
+					continue;
+				}
+                int tileX = j * 31; //31 is tile width/height
+                int tileY = i * 31;
+                int tileID = level[levelNum][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
+                Platform* platform = new Platform(tileID, tileX, tileY, 15);    // Create a new platform
+                platforms->push_back(platform);
+            }
+        }
+    }
+}
 
 int main(void)
 {
@@ -42,6 +78,27 @@ int main(void)
         printk("Error: Unable to find GPIO device.\n");
         return 0;
     }
+
+	for (int i = 0; i < 40; i++) {
+    	Fatbat* fatbat = new Fatbat(360, 0);
+    	fatbats.push_back(fatbat);
+	}
+	
+	for (int i = 0; i < 20; i++) {
+    	WerewolfMan* werewolfMan = new WerewolfMan(360, 0);
+    	werewolfMans.push_back(werewolfMan);
+	}
+
+	loadPlatforms(0, &level1);
+	loadPlatforms(1, &level2);
+	loadPlatforms(2, &level3);
+
+	for(int i=0; i < 20; i++)
+	{
+		Bullet* bullet = new Bullet(bulletID,7, 400,400,true);
+		bullets.push_back(bullet);
+	}
+
 	ButtonHandler* button = new ButtonHandler();
 	Flash_esp* flash_esp = new Flash_esp();
 	FPGA* fpga = new FPGA();
@@ -105,4 +162,36 @@ int main(void)
 
 	return 0;
 }
+// class Fatbat2
+// {
+// 	public:
+// 	Fatbat2(int id)
+// 	{
+// 		this->id = id;
+// 	}
+// 	void test()
+// 	{
+// 		rnd = sys_rand32_get();
+// 		printk("Random %d: %u\n", id, rnd);
 
+// 	}
+// 	private:
+// 	uint32_t rnd;
+// 	int id;
+// };
+
+// int main(void)
+// {
+//     printk("Random Number Generator Example\n");
+// 	Fatbat2 f1(1);
+// 	Fatbat2 f2(2);
+//     while (1) {
+//         // uint32_t random_number = sys_rand32_get();
+//         // printk("Random Number: %u\n", random_number);
+// 		f1.test();
+// 		f2.test();
+//         // k_sleep(K_MSEC(1)); // Sleep for 1 second
+// 		// k_sleep(K_USEC(100));
+//     }
+// 	return 0;
+// }

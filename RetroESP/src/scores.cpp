@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <string>
-#include <sstream>
+//#include <sstream>
 #define FPS 60
 
 Score::Score(Flash_esp* flash_esp)

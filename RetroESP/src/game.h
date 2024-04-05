@@ -9,7 +9,8 @@
 #include "audio_module.h"
 #include "scores.h"
 #include <zephyr/random/random.h>
-#include <utility>  // Voor std::pair
+#include "samurai.h"
+// #include <utility>  // Voor std::pair
 
 
 class Enemy;
@@ -21,6 +22,7 @@ class Object;
 struct PlatformRange {
     int xbegin;
     int xend;
+    int y;
 };
 
 typedef enum
@@ -32,7 +34,8 @@ typedef enum
     Drbob,
     Credits,
     NextLevel,
-    Highscores
+    Highscores,
+    BOSSFIGHT
 
 }gameStates;
 
@@ -47,11 +50,13 @@ public:
     void sendToDisplay();
     void addEnemy();
     void addFatbat(int x,int y);
+    void addWereWolf(int beginx,int endx, int y);
+    void addSamurai(int x,int y);
     void addProjectile(const int* playerSprites,int range,int x, int y);
     void readInput();
     void tick();
     void drawLevel();
-    void loadPlatforms(const int level[8][16][63]);
+    void loadPlatforms(int levelNum);
     void drawMainMenu();
     void drawCredits();
     void drawHighscores();
@@ -86,6 +91,7 @@ private:
     Audio* audio;
     buttonStatuses buttonStatus;
     Player* player;
+    Samurai* boss;
     uint64_t frames;
     gameStates gameState;
     gameStates stateSelect;

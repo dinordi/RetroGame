@@ -1,5 +1,4 @@
 #include "Fatbat.h"
-#include <zephyr/sys/printk.h>
 #include <zephyr/random/random.h>
 #include "cstdlib"
 
@@ -8,10 +7,10 @@ int Fatbat::randomCounter = 0;
 
 Fatbat::Fatbat(int x, int y) : Enemy(fatbatSprites,7,x,y)
 {
-    // for(int i = 0; i < 1000; i++)
-    // {
-    //     randomNumbers[i] = sys_rand32_get();
-    // }
+    for(int i = 0; i < 1000; i++)
+    {
+        randomNumbers[i] = sys_rand32_get();
+    }
 
     damage = 5;
     hp = 20;
@@ -35,30 +34,44 @@ void Fatbat::behaviour() {
     randomCounter++;
     lastmyState = myState;
     //Randomly attack
-   int rnd = randomNumbers[randomCounter + static_cast<int>(x) %1000];
+    uint32_t rnd = sys_rand32_get();
 
-    if(rnd % 400 == 0 && lastmyState == idle)
+
+    if(rnd % 400 < 7 && myState == idle)
     {
         myState = attacking;
+        // printk("rnd: %u\n",rnd % 400);
     }
 
-    if(myState == attacking && lastmyState == idle)
+
+    if(x < 320.0)
     {
-        ySpeed = rnd % 6 - 12;
-        isGrounded = false;
-        if(isFacingRight)
-        {
-            xSpeed = rnd % 2 + 3;
-        }
-        else
-        {
-            xSpeed = rnd % 2 - 5;        }
+        isFacingRight = true;
+    }
+    else if(x > 1500.0)
+    {
+        isFacingRight = false;
+    }
+    else if(rnd % 1000 == 0)
+    {
+        isFacingRight = !isFacingRight;
+    }
+
+    if(myState == attacking && lastmyState != attacking)
+    {
+            int rndint = static_cast<int>(rnd);
+            ySpeed = static_cast<float>((rndint%3)-12);
+            // printk("ySpeed: %d\n",static_cast<int>(ySpeed));
+            isGrounded = false;
+            xSpeed = isFacingRight ? static_cast<float>((rndint%3)+2) : static_cast<float>((rndint%3)-5);
+
     }
     else if(myState == idle)
     {
         xSpeed = 0;
     }
-    if(isGrounded==true)
+
+    if(isGrounded == true)
     {
         myState = idle;
     }
@@ -66,21 +79,7 @@ void Fatbat::behaviour() {
     updateySpeed(gravity); 
     y = y + ySpeed; 
     x = x + xSpeed;
-    if(x <= 320)  
-    {
-        isFacingRight = true;
-        myState = idle;
-        x = x + 2 * abs(xSpeed);
-    }
-    else if(x >= 1500){
-        isFacingRight = false;
-        myState = idle;
-        x = x + -2 * abs(xSpeed);
-    }
-    else if(rnd % 1000 == 0 && lastmyState == attacking)
-    {
-        isFacingRight = !isFacingRight;
-    }
+   
     if(hp <= 0)
     {
         myState = dead;
