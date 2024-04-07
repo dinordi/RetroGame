@@ -23,27 +23,29 @@ The game runs using a ESP32-S3-DevkitC v1.1 and a Basys3 FPGA.
 Getting Started
 ***************
 
-Welcome to Saga of Sacrifice! See the `Introduction to RetroGame`_ for a high-level overview,
-and the documentation's `Getting Started Guide`_ to get the game running.
+Welcome to Saga of Sacrifice! See the `Hardware Documentation`_ for a high-level overview,
+and the documentation's `Setup`_ to get the game running.
 .. start_include_here
 
 .. _project-resources:
 
-Resources
-*********
+Hardware Documentation
+**********************
 
-Here's a quick summary of resources to help you find your way around:
+The KiCad files can be downloaded from the Docs/KiCad folder.
 
-Getting Started
----------------
+Scheme:
+.. raw:: html
+   <picture>
+      <source srcset="Docs/KiCad/images/retrogame.pdf"
+   </picture>
 
-  | 📖 `Hardware Documentation`_
-  | 🚀 `Getting Started Guide`_
-  | 🙋🏽 `FAQ`_
 
-Code and Development
---------------------
-  | 🤝 `Contributors`_
+Setup
+*****
+
+The game runs on a ESP32-S3-Devkit-C v1.1 using the Zephyr RTOS.
+
 
 Additional Resources
 --------------------
