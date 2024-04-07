@@ -52,6 +52,6 @@ Additional Resources
 .. _Zephyr Project Website: https://www.zephyrproject.org
 
 .. _Hardware Documentation: https://github.com/dinordi/RetroGame/Docs
-.. _Getting Started Guide: https://github.com/dinordi/RetroGame/Docs
+.. _Getting Started Guide: https://github.com/dinordi/RetroGame/Docs/GS.rst
 .. _Contributors: https://github.com/dinordi/RetroGame/Docs
 .. _FAQ: https://github.com/dinordi/RetroGame/Docs
