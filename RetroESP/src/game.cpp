@@ -454,6 +454,8 @@ void Game::drawMainMenu()
     spriteData[spriteDataCount++] = htobe16(0);                     // Playersprite Cursor
     spriteData[spriteDataCount++] = htobe16(250+124);
     spriteData[spriteDataCount++] = htobe16(yval);
+    // drawSpriteCounter();
+
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
 }
@@ -487,10 +489,11 @@ void Game::drawHighscores()
     drawString(highscore_3, 240, 200);
     drawString(highscore_4, 240, 250);
     drawString(highscore_5, 240, 300);
-    drawString(highscore_6, 240, 350);
-    drawString(highscore_7, 240, 400);
-    drawString(highscore_8, 240, 450);
+    // drawString(highscore_6, 240, 350);
+    // drawString(highscore_7, 240, 400);
+    // drawString(highscore_8, 240, 450);
 
+    // drawSpriteCounter();
 
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
@@ -525,6 +528,7 @@ void Game::drawCredits()
     drawString(name3, 250, 300);
     drawString(name4, 250, 350);
 
+    // drawSpriteCounter();
 
     fpga->sendSprite(spriteData, spriteDataCount);
     spriteDataCount = 0;
@@ -560,6 +564,20 @@ void Game::GameOverFunc(){
         counter = 0;
     }
 }
+
+void Game::drawCurrentHighscore()
+{
+    std::string spriteDataCounterStr = std::to_string(score->get_current_score());
+    drawString(spriteDataCounterStr, 20, 20);
+}
+
+void Game::drawSpriteCounter()
+{
+    // printk("SpriteDataCounter: %d\n", (spriteDataCount/3)+3);
+    std::string spriteDataCounterStr = std::to_string((spriteDataCount/3)+3);
+    drawString(spriteDataCounterStr, 20, 20);
+}
+
 void Game::drawLevel()
 {
     int middleX = player->getX();
@@ -602,6 +620,7 @@ void Game::drawLevel()
             //printk("ID: %d\n", actor->getID());
         }
     }
+    drawCurrentHighscore();
     // actorX = 320;
     // range = player->range; 
     // printk("player!");

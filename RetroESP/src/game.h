@@ -60,6 +60,8 @@ public:
     void drawMainMenu();
     void drawCredits();
     void drawHighscores();
+    void drawSpriteCounter();
+    void drawCurrentHighscore();
     void updateSelection();
     void checkRangedAttack(Entity* entity);
     void drawString(std::string str, int startX, int y);

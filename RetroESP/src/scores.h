@@ -36,6 +36,7 @@ public:
     void reset_leaderboard();
     void write_leaderboard();
     void compare_leaderboard();
+    int get_current_score();
 private:
     int time_multiplier = 100;
     int monster_exp = 1000;  // base points without multiplier

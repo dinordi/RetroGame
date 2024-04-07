@@ -198,3 +198,8 @@ std::string Score::receive_Scores(int i)
 
      return cpp_string;
 }
+
+int Score::get_current_score()
+{
+  return current_score;
+}
