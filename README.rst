@@ -1,0 +1,98 @@
+
+Retro Game - Saga of Sacrifice
+******************************
+
+.. raw:: html
+
+   <a href="https://github.com/dinordi/RetroGame/">
+     <p align="center">
+       <picture>
+         <source media="(prefers-color-scheme: dark)" srcset="images/readme/player.png">
+         <source media="(prefers-color-scheme: light)" srcset="images/readme/player.png">
+         <img src="images/readme/player.png">
+       </picture>
+     </p>
+   </a>
+
+
+Saga of Sacrifice is a 2D-platformer where the player traverses several levels to defeat his nemesis, a samurai.
+
+The game runs using a ESP32-S3-DevkitC v1.1 and a Basys3 FPGA.
+
+
+Getting Started
+***************
+
+Welcome to Saga of Sacrifice! See the `Hardware Documentation`_ for a high-level overview,
+and the documentation's `Setup`_ to get the game running.
+.. start_include_here
+
+.. _project-resources:
+
+Hardware Documentation
+**********************
+
+The KiCad files can be downloaded from the Docs/KiCad folder.
+
+`Scheme <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/retrogame.pdf>`_
+
+`PCB Coloured <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/retrogame-brd.svg>`_
+
+`PCB Back <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/PCBAchter.pdf>`_
+
+`PCB Front <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/PCBVoor.pdf>`_
+
++------------------+----------------------------------+
+| GPIO pin         | Function                     |
++==================+==================================+
+| GPIO 6           | Joystick left                     |
++------------------+----------------------------------+
+| GPIO 4           | Joystick right                  |
++------------------+----------------------------------+
+| GPIO 7           | Joystick up                     |
++------------------+----------------------------------+
+| GPIO 5           | Joystick down                     |
++------------------+----------------------------------+
+| GPIO 16           | Green button                     |
++------------------+----------------------------------+
+| GPIO 15           | Red button                     |
++------------------+----------------------------------+
+| GPIO 9           | Black button                     |
++------------------+----------------------------------+
+
+Setup
+*****
+
+The game runs on a ESP32-S3-Devkit-C v1.1 using the Zephyr RTOS. v3.5.0
+
+DFPlayer mini
+*************
+
+If at any point the music/SFX need to be changed. The SD Card folder structure must be maintained!
+
+Frequently Asked Questions (FAQ)
+---------------------------------
+
+**Q: How to fix empty screen/weird boxes are all over the screen?**
+
+A: Restart ESP32 using reset button or unplugging from power. If that does not work, restart FPGA by pressing the restart button.
+
+**Q: Why isn't there any audio playing?**
+
+A: Check if both SD cards are seated properly in DFPlayer mini's. Also check if the aux cable is connected to an amplified speaker.
+The aux connection port could be a little janky, so check if the GND pin makes connection to the PCB.
+
+**Q: How to fix empty screen/weird boxes are all over the screen?**
+
+A: Restart ESP32 using reset button or unplugging from power. If that does not work, restart FPGA by pressing the restart button.
+
+Additional Resources
+--------------------
+  | 🌐 `Zephyr Project Website`_
+
+.. _Zephyr Project Website: https://www.zephyrproject.org
+
+.. _Hardware Documentation: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/KiCad/
+.. _Getting Started Guide: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/
+.. _Contributors: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/Contributors/
+.. _FAQ: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/FAQ/
