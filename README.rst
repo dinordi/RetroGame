@@ -34,18 +34,57 @@ Hardware Documentation
 
 The KiCad files can be downloaded from the Docs/KiCad folder.
 
-Scheme:
-.. raw:: html
-   <picture>
-      <source srcset="Docs/KiCad/images/retrogame.pdf"
-   </picture>
+`Scheme <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/retrogame.pdf>`_
 
+`PCB Coloured <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/retrogame-brd.svg>`_
+
+`PCB Back <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/PCBAchter.pdf>`_
+
+`PCB Front <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/PCBVoor.pdf>`_
+
++------------------+----------------------------------+
+| GPIO pin         | Function                     |
++==================+==================================+
+| GPIO 6           | Joystick left                     |
++------------------+----------------------------------+
+| GPIO 4           | Joystick right                  |
++------------------+----------------------------------+
+| GPIO 7           | Joystick up                     |
++------------------+----------------------------------+
+| GPIO 5           | Joystick down                     |
++------------------+----------------------------------+
+| GPIO 16           | Green button                     |
++------------------+----------------------------------+
+| GPIO 15           | Red button                     |
++------------------+----------------------------------+
+| GPIO 9           | Black button                     |
++------------------+----------------------------------+
 
 Setup
 *****
 
-The game runs on a ESP32-S3-Devkit-C v1.1 using the Zephyr RTOS.
+The game runs on a ESP32-S3-Devkit-C v1.1 using the Zephyr RTOS. v3.5.0
 
+DFPlayer mini
+*************
+
+If at any point the music/SFX need to be changed. The SD Card folder structure must be maintained!
+
+Frequently Asked Questions (FAQ)
+---------------------------------
+
+**Q: How to fix empty screen/weird boxes are all over the screen?**
+
+A: Restart ESP32 using reset button or unplugging from power. If that does not work, restart FPGA by pressing the restart button.
+
+**Q: Why isn't there any audio playing?**
+
+A: Check if both SD cards are seated properly in DFPlayer mini's. Also check if the aux cable is connected to an amplified speaker.
+The aux connection port could be a little janky, so check if the GND pin makes connection to the PCB.
+
+**Q: How to fix empty screen/weird boxes are all over the screen?**
+
+A: Restart ESP32 using reset button or unplugging from power. If that does not work, restart FPGA by pressing the restart button.
 
 Additional Resources
 --------------------
