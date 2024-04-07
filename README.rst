@@ -34,13 +34,13 @@ Hardware Documentation
 
 The KiCad files can be downloaded from the Docs/KiCad folder.
 
-`Scheme <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/retrogame.pdf>`_
+`Scheme <https://github.com/dinordi/RetroGame/blob/main/Docs/KiCad/images/retrogame.pdf>`_
 
-`PCB Coloured <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/retrogame-brd.svg>`_
+`PCB Coloured <https://github.com/dinordi/RetroGame/blob/main/Docs/KiCad/images/retrogame-brd.svg>`_
 
-`PCB Back <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/PCBAchter.pdf>`_
+`PCB Back <https://github.com/dinordi/RetroGame/blob/main/Docs/KiCad/images/PCBAchter.pdf>`_
 
-`PCB Front <https://github.com/dinordi/RetroGame/blob/8-hardware-documentation/Docs/KiCad/images/PCBVoor.pdf>`_
+`PCB Front <https://github.com/dinordi/RetroGame/blob/main/Docs/KiCad/images/PCBVoor.pdf>`_
 
 +------------------+----------------------------------+
 | GPIO pin         | Function                     |
