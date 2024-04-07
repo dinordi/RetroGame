@@ -28,7 +28,7 @@ void Player::behaviour() {
     {
         hp = hp - damageDone;
     }
-    if (buttonStatus.up && isGrounded) {
+    if ((buttonStatus.up || buttonStatus.shoot) && isGrounded) {
         // Handle up
         ySpeed = -12;
         isGrounded = false;
@@ -146,11 +146,16 @@ void Player::setButtonStatus(buttonStatuses buttonStatus){
 
 void Player::manageAnimation()
 {
+    int mirror = 0;
     spriteCounter++;
     if(hitAnimation == 20)
     {
         hit = false;
         hitAnimation = 0;
+    }
+    if(!isFacingRight)
+    {
+        mirror =512;
     }
     if(hit&&spriteCounter % 10 <= 5)
     {
@@ -162,9 +167,9 @@ void Player::manageAnimation()
         {
             case idle:
                 if(spriteCounter % 30 < 15)
-                    ID = entitySprites[0];
+                    ID = entitySprites[0] + mirror;
                 else
-                    ID = entitySprites[1];
+                    ID = entitySprites[1] + mirror;
                 if(spriteCounter == 30)
                     spriteCounter = 0;
                 break;

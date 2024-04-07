@@ -27,7 +27,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     actors.push_back(player);
     liveEnemies = 0;
     killedEnemies = 0;
-    currentLevel = 0;
+    currentLevel = -1;
     Curtain = 0;
     fadeIn = false;
     BOB = false;
@@ -60,12 +60,14 @@ void Game::update()
     {
         case Menu:
         {
+            // if(audio->music_status()){audio->play_music(audio->MENU_MUSIC);}
             updateSelection();
             drawMainMenu();
             break;
         }
         case NextLevel:
         {
+            
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
@@ -73,7 +75,8 @@ void Game::update()
             break;
         }
         case BOSSFIGHT:
-        {
+        {   
+            audio->play_music(audio->STAGE_1_BOSS);
             // sendToDisplay();
             boss->inUse = true;
             switch(currentLevel)
@@ -108,7 +111,7 @@ void Game::update()
         case Drbob:
             player->setBobMode();
             BOB = true;
-            gameState = Playing;
+            gameState = NextLevel;
             break;
         case Paused:
             break;
@@ -131,13 +134,9 @@ void Game::update()
     }
     frames++;
   
-    if(frames == 120)
+    if(frames == 120 || (frames % 21600 == 0 && gameState == Menu))
     {
-        printk("Sending music\n");
-        // audio->play_music(audio->MENU_MUSIC);
-        // printk("\nSending sfx\n");
-        audio->play_effect(audio->B_HIT);
-        printk("\nAudio sent\n");
+        audio->play_music(audio->MENU_MUSIC);
     }
 }
 
@@ -153,8 +152,8 @@ void Game::updateSelection()
 
         switch(stateSelect)
         {
-            case Playing:
-                gameState = Playing;
+            case Playing:       
+                gameState = NextLevel;
                 counter = 0;
                 break;
             case Drbob:
@@ -175,6 +174,9 @@ void Game::updateSelection()
     }
     if(frames % 10 == 0)
     {
+
+        if(buttonStatus.up || buttonStatus.down)
+            audio->play_effect(audio->MNU_SELECT);
         if(buttonStatus.up)
         {
             switch(stateSelect)
@@ -283,11 +285,11 @@ void Game::addWereWolf(int beginx,int endx, int y)
 }
 void Game::readInput()
 {
-    buttonStatus.left = button->pinGet(1);
+    buttonStatus.left  = button->pinGet(1);
     buttonStatus.right = button->pinGet(2);
-    buttonStatus.up = button->pinGet(3);
-    buttonStatus.down = button->pinGet(4);
-    buttonStatus.dash = button->pinGet(5);
+    buttonStatus.up    = button->pinGet(3);
+    buttonStatus.down  = button->pinGet(4);
+    buttonStatus.dash  = button->pinGet(5);
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
     // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
@@ -318,6 +320,19 @@ void Game::nextLevelAnimation()
     if(fadeIn){
         Curtain -= 3;
         if(Curtain < 0){
+            switch(currentLevel){
+            case 0:     
+                audio->play_music(audio->STAGE_1);
+                break;
+            case 1:
+                audio->play_music(audio->STAGE_2);
+                break;
+            case 2:
+                audio->play_music(audio->STAGE_3);
+                break;
+            }
+
+
             fadeIn = false;
             gameState = Playing;
         }
@@ -493,6 +508,10 @@ void Game::drawCredits()
 {
     static int counter = 0;
     counter++;
+    if(counter == 1)
+    {
+        audio->play_effect(audio->B_ELECTRICITY);
+    }
     std::string title = "credits";
     std::string name1 = "joey";
     std::string name2 = "ben";
@@ -646,7 +665,6 @@ void Game::tick()
     int groundLevel = 458;  // Default ground level
     int xSpeed = 0, x = 0;
     float y  = 0;
-    printk("Entered tick\n");
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
     if(boss->myState == dead) gameState = NextLevel;
     if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) 
@@ -656,16 +674,13 @@ void Game::tick()
         else
             addEnemy();
     }
-    printk("possibly added enemies\n");
 
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
     }
-    printk("checked Ranged attack\n");
 
     checkDeleted();
-    printk("checkced deleted\n");
 
     for(Object* object : objects)
     {
@@ -679,7 +694,6 @@ void Game::tick()
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
     }
-    printk("gravity and behaviour done\n");
 
     for(Object* object : objects)
     {
@@ -687,7 +701,6 @@ void Game::tick()
         object->manageAnimation(); 
         //object->move(x, y);
     }
-    printk("realcollisioncheck\n");
 
 
 }
@@ -886,8 +899,7 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
-
-        audio->play_effect(audio->MNU_CONFIRM);
+        audio->play_effect(audio->P_SHOOT);
     }
 }
 
@@ -913,7 +925,7 @@ void Game::resetToBegin()
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    currentLevel = 0;
+    currentLevel = -1;
     loadPlatforms(currentLevel);
     getRangePlatforms();
     frames = 0;
