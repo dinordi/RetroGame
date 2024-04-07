@@ -25,6 +25,7 @@ Getting Started
 
 Welcome to Saga of Sacrifice! See the `Hardware Documentation`_ for a high-level overview,
 and the documentation's `Setup`_ to get the game running.
+
 .. start_include_here
 
 .. _project-resources:
@@ -92,7 +93,6 @@ Additional Resources
 
 .. _Zephyr Project Website: https://www.zephyrproject.org
 
-.. _Hardware Documentation: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/KiCad/
-.. _Getting Started Guide: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/
-.. _Contributors: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/Contributors/
-.. _FAQ: https://github.com/dinordi/RetroGame/tree/8-hardware-documentation/Docs/FAQ/
+.. _Hardware Documentation: https://github.com/dinordi/RetroGame/tree/main/Docs/
+.. _Getting Started Guide: https://github.com/dinordi/RetroGame/tree/main/Docs/
+.. _FAQ: https://github.com/dinordi/RetroGame/tree/main/Docs/
