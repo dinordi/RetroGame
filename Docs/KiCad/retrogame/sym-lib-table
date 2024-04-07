@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "MyLib")(type "KiCad")(uri "/Users/dinordi/Library/Mobile Documents/com~apple~CloudDocs/Avans/RetroGame/MyLib.kicad_sym")(options "")(descr ""))
+)
