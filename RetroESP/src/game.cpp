@@ -27,7 +27,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     actors.push_back(player);
     liveEnemies = 0;
     killedEnemies = 0;
-    currentLevel = 0;
+    currentLevel = -1;
     Curtain = 0;
     fadeIn = false;
     BOB = false;
@@ -36,6 +36,7 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     gameState = Menu;
     stateSelect = Playing;
     loadPlatforms(currentLevel);
+    getRangePlatforms();
     readInput();
 }
 
@@ -59,12 +60,14 @@ void Game::update()
     {
         case Menu:
         {
+            // if(audio->music_status()){audio->play_music(audio->MENU_MUSIC);}
             updateSelection();
             drawMainMenu();
             break;
         }
         case NextLevel:
         {
+            
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
@@ -72,10 +75,22 @@ void Game::update()
             break;
         }
         case BOSSFIGHT:
-        {
+        {   
+            audio->play_music(audio->STAGE_1_BOSS);
             // sendToDisplay();
             boss->inUse = true;
-            boss->hp = 150;
+            switch(currentLevel)
+            {
+            case 0:
+                boss->hp = 150;
+                break;
+            case 1:
+                boss->hp = 300;
+                break;
+            case 2:
+                boss->hp = 500;
+                break;
+            }
             boss->myState = idle;
             boss->samState = waiting;
             objects.push_back(boss);
@@ -96,8 +111,7 @@ void Game::update()
         case Drbob:
             player->setBobMode();
             BOB = true;
-            gameState = Playing;
-            getRangePlatforms();
+            gameState = NextLevel;
             break;
         case Paused:
             break;
@@ -120,13 +134,9 @@ void Game::update()
     }
     frames++;
   
-    if(frames == 120)
+    if(frames == 120 || (frames % 21600 == 0 && gameState == Menu))
     {
-        printk("Sending music\n");
-        // audio->play_music(audio->MENU_MUSIC);
-        // printk("\nSending sfx\n");
-        audio->play_effect(audio->B_HIT);
-        printk("\nAudio sent\n");
+        audio->play_music(audio->MENU_MUSIC);
     }
 }
 
@@ -142,8 +152,8 @@ void Game::updateSelection()
 
         switch(stateSelect)
         {
-            case Playing:
-                gameState = Playing;
+            case Playing:       
+                gameState = NextLevel;
                 counter = 0;
                 break;
             case Drbob:
@@ -164,6 +174,9 @@ void Game::updateSelection()
     }
     if(frames % 10 == 0)
     {
+
+        if(buttonStatus.up || buttonStatus.down)
+            audio->play_effect(audio->MNU_SELECT);
         if(buttonStatus.up)
         {
             switch(stateSelect)
@@ -247,14 +260,36 @@ void Game::addFatbat(int x, int y)
     }
 
 }
+void Game::addWereWolf(int beginx,int endx, int y)
+{
+    for(auto werewolfman : werewolfMans)
+    {
+        if(!werewolfman->inUse)
+        {
+            liveEnemies++;
+            werewolfman->x = (beginx + endx) / 2;
+            werewolfman->beginx = beginx;
+            werewolfman->endx = endx;
+            werewolfman->y = y - werewolfman->range;
+            werewolfman->inUse = true;
+            werewolfman->myState = walking;
+            werewolfman->hp = 40;
+            entities.push_back(werewolfman);
+            enemies.push_back(werewolfman);
+            objects.push_back(werewolfman);
+            actors.push_back(werewolfman);
+            return;
+        }
+    }
 
+}
 void Game::readInput()
 {
-    buttonStatus.left = button->pinGet(1);
+    buttonStatus.left  = button->pinGet(1);
     buttonStatus.right = button->pinGet(2);
-    buttonStatus.up = button->pinGet(3);
-    buttonStatus.down = button->pinGet(4);
-    buttonStatus.dash = button->pinGet(5);
+    buttonStatus.up    = button->pinGet(3);
+    buttonStatus.down  = button->pinGet(4);
+    buttonStatus.dash  = button->pinGet(5);
     buttonStatus.shoot = button->pinGet(6);
     buttonStatus.start = button->pinGet(7);
     // printk("up: %d, down: %d, left: %d, right: %d, dash: %d, shoot: %d, start: %d\n", buttonStatus.up, buttonStatus.down, buttonStatus.left, buttonStatus.right, buttonStatus.dash, buttonStatus.shoot, buttonStatus.start);
@@ -285,6 +320,19 @@ void Game::nextLevelAnimation()
     if(fadeIn){
         Curtain -= 3;
         if(Curtain < 0){
+            switch(currentLevel){
+            case 0:     
+                audio->play_music(audio->STAGE_1);
+                break;
+            case 1:
+                audio->play_music(audio->STAGE_2);
+                break;
+            case 2:
+                audio->play_music(audio->STAGE_3);
+                break;
+            }
+
+
             fadeIn = false;
             gameState = Playing;
         }
@@ -309,6 +357,7 @@ void Game::nextLevelAnimation()
             platforms.clear();
             enemies.clear();
             projectiles.clear();
+            platformRanges.clear();
             objects.push_back(player);
             entities.push_back(player);
             actors.push_back(player);
@@ -319,6 +368,7 @@ void Game::nextLevelAnimation()
             }
 
             loadPlatforms(currentLevel);
+            getRangePlatforms();
             fadeIn = true;
     }
     }
@@ -458,6 +508,10 @@ void Game::drawCredits()
 {
     static int counter = 0;
     counter++;
+    if(counter == 1)
+    {
+        audio->play_effect(audio->B_ELECTRICITY);
+    }
     std::string title = "credits";
     std::string name1 = "joey";
     std::string name2 = "ben";
@@ -525,7 +579,7 @@ void Game::drawLevel()
         if(actor->getType() == Actor::Type::PLAYER || actor->getType() == Actor::Type::ENEMY || actor->getType() == Actor::Type::BOSS)
         {
             Entity* ob = static_cast<Entity*>(actor);
-
+            actorY--;
             
             // Check if player is attacking and adjust the sprite position
             if(ob->myState == attacking)
@@ -613,12 +667,21 @@ void Game::tick()
     float y  = 0;
     if(killedEnemies >= maxEnemies[currentLevel]) gameState = BOSSFIGHT;
     if(boss->myState == dead) gameState = NextLevel;
-    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) addEnemy();
+    if(liveEnemies < maxEnemyScreen[currentLevel] && killedEnemies + liveEnemies < maxEnemies[currentLevel] && !boss->inUse) 
+    {
+        if(frames%platformRanges.size() % 2 == 0)
+            addWereWolf(platformRanges[frames%platformRanges.size()].xbegin,platformRanges[frames%platformRanges.size()].xend,platformRanges[frames%platformRanges.size()].y); 
+        else
+            addEnemy();
+    }
+
     for(Entity* entity : entities)
     {
         checkRangedAttack(entity);
     }
+
     checkDeleted();
+
     for(Object* object : objects)
     {
         if(object->getType() == Actor::Type::BOSS)
@@ -631,12 +694,14 @@ void Game::tick()
         y = gravityCheck(object,groundLevel);
         x = borderCheck(object);
     }
+
     for(Object* object : objects)
     {
         realCollisionCheck(object);
         object->manageAnimation(); 
         //object->move(x, y);
     }
+
 
 }
 
@@ -803,7 +868,7 @@ int Game::gravityCheck(Object* object,int groundlevel){
             // y = y1;
             if(object->getY() > groundlevel) //if player is on platform
             {
-                object->y = groundlevel-1;
+                object->y = groundlevel;
                 object->isGrounded = true;
                 object->ySpeed = 0;
             }
@@ -834,8 +899,7 @@ void Game::checkRangedAttack(Entity* entity){
         projectiles.push_back(static_cast<Projectile*>(projectile));
         objects.push_back(projectile);
         actors.push_back(projectile);
-
-        audio->play_effect(audio->MNU_CONFIRM);
+        audio->play_effect(audio->P_SHOOT);
     }
 }
 
@@ -852,6 +916,7 @@ void Game::resetToBegin()
     platforms.clear();
     enemies.clear();
     projectiles.clear();
+    platformRanges.clear();
     player->inUse = true;
     player->x = 780;
     player->y = 100;
@@ -860,8 +925,9 @@ void Game::resetToBegin()
     objects.push_back(player);
     entities.push_back(player);
     actors.push_back(player);
-    currentLevel = 0;
+    currentLevel = -1;
     loadPlatforms(currentLevel);
+    getRangePlatforms();
     frames = 0;
     gameState = Menu;
     stateSelect = Playing;
@@ -872,17 +938,35 @@ void Game::resetToBegin()
 }
 
 void Game::getRangePlatforms(){
+    int leftplatformID;
+    int rightplatformID;
+    switch(currentLevel)
+    {
+        case 0:
+            leftplatformID = 100;
+            rightplatformID = 101;
+            break;
+        case 1:
+            leftplatformID = 123;
+            rightplatformID = 124;
+            break;
+        case 2:
+            leftplatformID = 127;
+            rightplatformID = 128;
+            break;
+    }
     for (int i = 0; i < platforms.size(); ++i) {
-        if (platforms[i]->getID() == 100) { // Begin van een platform
+        if (platforms[i]->getID() == leftplatformID) { // Begin van een platform
             int start = platforms[i]->getX() - platforms[i]->range;
             int y = platforms[i]->getY(); // Y-positie van het platform
             // Zoek het einde van het platform
             int end = start;
             while (i < platforms.size() && platforms[i]->getY() == y) {
-                if (platforms[i]->getID() == 101) { // Einde van een platform
+                if (platforms[i]->getID() == rightplatformID) { // Einde van een platform
                     PlatformRange range;
                     range.xbegin = start;
                     range.xend = platforms[i]->getX() + platforms[i]->range;
+                    range.y = platforms[i]->getY() - platforms[i]->range;
                     platformRanges.push_back(range);
                     // printk("Start: %d, End: %d Y: %d\n", range.xbegin, range.xend,platforms[i]->getY());
                     break;

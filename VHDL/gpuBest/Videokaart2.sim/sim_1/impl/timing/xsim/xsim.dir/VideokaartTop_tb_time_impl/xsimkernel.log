@@ -1,7 +1,0 @@
-Running: xsim.dir/VideokaartTop_tb_time_impl/xsimk.exe -simmode gui -wdb VideokaartTop_tb_time_impl.wdb -simrunnum 0 -socket 57486
-Design successfully loaded
-Design Loading Memory Usage: 158104 KB (Peak: 158104 KB)
-Design Loading CPU Usage: 249 ms
-Simulation completed
-Simulation Memory Usage: 363696 KB (Peak: 363696 KB)
-Simulation CPU Usage: 3491749 ms
