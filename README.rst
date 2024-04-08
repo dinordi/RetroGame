@@ -64,7 +64,8 @@ The KiCad files can be downloaded from the Docs/KiCad folder.
 Setup
 *****
 
-The game runs on a ESP32-S3-Devkit-C v1.1 using the Zephyr RTOS. v3.5.0
+The game runs on a ESP32-S3-Devkit-C v1.1 using the Zephyr RTOS. v3.5.0.
+Windows 11 is tested no guarantee is given for any other OS.
 
 DFPlayer mini
 *************
@@ -83,9 +84,10 @@ A: Restart ESP32 using reset button or unplugging from power. If that does not w
 A: Check if both SD cards are seated properly in DFPlayer mini's. Also check if the aux cable is connected to an amplified speaker.
 The aux connection port could be a little janky, so check if the GND pin makes connection to the PCB.
 
-**Q: How to fix empty screen/weird boxes are all over the screen?**
+**Q: Can't flash or can't see the COM port for the esp?**
 
-A: Restart ESP32 using reset button or unplugging from power. If that does not work, restart FPGA by pressing the restart button.
+A: Make sure you have to micro usb cable in the port labeled 'uart' on the esp. Also installing a driver is needed to get the COM port to work.
+Download the driver in the github and follow the link below from "Manually Install Device Drivers on Windows". When you browse for the driver, select the driver folder from the git.
 
 Additional Resources
 --------------------
