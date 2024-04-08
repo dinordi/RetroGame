@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/github/RetroGame/VHDL/lastGPU/Videokaart2.runs/synth_1/Videokaart_full.tcl"
+  variable script "C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.runs/synth_1/Videokaart_full.tcl"
   variable category "vivado_synth"
 }
 
@@ -79,46 +79,52 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir C:/github/RetroGame/VHDL/lastGPU/Videokaart2.cache/wt [current_project]
-set_property parent.project_path C:/github/RetroGame/VHDL/lastGPU/Videokaart2.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.cache/wt [current_project]
+set_property parent.project_path C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {C:/Users/Joey/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
+set_property board_part_repo_paths {C:/Users/bentu/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
-set_property ip_output_repo c:/github/RetroGame/VHDL/lastGPU/Videokaart2.cache/ip [current_project]
+set_property ip_output_repo c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-add_files C:/github/RetroGame/VHDL/lastGPU/31pix.coe
-add_files C:/github/RetroGame/VHDL/lastGPU/Background.coe
-add_files C:/github/RetroGame/VHDL/lastGPU/15pix.coe
-add_files c:/github/RetroGame/VHDL/lastGPU/63pix.coe
+add_files C:/Users/bentu/Downloads/Videokaart2.cache/31pix.coe
+add_files C:/Users/bentu/Downloads/Videokaart2.cache/Background.coe
+add_files C:/Users/bentu/Downloads/Videokaart2.cache/15pix.coe
+add_files C:/Progh/15.coe
+add_files {{C:/Users/bentu/Downloads/15pix 1.coe}}
+add_files C:/Users/bentu/Downloads/31pix.coe
+add_files C:/Users/bentu/Downloads/63pix.coe
+add_files c:/Progh/lastGPU/15pix.coe
+add_files c:/Progh/lastGPU/31pix.coe
+add_files c:/Progh/lastGPU/63pix.coe
 read_vhdl -library xil_defaultlib {
-  C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd
-  C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/InterfaceController.vhd
-  C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/spriteController.vhd
-  C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd
-  C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd
-  C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd
+  C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/imports/new/Dflipflop.vhd
+  C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/new/InterfaceController.vhd
+  C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/new/spriteController.vhd
+  C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/imports/new/threeFlipFlop.vhd
+  C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/imports/Progh/vga.vhd
+  C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/new/Videokaart_full.vhd
 }
-read_ip -quiet C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_late.xdc]
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+read_ip -quiet C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_late.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
-read_ip -quiet C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/ip/Sprite15x15_1/Sprite15x15_1.xci
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_ooc.xdc]
+read_ip -quiet C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/ip/Sprite15x15_1/Sprite15x15_1.xci
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/Sprite15x15_1/Sprite15x15_1_ooc.xdc]
 
-read_ip -quiet C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/ip/sprite63x63/sprite63x63.xci
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63_ooc.xdc]
+read_ip -quiet C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/ip/sprite63x63/sprite63x63.xci
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63_ooc.xdc]
 
-read_ip -quiet C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/ip/sprite31x31_2/sprite31x31_2.xci
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2_ooc.xdc]
+read_ip -quiet C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/ip/sprite31x31_2/sprite31x31_2.xci
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/sprite31x31_2/sprite31x31_2_ooc.xdc]
 
-read_ip -quiet C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/sources_1/ip/background/background.xci
-set_property used_in_implementation false [get_files -all c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/background/background_ooc.xdc]
+read_ip -quiet C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/sources_1/ip/background/background.xci
+set_property used_in_implementation false [get_files -all c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/background/background_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -129,14 +135,14 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc
-set_property used_in_implementation false [get_files C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
+read_xdc C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc
+set_property used_in_implementation false [get_files C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/constrs_1/new/Constr_videokaart.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/github/RetroGame/VHDL/lastGPU/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.srcs/utils_1/imports/synth_1/InterfaceController.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

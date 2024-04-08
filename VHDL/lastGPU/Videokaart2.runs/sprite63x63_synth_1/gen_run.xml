@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="sprite63x63_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712142822">
+<GenRun Id="sprite63x63_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1712175179">
   <File Type="PA-TCL" Name="sprite63x63.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="sprite63x63_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="sprite63x63_reports.tcl"/>

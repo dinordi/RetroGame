@@ -46,7 +46,7 @@ type spriteLocation is record
     end record;
 type Data is array (integer range <>) of spriteLocation;
 type grootte is array (integer range<>) of unsigned (5 downto 0);
-signal DataArray : Data(0 to 135);
+signal DataArray : Data(0 to 104);
 signal DataCount : integer := 0;
 signal sizes : grootte(0 to 3) := ("000111", "001111", "011111", "011111");
 signal lastdataready : std_logic;
@@ -82,7 +82,7 @@ if rising_edge(clk) then
                 PrintIndex <= 151;
                 state <= "01";
             when "01" =>
-            for i in 0 to 135 loop                                      
+            for i in 0 to 104 loop                                      
                 sprRange := sizes(TO_INTEGER(DataArray(i).ID(8 downto 0)) / 100);     --range divided by 2, 15X15 means plus 7 and minus 7 from input co rdinate sent by mc                   
                 if i < dataCount and
                     (DataArray(i).x_pos - sprRange <= varHpos) and --1111 1111
@@ -118,7 +118,7 @@ if rising_edge(clk) then
                 state <= "00";
              end case;
         else
-            if Dataready = '1' and lastdataready = '0' and datacount < 135 then                                                         -- valid data is ready to be read
+            if Dataready = '1' and lastdataready = '0' and datacount < 105 then                                                         -- valid data is ready to be read
                     DataArray(DataCount) <= (unsigned(ID),unsigned(x_pos),unsigned(y_pos));   -- insert data into array
                     DataCount <= DataCount + 1;                                               -- keep track of how many data recieved
                 else
