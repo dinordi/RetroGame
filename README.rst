@@ -85,7 +85,7 @@ With some research and understanding of these comments, you should be able to mo
 Changing Sprites
 ****************
 
-explanation how to change sprites with piksel and which dimensions we use (15x15 etc)
+explanation how to change sprites with Piksel and which dimensions we use (15x15 etc)
 and also how to upload them to the FPGA.
 
 Changing text
