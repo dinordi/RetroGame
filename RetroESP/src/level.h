@@ -1,7 +1,7 @@
 #pragma once
 
 const int platforms[4] = {100,101,102,103};
-
+const int teleporterSprites[2] = {120,121};
 const int maxEnemies[8] = {20, 30, 40, 50, 60, 80, 110, 150};
 const int maxEnemyScreen[8]= {10, 11, 12, 14, 16, 18, 20, 22};
 

@@ -1,5 +1,6 @@
 #pragma once
-#include <iostream>
+//#include <iostream>
+#include <cstdint>
 #include <string>
 #include <stdio.h>
 #include <string.h>
@@ -12,7 +13,7 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
-#include <sstream>
+//#include <sstream>
 #include "flash_esp32.h"
 
 
@@ -29,7 +30,7 @@ public:
     void assign_time_points();
      //add transistion for reseting the multiplier when it is done
     void set_multiplier();
-    void decrease_multiplier(int time_sim);
+    void decrease_multiplier(uint64_t time_sim);
 public:
     void get_leaderboard();
     std::string receive_Scores(int i);
@@ -47,7 +48,7 @@ private:
     int boss_exp    = 1000; // base points without multiplier
 private:
     int time = 0;
-    int second_decrease = 35; 
+    int second_decrease = 12; 
     int current_score = 0; // gamescore
     int time_score =0;
 private:

@@ -1,9 +1,10 @@
 #include "scores.h"
+#include "zephyr/sys/printk.h"
 #include <cstddef>
 #include <cstdint>
 #include <string>
-#include <sstream>
-#define FPS 60
+//#include <sstream>
+#define FPS 6000
 
 Score::Score(Flash_esp* flash_esp)
   : flash_esp(flash_esp)
@@ -14,16 +15,23 @@ Score::~Score() {}
 
 //  receiving 60 fps so 1 second is 60
 //  decrease multiplier every 30 seconds if the multiplier is not already 1
-void Score::decrease_multiplier(int time_sim)
+void Score::decrease_multiplier(uint64_t time_sim)
 {
+if(time_sim > 0){
   time = time + time_sim;
+}
+   printk("time %d\n",time);
 
   if (time_multiplier > 1) {
-    if (time == FPS * second_decrease) {
+
+printk("time to decrease %d\n",FPS * second_decrease);
+printk("time multiplier %d\n",time_multiplier);
+    if (time > FPS * second_decrease) {
       time = 0;
       time_multiplier--;
     }
   }
+
 }
 void Score::set_multiplier()
 {
@@ -50,7 +58,7 @@ void Score::assign_boss_points()
 void Score::assign_monster_points()
 {
   int calculate_points = monster_exp * time_multiplier;
-
+  printk("monster points %d\n", calculate_points);
   current_score = current_score + calculate_points;
 }
 
@@ -75,7 +83,7 @@ flash_esp->write_string  (  "M highscore 10000&"
                             "M highscore 3000&"
                             "M highscore 2000&");
 }
-
+#include <sstream>
 void Score::get_leaderboard()
 {
   if(execute_get_once){
@@ -97,43 +105,26 @@ void Score::get_leaderboard()
   }
 }
 
-// compare the player score with the leader board
 void Score::compare_leaderboard()
 {
-  if(execute_compare_once){
-
-    execute_compare_once = false;
-    printk("compare");
-    for (size_t i = 0; i < player_and_score.size(); ++i) {
-        // Find the location of "score: " in player_and_score[i]
-        size_t pos = player_and_score[i].find("score ");
+    printk("current score %d", current_score);
+    for (const auto& player_score : player_and_score) {
+        size_t pos = player_score.find("score ");
 
         if (pos != std::string::npos) {
-            // Get the substring starting from index pos + 6 (to skip "score: ")
-            std::string score_string = player_and_score[i].substr(pos + 6);
+            compare_score = std::stoi(player_score.substr(pos + 6));
 
-            // Convert the substring to an integer
-              compare_score = std::stoi(score_string);
-  
-            //compare_score = 0;
-            printk("current_score : %d compare score : %d\n",current_score,compare_score);
             if (current_score > compare_score) {
-                //std::cout << "Highscore achieved. Place: " << i + 1 << std::endl;
-                //current_score = compare_score; // Update current_score with the new high score
-
                 high_score = true;
                 compare_score = current_score;
-                replace_score = i;
-                printk("exit");
-                break; // Break after finding the first high score
+                replace_score = &player_score - &player_and_score[0];  // get the index
+                break;
             }
         }
         else {
-           printk("not found\n");
+            printk("not found\n");
         }
-      
     }
-  }
 }
 
 void Score::move_down_leaderboard()

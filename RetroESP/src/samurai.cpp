@@ -1,13 +1,16 @@
 #include "samurai.h"
+#include <cstdlib>
+#include <zephyr/random/random.h>
 
-#include <zephyr/sys/printk.h>
 
-
-Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samuraiSprites, range,x,y)
+Samurai::Samurai(int x,int y, int playerX, int playerY) : Enemy(samuraiSprites, 15,x,y)
 {
     hasCollision = true;
     hasGravity = true;
     isRanged = false;
+    samState = waiting;
+    this->playerX = playerX;
+    this->playerY = playerY;
     hitAnimation = 0;
     hit = false;
     damage = 40;
@@ -15,18 +18,96 @@ Samurai::Samurai(const int* samuraiSprites, int range,int x,int y) : Enemy(samur
 
 void Samurai::behaviour() 
 { 
-    if (isFacingRight && x >= 1000) {
-        isFacingRight = false;
-    } else if (!isFacingRight && x <= 340) {
-        isFacingRight = true;
+   static int count = 0;
+   count++;
+    switch(samState)
+    {
+        case waiting:
+        {
+            xSpeed = 0;
+            myState = idle;
+            if(seesPlayer())
+            {
+                samState = spottedPlayer;
+                count = 0;
+            }
+            if(count == 60)
+            {
+                isFacingRight = !isFacingRight;
+            }
+            else if(count == 120)
+            {
+                isFacingRight = !isFacingRight;
+            }
+            else if(count == 180)
+            {
+                isFacingRight = !isFacingRight;
+                samState = patrol;
+                count = 0;
+            }
+            break;
+        }
+        case patrol:
+        {
+            myState = walking;
+            xSpeed = isFacingRight ? 2 : -2;
+            if(sys_rand32_get() % 200 ==0)
+            {
+                samState = waiting;
+                count = 0;
+            }
+            if(seesPlayer())
+            {
+                samState = spottedPlayer;
+                count = 0;
+            }
+            break;
+        }
+        case spottedPlayer:
+        {
+            myState = walking;
+            
+            if(x < playerX)
+            {
+                isFacingRight = true;
+                xSpeed = 6;
+            }
+            else
+            {
+                isFacingRight = false;
+                xSpeed = -6;
+            }
+            if(abs(playerX - x) < 10)
+            {
+                //Attack
+                samState = attackingPlayer;
+                myState = attacking;
+                xSpeed = 0;
+                count = 0;
+            }
+            break;
+        }
+        case attackingPlayer:
+        {
+            xSpeed = 0;
+            if(count == 60)
+            {
+                samState = waiting;
+                count = 0;
+            }
+            break;
+        }
     }
 
-    xSpeed = isFacingRight ? 2 : -2;
+    if(hp <= 0)
+    {
+        myState = dead;
+    }
 
     updateySpeed(gravity);
-    y = y + ySpeed; 
+    y = y + ySpeed;
     x = x + xSpeed;
-    myState = walking;
+
 }
 
 int Samurai::attackCheck(bool isX)
@@ -60,7 +141,7 @@ void Samurai::manageAnimation()
     {
         mirror = 512;
     }
-     if(hitAnimation == 20)
+    if(hitAnimation == 20)
     {
         hit = false;
         hitAnimation = 0;
@@ -71,46 +152,82 @@ void Samurai::manageAnimation()
         hitAnimation++;
     }
     else{
-	    switch (myState) {
-	    case idle:
-		    if (spriteCounter % 30 < 15) {
-			    ID = entitySprites[0];
-		    } else {
-			    ID = entitySprites[1];
-		    }
-		    if (spriteCounter >= 30) {
-			    spriteCounter = 0;
-		    }
-		    break;
+        switch(myState)
+        {
+        case idle:
+            if(spriteCounter % 30 < 15)
+                ID = entitySprites[0] + mirror;
+            else
+                ID = entitySprites[1] + mirror;
+            if(spriteCounter >= 30)
+                spriteCounter = 0;
+            break;
 
-	    case walking: {
-		    divider = 8;
-		    if (index < divider) {
-			    ID = entitySprites[index + 3] + mirror;
-		    } else {
-			    ID = entitySprites[10] + mirror;
-		    }
-		    if (spriteCounter >= 64) {
-			    spriteCounter = 0;
-		    }
-		    break;
-	    }
+        case walking:
+        {
+            divider = 8;
+            if (index < divider) 
+            {
+                ID = entitySprites[index + 3] + mirror;
+            } 
+            else
+            {
+                ID = entitySprites[10] + mirror;
+            }
+            if (spriteCounter >= 64) 
+            {
+                spriteCounter = 0;
+            }
+            break;
+        }
 
-	    case attacking:
-		    divider = 6;
-		    if (index < divider) {
-			    ID = entitySprites[index + 11] + mirror;
-		    } else {
-			    ID = entitySprites[16] + mirror;
-		    }
+        case attacking:
+            divider = 6;
+            if(index < divider)
+                ID = entitySprites[index + 11] + mirror;
+            else
+                ID = entitySprites[16] + mirror;
 
-		    if (spriteCounter >= 64) {
-			    spriteCounter = 0;
-		    }
-		    break;
-	    }
+            if(spriteCounter >= 64)
+                spriteCounter = 0;
+            break;
+        }
     }
 }
+
+bool Samurai::seesPlayer()
+{
+    if(isFacingRight)
+    {
+        if((x-playerX) < 100 && abs(playerY - y) < 30)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        if((playerX-x) < 100 && abs(playerY - y) < 30)  
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+}
+
+void Samurai::setPlayerPos(int x, int y)
+{
+    playerX = x;
+    playerY = y;
+}
+
 
 bool Samurai::collisionWith(int damage)
 {
@@ -118,5 +235,5 @@ bool Samurai::collisionWith(int damage)
     if(damage){
         hit = true;
     }
-	return false;
+    return false;
 }

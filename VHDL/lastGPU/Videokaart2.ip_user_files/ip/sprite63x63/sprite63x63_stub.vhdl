@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Wed Apr  3 13:15:00 2024
--- Host        : Desktop-Joey running 64-bit major release  (build 9200)
+-- Date        : Wed Apr  3 22:14:43 2024
+-- Host        : Laptop-Ben-T running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/github/RetroGame/VHDL/lastGPU/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63_stub.vhdl
+--               c:/Users/bentu/Downloads/Videokaart2.cache/Videokaart2.gen/sources_1/ip/sprite63x63/sprite63x63_stub.vhdl
 -- Design      : sprite63x63
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a35tcpg236-1

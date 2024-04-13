@@ -34,23 +34,22 @@ Audio::~Audio()
 // uart 2 == effects == select 1
 void Audio::uart_send(const std::vector<int>& vector, int select)
 {
-       for(int i =0; i < vector.size(); i++){
-        
-    if(select == 0){
-   uart_poll_out(uart_dev_1, vector[i]);
-   //printk("%x ",vector[i]);
-    }
-
-    else{
-   uart_poll_out(uart_dev_2, vector[i]);
-   
-    }
-
+    for(int i =0; i < vector.size(); i++){
+        if(select == 0){
+            uart_poll_out(uart_dev_1, vector[i]);
+            // printk("%x ",vector[i]);
+        }
+        else
+        {
+            uart_poll_out(uart_dev_2, vector[i]);
+            // printk("%x ",vector[i]);
+        }
    }
 }
 
 //in the readme is there in depth explanation of the folder structure
 //specify "01" folder 100.MP3 file, serial port to send commands : 7E FF 06 0F 00 01 64 FOLDER FILE EF 
+// function which uses Enum parameter to select music
 void Audio::play_music(play_soundtrack music)
 {
 
@@ -85,9 +84,11 @@ void Audio::play_music(play_soundtrack music)
     uart_send(uart1_buffer,0); // use UART1 to select music select = 0
     
 }
+
+// function which uses Enum as parameter to select sound effect
 void Audio::play_effect(play_effects effect)
 {
-        switch(effect)
+    switch(effect)
     {
     //menu effects
     case MNU_CONFIRM:

@@ -21,7 +21,7 @@
 #include "sprites.h"
 #include "scores.h"
 #include "flash_esp32.h"
-
+#include "WerewolfMan.h"
 #include "globals.h"
 #include "level.h"
 
@@ -36,7 +36,9 @@ std::vector<Platform*> level1;
 std::vector<Platform*> level2;
 std::vector<Platform*> level3;
 std::vector<Bullet*> bullets;
+std::vector<WerewolfMan*> werewolfMans;
 
+std::vector<Teleporter*> teleporters;
 
 
 void loadPlatforms(int levelNum, std::vector<Platform*>* platforms)
@@ -47,6 +49,12 @@ void loadPlatforms(int levelNum, std::vector<Platform*>* platforms)
         {
             if(level[levelNum][i][j] != 0)    // If the tile is not empty
             {
+				if(level[levelNum][i][j] == 21)
+				{
+					// Teleporter
+					teleporters.push_back(new Teleporter(j * 31, i * 31));
+					continue;
+				}
                 int tileX = j * 31; //31 is tile width/height
                 int tileY = i * 31;
                 int tileID = level[levelNum][i][j] + 99;  // Add 99 to the tileID to get the correct sprite
@@ -75,11 +83,11 @@ int main(void)
     	Fatbat* fatbat = new Fatbat(360, 0);
     	fatbats.push_back(fatbat);
 	}
-	// std::vector<Werewolf*> werewolfs;
-	// for (int i = 0; i < 40; i++) {
-    // 	Werewolf* werewolf = new Fatbat(0, 0);
-    // 	werewolfs.push_back(werewolf);
-	// }
+	
+	for (int i = 0; i < 20; i++) {
+    	WerewolfMan* werewolfMan = new WerewolfMan(360, 0);
+    	werewolfMans.push_back(werewolfMan);
+	}
 
 	loadPlatforms(0, &level1);
 	loadPlatforms(1, &level2);
@@ -139,6 +147,7 @@ int main(void)
 			game->update();
 			// printk("PLAY AUDIO\n");;
 			// audio->play_effect(audio->M_DEATH);
+			// audio->play_music(audio->MENU_MUSIC);
 			// audio->uart_send({0x7E, 0xFF, 0x06, 0x03, 0x00, 0x00, 0x01, 0xEF}, 1);
 			// k_sleep(K_MSEC(1000));
 			// uint64_t time2 = k_cycle_get_64();

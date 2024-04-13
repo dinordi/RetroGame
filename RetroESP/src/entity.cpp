@@ -1,6 +1,5 @@
 #include "entity.h"
 //#include "game.h"
-#include <zephyr/sys/printk.h>
 
 
 Entity::Entity(const int* entitySprites, int range,int x, int y) : Object(entitySprites,range,x,y)
