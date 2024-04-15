@@ -1,17 +1,16 @@
 //#include <iostream>
-#include <vector>
 #include <string.h>
 #include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/uart.h>
 #include <zephyr/drivers/gpio.h>
-
+#include <vector>
 
 #define UART_DEVICE_NODE DT_NODELABEL(uart1)
 #define UART_DEVICE_NODE_1 DT_NODELABEL(uart2)
-#define GPIO_PIN_1 19 // check uart1 GPIO19
-#define GPIO_PIN_2 20 // check uart2 GPIO20
+#define GPIO_PIN_1 20 // check uart1 GPIO19
+#define GPIO_PIN_2 19 // check uart2 GPIO20
 #define BUSY  DT_NODELABEL(gpio0)
 // #define BUSY2  DT_NODELABEL(BUSY2)
 
@@ -73,6 +72,7 @@ public:
    void uart_send(const std::vector<int>& vector, int select);
 
 private:
+bool execute = true;
 //input gpio devices for busy 
 // when busy pin will be low  
 int busy_uart1 = 1;

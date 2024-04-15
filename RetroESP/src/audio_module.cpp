@@ -1,4 +1,5 @@
 #include "audio_module.h"
+#include "zephyr/sys/printk.h"
 
 static const struct device *const uart_dev_1 = DEVICE_DT_GET(UART_DEVICE_NODE);
 static const struct device *const uart_dev_2 = DEVICE_DT_GET(UART_DEVICE_NODE_1);
@@ -34,17 +35,19 @@ Audio::~Audio()
 // uart 2 == effects == select 1
 void Audio::uart_send(const std::vector<int>& vector, int select)
 {
-    for(int i =0; i < vector.size(); i++){
+    for(size_t i = 0; i < vector.size(); i++){
         if(select == 0){
-            uart_poll_out(uart_dev_1, vector[i]);
-            // printk("%x ",vector[i]);
+            uart_poll_out(uart_dev_1, vector.at(i));
+            // printk("%x ",vector.at(i));
         }
         else
         {
-            uart_poll_out(uart_dev_2, vector[i]);
-            // printk("%x ",vector[i]);
+            uart_poll_out(uart_dev_2, vector.at(i));
+            // printk("%x ",vector.at(i));
         }
    }
+   uart1_buffer.clear();
+   uart2_buffer.clear();    
 }
 
 //in the readme is there in depth explanation of the folder structure
@@ -147,33 +150,26 @@ void Audio::play_effect(play_effects effect)
 // state is low when busy 
 int Audio::music_status()
 {
-    return gpio_pin_get(uart_busy, GPIO_PIN_1);
+    int status = gpio_pin_get(uart_busy, GPIO_PIN_1);
+    printk("music status %d\n",status);
+    return status;
 }
 
 int Audio::sfx_status()
 {
-    return gpio_pin_get(uart_busy, GPIO_PIN_2);
+    int status = gpio_pin_get(uart_busy, GPIO_PIN_2);
+   // printk("sfx status %d\n",status);
+    return status;
 }
 
 // select sound effect or music to stop
 void Audio::stop(stop_audio stop)
 {
-switch(stop)
-{
-    case MUSIC:
-    
-    uart1_buffer = {0x7E ,0xFF, 0x06 ,0x16 ,0x00  ,0x00 ,0x00 ,0xFE ,0xE5, 0xEF}; 
+
+
+    uart1_buffer = {0x7E ,0xFF, 0x06 ,0xE ,0x00  ,0x00 ,0x00 ,0xEF}; 
     uart_send(uart1_buffer,0);
-    uart1_buffer.clear();
-        break;
-    case SFX:
-    uart2_buffer = {0x7E ,0xFF, 0x06 ,0x16 ,0x00  ,0x00 ,0x00 ,0xFE ,0xE5, 0xEF}; 
-    uart_send(uart2_buffer,1); 
-    uart2_buffer.clear();
-        break;
-
 
 }
 
-}
 

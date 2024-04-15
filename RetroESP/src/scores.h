@@ -27,6 +27,7 @@ public:
     void assign_boss_points();
     void assign_monster_points();
     void set_time_points();
+    void reset_time_points();
     void assign_time_points();
      //add transistion for reseting the multiplier when it is done
     void set_multiplier();
@@ -48,14 +49,12 @@ private:
     int boss_exp    = 1000; // base points without multiplier
 private:
     int time = 0;
-    int second_decrease = 12; 
+    int prevfps = 0;
+    int second_decrease = 6; 
     int current_score = 0; // gamescore
     int time_score =0;
 private:
     bool high_score = false;
-    bool execute_write_once = true;
-    bool execute_get_once = true;
-    bool execute_compare_once =true;
 private:   
     std::string leader_board;
     int compare_score;

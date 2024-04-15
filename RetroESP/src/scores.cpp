@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <string>
 //#include <sstream>
-#define FPS 6000
+#define FPS 60
 
 Score::Score(Flash_esp* flash_esp)
   : flash_esp(flash_esp)
@@ -17,26 +17,33 @@ Score::~Score() {}
 //  decrease multiplier every 30 seconds if the multiplier is not already 1
 void Score::decrease_multiplier(uint64_t time_sim)
 {
-if(time_sim > 0){
-  time = time + time_sim;
+
+if(prevfps - time_sim > 0){
+  time++;
 }
-   printk("time %d\n",time);
+   //printk("time %d\n",time);
 
   if (time_multiplier > 1) {
 
-printk("time to decrease %d\n",FPS * second_decrease);
-printk("time multiplier %d\n",time_multiplier);
+//printk("time to decrease %d\n",FPS * second_decrease);
+//printk("time multiplier %d\n",time_multiplier);
     if (time > FPS * second_decrease) {
       time = 0;
       time_multiplier--;
     }
   }
+    prevfps = time_sim;
 
 }
 void Score::set_multiplier()
 {
 time_multiplier = 100;
 
+}
+
+void Score::reset_time_points()
+{
+  time_score = 0;
 }
 
 // receive every game tick some points
@@ -58,7 +65,7 @@ void Score::assign_boss_points()
 void Score::assign_monster_points()
 {
   int calculate_points = monster_exp * time_multiplier;
-  printk("monster points %d\n", calculate_points);
+  //printk("monster points %d\n", calculate_points);
   current_score = current_score + calculate_points;
 }
 
@@ -86,28 +93,23 @@ flash_esp->write_string  (  "M highscore 10000&"
 #include <sstream>
 void Score::get_leaderboard()
 {
-  if(execute_get_once){
-  execute_get_once = false;
+
     leader_board = flash_esp->read_esp_flash();
-    printk("leaderboard : %zu\n", leader_board.size());
+    //printk("leaderboard : %zu\n", leader_board.size());
     
     // Use std::stringstream to tokenize the string
     std::stringstream ss(leader_board);
     std::string token;
-
-    printk("get score");
     // Tokenize the input string by '&' delimiter
     while (std::getline(ss, token, '&') && player_and_score.size() < 100) {
         player_and_score.push_back(token);
-        printk("test");
     }
-    printk("nothing");
-  }
+  
 }
 
 void Score::compare_leaderboard()
 {
-    printk("current score %d", current_score);
+    //printk("compare current score %d", current_score);
     for (const auto& player_score : player_and_score) {
         size_t pos = player_score.find("score ");
 
@@ -122,7 +124,7 @@ void Score::compare_leaderboard()
             }
         }
         else {
-            printk("not found\n");
+           // printk("not found\n");
         }
     }
 }
@@ -139,8 +141,7 @@ void Score::move_down_leaderboard()
 }
 void Score::write_leaderboard()
 {
-  if(execute_write_once){
-    execute_write_once =false;
+
     std::string new_leaderboard;
     std::string player_name = "M highscore ";
 
@@ -163,12 +164,11 @@ void Score::write_leaderboard()
 
         // Convert the leaderboard to a C-style string and print it
         const char* cString = new_leaderboard.c_str();
-        printk("New leaderboard:\n%s\n", cString);
+        //  printk("New leaderboard:\n%s\n", cString);
 
         // Write the new leaderboard to flash
         flash_esp->write_string(new_leaderboard);
     }
-  }
 }
 
 std::string Score::receive_Scores(int i) {
@@ -186,7 +186,7 @@ std::string Score::receive_Scores(int i) {
 
 std::string Score::currentscore_string()
 {
-
+  //printk("current score %d",current_score);
   return std::to_string(current_score);
 }
 
@@ -199,5 +199,8 @@ return high_score;
 void Score::reset_score()
 {
   high_score = false;
+  printk("reset score");
+  printk("current score %d",current_score);
+  time_score = 0; 
   current_score = 0;
 }

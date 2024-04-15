@@ -103,4 +103,7 @@ private:
     int randomNumbers[1000];
     bool BOB;
     bool first_init_gameover;
+    bool first_init_menu;
+    int level;
+    int m_status;
 };

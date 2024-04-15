@@ -86,7 +86,7 @@ for (int i = 0U; i < 1000; i++) { // 4 is test value
 	
 	if(buf_word> 128){break;} //non ASCII detected
 	uint32Array_read.push_back(buf_word);
-    printf("   Data read: %u\n", buf_word);
+   // printf("   Data read: %u\n", buf_word);
     if (uint32Array[i] == buf_word) {
      // printf("   Data read matches data written. Good!\n");
     } else {

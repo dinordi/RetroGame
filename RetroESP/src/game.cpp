@@ -16,7 +16,7 @@ int count = 0;
 
 Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(fpga) ,button(button) ,score(score) ,audio(audio)
 {
-    //sys_csrand_get(randomNumbers, 1000);
+    sys_csrand_get(randomNumbers, 1000);
     spriteData = new uint16_t[400];
     spriteDataCount = 0;
     player = new Player(player1Sprites,7,780,100);
@@ -29,9 +29,12 @@ Game::Game(FPGA* fpga, ButtonHandler* button, Audio* audio,Score* score) : fpga(
     killedEnemies = 0;
     currentLevel = -1;
     Curtain = 0;
+    m_status = 1;
     fadeIn = false;
     BOB = false;
     first_init_gameover = false;
+    first_init_menu = true;
+    level =0;
     // addEnemy();
     frames = 0;
     gameState = Menu;
@@ -57,25 +60,38 @@ Game::~Game()
 
 void Game::update()
 {
+    m_status = audio->music_status();
+    
     switch(gameState)
     {
         case Menu:
         {
+            if(first_init_menu){
+               
             //score->reset_leaderboard();
-            score->reset_score();
             score->get_leaderboard();
-            // if(audio->music_status()){audio->play_music(audio->MENU_MUSIC);}
+            first_init_menu = false;
+            audio->play_music(audio->MENU_MUSIC);
+            score->reset_score();
+             
+            }
+             
+            //printk("sfx status: %d\n",audio->sfx_status());
+           
+           
             updateSelection();
             drawMainMenu();
             break;
         }
         case NextLevel:
         {
-            
+           
             nextLevelAnimation();
             score->assign_time_points(); // give the player a level complete score based on time
             score->set_multiplier(); // set the scoremultiplier back to 100
+            score->reset_time_points(); // reset the time points
             boss->myState = idle;
+            if(m_status == 0){audio->stop(audio->MUSIC);} // if there is music playing stop it
             break;
         }
         case BOSSFIGHT:
@@ -103,15 +119,15 @@ void Game::update()
             gameState = Playing;
             killedEnemies = 0;
             break;
-        }
+        }   
         case Playing:
         {
-            
+
             sendToDisplay();
-            
             score->set_time_points(); // increase the level complete score
             score->decrease_multiplier(frames);
             updateGame();
+
             break;
         }
         case Drbob:
@@ -123,9 +139,9 @@ void Game::update()
             break;
         case GameOver:
         {
-            
             sendToDisplay();
             GameOverFunc();
+            level = 0;
             break;
         }
         case Credits:
@@ -135,16 +151,16 @@ void Game::update()
         }
         case Highscores:
         {
+            printk("audio status: %d\n",m_status);
+            if(m_status== 0){audio->stop(audio->MUSIC);}
+            
             drawHighscores();
             break;
         }
     }
     frames++;
   
-    if(frames == 120 || (frames % 21600 == 0 && gameState == Menu))
-    {
-        audio->play_music(audio->MENU_MUSIC);
-    }
+
 }
 
 
@@ -227,6 +243,19 @@ void Game::updateSelection()
 
 void Game::updateGame()
 {
+    //check level
+                switch(level)
+            {
+            case 0:
+                if(m_status == 1){audio->play_music(audio->STAGE_1);}
+                break;
+            case 1:
+                if(m_status == 1){audio->play_music(audio->STAGE_2);}
+                break;
+            case 2:
+                if(m_status == 1){audio->play_music(audio->STAGE_3);}
+                break;
+            }
     //Check for input
     readInput();
     player->setButtonStatus(buttonStatus);
@@ -329,13 +358,13 @@ void Game::nextLevelAnimation()
         if(Curtain < 0){
             switch(currentLevel){
             case 0:     
-                audio->play_music(audio->STAGE_1);
+            level = 0;
                 break;
             case 1:
-                audio->play_music(audio->STAGE_2);
+            level = 1;
                 break;
             case 2:
-                audio->play_music(audio->STAGE_3);
+            level = 2;
                 break;
             }
 
@@ -478,11 +507,11 @@ void Game::drawHighscores()
     std::string highscore_1 = score->receive_Scores(0);
     std::string highscore_2 = score->receive_Scores(1);
     std::string highscore_3 = score->receive_Scores(2);
-   //score->receive_Scores(3);
-    //score->receive_Scores(4);
-    //score->receive_Scores(5);
-    //score->receive_Scores(6);
-    //score->receive_Scores(7);
+    std::string highscore_4 = score->receive_Scores(3);
+    std::string highscore_5 = score->receive_Scores(4);
+   
+
+
     
 
     drawString(title, 240, 50);
@@ -490,8 +519,8 @@ void Game::drawHighscores()
     drawString(highscore_1, 220, 100);
     drawString(highscore_2, 220, 150);
     drawString(highscore_3, 220, 200);
-    //drawString(highscore_1, 240, 250);
-    //drawString(highscore_2, 240, 300);
+    drawString(highscore_4, 220, 250);
+    drawString(highscore_5, 220, 300);
     //drawString(highscore_1, 240, 350);
     //drawString(highscore_1, 240, 400);
     //drawString(highscore_1, 240, 450);
@@ -544,11 +573,11 @@ void Game::drawCredits()
 
 void Game::GameOverFunc(){
 
-    //compare once
+
     if(first_init_gameover){
     score->compare_leaderboard();
-    first_init_gameover = false;
     }
+
     static int counter = 0;
     counter++;
     static bool draw = true;
@@ -563,7 +592,11 @@ void Game::GameOverFunc(){
         drawString("press start and return to menu", 133, 200);
         if(score->higscore_state()){
         drawString("new highscore detected",133,250);
+        if(first_init_gameover){
         score->write_leaderboard();
+
+        first_init_gameover = false;
+        }
         }
 
     }
@@ -573,6 +606,7 @@ void Game::GameOverFunc(){
     readInput();
     if(buttonStatus.start && counter > 60)
     {
+        first_init_menu = true;
         resetToBegin();
         counter = 0;
     }
@@ -736,6 +770,7 @@ void Game::checkDeleted(){
             {
                 // printk("player\n");
                 gameState = GameOver;
+                audio->play_effect(audio->P_DEATH);
                 first_init_gameover = true;
             }
             else
