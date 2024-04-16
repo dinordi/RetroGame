@@ -71,7 +71,6 @@ void Game::update()
             //score->reset_leaderboard();
             score->get_leaderboard();
             first_init_menu = false;
-            audio->play_music(audio->MENU_MUSIC);
             score->reset_score();
              
             }
@@ -91,7 +90,6 @@ void Game::update()
             score->set_multiplier(); // set the scoremultiplier back to 100
             score->reset_time_points(); // reset the time points
             boss->myState = idle;
-            if(m_status == 0){audio->stop(audio->MUSIC);} // if there is music playing stop it
             break;
         }
         case BOSSFIGHT:
@@ -141,7 +139,6 @@ void Game::update()
         {
             sendToDisplay();
             GameOverFunc();
-            level = 0;
             break;
         }
         case Credits:
@@ -151,15 +148,19 @@ void Game::update()
         }
         case Highscores:
         {
-            printk("audio status: %d\n",m_status);
-            if(m_status== 0){audio->stop(audio->MUSIC);}
             
             drawHighscores();
             break;
         }
     }
     frames++;
-  
+      if(frames == 120 || (frames % 21600 == 0 && gameState == Menu))
+
+    {
+
+        audio->play_music(audio->MENU_MUSIC);
+
+    }
 
 }
 
@@ -243,19 +244,7 @@ void Game::updateSelection()
 
 void Game::updateGame()
 {
-    //check level
-                switch(level)
-            {
-            case 0:
-                if(m_status == 1){audio->play_music(audio->STAGE_1);}
-                break;
-            case 1:
-                if(m_status == 1){audio->play_music(audio->STAGE_2);}
-                break;
-            case 2:
-                if(m_status == 1){audio->play_music(audio->STAGE_3);}
-                break;
-            }
+
     //Check for input
     readInput();
     player->setButtonStatus(buttonStatus);
@@ -271,7 +260,7 @@ void Game::sendToDisplay()
 
 void Game::addEnemy()
 {
-    addFatbat((/*sys_rand32_get() %*/ 1200) + 300, (/*sys_rand32_get() %*/ 400));
+    addFatbat((sys_rand32_get() % 1200) + 300, (sys_rand32_get() % 400));
     liveEnemies++;
     
 }
@@ -356,15 +345,15 @@ void Game::nextLevelAnimation()
     if(fadeIn){
         Curtain -= 3;
         if(Curtain < 0){
-            switch(currentLevel){
+             switch(currentLevel){
             case 0:     
-            level = 0;
+                audio->play_music(audio->STAGE_1);
                 break;
             case 1:
-            level = 1;
+                audio->play_music(audio->STAGE_2);
                 break;
             case 2:
-            level = 2;
+                audio->play_music(audio->STAGE_3);
                 break;
             }
 
