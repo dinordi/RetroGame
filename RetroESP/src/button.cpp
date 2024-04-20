@@ -70,8 +70,6 @@ void ButtonHandler::setupButton(const struct gpio_dt_spec dev, struct button_dat
 
 	}
     button_cb_data->ID = id;
-	// gpio_init_callback(&button_cb_data->cb, button_pressed, BIT(dev.pin));
-	// gpio_add_callback(dev.port, &button_cb_data->cb);
 	printk("Set up button at %s pin %d\n", dev.port->name, dev.pin);
 }
 
