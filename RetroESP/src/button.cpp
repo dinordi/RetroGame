@@ -2,6 +2,7 @@
 static int32_t lastButtonPress = -100;
 static bool clicked = false;
 
+//Unused, is for interrupts.
 void button_pressed(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
@@ -29,7 +30,7 @@ start(GPIO_DT_SPEC_GET_OR(ST_NODE, gpios,{0}))
 {
 
     printk("Setting up buttons\n");
-    setupButton(left, &button_cb_data1, 1);
+    setupButton(left, &button_cb_data1, 1);		//Init buttons
     setupButton(right, &button_cb_data2, 2);
     setupButton(up, &button_cb_data3, 3);
     setupButton(down, &button_cb_data4, 4);

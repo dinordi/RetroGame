@@ -49,6 +49,7 @@ void Audio::uart_send(const std::vector<int>& vector, int select)
 
 //in the readme is there in depth explanation of the folder structure
 //specify "01" folder 100.MP3 file, serial port to send commands : 7E FF 06 0F 00 01 64 FOLDER FILE EF 
+// function which uses Enum parameter to select music
 void Audio::play_music(play_soundtrack music)
 {
 
@@ -83,6 +84,8 @@ void Audio::play_music(play_soundtrack music)
     uart_send(uart1_buffer,0); // use UART1 to select music select = 0
     
 }
+
+// function which uses Enum as parameter to select sound effect
 void Audio::play_effect(play_effects effect)
 {
     switch(effect)
