@@ -1,3 +1,13 @@
+/**
+ * @file Enemy.h
+ * @author -
+ * @brief Contains the Enemy class declaration.
+ * @version 0.1
+ * @date 2024-04-21
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #pragma once
 #include "entity.h"
 #include <zephyr/sys/util.h>
