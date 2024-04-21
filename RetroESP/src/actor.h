@@ -52,9 +52,9 @@ public:
     int getY();
 
     /**
-     * @brief Move the Actor by a certain amount.
-     * @param x Amount to move in the x-direction.
-     * @param y Amount to move in the y-direction.
+     * @brief Move the Actor to a certain position.
+     * @param x Move to this x position.
+     * @param y move to this y position.
      */
     void move(float x, float y);
 
