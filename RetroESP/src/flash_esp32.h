@@ -31,30 +31,75 @@
 #define FLASH_PAGE_IDX 37
 
 
+/**
+ * @brief The Flash_esp class handles operations related to ESP32 flash memory.
+ */
 class Flash_esp 
 {
 public:
-     Flash_esp();
+    /**
+     * @brief Constructs a new Flash_esp object.
+     */
+    Flash_esp();
+
+    /**
+     * @brief Destroys the Flash_esp object.
+     */
     ~Flash_esp();
+
 public: 
+    /**
+     * @brief Writes data to the ESP32 flash memory.
+     */
     void write_esp_flash();
+
+    /**
+     * @brief Writes a string to the ESP32 flash memory.
+     * @param data The string to be written.
+     */
     void write_string(std::string data);
+
+    /**
+     * @brief Erases the ESP32 flash memory.
+     */
     void erase_esp_flash();
+
+    /**
+     * @brief Reads the data stored in the ESP32 flash memory.
+     * @return The data read from the flash memory as a string.
+     */
     std::string read_esp_flash();
 
+    /**
+     * @brief Gets the size of the ESP32 flash memory.
+     * @return The size of the flash memory in bytes.
+     */
     size_t get_size_flash();
+
 private:
     uint32_t buf_word = 0U;
     uint32_t offset;
     size_t string_size;
     std::vector<uint32_t> uint32Array;
     std::vector<uint32_t> uint32Array_read;
-    int count_ASCII =0;
+    int count_ASCII = 0;
 
- private: 
+private: 
     std::string received_string;
 
 private:
+    /**
+     * @brief Converts an array of uint32_t to a string.
+     * @param uint_array The array of uint32_t to be converted.
+     * @param length The length of the uint_array.
+     * @return The converted string.
+     */
     std::string uint_array_to_string(const uint32_t* uint_array, uint32_t length);
-    void convert_string_uint_32(size_t size,std::string data );
+
+    /**
+     * @brief Converts a string to an array of uint32_t.
+     * @param size The size of the string.
+     * @param data The string to be converted.
+     */
+    void convert_string_uint_32(size_t size, std::string data);
 };
