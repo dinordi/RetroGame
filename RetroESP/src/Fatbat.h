@@ -43,7 +43,7 @@ public:
     void manageAnimation() override;
     
 private:
-    int hitAnimation; /**< counter for hitanimation. */
-    uint32_t randomNumbers[1000]; /**< An array of random numbers used by the Fatbat. */
-    static int randomCounter; /**< A static counter used by the Fatbat for random number generation. */
+    int hitAnimation; ///< counter for hitanimation. 
+    uint32_t randomNumbers[1000]; ///< An array of random numbers used by the Fatbat. 
+    static int randomCounter; ///< A static counter used by the Fatbat for random number generation. 
 };

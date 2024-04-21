@@ -5,7 +5,7 @@
 
 #pragma once
 
-const float gravity = 0.52f; /**< Gravity constant for the game world. */
+const float gravity = 0.52f; ///< Gravity constant for the game world. */
 
 /**
  * @class Actor
@@ -20,13 +20,13 @@ public:
      * @brief Enumeration of possible actor types.
      */
     enum Type {
-        ENEMY,      /**< Enemy actor type. */
-        PLATFORM,   /**< Platform actor type. */
-        PLAYER,     /**< Player actor type. */
-        PROJECTILE, /**< Projectile actor type. */
-        OBJECT,     /**< Object actor type. */
-        ACTOR,      /**< Generic actor type. */
-        BOSS        /**< Boss actor type. */
+        ENEMY,      ///< Enemy actor type. */
+        PLATFORM,   ///< Platform actor type. */
+        PLAYER,     ///< Player actor type. */
+        PROJECTILE, ///< Projectile actor type. */
+        OBJECT,     ///< Object actor type. */
+        ACTOR,      ///< Generic actor type. */
+        BOSS        ///< Boss actor type. */
     };
 
 public:
@@ -82,11 +82,11 @@ public:
      */
     virtual Type getType() const {return ACTOR;}
 
-    friend class Game; /**< Game class can access protected members of Actor. */
+    friend class Game; ///< Game class can access protected members of Actor. */
 
 protected:
-    float x; /**< Actor's x-coordinate. */
-    float y; /**< Actor's y-coordinate. */
-    int range; /**< Actor's range. */
-    int ID; /**< Actor's ID. */
+    float x; ///< Actor's x-coordinate. 
+    float y; ///< Actor's y-coordinate.
+    int range; ///< Actor's range. 
+    int ID; ///< Actor's ID. 
 };

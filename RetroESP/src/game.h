@@ -21,9 +21,9 @@ class Object;
  * @brief Represents a range of platforms.
  */
 struct PlatformRange {
-    int xbegin; /**< The beginning x-coordinate of the platform range. */
-    int xend; /**< The ending x-coordinate of the platform range. */
-    int y; /**< The y-coordinate of the platform range. */
+    int xbegin; ///< The beginning x-coordinate of the platform range. 
+    int xend; ///< The ending x-coordinate of the platform range. 
+    int y; ///< The y-coordinate of the platform range. 
 };
 
 /**
@@ -31,15 +31,15 @@ struct PlatformRange {
  */
 typedef enum
 {
-    Menu, /**< The menu state. */
-    Playing, /**< The playing state. */
-    Paused, /**< The paused state. */
-    GameOver, /**< The game over state. */
-    Drbob, /**< The Drbob state. */
-    Credits, /**< The credits state. */
-    NextLevel, /**< The next level state. */
-    Highscores, /**< The highscores state. */
-    BOSSFIGHT /**< The boss fight state. */
+    Menu, ///< The menu state. 
+    Playing, ///< The playing state. 
+    Paused, ///< The paused state. 
+    GameOver, ///< The game over state. 
+    Drbob, ///< The Drbob state. 
+    Credits, ///< The credits state. 
+    NextLevel, ///< The next level state. 
+    Highscores, ///< The highscores state. 
+    BOSSFIGHT ///< The boss fight state. 
 } gameStates;
 
 
@@ -230,30 +230,30 @@ public:
     void checkDeleted();
 
 private:
-    std::vector<Object*> objects; /**< The list of objects in the game. */
-    std::vector<Entity*> entities; /**< The list of entities in the game. */
-    std::vector<Enemy*> enemies; /**< The list of enemies in the game. */
-    std::vector<Projectile*> projectiles; /**< The list of projectiles in the game. */
-    std::vector<Platform*> platforms; /**< The list of platforms in the game. */
-    std::vector<Actor*> actors; /**< The list of actors in the game. */
-    std::vector<PlatformRange> platformRanges; /**< The range of platforms in all levels for werewolfman enemy. */
-    uint16_t* spriteData; /**< The sprite data for the game. */
-    int spriteDataCount; /**< The count of sprite data. */
-    FPGA* fpga; /**< A pointer to the FPGA object. */
-    Score* score; /**< A pointer to the Score object. */
-    ButtonHandler* button; /**< A pointer to the ButtonHandler object. */
-    Audio* audio; /**< A pointer to the Audio object. */
-    buttonStatuses buttonStatus; /**< The status of the buttons. */
-    Player* player; /**< The player object. */
-    Samurai* boss; /**< The boss object. */
-    uint64_t frames; /**< The number of frames. */
-    gameStates gameState; /**< The state of the game. */
-    gameStates stateSelect; /**< The selected state of the game. */
-    int Curtain; /**< The curtain value. */
-    int currentLevel; /**< The current level of the game. */
-    int liveEnemies; /**< The number of live enemies. */
-    int killedEnemies; /**< The number of killed enemies. */
-    bool fadeIn; /**< Flag indicating if the game is fading in. */
-    int randomNumbers[1000]; /**< The array of random numbers. */
-    bool BOB; /**< Flag indicating if BOB is active. */
+    std::vector<Object*> objects; ///< The list of objects in the game. 
+    std::vector<Entity*> entities; ///< The list of entities in the game. 
+    std::vector<Enemy*> enemies; ///< The list of enemies in the game. 
+    std::vector<Projectile*> projectiles; ///< The list of projectiles in the game. 
+    std::vector<Platform*> platforms; ///< The list of platforms in the game. 
+    std::vector<Actor*> actors; ///< The list of actors in the game. 
+    std::vector<PlatformRange> platformRanges; ///< The range of platforms in all levels for werewolfman enemy. 
+    uint16_t* spriteData; ///< The sprite data for the game. 
+    int spriteDataCount; ///< The count of sprite data. 
+    FPGA* fpga; ///< A pointer to the FPGA object. 
+    Score* score; ///< A pointer to the Score object. 
+    ButtonHandler* button; ///< A pointer to the ButtonHandler object. 
+    Audio* audio; ///< A pointer to the Audio object. 
+    buttonStatuses buttonStatus; ///< The status of the buttons. 
+    Player* player; ///< The player object. 
+    Samurai* boss; ///< The boss object. 
+    uint64_t frames; ///< The number of frames. 
+    gameStates gameState; ///< The state of the game. 
+    gameStates stateSelect; ///< The selected state of the game. 
+    int Curtain; ///< The curtain value. 
+    int currentLevel; ///< The current level of the game. 
+    int liveEnemies; ///< The number of live enemies. 
+    int killedEnemies; ///< The number of killed enemies. 
+    bool fadeIn; ///< Flag indicating if the game is fading in. 
+    int randomNumbers[1000]; ///< The array of random numbers. 
+    bool BOB; ///< Flag indicating if BOB is active. 
 };

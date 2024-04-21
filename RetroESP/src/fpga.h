@@ -40,5 +40,5 @@ public:
     void sendSprite(uint16_t* buf1, int spriteDataCount);
 
 private:
-    struct spi_cs_control cs_ctrl; /**< SPI chip select control structure. */
+    struct spi_cs_control cs_ctrl; ///< SPI chip select control structure. 
 };

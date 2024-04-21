@@ -1,3 +1,13 @@
+/**
+ * @file level.h
+ * @author -
+ * @brief This file contains the level data for the RetroGame project.
+ * @version 0.1
+ * @date 2024-04-21
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #pragma once
 
 const int platforms[4] = {100,101,102,103};
