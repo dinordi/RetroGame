@@ -1,3 +1,12 @@
+/**
+ * @file WerewolfMan.h
+ * @brief This file contains the WerewolfMan class and related data structures 
+ * @version 0.1
+ * @date 2024-04-21
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #pragma once
 
 #include "Enemy.h"

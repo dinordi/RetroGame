@@ -1,3 +1,12 @@
+/**
+ * @file Teleporter.h
+ * @brief This file contains the Teleporter class and related data structures. (NOTE: The teleporter is purely a visual element in the game, the player cannot interact with it)
+ * @version 0.1
+ * @date 2024-04-21
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #pragma once
 
 #include "Object.h"
