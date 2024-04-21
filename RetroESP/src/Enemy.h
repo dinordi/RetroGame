@@ -36,5 +36,5 @@ class Enemy : public Entity{
         Type getType() const { return ENEMY; }
 
     private:
-        int hitAnimation; /**< A counter for hitAnimation. */
+        int hitAnimation; ///< A counter for hitAnimation. 
 };

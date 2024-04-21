@@ -6,13 +6,13 @@
  * @brief Structure to hold the status of various buttons.
  */
 typedef struct {
-    bool up;        /**< Up button status */
-    bool down;      /**< Down button status */
-    bool left;      /**< Left button status */
-    bool right;     /**< Right button status */
-    bool dash;      /**< Dash button status */
-    bool shoot;     /**< Shoot button status */
-    bool start;     /**< Start button status */
+    bool up;        ///< Up button status 
+    bool down;      ///< Down button status 
+    bool left;      ///< Left button status 
+    bool right;     ///< Right button status 
+    bool dash;      ///< Dash button status 
+    bool shoot;     ///< Shoot button status 
+    bool start;     ///< Start button status 
 } buttonStatuses;
 
 /**
@@ -92,9 +92,9 @@ public:
     void setBobMode();
 
 private:
-    int printX;                 /**< The x-coordinate for printing */
-    buttonStatuses lastButtonState;     /**< The status of the last button */
-    buttonStatuses buttonStatus;        /**< The current status of the buttons */
-    int hitAnimation;           /**< The hit animation counter */
-    bool BOB;                   /**< Bob mode flag */
+    int printX;                 ///< The x-coordinate for printing 
+    buttonStatuses lastButtonState;     ///< The status of the last button 
+    buttonStatuses buttonStatus;        ///< The current status of the buttons 
+    int hitAnimation;           ///< The hit animation counter 
+    bool BOB;                   ///< Bob mode flag 
 };

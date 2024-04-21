@@ -50,7 +50,7 @@ public:
     friend class Game;
 
 private:
-    int hitAnimation; /**< The current hit animation frame of the WerewolfMan enemy. */
-    int beginx; /**< The starting x-coordinate of the WerewolfMan enemy. */
-    int endx; /**< The ending x-coordinate of the WerewolfMan enemy. */
+    int hitAnimation; ///< The current hit animation frame of the WerewolfMan enemy. 
+    int beginx; ///< The starting x-coordinate of the WerewolfMan enemy. 
+    int endx; ///< The ending x-coordinate of the WerewolfMan enemy. 
 };
