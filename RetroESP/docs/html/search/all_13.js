@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['x_0',['x',['../class_actor.html#a8721afd799b339f621c13b0392738f8b',1,'Actor']]],
-  ['xbegin_1',['xbegin',['../struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb',1,'PlatformRange']]],
-  ['xend_2',['xend',['../struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2',1,'PlatformRange']]],
-  ['xspeed_3',['xSpeed',['../class_object.html#a77fc96eb5377bc60d61e84666f50e1a1',1,'Object']]]
+  ['werewolfman_0',['WerewolfMan',['../class_werewolf_man.html',1,'WerewolfMan'],['../class_werewolf_man.html#a61b94408a27dd96a63f65ccda991ed9b',1,'WerewolfMan::WerewolfMan()']]],
+  ['write_5fesp_5fflash_1',['write_esp_flash',['../class_flash__esp.html#a24e4d64d1074655320dcb6d719e9f4ae',1,'Flash_esp']]],
+  ['write_5fleaderboard_2',['write_leaderboard',['../class_score.html#a405f2245c0b508aeabfb9fc3c03b8cb9',1,'Score']]],
+  ['write_5fstring_3',['write_string',['../class_flash__esp.html#aa8638069d4a818e8226529caa70e5184',1,'Flash_esp']]]
 ];

@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['_7eaudio_0',['~Audio',['../class_audio.html#ae8f54deecb5f48511aaab469e80294d6',1,'Audio']]],
-  ['_7eentity_1',['~Entity',['../class_entity.html#ac479d009ddde62dfb378ca0a70d81307',1,'Entity']]],
-  ['_7eflash_5fesp_2',['~Flash_esp',['../class_flash__esp.html#aafebb10c2c63a9bf9c3b837b19352264',1,'Flash_esp']]],
-  ['_7efpga_3',['~FPGA',['../class_f_p_g_a.html#a1b71d6206a304dd95cfd2bd5b5e1d7d0',1,'FPGA']]],
-  ['_7eplatform_4',['~Platform',['../class_platform.html#aa9150653d3b9bc34117ba383972184ce',1,'Platform']]],
-  ['_7esamurai_5',['~Samurai',['../class_samurai.html#a1c18005cf2323262d9a4642cfa2de811',1,'Samurai']]],
-  ['_7escore_6',['~Score',['../class_score.html#a54ab36a6fdd88696f0176d9534a76883',1,'Score']]]
+  ['y_0',['y',['../class_actor.html#ac6bffedc70c0501af9ae8c928f163d7c',1,'Actor::y'],['../struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6',1,'PlatformRange::y']]],
+  ['yspeed_1',['ySpeed',['../class_object.html#a2d4ff75456257a21d9e359f39f1d7b94',1,'Object']]]
 ];

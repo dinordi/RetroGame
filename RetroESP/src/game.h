@@ -42,12 +42,10 @@ typedef enum
     BOSSFIGHT ///< The boss fight state. 
 } gameStates;
 
-
+/** 
+ * @brief game class that contains all the game logic.
+*/
 class Game
-/**
- * @class Game
- * @brief Represents a game object.
- */
 {
 public:
     /**

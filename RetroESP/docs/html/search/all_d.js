@@ -1,21 +1,6 @@
 var searchData=
 [
-  ['p_5fdeath_0',['P_DEATH',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916aeb044873541a3ec22390621c06786803',1,'Audio']]],
-  ['p_5fhit_1',['P_HIT',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916a41a414804ae55f358d5294b9c25f464f',1,'Audio']]],
-  ['p_5fjump_2',['P_JUMP',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916a76c281613e4a1b428a9597d3d62c2cf8',1,'Audio']]],
-  ['p_5flowhealth_3',['P_LOWHEALTH',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916ad730d56556c6e64df862e5025794f3de',1,'Audio']]],
-  ['p_5fshoot_4',['P_SHOOT',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916a7b2e544b9b7a60be89130f69d740a203',1,'Audio']]],
-  ['platform_5',['Platform',['../class_platform.html',1,'']]],
-  ['platform_6',['PLATFORM',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9cca82a7b1080947c95d6e89edfb29b6bdda',1,'Actor']]],
-  ['platform_7',['Platform',['../class_platform.html#a57cbac07e63d7b4f9af541e5e9f8070f',1,'Platform']]],
-  ['platformrange_8',['PlatformRange',['../struct_platform_range.html',1,'']]],
-  ['play_5feffect_9',['play_effect',['../class_audio.html#a5d10460c6311d529b1c1c5c26037629b',1,'Audio']]],
-  ['play_5feffects_10',['play_effects',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916',1,'Audio::play_effects'],['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916',1,'Audio::play_effects']]],
-  ['play_5fmusic_11',['play_music',['../class_audio.html#ace7cfaf42194ac4da3a2fb798b679dcc',1,'Audio']]],
-  ['play_5fsoundtrack_12',['play_soundtrack',['../class_audio.html#a5b3b2dd068c2b02567e88c2e3029f7be',1,'Audio::play_soundtrack'],['../class_audio.html#a5b3b2dd068c2b02567e88c2e3029f7be',1,'Audio::play_soundtrack']]],
-  ['player_13',['Player',['../class_player.html',1,'Player'],['../class_player.html#a71db3ab80395bcc6796d97cd876980c7',1,'Player::Player()']]],
-  ['player_14',['PLAYER',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9ccab9b387792f7d1401f0d36242eb2df20d',1,'Actor']]],
-  ['projectile_15',['Projectile',['../class_projectile.html',1,'']]],
-  ['projectile_16',['PROJECTILE',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9ccae0127a2c7dfe342d3fc541e5be1d16cf',1,'Actor']]],
-  ['projectile_17',['Projectile',['../class_projectile.html#a7677ed60f4a7146850ecb3e7806283e8',1,'Projectile']]]
+  ['object_0',['Object',['../class_object.html',1,'']]],
+  ['object_1',['OBJECT',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9ccaf528ac9f82c2f7cf3f8e95c9c26567b2',1,'Actor']]],
+  ['object_2',['Object',['../class_object.html#ac802ced349799fca687af6e8d9ad5064',1,'Object']]]
 ];

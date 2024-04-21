@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['object_0',['Object',['../class_object.html',1,'']]],
-  ['object_1',['OBJECT',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9ccaf528ac9f82c2f7cf3f8e95c9c26567b2',1,'Actor']]],
-  ['object_2',['Object',['../class_object.html#ac802ced349799fca687af6e8d9ad5064',1,'Object']]]
+  ['nextlevelanimation_0',['nextLevelAnimation',['../class_game.html#a9c77506c3beaaeefe2070e8d692dc2bc',1,'Game']]]
 ];

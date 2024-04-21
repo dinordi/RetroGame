@@ -1,8 +1,21 @@
 var searchData=
 [
-  ['range_0',['range',['../class_actor.html#aadbb2dc6e496c0ac616d1ce4d7846e1c',1,'Actor']]],
-  ['read_5fesp_5fflash_1',['read_esp_flash',['../class_flash__esp.html#a2a427968436c66007ca0bd58c0064104',1,'Flash_esp']]],
-  ['receive_5fscores_2',['receive_Scores',['../class_score.html#ac168248c9436d8cabb15ef4b922fac47',1,'Score']]],
-  ['reset_5fleaderboard_3',['reset_leaderboard',['../class_score.html#a82ce8805b3a1c1dec59d7c7000f968d2',1,'Score']]],
-  ['right_4',['right',['../structbutton_statuses.html#a25d284dde22c3808c70451d0e619dca4',1,'buttonStatuses']]]
+  ['p_5fdeath_0',['P_DEATH',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916ad9864393e7a153e325d5221a320dc632',1,'Audio']]],
+  ['p_5fhit_1',['P_HIT',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916a0e242985a818d5590afa798f079b2ceb',1,'Audio']]],
+  ['p_5fjump_2',['P_JUMP',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916ae4597b630dc7272274f59314422b5e4b',1,'Audio']]],
+  ['p_5flowhealth_3',['P_LOWHEALTH',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916a4c8a5446b74e3aa0292379afff7d2d70',1,'Audio']]],
+  ['p_5fshoot_4',['P_SHOOT',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916a0af4f6aac53e9e1f863686e58ec886b6',1,'Audio']]],
+  ['platform_5',['Platform',['../class_platform.html',1,'']]],
+  ['platform_6',['PLATFORM',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9cca82a7b1080947c95d6e89edfb29b6bdda',1,'Actor']]],
+  ['platform_7',['Platform',['../class_platform.html#a57cbac07e63d7b4f9af541e5e9f8070f',1,'Platform']]],
+  ['platformrange_8',['PlatformRange',['../struct_platform_range.html',1,'']]],
+  ['play_5feffect_9',['play_effect',['../class_audio.html#a5d10460c6311d529b1c1c5c26037629b',1,'Audio']]],
+  ['play_5feffects_10',['play_effects',['../class_audio.html#a58d1fc893b8df9d79568d8a5dc4dc916',1,'Audio']]],
+  ['play_5fmusic_11',['play_music',['../class_audio.html#ace7cfaf42194ac4da3a2fb798b679dcc',1,'Audio']]],
+  ['play_5fsoundtrack_12',['play_soundtrack',['../class_audio.html#a5b3b2dd068c2b02567e88c2e3029f7be',1,'Audio']]],
+  ['player_13',['Player',['../class_player.html',1,'']]],
+  ['player_14',['PLAYER',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9ccab9b387792f7d1401f0d36242eb2df20d',1,'Actor']]],
+  ['player_15',['Player',['../class_player.html#a71db3ab80395bcc6796d97cd876980c7',1,'Player']]],
+  ['projectile_16',['Projectile',['../class_projectile.html',1,'Projectile'],['../class_projectile.html#a7677ed60f4a7146850ecb3e7806283e8',1,'Projectile::Projectile()']]],
+  ['projectile_17',['PROJECTILE',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9ccae0127a2c7dfe342d3fc541e5be1d16cf',1,'Actor']]]
 ];

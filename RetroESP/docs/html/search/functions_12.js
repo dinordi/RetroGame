@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['_7eaudio_0',['~Audio',['../class_audio.html#ae8f54deecb5f48511aaab469e80294d6',1,'Audio']]],
-  ['_7eentity_1',['~Entity',['../class_entity.html#ac479d009ddde62dfb378ca0a70d81307',1,'Entity']]],
-  ['_7eflash_5fesp_2',['~Flash_esp',['../class_flash__esp.html#aafebb10c2c63a9bf9c3b837b19352264',1,'Flash_esp']]],
-  ['_7efpga_3',['~FPGA',['../class_f_p_g_a.html#a1b71d6206a304dd95cfd2bd5b5e1d7d0',1,'FPGA']]],
-  ['_7eplatform_4',['~Platform',['../class_platform.html#aa9150653d3b9bc34117ba383972184ce',1,'Platform']]],
-  ['_7esamurai_5',['~Samurai',['../class_samurai.html#a1c18005cf2323262d9a4642cfa2de811',1,'Samurai']]],
-  ['_7escore_6',['~Score',['../class_score.html#a54ab36a6fdd88696f0176d9534a76883',1,'Score']]]
+  ['uart_5fsend_0',['uart_send',['../class_audio.html#a841d7db2beaf24fcbfd3929f396ef06e',1,'Audio']]],
+  ['update_1',['update',['../class_game.html#a79df6376b332d63c9eca0dcee30305c3',1,'Game']]],
+  ['updategame_2',['updateGame',['../class_game.html#a67a8c5c0356c9ad33fac1abc435a3746',1,'Game']]],
+  ['updateselection_3',['updateSelection',['../class_game.html#a0aef339408751a59619883b22c5c622f',1,'Game']]],
+  ['updateyspeed_4',['updateySpeed',['../class_object.html#a97ccea3f2affaed402e4e529f93fcc90',1,'Object']]]
 ];

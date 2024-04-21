@@ -1,5 +1,19 @@
 var searchData=
 [
-  ['uart_5fsend_0',['uart_send',['../class_audio.html#a841d7db2beaf24fcbfd3929f396ef06e',1,'Audio']]],
-  ['updateyspeed_1',['updateySpeed',['../class_object.html#a97ccea3f2affaed402e4e529f93fcc90',1,'Object']]]
+  ['samurai_0',['Samurai',['../class_samurai.html#a8ba7e123dbc1802e1cdf552dde131a7b',1,'Samurai']]],
+  ['score_1',['Score',['../class_score.html#aaf493bbc813543f1d9e44898685cfd47',1,'Score']]],
+  ['seesplayer_2',['seesPlayer',['../class_samurai.html#afe1400bff66cd5570b9785d1d168a807',1,'Samurai']]],
+  ['sendsprite_3',['sendSprite',['../class_f_p_g_a.html#a32f05134b35dfbff7240d19df0300218',1,'FPGA']]],
+  ['sendtodisplay_4',['sendToDisplay',['../class_game.html#a63f6387d041a289d0cf1455665c0cd96',1,'Game']]],
+  ['set_5',['set',['../class_entity.html#aa4697dd0cd49f1358e559290f7d077b2',1,'Entity']]],
+  ['set_5fmultiplier_6',['set_multiplier',['../class_score.html#a60f985aa66a8e82ed42bce70058f3b99',1,'Score']]],
+  ['set_5ftime_5fpoints_7',['set_time_points',['../class_score.html#ad7ad7ec50d48568cdc648477dd3f9ab1',1,'Score']]],
+  ['setbobmode_8',['setBobMode',['../class_bullet.html#a9c84964e556d1989d85ca072a00586b2',1,'Bullet::setBobMode()'],['../class_player.html#a3d85bb4a3993e9e66d2d96c81b047267',1,'Player::setBobMode()']]],
+  ['setbuttonstatus_9',['setButtonStatus',['../class_player.html#ac1d533c45208d778f0e1de82b93dff5d',1,'Player']]],
+  ['setisgrounded_10',['setIsGrounded',['../class_entity.html#a3acb7e3aacc4ed45cedd95949840b9ba',1,'Entity']]],
+  ['setplayerpos_11',['setPlayerPos',['../class_samurai.html#a433a5859cfc5ddd9f2d7d651b2339ca1',1,'Samurai']]],
+  ['setupbutton_12',['setupButton',['../class_button_handler.html#a3163ca5e4de9bbe27554d96d68ec22bd',1,'ButtonHandler']]],
+  ['setyspeed_13',['setySpeed',['../class_object.html#a152e4dbb1c209683a538ab4468a5f50b',1,'Object']]],
+  ['sfx_5fstatus_14',['sfx_status',['../class_audio.html#a267c84310b3c00dfc838c85b62be77c1',1,'Audio']]],
+  ['stop_15',['stop',['../class_audio.html#af08f272689b3f4bee17a1d957a96273d',1,'Audio']]]
 ];
