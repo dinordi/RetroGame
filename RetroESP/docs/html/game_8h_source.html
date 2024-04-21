@@ -76,142 +76,143 @@ $(function() {
   <div class="headertitle"><div class="title">game.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;zephyr/sys/printk.h&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="fpga_8h.html">fpga.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="button_8h.html">button.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;player.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="audio__module_8h.html">audio_module.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="scores_8h.html">scores.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;zephyr/random/random.h&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;samurai.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">class </span><a class="code hl_class" href="class_enemy.html">Enemy</a>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">class </span><a class="code hl_class" href="class_platform.html">Platform</a>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">class </span><a class="code hl_class" href="class_projectile.html">Projectile</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">class </span><a class="code hl_class" href="class_entity.html">Entity</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">class </span><a class="code hl_class" href="class_object.html">Object</a>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="struct_platform_range.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_platform_range.html">PlatformRange</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb">xbegin</a>; </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2">   25</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2">xend</a>; </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6">   26</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6">y</a>; </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    Menu, </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    Playing, </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    Paused, </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    GameOver, </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    Drbob, </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    Credits, </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    NextLevel, </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    Highscores, </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    BOSSFIGHT </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>} gameStates;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_game.html">   48</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game.html">Game</a></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_class" href="class_game.html">Game</a>(<a class="code hl_class" href="class_f_p_g_a.html">FPGA</a>* fpga, <a class="code hl_class" href="class_button_handler.html">ButtonHandler</a>* button, <a class="code hl_class" href="class_audio.html">Audio</a>* audio, <a class="code hl_class" href="class_score.html">Score</a>* score);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a>();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a79df6376b332d63c9eca0dcee30305c3">update</a>();</div>
+<a href="game_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;zephyr/sys/printk.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="fpga_8h.html">fpga.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="button_8h.html">button.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;player.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="audio__module_8h.html">audio_module.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="scores_8h.html">scores.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;zephyr/random/random.h&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;samurai.h&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">class </span><a class="code hl_class" href="class_enemy.html">Enemy</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">class </span><a class="code hl_class" href="class_platform.html">Platform</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">class </span><a class="code hl_class" href="class_projectile.html">Projectile</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">class </span><a class="code hl_class" href="class_entity.html">Entity</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">class </span><a class="code hl_class" href="class_object.html">Object</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="struct_platform_range.html">   33</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_platform_range.html">PlatformRange</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb">   34</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb">xbegin</a>; </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2">   35</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2">xend</a>; </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6">   36</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6">y</a>; </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4">   42</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ae0f2dbf2f226e6c1acccabc9b146e3d7">   44</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ae0f2dbf2f226e6c1acccabc9b146e3d7">Menu</a>, </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a63fb97da872bff3b2c623de28fdae93b">   45</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a63fb97da872bff3b2c623de28fdae93b">Playing</a>, </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a7038380f2ccd1d2edf36a73fd4c2d068">   46</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a7038380f2ccd1d2edf36a73fd4c2d068">Paused</a>, </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ae2724ba71a1a0daaa937dd3ac38e53e4">   47</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ae2724ba71a1a0daaa937dd3ac38e53e4">GameOver</a>, </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a5359ee59fbd3872a8f1cc2e2a1dbc3d2">   48</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a5359ee59fbd3872a8f1cc2e2a1dbc3d2">Drbob</a>, </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4aaf0a9426b32607bb20d85e6ce0ac98e1">   49</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4aaf0a9426b32607bb20d85e6ce0ac98e1">Credits</a>, </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a4e38a02a38c24a4ab0fb3171be6e2644">   50</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a4e38a02a38c24a4ab0fb3171be6e2644">NextLevel</a>, </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a7d6b7d7b675b0e86182f67c12e59ecf8">   51</a></span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a7d6b7d7b675b0e86182f67c12e59ecf8">Highscores</a>, </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_enumvalue" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ac0db83a0bab1afb21f2ad6640bfcc111">BOSSFIGHT</a> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ac0db83a0bab1afb21f2ad6640bfcc111">   53</a></span>} <a class="code hl_enumeration" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4">gameStates</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_game.html">   58</a></span><span class="keyword">class </span><a class="code hl_class" href="class_game.html">Game</a></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_class" href="class_game.html">Game</a>(<a class="code hl_class" href="class_f_p_g_a.html">FPGA</a>* fpga, <a class="code hl_class" href="class_button_handler.html">ButtonHandler</a>* button, <a class="code hl_class" href="class_audio.html">Audio</a>* audio, <a class="code hl_class" href="class_score.html">Score</a>* score);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a67a8c5c0356c9ad33fac1abc435a3746">updateGame</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a>();</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a63f6387d041a289d0cf1455665c0cd96">sendToDisplay</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a79df6376b332d63c9eca0dcee30305c3">update</a>();</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a3dba7eb88b8a3ab43f6410e586b8e25d">addEnemy</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a67a8c5c0356c9ad33fac1abc435a3746">updateGame</a>();</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#ac07474ad5293511b2981642beeb202d6">addFatbat</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#afb4afd2866b7f7f650ea86d5ab9ef4da">addWereWolf</a>(<span class="keywordtype">int</span> beginx, <span class="keywordtype">int</span> endx, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="class_game.html#acf9e61c0daf27bb1f27e5e290f6cef8a">  105</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#acf9e61c0daf27bb1f27e5e290f6cef8a">addSamurai</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="class_game.html#a69668506641b2259f23410a0bcb7470e">  114</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a69668506641b2259f23410a0bcb7470e">addProjectile</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>* playerSprites, <span class="keywordtype">int</span> range, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a62ff7ab10b907bf903a8e7e2ea824e80">readInput</a>();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc">tick</a>();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a63f6387d041a289d0cf1455665c0cd96">sendToDisplay</a>();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a3dba7eb88b8a3ab43f6410e586b8e25d">addEnemy</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#ac07474ad5293511b2981642beeb202d6">addFatbat</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#afb4afd2866b7f7f650ea86d5ab9ef4da">addWereWolf</a>(<span class="keywordtype">int</span> beginx, <span class="keywordtype">int</span> endx, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="class_game.html#acf9e61c0daf27bb1f27e5e290f6cef8a">  115</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#acf9e61c0daf27bb1f27e5e290f6cef8a">addSamurai</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="class_game.html#a69668506641b2259f23410a0bcb7470e">  124</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a69668506641b2259f23410a0bcb7470e">addProjectile</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>* playerSprites, <span class="keywordtype">int</span> range, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#addce247ec955ece695e8890c2b5c32de">drawLevel</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a62ff7ab10b907bf903a8e7e2ea824e80">readInput</a>();</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aaaed0a5812c417c74f262804e25c3851">loadPlatforms</a>(<span class="keywordtype">int</span> levelNum);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a866d08c782ad69f00b04b0a7ab371e75">drawMainMenu</a>();</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aef35929a6483a8e53549513b59cf128c">drawCredits</a>();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#adf1634a2d0c22f30f7c57e72fd2831bc">tick</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#addce247ec955ece695e8890c2b5c32de">drawLevel</a>();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aaaed0a5812c417c74f262804e25c3851">loadPlatforms</a>(<span class="keywordtype">int</span> levelNum);</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aaa08f69097e9ef56d16e5bf4444fd9ec">drawHighscores</a>();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a866d08c782ad69f00b04b0a7ab371e75">drawMainMenu</a>();</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a0aef339408751a59619883b22c5c622f">updateSelection</a>();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aef35929a6483a8e53549513b59cf128c">drawCredits</a>();</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a6e039d135150e151cc4732fb9931ef55">checkRangedAttack</a>(<a class="code hl_class" href="class_entity.html">Entity</a>* entity);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a32de8694ae269b15077ca97ce699b77b">drawString</a>(std::string str, <span class="keywordtype">int</span> startX, <span class="keywordtype">int</span> y);</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a9c77506c3beaaeefe2070e8d692dc2bc">nextLevelAnimation</a>();</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a82fde476a58901d6b54c88a3cf3230c6">levelFading</a>(<span class="keywordtype">int</span> line);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_game.html#a691ce3520dd0537fcfa6e5b9d60028b7">collisionCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_game.html#afebe3fd2b0af2a4edce4193652bd104f">gravityCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>, <span class="keywordtype">int</span> groundlevel);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a7bec6c6c4dafbe39b048aad3b119987d">realCollisionCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>);</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_game.html#ac31ce92edba302f5055c9c5a1508b79a">borderCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>);</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aa479ad0887dbabba0826053076de8fb0">GameOverFunc</a>();</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#ab5a298e297e6d07c7ae9187fc5cb5eb2">resetToBegin</a>();</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aaa08f69097e9ef56d16e5bf4444fd9ec">drawHighscores</a>();</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a0aef339408751a59619883b22c5c622f">updateSelection</a>();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a6e039d135150e151cc4732fb9931ef55">checkRangedAttack</a>(<a class="code hl_class" href="class_entity.html">Entity</a>* entity);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a32de8694ae269b15077ca97ce699b77b">drawString</a>(std::string str, <span class="keywordtype">int</span> startX, <span class="keywordtype">int</span> y);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a9c77506c3beaaeefe2070e8d692dc2bc">nextLevelAnimation</a>();</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a82fde476a58901d6b54c88a3cf3230c6">levelFading</a>(<span class="keywordtype">int</span> line);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_game.html#a691ce3520dd0537fcfa6e5b9d60028b7">collisionCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>);</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_game.html#afebe3fd2b0af2a4edce4193652bd104f">gravityCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>, <span class="keywordtype">int</span> groundlevel);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a7bec6c6c4dafbe39b048aad3b119987d">realCollisionCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_game.html#ac31ce92edba302f5055c9c5a1508b79a">borderCheck</a>(<a class="code hl_class" href="class_object.html">Object</a>* <span class="keywordtype">object</span>);</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a6762df13069f763768f4438ec5e38eff">getRangePlatforms</a>();</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a6efad59886d017761bfab88e6aa53662">checkDeleted</a>();</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#aa479ad0887dbabba0826053076de8fb0">GameOverFunc</a>();</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#ab5a298e297e6d07c7ae9187fc5cb5eb2">resetToBegin</a>();</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    std::vector&lt;Object*&gt; objects; </div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    std::vector&lt;Entity*&gt; entities; </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    std::vector&lt;Enemy*&gt; enemies; </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    std::vector&lt;Projectile*&gt; projectiles; </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    std::vector&lt;Platform*&gt; platforms; </div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    std::vector&lt;Actor*&gt; actors; </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    std::vector&lt;PlatformRange&gt; platformRanges; </div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    uint16_t* spriteData; </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    <span class="keywordtype">int</span> spriteDataCount; </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <a class="code hl_class" href="class_f_p_g_a.html">FPGA</a>* fpga; </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <a class="code hl_class" href="class_score.html">Score</a>* score; </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <a class="code hl_class" href="class_button_handler.html">ButtonHandler</a>* button; </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <a class="code hl_class" href="class_audio.html">Audio</a>* audio; </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <a class="code hl_struct" href="structbutton_statuses.html">buttonStatuses</a> buttonStatus; </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <a class="code hl_class" href="class_player.html">Player</a>* player; </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <a class="code hl_class" href="class_samurai.html">Samurai</a>* boss; </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    uint64_t frames; </div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    gameStates gameState; </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    gameStates stateSelect; </div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordtype">int</span> Curtain; </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordtype">int</span> currentLevel; </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordtype">int</span> liveEnemies; </div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordtype">int</span> killedEnemies; </div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordtype">bool</span> fadeIn; </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordtype">int</span> randomNumbers[1000]; </div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keywordtype">bool</span> BOB; </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>};</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a6762df13069f763768f4438ec5e38eff">getRangePlatforms</a>();</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a6efad59886d017761bfab88e6aa53662">checkDeleted</a>();</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    std::vector&lt;Object*&gt; objects; </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    std::vector&lt;Entity*&gt; entities; </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    std::vector&lt;Enemy*&gt; enemies; </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    std::vector&lt;Projectile*&gt; projectiles; </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    std::vector&lt;Platform*&gt; platforms; </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    std::vector&lt;Actor*&gt; actors; </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    std::vector&lt;PlatformRange&gt; platformRanges; </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    uint16_t* spriteData; </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordtype">int</span> spriteDataCount; </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <a class="code hl_class" href="class_f_p_g_a.html">FPGA</a>* fpga; </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <a class="code hl_class" href="class_score.html">Score</a>* score; </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <a class="code hl_class" href="class_button_handler.html">ButtonHandler</a>* button; </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <a class="code hl_class" href="class_audio.html">Audio</a>* audio; </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <a class="code hl_struct" href="structbutton_statuses.html">buttonStatuses</a> buttonStatus; </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <a class="code hl_class" href="class_player.html">Player</a>* player; </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <a class="code hl_class" href="class_samurai.html">Samurai</a>* boss; </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    uint64_t frames; </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <a class="code hl_enumeration" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4">gameStates</a> gameState; </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    <a class="code hl_enumeration" href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4">gameStates</a> stateSelect; </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordtype">int</span> Curtain; </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordtype">int</span> currentLevel; </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordtype">int</span> liveEnemies; </div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordtype">int</span> killedEnemies; </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="keywordtype">bool</span> fadeIn; </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <span class="keywordtype">int</span> randomNumbers[1000]; </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordtype">bool</span> BOB; </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>};</div>
 <div class="ttc" id="aaudio__module_8h_html"><div class="ttname"><a href="audio__module_8h.html">audio_module.h</a></div><div class="ttdoc">This file contains the Audio class and related data structures.</div></div>
 <div class="ttc" id="abutton_8h_html"><div class="ttname"><a href="button_8h.html">button.h</a></div><div class="ttdoc">This file contains the ButtonHandler class and related data structures for player input.</div></div>
 <div class="ttc" id="aclass_audio_html"><div class="ttname"><a href="class_audio.html">Audio</a></div><div class="ttdoc">The Audio class handles audio playback and control.</div><div class="ttdef"><b>Definition</b> audio_module.h:29</div></div>
 <div class="ttc" id="aclass_button_handler_html"><div class="ttname"><a href="class_button_handler.html">ButtonHandler</a></div><div class="ttdoc">Class to handle button operations.</div><div class="ttdef"><b>Definition</b> button.h:45</div></div>
-<div class="ttc" id="aclass_enemy_html"><div class="ttname"><a href="class_enemy.html">Enemy</a></div><div class="ttdoc">The Enemy class represents an enemy entity.</div><div class="ttdef"><b>Definition</b> Enemy.h:11</div></div>
-<div class="ttc" id="aclass_entity_html"><div class="ttname"><a href="class_entity.html">Entity</a></div><div class="ttdoc">Base class for all entities in the game.</div><div class="ttdef"><b>Definition</b> entity.h:28</div></div>
+<div class="ttc" id="aclass_enemy_html"><div class="ttname"><a href="class_enemy.html">Enemy</a></div><div class="ttdoc">The Enemy class represents an enemy entity.</div><div class="ttdef"><b>Definition</b> Enemy.h:21</div></div>
+<div class="ttc" id="aclass_entity_html"><div class="ttname"><a href="class_entity.html">Entity</a></div><div class="ttdoc">Base class for all entities in the game.</div><div class="ttdef"><b>Definition</b> entity.h:38</div></div>
 <div class="ttc" id="aclass_f_p_g_a_html"><div class="ttname"><a href="class_f_p_g_a.html">FPGA</a></div><div class="ttdoc">Class representing an FPGA device.</div><div class="ttdef"><b>Definition</b> fpga.h:23</div></div>
-<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdoc">game class that contains all the game logic.</div><div class="ttdef"><b>Definition</b> game.h:49</div></div>
+<div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdoc">game class that contains all the game logic.</div><div class="ttdef"><b>Definition</b> game.h:59</div></div>
 <div class="ttc" id="aclass_game_html_a0aef339408751a59619883b22c5c622f"><div class="ttname"><a href="class_game.html#a0aef339408751a59619883b22c5c622f">Game::updateSelection</a></div><div class="ttdeci">void updateSelection()</div><div class="ttdoc">Updates the selection cursor in the main menu.</div><div class="ttdef"><b>Definition</b> game.cpp:144</div></div>
 <div class="ttc" id="aclass_game_html_a32de8694ae269b15077ca97ce699b77b"><div class="ttname"><a href="class_game.html#a32de8694ae269b15077ca97ce699b77b">Game::drawString</a></div><div class="ttdeci">void drawString(std::string str, int startX, int y)</div><div class="ttdoc">Draws a string on the display.</div><div class="ttdef"><b>Definition</b> game.cpp:303</div></div>
 <div class="ttc" id="aclass_game_html_a3dba7eb88b8a3ab43f6410e586b8e25d"><div class="ttname"><a href="class_game.html#a3dba7eb88b8a3ab43f6410e586b8e25d">Game::addEnemy</a></div><div class="ttdeci">void addEnemy()</div><div class="ttdoc">Adds an enemy to the game.</div><div class="ttdef"><b>Definition</b> game.cpp:236</div></div>
@@ -248,11 +249,21 @@ $(function() {
 <div class="ttc" id="aclass_samurai_html"><div class="ttname"><a href="class_samurai.html">Samurai</a></div><div class="ttdoc">Class representing a Samurai enemy.</div><div class="ttdef"><b>Definition</b> samurai.h:21</div></div>
 <div class="ttc" id="aclass_score_html"><div class="ttname"><a href="class_score.html">Score</a></div><div class="ttdoc">Represents the score and leaderboard functionality of the game.</div><div class="ttdef"><b>Definition</b> scores.h:28</div></div>
 <div class="ttc" id="afpga_8h_html"><div class="ttname"><a href="fpga_8h.html">fpga.h</a></div><div class="ttdoc">This file contains the FPGA class and related data structures for communication with the Basys3 FPGA.</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4">gameStates</a></div><div class="ttdeci">gameStates</div><div class="ttdoc">Represents the different game states.</div><div class="ttdef"><b>Definition</b> game.h:43</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4a4e38a02a38c24a4ab0fb3171be6e2644"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a4e38a02a38c24a4ab0fb3171be6e2644">NextLevel</a></div><div class="ttdeci">@ NextLevel</div><div class="ttdoc">The next level state.</div><div class="ttdef"><b>Definition</b> game.h:50</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4a5359ee59fbd3872a8f1cc2e2a1dbc3d2"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a5359ee59fbd3872a8f1cc2e2a1dbc3d2">Drbob</a></div><div class="ttdeci">@ Drbob</div><div class="ttdoc">The Drbob state.</div><div class="ttdef"><b>Definition</b> game.h:48</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4a63fb97da872bff3b2c623de28fdae93b"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a63fb97da872bff3b2c623de28fdae93b">Playing</a></div><div class="ttdeci">@ Playing</div><div class="ttdoc">The playing state.</div><div class="ttdef"><b>Definition</b> game.h:45</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4a7038380f2ccd1d2edf36a73fd4c2d068"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a7038380f2ccd1d2edf36a73fd4c2d068">Paused</a></div><div class="ttdeci">@ Paused</div><div class="ttdoc">The paused state.</div><div class="ttdef"><b>Definition</b> game.h:46</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4a7d6b7d7b675b0e86182f67c12e59ecf8"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a7d6b7d7b675b0e86182f67c12e59ecf8">Highscores</a></div><div class="ttdeci">@ Highscores</div><div class="ttdoc">The highscores state.</div><div class="ttdef"><b>Definition</b> game.h:51</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4aaf0a9426b32607bb20d85e6ce0ac98e1"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4aaf0a9426b32607bb20d85e6ce0ac98e1">Credits</a></div><div class="ttdeci">@ Credits</div><div class="ttdoc">The credits state.</div><div class="ttdef"><b>Definition</b> game.h:49</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4ac0db83a0bab1afb21f2ad6640bfcc111"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ac0db83a0bab1afb21f2ad6640bfcc111">BOSSFIGHT</a></div><div class="ttdeci">@ BOSSFIGHT</div><div class="ttdoc">The boss fight state.</div><div class="ttdef"><b>Definition</b> game.h:52</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4ae0f2dbf2f226e6c1acccabc9b146e3d7"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ae0f2dbf2f226e6c1acccabc9b146e3d7">Menu</a></div><div class="ttdeci">@ Menu</div><div class="ttdoc">The menu state.</div><div class="ttdef"><b>Definition</b> game.h:44</div></div>
+<div class="ttc" id="agame_8h_html_a48ad76f088e1093aec108ee53e65d2b4ae2724ba71a1a0daaa937dd3ac38e53e4"><div class="ttname"><a href="game_8h.html#a48ad76f088e1093aec108ee53e65d2b4ae2724ba71a1a0daaa937dd3ac38e53e4">GameOver</a></div><div class="ttdeci">@ GameOver</div><div class="ttdoc">The game over state.</div><div class="ttdef"><b>Definition</b> game.h:47</div></div>
 <div class="ttc" id="ascores_8h_html"><div class="ttname"><a href="scores_8h.html">scores.h</a></div><div class="ttdoc">This file contains the Score class and related functionality for score and leaderboard management.</div></div>
-<div class="ttc" id="astruct_platform_range_html"><div class="ttname"><a href="struct_platform_range.html">PlatformRange</a></div><div class="ttdoc">Represents a range of platforms.</div><div class="ttdef"><b>Definition</b> game.h:23</div></div>
-<div class="ttc" id="astruct_platform_range_html_a6b552b3cc4addcd17e30e883503382e2"><div class="ttname"><a href="struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2">PlatformRange::xend</a></div><div class="ttdeci">int xend</div><div class="ttdoc">The ending x-coordinate of the platform range.</div><div class="ttdef"><b>Definition</b> game.h:25</div></div>
-<div class="ttc" id="astruct_platform_range_html_a6b883dbb3045ff630c4037d01363b6fb"><div class="ttname"><a href="struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb">PlatformRange::xbegin</a></div><div class="ttdeci">int xbegin</div><div class="ttdoc">The beginning x-coordinate of the platform range.</div><div class="ttdef"><b>Definition</b> game.h:24</div></div>
-<div class="ttc" id="astruct_platform_range_html_ac5fd22c60fe6823bfce0ed2656c297e6"><div class="ttname"><a href="struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6">PlatformRange::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">The y-coordinate of the platform range.</div><div class="ttdef"><b>Definition</b> game.h:26</div></div>
+<div class="ttc" id="astruct_platform_range_html"><div class="ttname"><a href="struct_platform_range.html">PlatformRange</a></div><div class="ttdoc">Represents a range of platforms.</div><div class="ttdef"><b>Definition</b> game.h:33</div></div>
+<div class="ttc" id="astruct_platform_range_html_a6b552b3cc4addcd17e30e883503382e2"><div class="ttname"><a href="struct_platform_range.html#a6b552b3cc4addcd17e30e883503382e2">PlatformRange::xend</a></div><div class="ttdeci">int xend</div><div class="ttdoc">The ending x-coordinate of the platform range.</div><div class="ttdef"><b>Definition</b> game.h:35</div></div>
+<div class="ttc" id="astruct_platform_range_html_a6b883dbb3045ff630c4037d01363b6fb"><div class="ttname"><a href="struct_platform_range.html#a6b883dbb3045ff630c4037d01363b6fb">PlatformRange::xbegin</a></div><div class="ttdeci">int xbegin</div><div class="ttdoc">The beginning x-coordinate of the platform range.</div><div class="ttdef"><b>Definition</b> game.h:34</div></div>
+<div class="ttc" id="astruct_platform_range_html_ac5fd22c60fe6823bfce0ed2656c297e6"><div class="ttname"><a href="struct_platform_range.html#ac5fd22c60fe6823bfce0ed2656c297e6">PlatformRange::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">The y-coordinate of the platform range.</div><div class="ttdef"><b>Definition</b> game.h:36</div></div>
 <div class="ttc" id="astructbutton_statuses_html"><div class="ttname"><a href="structbutton_statuses.html">buttonStatuses</a></div><div class="ttdoc">Structure to hold the status of various buttons.</div><div class="ttdef"><b>Definition</b> player.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

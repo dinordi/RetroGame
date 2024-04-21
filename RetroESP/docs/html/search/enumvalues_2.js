@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['enemy_0',['ENEMY',['../class_actor.html#a8f016a8e19c6fe5e7cceb7d5690cb9cca3a69a6a951ef8482e3bb9f7397ff1e10',1,'Actor']]]
+  ['credits_0',['Credits',['../game_8h.html#a48ad76f088e1093aec108ee53e65d2b4aaf0a9426b32607bb20d85e6ce0ac98e1',1,'game.h']]]
 ];

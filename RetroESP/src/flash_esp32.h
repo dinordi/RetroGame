@@ -1,6 +1,12 @@
 /**
- * @file flash_esp.h
+ * @file flash_esp32.h
+ * @author -
  * @brief This file contains the Flash_esp class for handling operations related to ESP32 flash memory.
+ * @version 0.1
+ * @date 2024-04-21
+ * 
+ * @copyright Copyright (c) 2024
+ * 
  */
 
 #pragma once
