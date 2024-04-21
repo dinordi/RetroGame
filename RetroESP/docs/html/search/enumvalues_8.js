@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nextlevel_0',['NextLevel',['../game_8h.html#a48ad76f088e1093aec108ee53e65d2b4a4e38a02a38c24a4ab0fb3171be6e2644',1,'game.h']]]
+  ['idle_0',['idle',['../_object_8h.html#adc6e5733fc3c22f0a7b2914188c49c90a0e9a37114c0e458d28d52f06ec0f2242',1,'Object.h']]]
 ];
