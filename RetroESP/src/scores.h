@@ -1,5 +1,11 @@
+/**
+ * @file scores.h
+ * @brief This file contains the Score class and related functionality for score and leaderboard management.
+ */
+
+
 #pragma once
-//#include <iostream>
+
 #include <string>
 #include <stdio.h>
 #include <string.h>
@@ -12,10 +18,7 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
-//#include <sstream>
 #include "flash_esp32.h"
-
-
 
 /**
  * @class Score
@@ -33,7 +36,7 @@ public:
     /**
      * @brief Destructs the Score object.
      */
-   ~Score();
+    ~Score();
 
 public:
     /**
@@ -96,23 +99,23 @@ public:
     void compare_leaderboard();
 
 private:
-    int time_multiplier = 100;  /**< The multiplier for the time points. */
-    int monster_exp = 1000;     /**< The base points for defeating a monster without multiplier. */
-    int boss_exp = 10000;       /**< The base points for defeating a boss without multiplier. */
+    int time_multiplier = 100;  ///< The multiplier for the time points.
+    int monster_exp = 1000;     ///< The base points for defeating a monster without multiplier.
+    int boss_exp = 10000;       ///< The base points for defeating a boss without multiplier. 
 
 private:
-    int time = 0;               /**< The time taken in the game. */
-    int second_decrease = 35;   /**< The amount of time to decrease the multiplier. */
-    int current_score = 0;      /**< The current game score. */
-    int time_score = 0;         /**< The score based on the time taken. */
-    bool high_score = false;    /**< Indicates if the current score is a high score. */
+    int time = 0;               ///< The time taken in the game. 
+    int second_decrease = 35;   ///< The amount of time to decrease the multiplier. 
+    int current_score = 0;      ///< The current game score. 
+    int time_score = 0;         ///< The score based on the time taken.
+    bool high_score = false;    ///< Indicates if the current score is a high score. 
 
 private:   
-    std::string leader_board;   /**< The leaderboard string. */
-    int compare_score;          /**< The score to compare with the leaderboard scores. */
-    char *player_and_score[10]; /**< Array to store the split strings. */
-    char *store_new_score;      /**< The new score to store in the leaderboard. */
-    int replace_score = 0;      /**< The score to replace in the leaderboard. */
+    std::string leader_board;   ///< The leaderboard string. 
+    int compare_score;          ///< The score to compare with the leaderboard scores.
+    char *player_and_score[10]; ///< Array to store the split strings. 
+    char *store_new_score;      ///< The new score to store in the leaderboard. 
+    int replace_score = 0;      ///< The score to replace in the leaderboard. 
 
     /**
      * @brief Moves down the leaderboard to make space for a new score.
@@ -120,5 +123,5 @@ private:
     void move_down_leaderboard();
 
 private:
-    Flash_esp *flash_esp;       /**< A pointer to the Flash_esp object. */
+    Flash_esp *flash_esp;       ///< A pointer to the Flash_esp object. 
 };

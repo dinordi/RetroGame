@@ -1,4 +1,9 @@
 //#include <iostream>
+/**
+ * @file audio_module.h
+ * @brief This file contains the Audio class and related data structures.
+ */
+#pragma once
 #include <vector>
 #include <string.h>
 #include <stdio.h>
@@ -39,13 +44,13 @@ public:
     */
    enum play_soundtrack
    {
-      MENU_MUSIC,         /**< Menu music */
-      STAGE_1,            /**< Stage 1 music */
-      STAGE_1_BOSS,       /**< Stage 1 boss music */
-      STAGE_2,            /**< Stage 2 music */
-      STAGE_2_BOSS,       /**< Stage 2 boss music */
-      STAGE_3,            /**< Stage 3 music */
-      STAGE_3_BOSS        /**< Stage 3 boss music */
+      MENU_MUSIC,         ///< Menu music 
+      STAGE_1,            ///< Stage 1 music 
+      STAGE_1_BOSS,       ///< Stage 1 boss music 
+      STAGE_2,            ///< Stage 2 music 
+      STAGE_2_BOSS,       ///< Stage 2 boss music 
+      STAGE_3,            ///< Stage 3 music 
+      STAGE_3_BOSS        ///< Stage 3 boss music 
    };
 
    /**
@@ -54,29 +59,29 @@ public:
    enum play_effects
    {
       // Menu effects
-      MNU_CONFIRM,        /**< Menu confirm sound effect */
-      MNU_SELECT,         /**< Menu select sound effect */
+      MNU_CONFIRM,        ///< Menu confirm sound effect 
+      MNU_SELECT,         ///< Menu select sound effect 
 
       // Player effects
-      P_JUMP,             /**< Player jump sound effect */
-      P_SHOOT,            /**< Player shoot sound effect */
-      P_LOWHEALTH,        /**< Player low health sound effect */
-      P_DEATH,            /**< Player death sound effect */
-      P_HIT,              /**< Player hit sound effect */
+      P_JUMP,             ///< Player jump sound effect 
+      P_SHOOT,            ///< Player shoot sound effect 
+      P_LOWHEALTH,        ///< Player low health sound effect 
+      P_DEATH,            ///< Player death sound effect 
+      P_HIT,              ///< Player hit sound effect
 
       // Boss effects
-      B_SLASH,            /**< Boss slash sound effect */
-      B_SCREECH,          /**< Boss screech sound effect */
-      B_SCREAM,           /**< Boss scream sound effect */
-      B_ROAR,             /**< Boss roar sound effect */
-      B_HIT,              /**< Boss hit sound effect */
-      B_ELECTRICITY,      /**< Boss electricity sound effect */
+      B_SLASH,            ///< Boss slash sound effect
+      B_SCREECH,          ///< Boss screech sound effect 
+      B_SCREAM,           ///< Boss scream sound effect 
+      B_ROAR,             ///< Boss roar sound effect 
+      B_HIT,              ///< Boss hit sound effect 
+      B_ELECTRICITY,      ///< Boss electricity sound effect 
 
       // Monster effects
-      M_DEATH,            /**< Monster death sound effect */
+      M_DEATH,            ///< Monster death sound effect
 
       // Level transition effects
-      T_NEXT_LEVEL        /**< Next level transition sound effect */
+      T_NEXT_LEVEL        ///< Next level transition sound effect 
    };
 
    /**
@@ -84,8 +89,8 @@ public:
     */
    enum stop_audio
    {
-      MUSIC,              /**< Music audio */
-      SFX                 /**< Sound effects audio */
+      MUSIC,              ///< Music audio 
+      SFX                 ///< Sound effects audio 
    };
 
 public:
@@ -132,77 +137,12 @@ public:
    void uart_send(const std::vector<int>& vector, int select);
 
 private:
-   // Input GPIO devices for busy
-   // When busy pin will be low  
-   int busy_uart1 = 1;
-   int busy_uart2 = 1;
+  
+  
+   int busy_uart1 = 1; ///< Input GPIO devices for busy
+   int busy_uart2 = 1; ///< When busy pin will be low  
 
-   // Buffer to hold the value to be sent
-   std::vector<int> uart1_buffer;
-   std::vector<int> uart2_buffer;
-};
-class Audio
-{
-public:
-    Audio();
-   ~Audio(); 
-
-   public:
-   enum play_soundtrack
-{
-   MENU_MUSIC,
-   STAGE_1,
-   STAGE_1_BOSS,
-   STAGE_2,
-   STAGE_2_BOSS,
-   STAGE_3,
-   STAGE_3_BOSS
-};
-enum play_effects
-{
-    //Menu effects
-    MNU_CONFIRM,
-    MNU_SELECT,
-    //player effects
-    P_JUMP,
-    P_SHOOT,
-    P_LOWHEALTH,
-    P_DEATH,
-    P_HIT,
-    //BOSS effects
-    B_SLASH,
-    B_SCREECH,
-    B_SCREAM,
-    B_ROAR,
-    B_HIT,
-    B_ELECTRICITY,
-    //Monster effects  
-    M_DEATH,
-    //Level transistion effects
-    T_NEXT_LEVEL
-};
-
-enum stop_audio
-{
- MUSIC,
- SFX
-};
-public:
-   void play_music(play_soundtrack music); 
-   void play_effect(play_effects effect);
-   void stop(stop_audio stop);
-   void control_audio();
-   int  music_status();
-   int  sfx_status();
-   void uart_send(const std::vector<int>& vector, int select);
-
-private:
-//input gpio devices for busy 
-// when busy pin will be low  
-int busy_uart1 = 1;
-int busy_uart2 = 1;
-
-//buffer to hold the value to be sent
-std::vector<int> uart1_buffer;
-std::vector<int> uart2_buffer;
+   
+   std::vector<int> uart1_buffer;///<Buffer to hold the value to be sent
+   std::vector<int> uart2_buffer;///<Buffer to hold the value to be sent
 };

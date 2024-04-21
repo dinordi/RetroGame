@@ -44,7 +44,7 @@ public:
      * @return False, as the Samurai enemy is not a player.
      */
     bool isPlayer() const override { return false; }
-
+choco install doxygen.installchoco install doxygen.installchoco install doxygen.install
     /**
      * @brief Override function that checks if the enemy can attack.
      * @param isX Flag indicating whether the attack check is for the x-coordinate.
