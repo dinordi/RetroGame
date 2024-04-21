@@ -654,10 +654,10 @@ void Game::loadPlatforms(int levelNum)
     }
 }
 
-std::vector<Platform*>* Game::getPlatforms()
-{
-    return &platforms;
-}
+// std::vector<Platform*>* Game::getPlatforms()
+// {
+//     return &platforms;
+// }
 
 void Game::tick()
 {

@@ -1,0 +1,14 @@
+# Doxygen configuratiebestand voor MyProject
+
+# Projectnaam
+PROJECT_NAME           = "Saga of Sacrifice"
+
+# Uitvoermap voor de documentatie
+OUTPUT_DIRECTORY       = ./docs
+
+# Bronbestanden om te documenteren
+INPUT                  = ./src
+
+# Optionele instellingen
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO

@@ -44,19 +44,19 @@ The KiCad files can be downloaded from the Docs/KiCad folder.
 `PCB Front <https://github.com/dinordi/RetroGame/blob/main/Docs/KiCad/images/PCBVoor.pdf>`_
 
 +------------------+----------------------------------+
-| GPIO pin         | Function                     |
+| GPIO pin         | Function                         |
 +==================+==================================+
-| GPIO 6           | Joystick left                     |
+| GPIO 6           | Joystick left                    |
 +------------------+----------------------------------+
-| GPIO 4           | Joystick right                  |
+| GPIO 4           | Joystick right                   |
 +------------------+----------------------------------+
-| GPIO 7           | Joystick up                     |
+| GPIO 7           | Joystick up                      |
 +------------------+----------------------------------+
-| GPIO 5           | Joystick down                     |
+| GPIO 5           | Joystick down                    |
 +------------------+----------------------------------+
-| GPIO 16           | Green button                     |
+| GPIO 16          | Green button                     |
 +------------------+----------------------------------+
-| GPIO 15           | Red button                     |
+| GPIO 15          | Red button                       |
 +------------------+----------------------------------+
 | GPIO 9           | Black button                     |
 +------------------+----------------------------------+
