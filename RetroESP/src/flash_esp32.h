@@ -1,3 +1,7 @@
+/**
+ * @file flash_esp.h
+ * @brief This file contains the Flash_esp class for handling operations related to ESP32 flash memory.
+ */
 
 #pragma once
 #include <zephyr/kernel.h>
@@ -8,7 +12,7 @@
 #include <zephyr/storage/flash_map.h>
 #include <zephyr/fs/nvs.h>
 #include <cstdint>
-//#include <sstream>
+///#include <sstream>
 #include <cstdint>
 #include <vector>
 #include <string>
@@ -35,7 +39,10 @@
  * @brief The Flash_esp class handles operations related to ESP32 flash memory.
  */
 class Flash_esp 
-{
+/**
+ * @brief The Flash_esp class provides functionality to interact with the ESP32 flash memory.
+ */
+class Flash_esp {
 public:
     /**
      * @brief Constructs a new Flash_esp object.
@@ -77,15 +84,15 @@ public:
     size_t get_size_flash();
 
 private:
-    uint32_t buf_word = 0U;
-    uint32_t offset;
-    size_t string_size;
-    std::vector<uint32_t> uint32Array;
-    std::vector<uint32_t> uint32Array_read;
-    int count_ASCII = 0;
+    uint32_t buf_word = 0U; ///< The buffer word used for writing to the flash memory.
+    uint32_t offset; ///< The offset used for writing to the flash memory.
+    size_t string_size; ///< The size of the string used for writing to the flash memory.
+    std::vector<uint32_t> uint32Array; ///< The array of uint32_t used for writing to the flash memory.
+    std::vector<uint32_t> uint32Array_read; ///< The array of uint32_t used for reading from the flash memory.
+    int count_ASCII = 0; ///< The count of ASCII characters used for writing to the flash memory.
 
 private: 
-    std::string received_string;
+    std::string received_string; ///< The received string used for writing to the flash memory.
 
 private:
     /**
