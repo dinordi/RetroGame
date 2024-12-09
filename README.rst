@@ -19,6 +19,13 @@ Saga of Sacrifice is a 2D-platformer where the player traverses several levels t
 
 The game runs using a ESP32-S3-DevkitC v1.1 and a Basys3 FPGA.
 
+Video Showing Gameplay
+**********************
+
+.. image:: https://img.youtube.com/vi/o0PvoIunmNI/maxresdefault.jpg
+    :alt: IMAGE ALT TEXT HERE
+    :target: https://www.youtube.com/watch?v=o0PvoIunmNI
+
 
 Getting Started
 ***************
